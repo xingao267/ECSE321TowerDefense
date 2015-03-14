@@ -1,0 +1,100 @@
+package CritterModels;
+
+import TempModels.Cell;
+
+public class SpeedCritter extends Critter {
+	
+	private String type = "Speed Critter";
+	private double speed = 1.0;
+	private int bounty = 2;
+	private int strength = 1;
+	private boolean isBeingHit = false;
+	
+	private Cell location;
+	private int xPos, yPos;
+	private int healthPoints;
+	
+	
+	/**
+	 * Constructor of the SpeedCritter class
+	 * @param level		Level at which the critter is being spawned
+	 */
+	public SpeedCritter(int level){
+		super();
+		if(level > 5){
+			this.bounty += (level/5)*this.bounty;
+		}
+		this.healthPoints = 15*level*level + 5*level + 80;
+	}
+	
+	
+	
+	public String getType() {
+		return type;
+	}
+
+	public double getSpeed(){
+		return speed;
+	}
+	
+	public int getBounty(){
+		return bounty;
+	}
+	
+	public int getStrength(){
+		return strength;
+	}
+	
+	public int getHealthPoints(){
+		return healthPoints;
+	}
+	
+	public Cell getLocation(){
+		return location;
+	}
+	
+	public boolean isBeingHit() {
+		return isBeingHit;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public void setSpeed(double speed){
+		this.speed = speed;
+	}
+	
+	public void setBounty(int bounty){
+		this.bounty = bounty;
+	}
+	
+	public void setStrength(int strength){
+		this.strength = strength;
+	}
+	
+	public void setHealthPoints(int healthPoints){
+		this.healthPoints = healthPoints;
+	}
+
+	public void setBeingHit(boolean isBeingHit) {
+		this.isBeingHit = isBeingHit;
+	}
+
+    public int getXPos() {
+        return xPos;
+    }
+
+    public void setXPos(int xPos) {
+        this.xPos = xPos;
+    }
+
+    public int getYPos() {
+        return yPos;
+    }
+
+    public void setYPos(int yPos) {
+        this.yPos = yPos;
+    }
+
+}
