@@ -1,25 +1,43 @@
 package Window;
 
+import java.awt.*;
 import javax.swing.*;
 
+/**
+ * 
+ * @author Jose
+ *
+ */
 public class Frame extends JFrame {
 
 	public static String title = "Tower Defense";
+	public static int width, height;
+	
 	public Frame(){
 		new JFrame();
 		
 //		this.setSize(800, 600);
-		this.setTitle(title);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setExtendedState(MAXIMIZED_BOTH);
-		this.setUndecorated(false);
-		this.setResizable(true);
-		this.setVisible(true);
+		setTitle(title);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setExtendedState(MAXIMIZED_BOTH);
+		setUndecorated(false);
+		setResizable(true);
 //		this.setLocationRelativeTo(null);
+		width = getWidth();
+		height = getHeight();
+		
+		init();
+	}
+	
+	public void init(){
+		this.setLayout(new GridLayout(1, 1, 0, 0));
 		
 		Screen screen = new Screen(this);
 		this.add(screen);
+		
+		setVisible(true);
 	}
+	
 	
 	public static void main(String[] args){
 		new Frame();

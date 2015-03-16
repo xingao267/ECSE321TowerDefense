@@ -11,6 +11,19 @@ public class Constants {
 	/** Initial Player life points. */
 	public static final int INITIAL_PLAYER_LIFE_POINTS = 100;
 	
+	/** Life points display constants. */
+	public static final int DISPLAY_SIZE = 30;
+	public static final int SPACING = 5;
+	
+	/** Store display constants */
+	public static final int STORE_BUTTON_SIZE = 50;
+	public static final int STORE_SPACING = 8;
+	public static final int STORE_OFFSET = 20;
+	public static final int NUM_TOWERS = 8;
+	
+	/** Initial Bank balance. */
+	public static final int INITIAL_BANK_BALANCE = 30;
+	
 	/** Initial Tower Level. */
 	public static final int INITIAL_TOWER_LEVEL = 1;
 

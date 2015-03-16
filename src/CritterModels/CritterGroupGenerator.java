@@ -7,6 +7,13 @@ import TempModels.Bank;
 import TempModels.Cell;
 import TempModels.Player;
 
+
+/**
+ * Class which generates a group of Critters for each game level
+ *
+ * @author Jose
+ *
+ */
 public class CritterGroupGenerator {
 
 	private List<Critter> critterGroup;
@@ -229,7 +236,7 @@ public class CritterGroupGenerator {
 	 *            attacks (bullets, explosions), 1 implies special attacks
 	 *            (fire, electricity)
 	 */
-	public void receiveDamage(Critter c, int damage, int damageType) {
+	public void receiveDamage(Critter c, double damage, int damageType) {
 
 		if (c instanceof ArmoredCritter)
 			c.setHealth(c.getHealth() - (damage / 2));
@@ -285,7 +292,7 @@ public class CritterGroupGenerator {
 	 * @param speed
 	 *            Speed at which critter will move to the next cell
 	 */
-	public void move(Critter c, int nextXPos, int nextYPos, double speed) {
+	private void move(Critter c, int nextXPos, int nextYPos, double speed) {
 		// physics of critter movement
 		c.setxPos(nextXPos);
 		c.setyPos(nextYPos);

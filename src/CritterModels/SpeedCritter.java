@@ -2,6 +2,11 @@ package CritterModels;
 
 import Utility.Constants;
 
+
+/**
+ * @author José
+ *
+ */
 public class SpeedCritter extends Critter {
 
 	/**

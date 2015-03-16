@@ -2,6 +2,13 @@ package CritterModels;
 
 import TempModels.Cell;
 
+
+/**
+ * Generic base class Critter data model
+ *
+ * @author José
+ *
+ */
 public abstract class Critter {
 
 	/** speed of critter. Range from 0 to 1 */

@@ -3,6 +3,11 @@ package CritterModels;
 import Utility.Constants;
 
 //will probably not use in final game
+
+/**
+ * @author José
+ *
+ */
 public class GhostCritter extends Critter {
 
 	private boolean isVanished;
