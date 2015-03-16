@@ -1,6 +1,6 @@
 package TowerModels;
 
-import TempModels.Critter;
+import CritterModels.Critter;
 import Utility.Constants;
 
 /**

@@ -2,9 +2,9 @@ package Controllers;
 
 import java.util.List;
 
+import CritterModels.Critter;
 import Exceptions.MaxLevelReachedException;
-import Models.Tower;
-import TempModels.Critter;
+import TowerModels.Tower;
 
 /**
  * Interface for TowerController

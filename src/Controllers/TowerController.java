@@ -3,10 +3,10 @@ package Controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import CritterModels.Critter;
 import Exceptions.MaxLevelReachedException;
-import Models.MultiTargetsTower;
-import Models.Tower;
-import TempModels.Critter;
+import TowerModels.MultiTargetsTower;
+import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
 

@@ -2,7 +2,7 @@ package TowerModels;
 
 import java.util.List;
 
-import TempModels.Critter;
+import CritterModels.Critter;
 
 /**
  * The class is the generic base class Tower data model
