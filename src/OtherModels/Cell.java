@@ -1,28 +1,28 @@
-package TempModels;
+package OtherModels;
 
 public class Cell {
 
-	public int id; 				// 0: Scenery Cell, 1: Path Cell
+	public int id; // 0: Scenery Cell, 1: Path Cell
 	private int xCoord;
 	private int yCoord;
-	
-	public Cell(int xCoord, int yCoord){
+
+	public Cell(int xCoord, int yCoord) {
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
 	}
-	
-	public boolean isExitPoint(){
-		if(xCoord == 3 && yCoord == 4)
+
+	public boolean isExitPoint() {
+		if (xCoord == 3 && yCoord == 4)
 			return true;
 		else
 			return false;
 	}
-	
-	public int getCellId(){
+
+	public int getCellId() {
 		return id;
 	}
-	
-	public void setCell(int id){
+
+	public void setCell(int id) {
 		this.id = id;
 	}
 

@@ -1,12 +1,13 @@
 package Window;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
-import TempModels.*;
-
-import com.sun.javafx.scene.KeyboardShortcutsHandler;
+import OtherModels.Bank;
+import OtherModels.Player;
 
 /**
  * 

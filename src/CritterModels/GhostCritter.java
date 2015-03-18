@@ -5,7 +5,7 @@ import Utility.Constants;
 //will probably not use in final game
 
 /**
- * @author José
+ * @author Jose
  *
  */
 public class GhostCritter extends Critter {

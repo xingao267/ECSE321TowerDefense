@@ -3,10 +3,9 @@ package CritterModels;
 import java.util.LinkedList;
 import java.util.List;
 
-import TempModels.Bank;
-import TempModels.Cell;
-import TempModels.Player;
-
+import OtherModels.Bank;
+import OtherModels.Cell;
+import OtherModels.Player;
 
 /**
  * Class which generates a group of Critters for each game level
@@ -236,7 +235,8 @@ public class CritterGroupGenerator {
 	 *            attacks (bullets, explosions), 1 implies special attacks
 	 *            (fire, electricity)
 	 */
-	public void receiveDamage(Critter c, double damage, int damageType) {
+	public void receiveDamage(Critter c, double damage, int damageType,
+			Bank bank) {
 
 		if (c instanceof ArmoredCritter)
 			c.setHealth(c.getHealth() - (damage / 2));
@@ -256,7 +256,7 @@ public class CritterGroupGenerator {
 															// group
 			// critterGroup.remove(index); //need method that returns index of
 			// critter that is being hit
-			Bank.returnToBank(c.getBounty()); // returns bounty to Player's Bank
+			bank.returnToBank(c.getBounty()); // returns bounty to Player's Bank
 												// balance
 		}
 	}
@@ -269,13 +269,15 @@ public class CritterGroupGenerator {
 	 * @param nextCell
 	 *            Cell which critter will move to next
 	 */
-	public void moveTo(Critter c, Cell nextCell) {
+	public void moveTo(Critter c, Cell nextCell, Player player) {
 		if (nextCell.isExitPoint()) { // need a method in Cell or Map class,
 										// boolean isExitPoint()
 			move(c, nextCell.getXCoord(), nextCell.getYCoord(), c.getSpeed());
 			critterGroup.remove(c); // remove critter from group
-			Player.lifePoints -= c.getStrength(); // reduce Player's lifePoints
-													// by critters strength
+			player.setLifePoints(player.getLifePoints() - c.getStrength()); // reduce
+																			// Player's
+																			// lifePoints
+			// by critters strength
 		} else {
 			// move critter to next cell at its speed
 			move(c, nextCell.getXCoord(), nextCell.getYCoord(), c.getSpeed());

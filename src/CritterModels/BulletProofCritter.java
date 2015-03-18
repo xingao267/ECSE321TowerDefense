@@ -4,7 +4,7 @@ import Utility.Constants;
 
 
 /**
- * @author José
+ * @author Jose
  *
  */
 public class BulletProofCritter extends Critter {

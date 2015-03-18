@@ -1,12 +1,12 @@
 package CritterModels;
 
-import TempModels.Cell;
+import OtherModels.Cell;
 
 
 /**
  * Generic base class Critter data model
  *
- * @author José
+ * @author Jose
  *
  */
 public abstract class Critter {
