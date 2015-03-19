@@ -2,37 +2,39 @@ package Map;
 
 public class Cell {
 
-	private String cellType;
+	private boolean scenery;
 	private int[] coordinates;
 	private boolean hasTower;
 	
 	/**
 	 * Cell constructor with parameters
-	 * @param cellType
 	 * @param coordinates
 	 */
-	public Cell(String cellType, int[] coordinates){
-		
-		this.cellType = cellType;
-		this.coordinates = coordinates;
+	public Cell(boolean scenery, int x, int y) {
+		this.scenery = scenery;
+		this.setCoordinates(x, y);
 		this.hasTower = false;
-		
 	}
 	
 	/**
 	 * General Cell constructor. Initialises cellType and coordinates to null
 	 */
 	public Cell(){
-		this.cellType= null;
+		this.scenery= true;
 		this.coordinates = null;
 	}
 	
+	protected void setCoordinates(int x, int y){
+		this.coordinates[0] = x;
+		this.coordinates[1]= y;
+	}
+
 	/**
 	 * Returns the type of the cell
 	 * @return
 	 */
-	public String getCellType(){
-		return cellType;
+	public boolean isScenery(){
+		return scenery;
 	}
 	
 	/**
@@ -47,8 +49,12 @@ public class Cell {
 	 * Sets the type of the cell
 	 * @param newType
 	 */
-	public void setCellType(String newType){
-		this.cellType = newType;
+	public void setPath(){
+		this.scenery = false;
+	}
+	
+	public void setScenery(){
+		this.scenery=true;
 	}
 	
 	/**
@@ -66,4 +72,5 @@ public class Cell {
 	public boolean hasTower(){
 		return hasTower;
 	}
+
 }

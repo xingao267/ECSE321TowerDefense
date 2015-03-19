@@ -3,19 +3,18 @@ package Map;
 public class Path extends Cell {
 	
 	private Cell next;
-	private Cell previous;
+	private Cell previous; 
 	
 	/**
 	 * Path Constructor
 	 * @param previous
 	 * @param next
 	 */
-	public Path(Cell previous, Cell next){
-		
-		
+	public Path(int x, int y, Cell previous, Cell next){
 		this.next = next;
-		this.previous = previous;
-		
+		this.setPath();
+		super.setCoordinates(x,y);
+		//this.previous = previous;	
 	}
 	/**
 	 * Returns next cell in path
@@ -29,9 +28,9 @@ public class Path extends Cell {
 	 * Returns previous cell in path
 	 * @return
 	 */
-	public Cell previous(){
+	/*public Cell previous(){
 		return this.previous;
-	}
+	}*/
 	
 	/**
 	 * Returns true if cell is entry node
