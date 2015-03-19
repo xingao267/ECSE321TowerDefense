@@ -1,6 +1,7 @@
 package Window;
 
 import java.awt.*;
+
 import javax.swing.*;
 
 /**
@@ -10,19 +11,19 @@ import javax.swing.*;
  */
 public class Frame extends JFrame {
 
-	public static String title = "Tower Defense";
+	public static String title = "ECSE 321 - Tower Defense";
 	public static int width, height;
 	
 	public Frame(){
 		new JFrame();
 		
-//		this.setSize(800, 600);
+		setSize(1366, 768);
 		setTitle(title);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setExtendedState(MAXIMIZED_BOTH);
+//		setExtendedState(MAXIMIZED_BOTH);
 		setUndecorated(false);
 		setResizable(true);
-//		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);
 		width = getWidth();
 		height = getHeight();
 		
@@ -30,12 +31,15 @@ public class Frame extends JFrame {
 	}
 	
 	public void init(){
-		this.setLayout(new GridLayout(1, 1, 0, 0));
+//		this.setLayout(new GridLayout(1, 1, 0, 0));
 		
 		Screen screen = new Screen(this);
 		this.add(screen);
 		
 		setVisible(true);
+		
+//		System.out.println(height);
+//		System.out.println(width);
 	}
 	
 	

@@ -24,6 +24,8 @@ public class Screen extends JPanel implements Runnable{
 	public static Point mouseLocation = new Point(0, 0);
 	
 	public MainMenu menu;
+	
+	public MapSelectPane mapSelectPane;
 
 	private boolean isFirst = true;
 	
@@ -44,17 +46,20 @@ public class Screen extends JPanel implements Runnable{
 	}
 	
 	public void init(){
-//		menu = new MainMenu();
-		store = new Store();
-		player = new Player();
-		bank = new Bank();
+		menu = new MainMenu();	
+//		store = new Store();
+//		player = new Player();
+//		bank = new Bank();
+//		mapSelectPane = new MapSelectPane();
 	}
 	
 	public void paintComponent(Graphics g){
 		
-		if(isFirst ) {
+		if(isFirst) {
 			screenWidth = getWidth();
 			screenHeight = getHeight();
+//			System.out.println(screenHeight);
+//			System.out.println(screenWidth);
 			init();
 			isFirst = false;
 		}
@@ -66,10 +71,11 @@ public class Screen extends JPanel implements Runnable{
 		
 		
 		//display the main menu
-//		menu.draw(g);
-		store.draw(g);
-		player.draw(g);
-		bank.draw(g);
+		menu.draw(g);
+//		mapSelectPane.draw(g);
+//		store.draw(g);
+//		player.draw(g);
+//		bank.draw(g);
 	}
 	
 	
@@ -77,19 +83,12 @@ public class Screen extends JPanel implements Runnable{
 	 * Game Loop
 	 */
 	public void run(){
-//		long lastFrame = System.currentTimeMillis();
-//		int frames = 0;
-		
+
 		//Game Loop
-		while(true){				
+		while(true){
+			
 			repaint();
-/*			frames++;
-			if(System.currentTimeMillis() - 1000 >= lastFrame){
-				fps = frames;
-				frames = 0;
-				lastFrame = System.currentTimeMillis();
-			}
-*/			try{
+			try{
 				gameLoop.sleep(1);
 			} catch(Exception e){}
 			
