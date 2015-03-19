@@ -44,7 +44,7 @@ public class BomberTower extends MultiTargetsTower {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

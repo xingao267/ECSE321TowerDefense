@@ -1,8 +1,9 @@
 package TowerModels;
 
-import java.util.List;
-
+import CritterModels.ArmoredCritter;
+import CritterModels.BulletProofCritter;
 import CritterModels.Critter;
+import Exceptions.CritterDeadException;
 
 /**
  * The class is the generic base class Tower data model
@@ -72,22 +73,32 @@ public abstract class Tower {
      * Tower specific attack
      *
      * @param critters
+     * @throws CritterDeadException
      */
-    public void attack(List<Critter> critters) {
+    public void attack(Critter critter) throws CritterDeadException {
 
-        for (Critter critter : critters) {
+        double newHealth = 0;
 
-            double newHealth = critter.getHealth() - this.power;
-
-            if (newHealth > 0) {
-                critter.setHealth(newHealth);
-                applySpecialEffects(critter);
-
-            } else {
-                // mark critter as dead and remove from the map.
-            }
-
+        if (critter instanceof ArmoredCritter) {
+            newHealth = critter.getHealth() - this.power / 2;
+        } else if (critter instanceof BulletProofCritter) {
+            // Removed damage type for now
+            // damageType
+            // 0 implies regular attacks (bullets, explosions)
+            // 1 implies special attacks (fire, electricity)
+            newHealth = critter.getHealth() - this.power / 4;
+        } else {
+            newHealth = critter.getHealth() - this.power;
         }
+
+        critter.setHealth(newHealth);
+
+        if (!critter.isDead()) {
+            applySpecialEffects(critter);
+        } else {
+            throw new CritterDeadException(critter);
+        }
+
     }
 
     /**
@@ -248,7 +259,7 @@ public abstract class Tower {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

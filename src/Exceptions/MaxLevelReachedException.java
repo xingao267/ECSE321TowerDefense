@@ -1,5 +1,12 @@
 package Exceptions;
 
+/**
+ * 
+ * MaxLevelReachedException class
+ * 
+ * @author Xin
+ *
+ */
 public class MaxLevelReachedException extends Exception {
 
     /** default serial ID */

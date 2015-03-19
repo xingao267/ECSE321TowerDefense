@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import CritterModels.Critter;
+import Exceptions.CritterDeadException;
 import Exceptions.MaxLevelReachedException;
+import OtherModels.Bank;
+import OtherModels.Cell;
 import TowerModels.MultiTargetsTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
-
 
 /**
  * TowerController Class
@@ -17,7 +19,7 @@ import Utility.Utils;
  * @author Xin
  *
  */
-public class TowerController implements ITowerController {
+public class GameController implements IGameController {
 
     @Override
     public void moveTower(Tower tower, int newXPos, int newYPos) {
@@ -27,27 +29,25 @@ public class TowerController implements ITowerController {
     }
 
     @Override
-    public void upgradeTower(Tower tower) throws MaxLevelReachedException {
+    public void upgradeTower(Tower tower, Bank bank) throws MaxLevelReachedException {
 
         if (tower.getLevel() < Constants.MAX_TOWER_LEVEL) {
             tower.upgrade();
+            bank.removeFromBank(tower.getUpgradeCost());
         } else {
             throw new MaxLevelReachedException("Tower maximum level reached, cannot be upgraded");
         }
+    }
+
+    @Override
+    public void sellTower(Tower tower, Bank bank) {
+
+        bank.returnToBank(tower.getRefundValue());
 
     }
 
     @Override
-    public void sellTower(Tower tower) {
-
-        // Remove tower
-
-        // Money should be deducted on the Bank side
-
-    }
-
-    @Override
-    public List<Critter> detectTargets(Tower tower, List<Critter> critters) {
+    public List<Critter> towerDetectTargets(Tower tower, List<Critter> critters) {
 
         List<Critter> crittersInRange = new ArrayList<Critter>();
 
@@ -65,7 +65,7 @@ public class TowerController implements ITowerController {
     }
 
     @Override
-    public List<Critter> selectTargets(Tower tower, List<Critter> critters) {
+    public List<Critter> towerSelectTargets(Tower tower, List<Critter> critters) {
 
         Critter closestCritter = detectClosestTarget(tower, critters);
 
@@ -80,7 +80,8 @@ public class TowerController implements ITowerController {
                         Utils.getDistance(closestCritter.getxPos(), closestCritter.getyPos(),
                                 critter.getxPos(), critter.getyPos());
 
-                // Add critters around the closest critter within the bomb effect range of the Tower
+                // Add critters around the closest critter within the bomb
+                // effect range of the Tower
                 if (distance <= multiTargetsTower.getEffectRange()) {
                     crittersSelected.add(critter);
                 }
@@ -93,9 +94,14 @@ public class TowerController implements ITowerController {
     }
 
     @Override
-    public void attackTargets(Tower tower, List<Critter> critters) {
+    public void towerAttackTargets(Tower tower, List<Critter> critters, Bank bank)
+            throws CritterDeadException {
 
-        tower.attack(critters);
+        for (Critter critter : critters) {
+            tower.attack(critter);
+            bank.returnToBank(critter.getBounty());
+        }
+
     }
 
     /**
@@ -121,6 +127,17 @@ public class TowerController implements ITowerController {
             }
         }
         return closestTarget;
+    }
+
+    @Override
+    public void spawnCritterGroup(Cell entryPoint, List<Critter> critterGroup) {
+        for (int i = 0; i < critterGroup.size(); i++) {
+            long lastExecutionTime = 0;
+            if (System.currentTimeMillis() - lastExecutionTime >= 1000) {
+                critterGroup.get(i).spawn(entryPoint);
+                lastExecutionTime = System.currentTimeMillis();
+            }
+        }
     }
 
 }
