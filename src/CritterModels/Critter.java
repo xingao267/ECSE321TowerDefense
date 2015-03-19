@@ -2,7 +2,6 @@ package CritterModels;
 
 import OtherModels.Cell;
 
-
 /**
  * Generic base class Critter data model
  *
@@ -29,9 +28,6 @@ public abstract class Critter {
 	/** if critter is slowed. */
 	protected boolean isSlowed;
 
-	/** cell location of the critter. */
-	protected Cell location;
-
 	/** level of critter. */
 	protected int level;
 
@@ -46,8 +42,6 @@ public abstract class Critter {
 		this.level = level;
 		this.xPos = xPos;
 		this.yPos = yPos;
-
-		this.location = null;
 		this.isBeingHit = false;
 	}
 
@@ -68,17 +62,13 @@ public abstract class Critter {
 	 *            First Cell on the Path
 	 */
 	public void spawn(Cell entryPoint) {
-		location = entryPoint;
 		xPos = entryPoint.getXCoord();
 		yPos = entryPoint.getYCoord();
 	}
 
 	public void setLocation(int x, int y) {
-		setLocation(new Cell(x, y));
-	}
-
-	public void setLocation(Cell c) {
-		location = c;
+		this.xPos = x;
+		this.yPos = y;
 	}
 
 	/**
@@ -187,13 +177,6 @@ public abstract class Critter {
 	}
 
 	/**
-	 * @return the location
-	 */
-	public Cell getLocation() {
-		return location;
-	}
-
-	/**
 	 * @return the isSlowed
 	 */
 	public boolean isSlowed() {
@@ -232,9 +215,8 @@ public abstract class Critter {
 	public String toString() {
 		return "Critter [speed=" + speed + ", health=" + health + ", bounty="
 				+ bounty + ", strength=" + strength + ", isBeingHit="
-				+ isBeingHit + ", isSlowed=" + isSlowed + ", location="
-				+ location + ", level=" + level + ", xPos=" + xPos + ", yPos="
-				+ yPos + "]";
+				+ isBeingHit + ", isSlowed=" + isSlowed + ", level=" + level
+				+ ", xPos=" + xPos + ", yPos=" + yPos + "]";
 	}
 
 }
