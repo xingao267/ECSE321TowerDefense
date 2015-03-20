@@ -3,7 +3,8 @@ package Map;
 public class Cell {
 
 	private boolean scenery;
-	private int[] coordinates;
+	private int xCoord;
+	private int yCoord;
 	private boolean hasTower;
 	
 	/**
@@ -21,12 +22,13 @@ public class Cell {
 	 */
 	public Cell(){
 		this.scenery= true;
-		this.coordinates = null;
+		this.xCoord = (Integer) null;
+		this.yCoord = (Integer) null;
 	}
 	
 	protected void setCoordinates(int x, int y){
-		this.coordinates[0] = x;
-		this.coordinates[1]= y;
+		this.xCoord = x;
+		this.yCoord= y;
 	}
 
 	/**
@@ -38,11 +40,19 @@ public class Cell {
 	}
 	
 	/**
-	 * Returns the coordinates of the cell in the form {x,y}
+	 * Returns the x-coordinate of the cell
 	 * @return
 	 */
-	public int[] getCoordinates(){
-		return coordinates;
+	public int getXCoordinate(){
+		return this.xCoord;
+	}
+	
+	/**
+	 * Returns the y-coordinate of the cell
+	 * @return
+	 */
+	public int getYCoordinate(){
+		return this.yCoord;
 	}
 	
 	/**

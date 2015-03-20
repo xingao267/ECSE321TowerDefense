@@ -6,8 +6,8 @@ public class Map {
 	private int width;	/**width in number of cells of the map*/
 	private int height; /**height in number of cells of the map*/
 	private Cell[][] cells; /**2D array of cells which comprise the total map*/
-	private Cell start; /**the start tile*/
-	private Cell end; /**the end tile*/
+	private Path start; /**the start tile*/
+	private Path end; /**the end tile*/
 	
 	/**Map constructor which sets the width, height, name and initialises a blank map with only scenery cells*/
 	public Map(String name, int width, int height) {
@@ -55,12 +55,12 @@ public class Map {
 	}
 	
 	/**Sets the starting tile of the map's path to a specified tile*/
-	public void setStart(Cell start){
+	public void setStart(Path start){
 		this.start=start;
 	}
 	
 	/**Sets the end tile of the map's path to a specified tile*/
-	public void setEnd(Cell end){
+	public void setEnd(Path end){
 		this.end=end;
 	}
 	
@@ -73,17 +73,17 @@ public class Map {
 	}
 	
 	/**Returns true if the path contained by the map has a connected path from the starting tile to the end tile*/
-	/*public boolean validPath(){            //rewrite this method to do a better check
+	public boolean validPath(){            //TODO:rewrite this method to do a better check
 		int max=this.width*this.height;
 		int count=0;
-		Cell current= start;
+		Path current= start;
 		while(count<max){
-			if(current.getNext().getEnd()){
+			if(current.next().isExit()){
 				return true;
 			}
-			else current=current.getNext();
+			else current=current.next();
 		}
 		
 		return false;
-	}*/
+	}
 }

@@ -2,26 +2,62 @@ package Map;
 
 public class Path extends Cell {
 	
-	private Cell next;
-	private Cell previous; 
-	
+	private Path next;
+	private Path previous; 
+	private boolean isStart;
+	private boolean isExit;
 	/**
 	 * Path Constructor
-	 * @param previous
-	 * @param next
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param previous previous Path tile
+	 * @param next next Path tile
 	 */
-	public Path(int x, int y, Cell previous, Cell next){
+	public Path(int x, int y, Path previous, Path next){
 		this.next = next;
 		this.setPath();
 		super.setCoordinates(x,y);
+		this.isStart = false;
+		this.isExit = false;
 		//this.previous = previous;	
 	}
+	
+	/**
+	 * Path Constructor
+	 * @param x
+	 * @param y
+	 */
+	public Path(int x, int y){
+		this.setPath();
+		super.setCoordinates(x, y);
+		this.isStart = false;
+		this.isExit = false;
+	}
+	
+	public void setNext(Path next){
+		this.next = next;
+	}
+	
 	/**
 	 * Returns next cell in path
 	 * @return
 	 */
-	public Cell next(){
+	public Path next(){
 		return this.next;
+	}
+	
+	/**
+	 * Sets Path cell as start
+	 */
+	public void setStart(){
+		this.isStart = true;
+	}
+	
+	/**
+	 * Sets Path cell as exit
+	 */
+	public void setEnd(){
+		this.isExit = true;
 	}
 	
 	/**
@@ -37,8 +73,7 @@ public class Path extends Cell {
 	 * @return
 	 */
 	public boolean isEntry(){
-		
-		return this.previous == null;		
+		return this.isStart;		
 	}
 	
 	/**
@@ -46,7 +81,7 @@ public class Path extends Cell {
 	 * @return
 	 */
 	public boolean isExit(){
-		return this.next == null;
+		return this.isExit;
 	}
 	
 }

@@ -14,11 +14,16 @@ public class MapDesigner {
 	}
 	
 	/**This method modifies the node at the specified coordinates to a path by creating a new path tile and overwriting the scenery tile*/
-	public void modifyNodeToPath(int x, int y, Cell previous, Cell next){
+	public void modifyNodeToPath(int x, int y, Path previous, Path next){
 		custom.setCell(new Path(x, y, previous, next), x, y);
 	}
 	
-	//All of this needs to be re written using the GUI as input
+	/**This method modifies the node at the specified coordinates to a path by creating a new path tile *without linking to others* and overwriting the scenery tile*/
+	public void modifyNodeToPath(int x, int y){
+		custom.setCell(new Path(x, y), x, y);
+	}
+	
+	//TODO:All of this needs to be rewritten using the GUI as input
 	
 	/**This is an interface with the user to create a path through a blank map*/
 	public void createPath(){
@@ -31,17 +36,17 @@ public class MapDesigner {
 				int y1 = keyboard.nextInt();
 				if(y1>=0 && y1<custom.getHeight()){ //ensures start node of path is along the leftmost edge of the map
 					modifyNodeToPath(0,y1);
-					custom.setStart(custom.getTile(0,y1));//sets the start node of the map
-					custom.getTile(0,y1).setStart();//assigns the tile at that point as a start node
+					custom.setStart((Path) custom.getCell(0,y1));//sets the start node of the map
+					((Path) custom.getCell(0,y1)).setStart();//assigns the tile at that point as a start node
 				
 					correct=true; //end loop
 				}
 			}
 			boolean complete=false;
-			Tile current=custom.getStart();
+			Cell current=custom.getStart();
 			while(!complete){ //loop until a complete path has been entered
-				int currentX=current.getXcoord();
-				int currentY=current.getYcoord();
+				int currentX=current.getXCoordinate();
+				int currentY=current.getYCoordinate();
 			
 				boolean validX=false;
 				boolean validY=false;
@@ -69,14 +74,14 @@ public class MapDesigner {
 				
 				//create new path node
 				modifyNodeToPath(x,y);
-				Tile newTile=custom.getTile(x, y);
-				custom.getTile(currentX, currentY).setNext(newTile);
-				current=newTile;
+				Path newCell=(Path) custom.getCell(x, y);
+				((Path) custom.getCell(currentX, currentY)).setNext(newCell);
+				current=newCell;
 				
 				//if the new path node is adjacent to the rightmost edge of the map, set it as the end node and exit
 				if(x==custom.getWidth()-1){
-					custom.setEnd(newTile);
-					newTile.setEnd();
+					custom.setEnd(newCell);
+					((Path) newCell).setEnd();
 					complete=true;		
 				}
 				
@@ -120,9 +125,10 @@ public class MapDesigner {
 				}
 			}
 			//if the chosen tile is of scenery type, it is valid to place a tower
-			if(custom.getTile(xT, yT).tileType()==1){
+			if(custom.getCell(xT, yT).isScenery()){
 				System.out.println("Tower successfully placed");
-				placeTower(xT, yT);
+				custom.getCell(xT, yT).setHasTower(true);
+				//placeTower(xT, yT);
 				isPath=false;
 			}
 		}	
