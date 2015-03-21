@@ -3,6 +3,11 @@ package Map;
 import java.io.*;
 import com.thoughtworks.xstream.XStream;
 
+/**
+ * This class loads and saves Maps as XML documents
+ * @author Justin
+ *
+ */
 public class MapLoader {
 	
 	private static MapLoader uniqueInstance = null;

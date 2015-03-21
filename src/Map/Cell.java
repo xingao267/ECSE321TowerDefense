@@ -1,5 +1,9 @@
 package Map;
-
+/**
+ * This class represents the individual cells of which the map is composed
+ * @author Justin, Eric
+ *
+ */
 public class Cell {
 
 	private boolean scenery;

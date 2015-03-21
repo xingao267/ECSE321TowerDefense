@@ -8,10 +8,11 @@ import javax.swing.JPanel;
 
 import OtherModels.Bank;
 import OtherModels.Player;
-
+import MapPresets.*;
+import Map.*;
 /**
  * 
- * @author Jose
+ * @author Jose,Justin
  *
  */
 public class Screen extends JPanel implements Runnable{
@@ -87,7 +88,10 @@ public class Screen extends JPanel implements Runnable{
 			icons.draw(g);
 			
 			if(displayMap1){
-				
+				EasyMap em = new EasyMap();
+				Map m = em.getEasyMap();
+				MapDisplay display = new MapDisplay(m);
+				display.draw(g);
 			}
 			if(displayMap2){
 				

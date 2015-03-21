@@ -1,6 +1,9 @@
 package Map;
 
-/**This class contains all parameters and methods associated with a generated map instance*/
+/**This class contains all parameters and methods associated with a generated map instance
+ * 
+ * @author Justin, Eric
+ * */
 public class Map {
 	private String name; /**name of the map*/
 	private int width;	/**width in number of cells of the map*/

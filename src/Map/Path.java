@@ -1,5 +1,10 @@
 package Map;
 
+/**
+ * This class represents the Path object
+ * @author Justin,Eric
+ *
+ */
 public class Path extends Cell {
 	
 	private Path next;

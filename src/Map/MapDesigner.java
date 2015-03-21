@@ -4,7 +4,11 @@ import java.util.Scanner;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**This class provides all methods for modifying parts of the map and an interface for creating a path through a blank map*/
+/**
+ * This class provides all methods for modifying parts of the map and an interface for creating a path through a blank map
+ * @author Eric, Justin
+ * 
+ **/
 public class MapDesigner {
 	private Map custom; /**Contains the map which will be modified by the designer*/
 	
