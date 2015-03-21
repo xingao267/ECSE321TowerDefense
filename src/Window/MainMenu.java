@@ -69,7 +69,7 @@ public class MainMenu {
 		//transition to Map Editor window
 		if(createCustomMapButton.contains(Screen.mouseClicked)){
 			Screen.displayMainMenu = false;
-			Screen.displayMapEditor = true;
+			Screen.displayMapDesigner = true;
 		}
 	}
 

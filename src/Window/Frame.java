@@ -14,16 +14,16 @@ public class Frame extends JFrame {
 	public static String title = "ECSE 321 - Tower Defense";
 	public static int width, height;
 	
+	
 	public Frame(){
 		new JFrame();
 		
 		setSize(800, 600);
 		setTitle(title);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-//		setExtendedState(MAXIMIZED_BOTH);
 		setUndecorated(false);
-		setResizable(true);
-		this.setLocationRelativeTo(null);
+		setResizable(false);
+		setLocationRelativeTo(null);
 		width = getWidth();
 		height = getHeight();
 		

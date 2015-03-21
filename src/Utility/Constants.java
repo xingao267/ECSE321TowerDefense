@@ -21,6 +21,16 @@ public class Constants {
 	public static final int STORE_OFFSET = 15;
 	public static final int NUM_TOWERS = 5;
 	
+	/** Main Menu Button Contants */
+	public static final int MAIN_MENU_XPOS = 670;
+	public static final int MAIN_MENU_YPOS = 15;
+	
+	/** KeyHandler constants */
+	public static final int KEYHANDLER_OFFSET =  11;
+	
+	/** Save Button Constant */
+	public static final int SAVE_BUTTON_YPOS = 50;
+	
 	/** Initial Bank balance. */
 	public static final int INITIAL_BANK_BALANCE = 30;
 	

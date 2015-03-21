@@ -17,7 +17,7 @@ import Map.*;
  */
 public class Screen extends JPanel implements Runnable{
 
-	public Thread gameLoop = new Thread(this);
+	public Thread game = new Thread(this);
 	
 //	private int fps = 10000000 , fpsFrame = 0;
 	
@@ -29,11 +29,16 @@ public class Screen extends JPanel implements Runnable{
 	public MainMenu menu;
 	
 	public MapSelectPane mapSelectPane;
-
+	
+	public MapDesignerDisplay mapDesigner;
+	private Thread userInput = new Thread(mapDesigner);
+	
 	private boolean isFirst = true;
+	private boolean gameRunning = true;
+	private boolean suspended = false;
 	
 	public static boolean displayMainMenu = true, displayMapSelectorPane = false, 
-			displayMapEditor = false, inGameplay = false, displayMap1 = false,
+			displayMapDesigner = false, inGameplay = false, displayMap1 = false,
 			displayMap2 = false, displayMap3 = false;
 	
 	public static int screenWidth, screenHeight;
@@ -47,23 +52,22 @@ public class Screen extends JPanel implements Runnable{
 		this.frame = frame;
 		frame.addMouseListener(new KeyHandler());
 		frame.addMouseMotionListener(new KeyHandler());
-		gameLoop.start();
+		game.start();
 	}
 	
-	public void init(){
-		menu = new MainMenu();	
-		store = new Store();
-		icons = new IconDisplay();
-		mapSelectPane = new MapSelectPane();
-	}
 	
 	public void paintComponent(Graphics g){
 		
 		if(isFirst) {
 			screenWidth = getWidth();
 			screenHeight = getHeight();
-			init();
 			isFirst = false;
+			
+			menu = new MainMenu();
+			mapSelectPane = new MapSelectPane();
+			mapDesigner = new MapDesignerDisplay();
+			store = new Store();
+			icons = new IconDisplay();
 		}
 			
 		g.setColor(new Color(60, 60, 60));
@@ -79,11 +83,11 @@ public class Screen extends JPanel implements Runnable{
 			mapSelectPane.draw(g);
 		}
 		
-		if(displayMapEditor){
-			
+		if(displayMapDesigner){
+			mapDesigner.draw(g);
 		}
 		
-		if(inGameplay){
+		if(inGameplay){		
 			store.draw(g);
 			icons.draw(g);
 			
@@ -101,8 +105,6 @@ public class Screen extends JPanel implements Runnable{
 				
 			}
 		}
-
-
 	}
 	
 	
@@ -112,13 +114,34 @@ public class Screen extends JPanel implements Runnable{
 	public void run(){
 
 		//Game Loop
-		while(true){
+		while(gameRunning){
 			
 			repaint();
+			
+			if(displayMapDesigner){
+				gameRunning = false;
+			}
+			
 			try{
-				gameLoop.sleep(1);
-			} catch(Exception e){}
+				game.sleep(1);
+			} catch(Exception e){}	
 			
 		}
+		
+		if(displayMapDesigner){
+//			userInput.start();
+			mapDesigner.createUserDefinedMap();
+		}
 	}
+
+
+	public boolean isGameRunning() {
+		return gameRunning;
+	}
+
+
+	public void setGameRunning(boolean gameRunning) {
+		this.gameRunning = gameRunning;
+	}
+	
 }

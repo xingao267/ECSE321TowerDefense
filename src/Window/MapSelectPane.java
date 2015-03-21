@@ -52,7 +52,7 @@ public class MapSelectPane {
 		g.setFont(new Font("Courier New", Font.BOLD, 20));
 		g.drawString("Pre-Made Levels", (Screen.screenWidth - buttonWidth)/4 + 50 - buttonXOffset, 
 				(Screen.screenHeight - buttonHeight)/2 - buttonYOffset1/4 + 25);
-		g.drawString("Custom Levels", 3*(Screen.screenWidth - buttonWidth)/4 + 100, 
+		g.drawString("Custom Maps", 3*(Screen.screenWidth - buttonWidth)/4 + 115, 
 				(Screen.screenHeight - buttonHeight)/2 - buttonYOffset1/4 + 25);
 		
 		
@@ -140,7 +140,11 @@ public class MapSelectPane {
 		//transition to map editor window
 		if(createCustomMap.contains(Screen.mouseClicked)){
 			Screen.displayMapSelectorPane = false;
-			Screen.displayMap3 = true;
+			Screen.displayMapDesigner = true;
 		}
+		
+		//TODO: Add number of buttons based on how many saved maps there are.
+		
+		
 	}
 }
