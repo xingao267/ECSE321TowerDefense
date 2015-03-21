@@ -19,6 +19,8 @@ public class BomberTower extends MultiTargetsTower {
                 Constants.BOMBER_POWER[Constants.INITIAL_TOWER_LEVEL],
                 Constants.BOMBER_RATE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.BOMBER_EFFECT_RANGE[Constants.INITIAL_TOWER_LEVEL]);
+        
+        towerType = "Bomber Tower";
     }
 
 

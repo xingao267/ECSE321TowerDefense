@@ -18,7 +18,7 @@ public class Constants {
 	/** Store display constants */
 	public static final int STORE_BUTTON_SIZE = 50;
 	public static final int STORE_SPACING = 8;
-	public static final int STORE_OFFSET = 20;
+	public static final int STORE_OFFSET = 15;
 	public static final int NUM_TOWERS = 5;
 	
 	/** Initial Bank balance. */

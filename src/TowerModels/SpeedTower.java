@@ -17,6 +17,8 @@ public class SpeedTower extends SingleTargetTower {
                 Constants.SPEED_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.SPEED_POWER[Constants.INITIAL_TOWER_LEVEL],
                 Constants.SPEED_RATE[Constants.INITIAL_TOWER_LEVEL]);
+        
+        towerType = "Speed Tower";
     }
 
 
