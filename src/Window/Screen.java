@@ -22,7 +22,8 @@ public class Screen extends JPanel implements Runnable{
 	
 	public Frame frame;
 	
-	public static Point mouseLocation = new Point(0, 0);
+	public static Point mouseLocation = new Point(0, 0), 
+			mouseClicked = new Point(0,0);
 	
 	public MainMenu menu;
 	
@@ -30,14 +31,16 @@ public class Screen extends JPanel implements Runnable{
 
 	private boolean isFirst = true;
 	
+	public static boolean displayMainMenu = true, displayMapSelectorPane = false, 
+			displayMapEditor = false, inGameplay = false, displayMap1 = false,
+			displayMap2 = false, displayMap3 = false;
+	
 	public static int screenWidth, screenHeight;
 	
 //	public static Map map;
 	public static Store store;
 	
-	public static Player player;
-	
-	public static Bank bank;
+	public static IconDisplay icons;
 	
 	public Screen(Frame frame){
 		this.frame = frame;
@@ -48,10 +51,9 @@ public class Screen extends JPanel implements Runnable{
 	
 	public void init(){
 		menu = new MainMenu();	
-//		store = new Store();
-//		player = new Player();
-//		bank = new Bank();
-//		mapSelectPane = new MapSelectPane();
+		store = new Store();
+		icons = new IconDisplay();
+		mapSelectPane = new MapSelectPane();
 	}
 	
 	public void paintComponent(Graphics g){
@@ -59,24 +61,44 @@ public class Screen extends JPanel implements Runnable{
 		if(isFirst) {
 			screenWidth = getWidth();
 			screenHeight = getHeight();
-//			System.out.println(screenHeight);
-//			System.out.println(screenWidth);
 			init();
 			isFirst = false;
 		}
-		
-		
-		
+			
 		g.setColor(new Color(60, 60, 60));
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
+		if(displayMainMenu){
+			//display the main menu
+			menu.draw(g);
+		}
 		
-		//display the main menu
-		menu.draw(g);
-//		mapSelectPane.draw(g);
-//		store.draw(g);
-//		player.draw(g);
-//		bank.draw(g);
+		if(displayMapSelectorPane){
+			//display map select pane
+			mapSelectPane.draw(g);
+		}
+		
+		if(displayMapEditor){
+			
+		}
+		
+		if(inGameplay){
+			store.draw(g);
+			icons.draw(g);
+			
+			if(displayMap1){
+				
+			}
+			if(displayMap2){
+				
+			}
+			
+			if(displayMap3){
+				
+			}
+		}
+
+
 	}
 	
 	

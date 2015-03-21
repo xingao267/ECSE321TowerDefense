@@ -17,7 +17,7 @@ public class Frame extends JFrame {
 	public Frame(){
 		new JFrame();
 		
-		setSize(1366, 768);
+		setSize(800, 600);
 		setTitle(title);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 //		setExtendedState(MAXIMIZED_BOTH);
@@ -37,9 +37,6 @@ public class Frame extends JFrame {
 		this.add(screen);
 		
 		setVisible(true);
-		
-//		System.out.println(height);
-//		System.out.println(width);
 	}
 	
 	
