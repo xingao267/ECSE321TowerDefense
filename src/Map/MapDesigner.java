@@ -19,7 +19,9 @@ public class MapDesigner {
 	
 	/**This method modifies the node at the specified coordinates to a path by creating a new path tile and overwriting the scenery tile*/
 	public void modifyNodeToPath(int x, int y, Path previous, Path next){
-		custom.setCell(new Path(x, y, previous, next), x, y);
+		Path newP=new Path(x, y, previous, next);
+		custom.setCell(newP, x, y);
+		custom.addPathNode(newP);
 	}
 	
 	/**This method modifies the node at the specified coordinates to a path by creating a new path tile *without linking to others* and overwriting the scenery tile*/

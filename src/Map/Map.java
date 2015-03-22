@@ -1,5 +1,7 @@
 package Map;
 
+import java.util.ArrayList;
+
 /**This class contains all parameters and methods associated with a generated map instance
  * 
  * @author Justin, Eric
@@ -11,6 +13,7 @@ public class Map {
 	private Cell[][] cells; /**2D array of cells which comprise the total map*/
 	private Path start; /**the start tile*/
 	private Path end; /**the end tile*/
+	private ArrayList<Path> path= new ArrayList<Path>();
 	
 	/**Map constructor which sets the width, height, name and initialises a blank map with only scenery cells*/
 	public Map(String name, int width, int height) {
@@ -73,6 +76,14 @@ public class Map {
 			return true;
 		}
 		else return false;
+	}
+	
+	public void addPathNode(Path p){
+		path.add(p);
+	}
+	
+	public Path getPath(int index){
+		return path.get(index);
 	}
 	
 	/**Returns true if the path contained by the map has a connected path from the starting tile to the end tile*/

@@ -26,6 +26,8 @@ public class Cell {
 	 */
 	public Cell(){
 		this.scenery= true;
+		//this.xCoord = (Integer) null;
+		//this.yCoord = (Integer) null;
 	}
 	
 	protected void setCoordinates(int x, int y){
