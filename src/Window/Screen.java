@@ -140,9 +140,9 @@ public class Screen extends JPanel implements Runnable{
 		
 		if(displayMapDesigner){
 //			userInput.start();
-			mapDesigner.createUserDefinedMap(); //you added this
+			mapDesigner.createUserDefinedMap(); 
 			while(displayMapDesigner){
-				repaint();
+				repaint(); 
 			}
 		}
 	}
