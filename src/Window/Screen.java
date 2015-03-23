@@ -41,9 +41,12 @@ public class Screen extends JPanel implements Runnable{
 	
 	public static boolean displayMainMenu = true, displayMapSelectorPane = false, 
 			displayMapDesigner = false, inGameplay = false, displayMap1 = false,
-			displayMap2 = false, displayMap3 = false, displayCustomMap = false;
+			displayMap2 = false, displayMap3 = false, displayCustomMap = false,
+			levelStarted = false;
 	
 	public static int screenWidth, screenHeight;
+	
+	public static Map map;
 	
 	private static Map CustomMap;
 	private MapDisplay mapDisplay;
@@ -95,9 +98,9 @@ public class Screen extends JPanel implements Runnable{
 			icons.draw(g);
 			
 			if(displayMap1){
-				EasyMap em = new EasyMap();
-				Map m = em.getEasyMap();
-				mapDisplay = new MapDisplay(m);
+				EasyMap easyMap = new EasyMap();
+				map = easyMap.getEasyMap();
+				mapDisplay = new MapDisplay(map);
 				mapDisplay.draw(g);
 			}
 			if(displayMap2){

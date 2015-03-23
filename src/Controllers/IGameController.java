@@ -6,7 +6,7 @@ import CritterModels.Critter;
 import Exceptions.CritterDeadException;
 import Exceptions.MaxLevelReachedException;
 import OtherModels.Bank;
-import OtherModels.Cell;
+import Map.Cell;
 import TowerModels.Tower;
 
 /**

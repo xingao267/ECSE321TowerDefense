@@ -1,6 +1,7 @@
 package CritterModels;
 
-import OtherModels.Cell;
+
+import Map.Cell;
 
 /**
  * Generic base class Critter data model
@@ -61,8 +62,8 @@ public abstract class Critter {
      * @param entryPoint First Cell on the Path
      */
     public void spawn(Cell entryPoint) {
-        xPos = entryPoint.getXCoord();
-        yPos = entryPoint.getYCoord();
+        xPos = entryPoint.getXCoordinate();
+        yPos = entryPoint.getYCoordinate();
     }
 
     public void setLocation(int x, int y) {

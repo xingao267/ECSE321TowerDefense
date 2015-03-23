@@ -16,7 +16,7 @@ public class Store {
 	public static int storeYPos = 25;
 		
 	private Rectangle[] towers = new Rectangle[Constants.NUM_TOWERS];
-	private Rectangle mainMenuButton;
+	private Rectangle mainMenuButton, sendNextWaveButton;
 	private ArrayList<Tower> towerType;
 	
 	public Store() {
@@ -29,7 +29,10 @@ public class Store {
 					storeYPos, Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE);
 		}
 		
-		mainMenuButton = new Rectangle(670, 3*storeYPos/5, 2*Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE/2);
+		mainMenuButton = new Rectangle(Constants.MAIN_MENU_XPOS, 3*storeYPos/5, 2*Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE/2);
+		
+		sendNextWaveButton = new Rectangle(Constants.MAIN_MENU_XPOS, Constants.SAVE_BUTTON_YPOS,
+				7*Constants.STORE_BUTTON_SIZE/3, Constants.STORE_BUTTON_SIZE/2);
 		
 		towerType = new ArrayList<Tower>();
 		towerType.add(new RegularTower(-1, -1, Constants.INITIAL_TOWER_LEVEL));
@@ -92,6 +95,23 @@ public class Store {
 			Screen.displayMainMenu = true;
 			
 			//stop everything to do with the game.
+		}
+		
+		//Draw Button to send the next wave
+		g.setColor(new Color(0, 0, 0));
+		g.fillRect(sendNextWaveButton.x, sendNextWaveButton.y, sendNextWaveButton.width, sendNextWaveButton.height);
+		g.setFont(new Font("Courier New", Font.BOLD, 14));
+		g.setColor(new Color(255, 255, 255));
+		g.drawString("Send Next Wave", sendNextWaveButton.x + Constants.STORE_BUTTON_SIZE/4 - 10, 
+				sendNextWaveButton.y + Constants.STORE_BUTTON_SIZE/4 + 5);
+		
+		if(sendNextWaveButton.contains(Screen.mouseLocation)){
+			g.setColor(new Color(255, 255, 255, 150));
+			g.fillRect(sendNextWaveButton.x, sendNextWaveButton.y, sendNextWaveButton.width, sendNextWaveButton.height);
+		}
+		if(sendNextWaveButton.contains(Screen.mouseClicked)){
+			Screen.levelStarted = true;
+			//TODO: start movement of critter group
 		}
 	}
 }
