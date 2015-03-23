@@ -80,7 +80,7 @@ public class EasyMap {
 		
 		d.createDefaultPath(xCoords, yCoords);
 		boolean valid=m.validPath();
-		System.out.println(valid);
+		//System.out.println(valid);
 	}
 	
 	public Map getEasyMap(){

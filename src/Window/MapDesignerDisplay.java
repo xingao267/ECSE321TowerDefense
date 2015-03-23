@@ -43,7 +43,8 @@ public class MapDesignerDisplay implements Runnable{
 	
 	public void init(){
 		
-		map = new Map(mapName, customMapWidth, customMapHeight);
+		//map = new Map(mapName, customMapWidth, customMapHeight);
+		map=null;
 		
 		mainMenuButton = new Rectangle(Constants.MAIN_MENU_XPOS, Constants.MAIN_MENU_YPOS,
 				2*Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE/2);
@@ -93,10 +94,17 @@ public class MapDesignerDisplay implements Runnable{
                 frame.setVisible(false);
                 frame.dispose();
                 
-                System.out.println(mapName);
-                System.out.println(customMapWidth);
-                System.out.println(customMapHeight);
+                //System.out.println(mapName);
+                //System.out.println(customMapWidth);
+                //System.out.println(customMapHeight);
                 
+                if(customMapWidth>15 || customMapHeight>9){
+                	createUserDefinedMap();
+                }
+                else{
+                	map = new Map(mapName, customMapWidth, customMapHeight);
+                }
+               //Screen.setMapDesigning(true);
                 //TODO: pause game thread and start this thread then restart 
                 //game thread with updated map characteristics
             }
@@ -133,6 +141,11 @@ public class MapDesignerDisplay implements Runnable{
 		g.setColor(new Color(255, 255, 255));
 		g.drawString("Main Menu", mainMenuButton.x + Constants.STORE_BUTTON_SIZE/4 + 2, 
 				mainMenuButton.y + Constants.STORE_BUTTON_SIZE/4 + 4);
+		
+		if(map!=null){
+			 MapDisplay display = new MapDisplay(map);
+     		display.draw(g);
+		}
 		
 		//transition to main menu window
 		if(mainMenuButton.contains(Screen.mouseLocation)){

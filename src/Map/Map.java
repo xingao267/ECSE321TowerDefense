@@ -78,14 +78,17 @@ public class Map {
 		else return false;
 	}
 	
+	/**Adds a path node to the arraylist of path nodes*/
 	public void addPathNode(Path p){
 		path.add(p);
 	}
 	
+	/**Gets the path node from a specific index of the arraylist of path nodes*/
 	public Path getPath(int index){
 		return path.get(index);
 	}
 	
+	/**Determines if the current path node and the previous path node are adjacent*/
 	public boolean validNeighbor(Path current){
 		int currentX= current.getXCoordinate();
 		int currentY= current.getYCoordinate();
@@ -136,5 +139,15 @@ public class Map {
 		}
 		
 		return false;
+	}
+	
+	/**Returns the coordinates of the next path node for critters*/
+	public int[] getNextPathNode(Path p){
+		Path next= p.next();
+		int[] coords= new int[2];
+		coords[0]=next.getXCoordinate();
+		coords[1]=next.getYCoordinate();
+		
+		return coords;
 	}
 }

@@ -36,6 +36,7 @@ public class Screen extends JPanel implements Runnable{
 	private boolean isFirst = true;
 	private boolean gameRunning = true;
 	private boolean suspended = false;
+	private boolean designingMap=false; //added for while loop for map designer
 	
 	public static boolean displayMainMenu = true, displayMapSelectorPane = false, 
 			displayMapDesigner = false, inGameplay = false, displayMap1 = false,
@@ -128,9 +129,14 @@ public class Screen extends JPanel implements Runnable{
 			
 		}
 		
+		
+		
 		if(displayMapDesigner){
 //			userInput.start();
-			mapDesigner.createUserDefinedMap();
+			mapDesigner.createUserDefinedMap(); //you added this
+			while(displayMapDesigner){
+				repaint();
+			}
 		}
 	}
 
@@ -142,6 +148,10 @@ public class Screen extends JPanel implements Runnable{
 
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
+	}
+	
+	public void setMapDesigning(boolean mapDesigning){ //you added this
+		this.designingMap=mapDesigning;
 	}
 	
 }
