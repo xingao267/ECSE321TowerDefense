@@ -14,7 +14,7 @@ import javax.swing.*;
 import Utility.Constants;
 import Utility.SpringUtilities;
 import Map.Map;
-
+import Map.MapLoader;
 /**
  * 
  * @author Jose
@@ -176,7 +176,8 @@ public class MapDesignerDisplay implements Runnable{
 			Screen.displayMapDesigner = false;
 			Screen.displayMapSelectorPane = true;
 			
-			//TODO: add method which saves map.
+			MapLoader mapLoader = MapLoader.getUniqueInstance();
+			mapLoader.saveMap(map, mapName);
 		}
 	}
 

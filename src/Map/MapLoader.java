@@ -35,13 +35,13 @@ public class MapLoader {
 	 * 
 	 * @param m
 	 */
-	public void saveMap(Map m) {
+	public void saveMap(Map m, String name) {
 
 		String map1 = xstream.toXML(m);
 
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream("map.txt"), "utf-8"));
+					new FileOutputStream(name +".txt"), "utf-8"));
 			writer.write(map1);
 		} catch (IOException ex) {
 			ex.printStackTrace();
