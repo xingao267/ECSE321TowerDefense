@@ -1,5 +1,6 @@
 package Map;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -30,6 +31,23 @@ public class MapDesigner {
 	}
 	
 	//TODO:All of this needs to be rewritten using the GUI as input
+	/**This method generates a default map from an arraylist of x and y coordinates*/
+	public void createDefaultPath(ArrayList<Integer> xCoords, ArrayList<Integer> yCoords){
+		modifyNodeToPath(xCoords.get(0), yCoords.get(0), null, null);
+		custom.setStart(custom.getPath(0));
+		custom.getPath(0).setStart();
+		
+		Path previous;
+		
+		for(int i=1;i<xCoords.size(); i++){
+			previous= custom.getPath(i-1);
+			modifyNodeToPath(xCoords.get(i), yCoords.get(i), previous, null);
+			previous.setNext(custom.getPath(i));
+		}
+		
+		custom.setEnd(custom.getPath(xCoords.size()-1));
+		custom.getPath(xCoords.size()-1).setEnd();
+	}
 	
 	/**This is an interface with the user to create a path through a blank map*/
 	public void createPath(){

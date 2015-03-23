@@ -88,5 +88,9 @@ public class Path extends Cell {
 	public boolean isExit(){
 		return this.isExit;
 	}
+
+	public Path getPrevious() {
+		return this.previous;
+	}
 	
 }

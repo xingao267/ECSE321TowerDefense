@@ -86,12 +86,49 @@ public class Map {
 		return path.get(index);
 	}
 	
+	public boolean validNeighbor(Path current){
+		int currentX= current.getXCoordinate();
+		int currentY= current.getYCoordinate();
+		
+		Path previous= current.getPrevious();
+		if(previous==null){
+			return true;
+		}
+		int previousX= previous.getXCoordinate();
+		int previousY= previous.getYCoordinate();
+		
+		
+		
+		if(currentX==previousX){
+			if(currentY==previousY+1 || currentY==previousY-1){
+				if(isPath(currentX, currentY) || isPath(currentX, currentY)){
+					return false;
+				}
+				else{return true;}
+			}
+			else{return false;}
+		}
+		else if(currentY==previousY){
+			if(currentX==previousX+1 || currentX==previousX-1){
+				if(isPath(currentX, currentY) || isPath(currentX, currentY)){
+					return false;
+				}
+				else{return true;}
+			}
+			else{return false;}
+		}
+		else{return false;}
+	}
+	
 	/**Returns true if the path contained by the map has a connected path from the starting tile to the end tile*/
 	public boolean validPath(){            //TODO:rewrite this method to do a better check
 		int max=this.width*this.height;
 		int count=0;
 		Path current= start;
 		while(count<max){
+			if(!validNeighbor(current)){
+				return false;	
+			}
 			if(current.next().isExit()){
 				return true;
 			}

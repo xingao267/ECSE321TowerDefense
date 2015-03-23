@@ -6,7 +6,7 @@ import Map.*;
 
 /**
  * This is the Easy Map preset
- * @author Justin
+ * @author Justin, Eric
  *
  */
 public class EasyMap {
@@ -78,19 +78,9 @@ public class EasyMap {
 		addNextNode(14, 2);
 		addNextNode(14, 1);
 		
-		d.modifyNodeToPath(xCoords.get(0), yCoords.get(0), null, null);
-		m.setStart(m.getPath(0));
-		
-		Path previous;
-		
-		for(int i=1;i<xCoords.size(); i++){
-			previous= m.getPath(i-1);
-			d.modifyNodeToPath(xCoords.get(i), yCoords.get(i), previous, null);
-			previous.setNext(m.getPath(i));
-		}
-		
-		m.setEnd(m.getPath(xCoords.size()-1)); 
-		
+		d.createDefaultPath(xCoords, yCoords);
+		boolean valid=m.validPath();
+		System.out.println(valid);
 	}
 	
 	public Map getEasyMap(){
