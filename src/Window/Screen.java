@@ -37,14 +37,16 @@ public class Screen extends JPanel implements Runnable{
 	private boolean gameRunning = true;
 	private boolean suspended = false;
 	private boolean designingMap=false; //added for while loop for map designer
+
 	
 	public static boolean displayMainMenu = true, displayMapSelectorPane = false, 
 			displayMapDesigner = false, inGameplay = false, displayMap1 = false,
-			displayMap2 = false, displayMap3 = false;
+			displayMap2 = false, displayMap3 = false, displayCustomMap = false;
 	
 	public static int screenWidth, screenHeight;
 	
-//	public static Map map;
+	private static Map CustomMap;
+	private MapDisplay mapDisplay;
 	public static Store store;
 	
 	public static IconDisplay icons;
@@ -95,8 +97,8 @@ public class Screen extends JPanel implements Runnable{
 			if(displayMap1){
 				EasyMap em = new EasyMap();
 				Map m = em.getEasyMap();
-				MapDisplay display = new MapDisplay(m);
-				display.draw(g);
+				mapDisplay = new MapDisplay(m);
+				mapDisplay.draw(g);
 			}
 			if(displayMap2){
 				
@@ -104,6 +106,11 @@ public class Screen extends JPanel implements Runnable{
 			
 			if(displayMap3){
 				
+			}
+			
+			if(displayCustomMap){
+				mapDisplay = new MapDisplay(CustomMap);
+				mapDisplay.draw(g);
 			}
 		}
 	}
@@ -152,6 +159,10 @@ public class Screen extends JPanel implements Runnable{
 	
 	public void setMapDesigning(boolean mapDesigning){ //you added this
 		this.designingMap=mapDesigning;
+	}
+	
+	public static void setCustomMap(Map m){
+		CustomMap = m;
 	}
 	
 }

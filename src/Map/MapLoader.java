@@ -1,6 +1,7 @@
 package Map;
 
 import java.io.*;
+import java.util.*;
 import com.thoughtworks.xstream.XStream;
 
 /**
@@ -64,7 +65,7 @@ public class MapLoader {
 	 */
 	public Map loadMap(String map) throws IOException {
 
-		map += ".txt";
+		//map += ".txt";
 		String xml;
 
 		BufferedReader br = new BufferedReader(new FileReader(map));
@@ -85,6 +86,21 @@ public class MapLoader {
 		Map m = (Map) xstream.fromXML(xml);
 		return m;
 
+	}
+	
+	/**
+	 * Searches for custom-made maps
+	 * @return A list of map names
+	 */
+	public List<String> getMapList(){
+		List<String> maps = new ArrayList<String>();
+		File dir = new File(System.getProperty("user.dir"));
+		  for (File file : dir.listFiles()) {
+			    if (file.getName().endsWith((".txt"))) {
+			      maps.add(file.getName());
+			    }
+			  }
+			  return maps;
 	}
 
 }

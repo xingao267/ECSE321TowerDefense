@@ -1,15 +1,24 @@
 package Window;
 
 import java.awt.*;
+import java.io.IOException;
 
+import Map.MapLoader;
+import Map.Map;
+
+import java.util.List;
+import java.util.ArrayList;
 /**
  * 
- * @author Jose
+ * @author Jose,Justin
  *
  */
 public class MapSelectPane {
 
 	private Rectangle easyButton, mediumButton, hardButton, createCustomMap;
+	private ArrayList<Rectangle> customMaps;
+	private List<String> mapList;
+	private MapLoader mapLoader;
 	
 	public static int buttonHeight = 60;
 	public static int buttonWidth = 275;
@@ -23,8 +32,12 @@ public class MapSelectPane {
 	public static int wordXOffset3 = 150;
 	public static int wordYOffset = 10;
 	public static int stringOffset = 450;
+	public static int customMapOffset = -30;
 			
 	public MapSelectPane() {
+		mapLoader = MapLoader.getUniqueInstance();
+		mapList = mapLoader.getMapList();
+		customMaps = new ArrayList<Rectangle>();
 		init();
 	}
 	
@@ -40,6 +53,15 @@ public class MapSelectPane {
 		
 		createCustomMap = new Rectangle(3*(Screen.screenWidth - buttonWidth/2)/4 - buttonXOffset/2,
 				Screen.screenHeight/2 - buttonHeight/4 + buttonYOffset3, 3*buttonWidth/4, buttonHeight/2);
+		
+		
+		for(int i =0; i <mapList.size(); i++){
+			
+			Rectangle r = new Rectangle(3*(Screen.screenWidth - buttonWidth/2)/4 - buttonXOffset/2,
+					(Screen.screenHeight/2 - buttonHeight/4 + buttonYOffset3)+((i+1)*customMapOffset), 3*buttonWidth/4, buttonHeight/2);
+			customMaps.add(r);
+		}
+		
 	}
 	
 	public void draw(Graphics g) {
@@ -146,5 +168,34 @@ public class MapSelectPane {
 		//TODO: Add number of buttons based on how many saved maps there are.
 		
 		
+			for(int i =0; i < customMaps.size(); i++){
+				g.setColor(new Color(0, 0, 0));
+				g.fillRect((3*(Screen.screenWidth - buttonWidth/2)/4 - buttonXOffset/2),
+						(Screen.screenHeight/2 - buttonHeight/4 + buttonYOffset3)+((i+1)*customMapOffset), 3*buttonWidth/4, buttonHeight/2);
+				g.setColor(new Color(255, 255, 255));
+				g.setFont(new Font("Courier New", Font.BOLD, 16));
+				g.drawString(mapList.get(i), 3*(Screen.screenWidth - buttonWidth/2)/4 - buttonXOffset/10, 
+						((Screen.screenHeight - buttonHeight + createCustomMap.height)/2 + buttonYOffset3)+((i+1)*customMapOffset) + 2*wordYOffset);
+						
+				if(customMaps.get(i).contains(Screen.mouseLocation)){
+					g.setColor(new Color(255, 255, 255, 150));
+					g.fillRect((3*(Screen.screenWidth - buttonWidth/2)/4 - buttonXOffset/2),
+							(Screen.screenHeight/2 - buttonHeight/4 + buttonYOffset3)+((i+1)*customMapOffset), 3*buttonWidth/4, buttonHeight/2);
+				}
+				if(customMaps.get(i).contains(Screen.mouseClicked)){
+					
+					Map m;
+					try {
+						m = mapLoader.loadMap(mapList.get(i));
+						Screen.displayMapSelectorPane = false;
+						Screen.setCustomMap(m);
+						Screen.inGameplay = true;
+						Screen.displayCustomMap = true;
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
 	}
 }
