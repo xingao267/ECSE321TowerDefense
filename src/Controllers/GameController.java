@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import CritterModels.Critter;
+import CritterModels.CritterGroupGenerator;
 import Exceptions.CritterDeadException;
 import Exceptions.MaxLevelReachedException;
 import OtherModels.Bank;
@@ -12,6 +13,8 @@ import TowerModels.MultiTargetsTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
+import Window.CritterDisplay;
+import Window.Screen;
 
 /**
  * TowerController Class
@@ -21,6 +24,9 @@ import Utility.Utils;
  */
 public class GameController implements IGameController {
 
+	
+	private int spawnTime = 1000, spawnFrame = 0;
+	
     @Override
     public void moveTower(Tower tower, int newXPos, int newYPos) {
 
@@ -130,14 +136,30 @@ public class GameController implements IGameController {
     }
 
     @Override
-    public void spawnCritterGroup(Cell entryPoint, List<Critter> critterGroup) {
-        for (int i = 0; i < critterGroup.size(); i++) {
+    public void spawnCritterGroup(Cell entryPoint, CritterGroupGenerator group) {
+    	List<Critter> critterGroup = group.getCritterGroup();
+    	
+    	if(spawnFrame >= spawnTime){
+	    	for(int i = 0; i < critterGroup.size(); i++){
+				if(!critterGroup.get(i).isInGame()){
+					critterGroup.get(i).spawn(entryPoint);
+					Screen.critterGroupDisplay.add(new CritterDisplay(critterGroup.get(i)));
+					break;
+				}
+			}
+	    	spawnFrame = 0;
+    	}
+    	else{
+    		spawnFrame++;
+    	}  	
+    	
+/*    	for (int i = 0; i < critterGroup.size(); i++) {
             long lastExecutionTime = 0;
             if (System.currentTimeMillis() - lastExecutionTime >= 1000) {
                 critterGroup.get(i).spawn(entryPoint);
                 lastExecutionTime = System.currentTimeMillis();
             }
         }
-    }
+*/    }
 
 }

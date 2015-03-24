@@ -3,11 +3,13 @@ package Controllers;
 import java.util.List;
 
 import CritterModels.Critter;
+import CritterModels.CritterGroupGenerator;
 import Exceptions.CritterDeadException;
 import Exceptions.MaxLevelReachedException;
 import OtherModels.Bank;
 import Map.Cell;
 import TowerModels.Tower;
+import Window.CritterDisplay;
 
 /**
  * Interface for TowerController
@@ -78,6 +80,6 @@ public interface IGameController {
      * @param critterGroup Group of critters to be spawned
      * @param entryPoint First cell on path where critters will be spawned
      */
-    public void spawnCritterGroup(Cell entryPoint, List<Critter> critterGroup);
+    public void spawnCritterGroup(Cell entryPoint, CritterGroupGenerator group);
 
 }

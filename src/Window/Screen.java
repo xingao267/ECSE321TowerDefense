@@ -3,11 +3,17 @@ package Window;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 
 import OtherModels.Bank;
 import OtherModels.Player;
+import Controllers.GameController;
+import CritterModels.Critter;
+import CritterModels.CritterGroupGenerator;
+import CritterModels.NormalCritter;
 import MapPresets.*;
 import Map.*;
 /**
@@ -31,7 +37,6 @@ public class Screen extends JPanel implements Runnable{
 	public MapSelectPane mapSelectPane;
 	
 	public MapDesignerDisplay mapDesigner;
-	private Thread userInput = new Thread(mapDesigner);
 	
 	private boolean isFirst = true;
 	private boolean gameRunning = true;
@@ -39,6 +44,8 @@ public class Screen extends JPanel implements Runnable{
 	private boolean designingMap=false; //added for while loop for map designer
 	
 	public static int clear=0;
+
+	public int gameLevel = 1;
 
 	
 	public static boolean displayMainMenu = true, displayMapSelectorPane = false, 
@@ -48,11 +55,17 @@ public class Screen extends JPanel implements Runnable{
 	
 	public static int screenWidth, screenHeight;
 	
-	public static Map map;
+	public GameController gameController;
 	
+	public static Map map;
 	private static Map CustomMap;
-	private MapDisplay mapDisplay;
+	private static MapDisplay mapDisplay;
 	public static Store store;
+	
+	public static CritterDisplay critterDisplay;
+	public static List<CritterDisplay> critterGroupDisplay;
+	public static CritterGroupGenerator group;
+	public static Critter critter;
 	
 	public static IconDisplay icons;
 	
@@ -63,19 +76,25 @@ public class Screen extends JPanel implements Runnable{
 		game.start();
 	}
 	
+	public void init(){
+		menu = new MainMenu();
+		mapSelectPane = new MapSelectPane();
+		mapDesigner = new MapDesignerDisplay();
+		store = new Store();
+		icons = new IconDisplay();
+		
+		//TODO: initialize all tilesets here
+	}
+	
 	
 	public void paintComponent(Graphics g){
 		
 		if(isFirst) {
 			screenWidth = getWidth();
 			screenHeight = getHeight();
-			isFirst = false;
+			init();
 			
-			menu = new MainMenu();
-			mapSelectPane = new MapSelectPane();
-			mapDesigner = new MapDesignerDisplay();
-			store = new Store();
-			icons = new IconDisplay();
+			isFirst = false;
 		}
 			
 		g.setColor(new Color(60, 60, 60));
@@ -104,7 +123,22 @@ public class Screen extends JPanel implements Runnable{
 				map = easyMap.getEasyMap();
 				mapDisplay = new MapDisplay(map);
 				mapDisplay.draw(g);
+//				group = new CritterGroupGenerator(gameLevel);
+//				critterGroupDisplay = new ArrayList<CritterDisplay>();
+				
+//				critter.move(40);
+				if(levelStarted){
+					critter = new NormalCritter(1);
+				
+				critter.spawn(map.getStart());
+				critterDisplay = new CritterDisplay(critter);
+//					for(int i = 0; i < critterGroupDisplay.size(); i++){
+//						critterGroupDisplay.get(i).draw(g);
+//					}
+				critterDisplay.draw(g);
+				}
 			}
+			
 			if(displayMap2){
 				
 			}
@@ -128,6 +162,21 @@ public class Screen extends JPanel implements Runnable{
 
 		//Game Loop
 		while(gameRunning){
+			if(!isFirst){
+				if(levelStarted){
+					critter.move(40);
+//					System.out.println("levelstarted");
+//					gameController.spawnCritterGroup(map.getStart(), group);
+	/*				for(int i = 0; i < group.getCritterGroup().size(); i++){
+						if(!group.getCritterGroup().get(i).isInGame()){
+							group.getCritterGroup().get(i).spawn(map.getStart());
+							critterGroupDisplay.add(new CritterDisplay(group.getCritterGroup().get(i)));
+							break;
+						}
+					}
+	*/				
+				}
+			}
 			
 			repaint();
 			
@@ -141,7 +190,9 @@ public class Screen extends JPanel implements Runnable{
 			
 		}
 		
-		
+		if(levelStarted){
+			
+		}
 		
 		if(displayMapDesigner){
 //			userInput.start();
