@@ -6,7 +6,7 @@ import Utility.Constants;
  * 
  * Singleton Player class
  * 
- * @author Jose
+ * @author Jose, Xin
  *
  */
 public class Player {
@@ -14,7 +14,7 @@ public class Player {
     private static Player uniqueInstance = null;
 
     private int lifePoints;
-    
+
 
     private Player() {
         this.lifePoints = Constants.INITIAL_PLAYER_LIFE_POINTS;

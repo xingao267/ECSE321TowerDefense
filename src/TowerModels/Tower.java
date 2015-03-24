@@ -13,12 +13,10 @@ import Exceptions.CritterDeadException;
  */
 public abstract class Tower {
 
-	/** Tower Type */
-	protected String towerType;
-	
-    
+    /** Tower Type */
+    protected String towerType;
 
-	/** x position. */
+    /** x position. */
     protected int xPos;
 
     /** y position. */
@@ -121,21 +119,21 @@ public abstract class Tower {
 
         this.level++;
     }
-    
+
     /**
      * @return the type of Tower
      */
-	public String getTowerType() {
-			return towerType;
-	}
-	
-	/**
-	 * @param towerType	the tower type
-	 */
-	public void setTowerType(String towerType) {
-		this.towerType = towerType;
-	}
-	
+    public String getTowerType() {
+        return towerType;
+    }
+
+    /**
+     * @param towerType the tower type
+     */
+    public void setTowerType(String towerType) {
+        this.towerType = towerType;
+    }
+
     /**
      * @return the xPos
      */

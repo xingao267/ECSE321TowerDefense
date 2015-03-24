@@ -17,8 +17,8 @@ public class RegularTower extends SingleTargetTower {
                 Constants.REGULAR_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.REGULAR_POWER[Constants.INITIAL_TOWER_LEVEL],
                 Constants.REGULAR_RATE[Constants.INITIAL_TOWER_LEVEL]);
-        
-        towerType = "Regular Tower";
+
+        towerType = Constants.REGULAR_TOWER_TYPE;
     }
 
     @Override
@@ -41,15 +41,15 @@ public class RegularTower extends SingleTargetTower {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString() {  	
+    public String toString() {
         return "RegularTower [xPos=" + xPos + ", yPos=" + yPos + ", initialCost=" + initialCost
                 + ", level=" + level + ", upgradeCost=" + upgradeCost + ", refundValue="
                 + refundValue + ", range=" + range + ", power=" + power + ", rateOfFire="
                 + rateOfFire + ", multiTargets=" + multiTargets + "]";
-   }
+    }
 
 }

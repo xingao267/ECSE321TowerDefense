@@ -1,12 +1,13 @@
 package OtherModels;
 
+import Exceptions.NoEnoughMoneyException;
 import Utility.Constants;
 
 /**
  * 
  * Singleton Bank class
  * 
- * @author Jose
+ * @author Jose, Xin
  *
  */
 public class Bank {
@@ -14,8 +15,6 @@ public class Bank {
     private static Bank uniqueInstance = null;
 
     private int balance;
-
-    
 
     private Bank() {
         this.balance = Constants.INITIAL_BANK_BALANCE;
@@ -33,16 +32,20 @@ public class Bank {
      * 
      * @param refundValue
      */
-    public void returnToBank(int refundValue) {
+    public synchronized void returnToBank(int refundValue) {
         this.balance += refundValue;
     }
 
     /**
      * Remove the balance from the bank
      * 
-     * @param refundValue
+     * @param cost
+     * @throws NoEnoughMoneyException
      */
-    public void removeFromBank(int cost) {
+    public synchronized void removeFromBank(int cost) throws NoEnoughMoneyException {
+        if (this.balance < cost) {
+            throw new NoEnoughMoneyException();
+        }
         this.balance -= cost;
     }
 

@@ -5,6 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Unit tests for Util class
+ *
+ * @author Xin
+ *
+ */
 public class TestUtils {
 
     @Before
@@ -22,7 +28,7 @@ public class TestUtils {
         assertEquals(5, distance2);
 
         long distance3 = (long) Utils.getDistance(5, 5, 0, 0);
-        assertEquals((long)(5*Math.sqrt(2)), distance3);
+        assertEquals((long) (5 * Math.sqrt(2)), distance3);
     }
 
 }

@@ -17,8 +17,8 @@ public class SpeedTower extends SingleTargetTower {
                 Constants.SPEED_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.SPEED_POWER[Constants.INITIAL_TOWER_LEVEL],
                 Constants.SPEED_RATE[Constants.INITIAL_TOWER_LEVEL]);
-        
-        towerType = "Speed Tower";
+
+        towerType = Constants.SPEED_TOWER_TYPE;
     }
 
 
@@ -43,7 +43,7 @@ public class SpeedTower extends SingleTargetTower {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

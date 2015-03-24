@@ -5,11 +5,12 @@ import java.util.List;
 import CritterModels.Critter;
 import CritterModels.CritterGroupGenerator;
 import Exceptions.CritterDeadException;
+import Exceptions.InvalidTowerTypeException;
 import Exceptions.MaxLevelReachedException;
-import OtherModels.Bank;
+import Exceptions.NoEnoughMoneyException;
 import Map.Cell;
+import OtherModels.Bank;
 import TowerModels.Tower;
-import Window.CritterDisplay;
 
 /**
  * Interface for TowerController
@@ -18,6 +19,22 @@ import Window.CritterDisplay;
  *
  */
 public interface IGameController {
+
+    /**
+     * Purchase the Tower
+     * 
+     * @param towerType
+     * @param xPos
+     * @param yPos
+     * @param bank
+     * @param level
+     * 
+     * @return the tower object
+     * @throws NoEnoughMoneyException
+     * @throws InvalidTowerTypeException
+     */
+    public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Bank bank)
+            throws NoEnoughMoneyException, InvalidTowerTypeException;
 
     /**
      * Move the tower to new position
@@ -34,8 +51,10 @@ public interface IGameController {
      * @param tower
      * @param bank
      * @throws MaxLevelReachedException
+     * @throws NoEnoughMoneyException
      */
-    public void upgradeTower(Tower tower, Bank bank) throws MaxLevelReachedException;
+    public void upgradeTower(Tower tower, Bank bank) throws MaxLevelReachedException,
+            NoEnoughMoneyException;
 
     /**
      * Sell the Tower

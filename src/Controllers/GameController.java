@@ -6,10 +6,17 @@ import java.util.List;
 import CritterModels.Critter;
 import CritterModels.CritterGroupGenerator;
 import Exceptions.CritterDeadException;
+import Exceptions.InvalidTowerTypeException;
 import Exceptions.MaxLevelReachedException;
+import Exceptions.NoEnoughMoneyException;
 import OtherModels.Bank;
 import Map.Cell;
+import TowerModels.BomberTower;
+import TowerModels.DeceleratorTower;
+import TowerModels.LongRangeTower;
 import TowerModels.MultiTargetsTower;
+import TowerModels.RegularTower;
+import TowerModels.SpeedTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
@@ -24,9 +31,33 @@ import Window.Screen;
  */
 public class GameController implements IGameController {
 
-	
-	private int spawnTime = 1000, spawnFrame = 0;
-	
+
+    private int spawnTime = 1000, spawnFrame = 0;
+
+    @Override
+    public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Bank bank)
+            throws NoEnoughMoneyException, InvalidTowerTypeException {
+
+        Tower towerToPurchase = null;
+
+        if (towerType.equals(Constants.REGULAR_TOWER_TYPE)) {
+            towerToPurchase = new RegularTower(xPos, yPos, level);
+        } else if (towerType.equals(Constants.BOMBER_TOWER_TYPE)) {
+            towerToPurchase = new BomberTower(xPos, yPos, level);
+        } else if (towerType.equals(Constants.LONGRANGE_TOWER_TYPE)) {
+            towerToPurchase = new LongRangeTower(xPos, yPos, level);
+        } else if (towerType.equals(Constants.SPEED_TOWER_TYPE)) {
+            towerToPurchase = new SpeedTower(xPos, yPos, level);
+        } else if (towerType.equals(Constants.DECELERATOR_TOWER_TYPE)) {
+            towerToPurchase = new DeceleratorTower(xPos, yPos, level);
+        } else {
+            throw new InvalidTowerTypeException();
+        }
+
+        bank.removeFromBank(towerToPurchase.getInitialCost());
+        return towerToPurchase;
+    }
+
     @Override
     public void moveTower(Tower tower, int newXPos, int newYPos) {
 
@@ -35,7 +66,8 @@ public class GameController implements IGameController {
     }
 
     @Override
-    public void upgradeTower(Tower tower, Bank bank) throws MaxLevelReachedException {
+    public void upgradeTower(Tower tower, Bank bank) throws MaxLevelReachedException,
+            NoEnoughMoneyException {
 
         if (tower.getLevel() < Constants.MAX_TOWER_LEVEL) {
             tower.upgrade();
@@ -137,29 +169,26 @@ public class GameController implements IGameController {
 
     @Override
     public void spawnCritterGroup(Cell entryPoint, CritterGroupGenerator group) {
-    	List<Critter> critterGroup = group.getCritterGroup();
-    	
-    	if(spawnFrame >= spawnTime){
-	    	for(int i = 0; i < critterGroup.size(); i++){
-				if(!critterGroup.get(i).isInGame()){
-					critterGroup.get(i).spawn(entryPoint);
-					Screen.critterGroupDisplay.add(new CritterDisplay(critterGroup.get(i)));
-					break;
-				}
-			}
-	    	spawnFrame = 0;
-    	}
-    	else{
-    		spawnFrame++;
-    	}  	
-    	
-/*    	for (int i = 0; i < critterGroup.size(); i++) {
-            long lastExecutionTime = 0;
-            if (System.currentTimeMillis() - lastExecutionTime >= 1000) {
-                critterGroup.get(i).spawn(entryPoint);
-                lastExecutionTime = System.currentTimeMillis();
+        List<Critter> critterGroup = group.getCritterGroup();
+
+        if (spawnFrame >= spawnTime) {
+            for (int i = 0; i < critterGroup.size(); i++) {
+                if (!critterGroup.get(i).isInGame()) {
+                    critterGroup.get(i).spawn(entryPoint);
+                    Screen.critterGroupDisplay.add(new CritterDisplay(critterGroup.get(i)));
+                    break;
+                }
             }
+            spawnFrame = 0;
+        } else {
+            spawnFrame++;
         }
-*/    }
+
+        /*
+         * for (int i = 0; i < critterGroup.size(); i++) { long lastExecutionTime = 0; if
+         * (System.currentTimeMillis() - lastExecutionTime >= 1000) {
+         * critterGroup.get(i).spawn(entryPoint); lastExecutionTime = System.currentTimeMillis(); }
+         * }
+         */}
 
 }

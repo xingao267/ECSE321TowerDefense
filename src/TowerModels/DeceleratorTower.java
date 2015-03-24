@@ -17,8 +17,8 @@ public class DeceleratorTower extends MultiTargetsTower {
                 Constants.DECELERATOR_POWER[Constants.INITIAL_TOWER_LEVEL],
                 Constants.DECELERATOR_RATE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.DECELERATOR_EFFECT_RANGE[Constants.INITIAL_TOWER_LEVEL]);
-        
-        towerType = "Decelerator Tower";
+
+        towerType = Constants.DECELERATOR_TOWER_TYPE;
     }
 
     @Override

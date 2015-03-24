@@ -17,8 +17,8 @@ public class LongRangeTower extends SingleTargetTower {
                 Constants.LONGRANGE_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.LONGRANGE_POWER[Constants.INITIAL_TOWER_LEVEL],
                 Constants.LONGRANGE_RATE[Constants.INITIAL_TOWER_LEVEL]);
-        
-        towerType = "Long Range Tower";
+
+        towerType = Constants.LONGRANGE_TOWER_TYPE;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class LongRangeTower extends SingleTargetTower {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
