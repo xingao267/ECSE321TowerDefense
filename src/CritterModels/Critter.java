@@ -1,7 +1,12 @@
 package CritterModels;
 
 
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+
 import Map.Cell;
+import Utility.Utils;
 
 /**
  * Generic base class Critter data model
@@ -9,7 +14,7 @@ import Map.Cell;
  * @author Jose
  *
  */
-public abstract class Critter {
+public abstract class Critter extends Rectangle {
 
     /** speed of critter. Range from 0 to 1 */
     protected double speed;
@@ -34,22 +39,27 @@ public abstract class Critter {
 
     /** x position of critter. */
     protected int xPos;
+    protected int screenXPos;
 
     /** y position of critter. */
     protected int yPos;
+    protected int screenYPos; 
+    
+    /** whether critter is in the game or not */
+    protected boolean inGame = false;
 
-    public Critter(int level, int xPos, int yPos) {
+    public Critter(int level) {
 
         this.level = level;
-        this.xPos = xPos;
-        this.yPos = yPos;
+//        this.xPos = xPos;
+//        this.yPos = yPos;
         this.isBeingHit = false;
     }
 
     /**
      * Returns whether the critter is dead or not
      * 
-     * @return boolean value representing wether the critter is dead or not
+     * @return boolean value representing whether the critter is dead or not
      */
     public boolean isDead() {
         return (health <= 0);
@@ -62,8 +72,44 @@ public abstract class Critter {
      * @param entryPoint First Cell on the Path
      */
     public void spawn(Cell entryPoint) {
-        xPos = entryPoint.getXCoordinate();
+        Point screenEntryPoint = Utils.convertMapCoordToScreen(entryPoint.getXCoordinate(), 
+        		entryPoint.getYCoordinate());
+        
+    	xPos = entryPoint.getXCoordinate();
         yPos = entryPoint.getYCoordinate();
+        screenXPos = (int) screenEntryPoint.getX();
+        screenYPos = (int) screenEntryPoint.getY();
+        
+        inGame = true;
+        
+        System.out.println("critter spawned");
+    }
+    
+    /**
+     * Moves a critter at a certain speed to the next cell location
+     * 
+     * @param nextXPos X position of the next cell
+     * @param nextYPos Y position of the next cell
+     * @param speed Speed at which critter will move to the next cell
+     */
+    public void move(double speed) {
+        // physics of critter movement
+    	screenXPos++;
+    	
+/*    	Point nextScreenPoint = Utils.convertMapCoordToScreen(nextCell.getXCoordinate(), 
+        		nextCell.getYCoordinate());
+    	
+        setxPos(nextCell.getXCoordinate());
+        setyPos(nextCell.getYCoordinate());
+        
+        setScreenXPos((int) nextScreenPoint.getX());
+        setScreenYPos((int) nextScreenPoint.getY());
+ */   }
+    
+    public void draw(Graphics g){
+    	if(inGame){
+    		g.fillRect(x, y, width, height);
+    	}
     }
 
     public void setLocation(int x, int y) {
@@ -197,7 +243,31 @@ public abstract class Critter {
         this.level = level;
     }
 
-    /*
+    public int getScreenXPos() {
+		return screenXPos;
+	}
+
+	public void setScreenXPos(int screenXPos) {
+		this.screenXPos = screenXPos;
+	}
+
+	public int getScreenYPos() {
+		return screenYPos;
+	}
+
+	public void setScreenYPos(int screenYPos) {
+		this.screenYPos = screenYPos;
+	}
+
+	public boolean isInGame() {
+		return inGame;
+	}
+
+	public void setInGame(boolean inGame) {
+		this.inGame = inGame;
+	}
+
+	/*
      * (non-Javadoc)
      * 
      * @see java.lang.Object#toString()

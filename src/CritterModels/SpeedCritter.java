@@ -13,8 +13,8 @@ public class SpeedCritter extends Critter {
      * 
      * @param level Level at which the critter is being spawned
      */
-    public SpeedCritter(int level, int xPos, int yPos) {
-        super(level, xPos, yPos);
+    public SpeedCritter(int level) {
+        super(level);
 
         this.speed = Constants.SPEED_CRITTER_SPEED;
         this.bounty = Constants.SPEED_CRITTER_BOUNTY;

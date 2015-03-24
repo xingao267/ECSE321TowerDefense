@@ -14,8 +14,8 @@ public class BossCritter extends Critter {
      * 
      * @param level Level at which the critter is being spawned
      */
-    public BossCritter(double speed, int bounty, int health, int xPos, int yPos) {
-        super(Constants.MAX_CRITTER_LEVEL, xPos, yPos);
+    public BossCritter(double speed, int bounty, int healths) {
+        super(Constants.MAX_CRITTER_LEVEL);
 
         this.strength = Constants.BOSS_CRITTER_STRENGTH;
         this.speed = speed;

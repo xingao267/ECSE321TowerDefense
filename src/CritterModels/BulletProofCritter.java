@@ -14,8 +14,8 @@ public class BulletProofCritter extends Critter {
      * 
      * @param level Level at which the critter is being spawned
      */
-    public BulletProofCritter(int level, int xPos, int yPos) {
-        super(level, xPos, yPos);
+    public BulletProofCritter(int level) {
+        super(level);
 
         this.speed = Constants.BULLET_PROOF_CRITTER_SPEED;
         this.bounty = Constants.BULLET_PROOF_CRITTER_BOUNTY;

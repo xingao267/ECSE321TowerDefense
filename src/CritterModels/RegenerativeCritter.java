@@ -16,8 +16,8 @@ public class RegenerativeCritter extends Critter {
      * 
      * @param level Level at which the critter is being spawned
      */
-    public RegenerativeCritter(int level, int xPos, int yPos) {
-        super(level, xPos, yPos);
+    public RegenerativeCritter(int level) {
+        super(level);
 
         this.speed = Constants.REGENERATIVE_CRITTER_SPEED;
         this.bounty = Constants.REGENERATIVE_CRITTER_BOUNTY;

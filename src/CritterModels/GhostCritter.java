@@ -17,8 +17,8 @@ public class GhostCritter extends Critter {
      * 
      * @param level Level at which the critter is being spawned
      */
-    public GhostCritter(int level, int xPos, int yPos) {
-        super(level, xPos, yPos);
+    public GhostCritter(int level) {
+        super(level);
 
         this.isVanished = false;
 

@@ -14,8 +14,8 @@ public class NormalCritter extends Critter {
      * 
      * @param level Level at which the critter is being spawned
      */
-    public NormalCritter(int level, int xPos, int yPos) {
-        super(level, xPos, yPos);
+    public NormalCritter(int level) {
+        super(level);
 
         this.speed = Constants.NORMAL_CRITTER_SPEED;
         this.bounty = Constants.NORMAL_CRITTER_BOUNTY;

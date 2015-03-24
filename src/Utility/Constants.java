@@ -25,6 +25,11 @@ public class Constants {
 	public static final int MAIN_MENU_XPOS = 670;
 	public static final int MAIN_MENU_YPOS = 15;
 	
+	/** Map display constants */
+	public static final int MAP_INITIAL_XPOS = STORE_OFFSET;
+	public static final int MAP_INITIAL_YPOS = 100;
+	public static final int MAP_CELL_SIZE = STORE_BUTTON_SIZE;
+	
 	/** KeyHandler constants */
 	public static final int KEYHANDLER_OFFSET =  11;
 	

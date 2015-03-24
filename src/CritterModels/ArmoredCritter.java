@@ -14,8 +14,8 @@ public class ArmoredCritter extends Critter {
      * 
      * @param level Level at which the critter is being spawned
      */
-    public ArmoredCritter(int level, int xPos, int yPos) {
-        super(level, xPos, yPos);
+    public ArmoredCritter(int level) {
+        super(level);
 
         this.speed = Constants.ARMORED_CRITTER_SPEED;
         this.bounty = Constants.ARMORED_CRITTER_BOUNTY;
