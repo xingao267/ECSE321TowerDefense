@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import Utility.Constants;
+import Utility.Utils;
 
 /**
  * This class provides all methods for modifying parts of the map and an interface for creating a path through a blank map
@@ -54,11 +55,10 @@ public class MapDesigner {
 	
 	public void addPathNodeFromClick(Point p, boolean last){
 		custom.clearIndicators();
-		double xCoord= p.getX()/Constants.STORE_BUTTON_SIZE;
-		int ixCoord= (int) xCoord;
+		Point mapPoint= Utils.convertScreenToMapCoord(p);
+		int ixCoord= (int) mapPoint.getX();
 		System.out.println(ixCoord);
-		double yCoord= p.getY()/Constants.STORE_BUTTON_SIZE;
-		int iyCoord= (int) yCoord;
+		int iyCoord= (int) mapPoint.getY();
 		System.out.println(iyCoord);
 		
 		if (custom.pathSize()==0){
