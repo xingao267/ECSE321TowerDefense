@@ -156,8 +156,17 @@ public class MapDesignerDisplay implements Runnable{
 				mainMenuButton.y + Constants.STORE_BUTTON_SIZE/4 + 4);
 		
 		if(map!=null){
-			 display = new MapDisplay(map);
+			display = new MapDisplay(map);
      		display.draw(g);
+     		if(!display.indicator.isEmpty()){
+    			for(Rectangle r : display.indicator){
+    				if(r.contains(Screen.mouseClicked)){
+    					System.out.println("indicator clicked");
+    					d.addPathNodeFromClick(Screen.mouseClicked, false); //not yet implemented in map designer
+    					Screen.mouseClickedReset();
+    				}		
+    			}
+    		}
 		}
 		
 		//transition to main menu window
@@ -195,6 +204,7 @@ public class MapDesignerDisplay implements Runnable{
 				mapLoader.saveMap(map, mapName);
 			}
 		}
+		
 	}
 
 	@Override
@@ -208,12 +218,8 @@ public class MapDesignerDisplay implements Runnable{
 				e.printStackTrace();
 			}		
 		}
-		/*try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}	
-		while(!click && ready){
+		
+		/*while(!click && ready){
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

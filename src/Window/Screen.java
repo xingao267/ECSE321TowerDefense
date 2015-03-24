@@ -174,4 +174,8 @@ public class Screen extends JPanel implements Runnable{
 		CustomMap = m;
 	}
 	
+	public static void mouseClickedReset(){
+		mouseClicked= new Point(0,0);
+	}
+	
 }

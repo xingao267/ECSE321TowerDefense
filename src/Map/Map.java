@@ -89,6 +89,10 @@ public class Map {
 		return path.get(index);
 	}
 	
+	public int pathSize(){
+		return this.path.size();
+	}
+	
 	/**Determines if the current path node and the previous path node are adjacent*/
 	public boolean validNeighbor(Path current){
 		int currentX= current.getXCoordinate();
