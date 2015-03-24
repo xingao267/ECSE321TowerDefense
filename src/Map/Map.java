@@ -178,4 +178,5 @@ public class Map {
 	public int numIndicators(){
 		return ind.size();
 	}
+	
 }

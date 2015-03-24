@@ -27,6 +27,7 @@ public class MapDesigner {
 		Path newP=new Path(x, y, previous, next);
 		custom.setCell(newP, x, y);
 		custom.addPathNode(newP);
+		//custom.getCell(x, y).setPath();
 	}
 	
 	/**This method modifies the node at the specified coordinates to a path by creating a new path tile *without linking to others* and overwriting the scenery tile*/
@@ -89,16 +90,24 @@ public class MapDesigner {
 		int lastyCoord=last.getYCoordinate();
 		
 		if(lastxCoord+1<custom.getWidth()){
-			custom.addIndicator(new Cell(lastxCoord+1, lastyCoord));
+			if(!custom.isPath(lastxCoord+1, lastyCoord)){
+				custom.addIndicator(new Cell(lastxCoord+1, lastyCoord));
+			}	
 		}
 		if(lastxCoord-1>=0){
-			custom.addIndicator(new Cell(lastxCoord+1, lastyCoord));
+			if(!custom.isPath(lastxCoord-1, lastyCoord)){
+				custom.addIndicator(new Cell(lastxCoord-1, lastyCoord));
+			}
 		}
 		if(lastyCoord+1<custom.getHeight()){
-			custom.addIndicator(new Cell(lastxCoord, lastyCoord+1));
+			if(!custom.isPath(lastxCoord, lastyCoord+1)){
+				custom.addIndicator(new Cell(lastxCoord, lastyCoord+1));
+			}
 		}
 		if(lastyCoord-1>=0){
-			custom.addIndicator(new Cell(lastxCoord, lastyCoord-1));
+			if(!custom.isPath(lastxCoord, lastyCoord-1)){
+				custom.addIndicator(new Cell(lastxCoord, lastyCoord-1));
+			}
 		}
 		
 	}
