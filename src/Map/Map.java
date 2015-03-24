@@ -14,6 +14,7 @@ public class Map {
 	private Path start; /**the start tile*/
 	private Path end; /**the end tile*/
 	private ArrayList<Path> path= new ArrayList<Path>();
+	private ArrayList<Cell> ind= new ArrayList<Cell>();
 	
 	/**Map constructor which sets the width, height, name and initialises a blank map with only scenery cells*/
 	public Map(String name, int width, int height) {
@@ -88,6 +89,10 @@ public class Map {
 		return path.get(index);
 	}
 	
+	public int pathSize(){
+		return this.path.size();
+	}
+	
 	/**Determines if the current path node and the previous path node are adjacent*/
 	public boolean validNeighbor(Path current){
 		int currentX= current.getXCoordinate();
@@ -149,5 +154,28 @@ public class Map {
 		coords[1]=next.getYCoordinate();
 		
 		return coords;
+	}
+	
+	/**Used to add an indicator cell for map designer purposes*/
+	public void addIndicator(Cell i){
+		ind.add(i);
+	}
+	/**Used to get a cell for map designer purposes*/
+	public Cell getIndicator(int i){
+		return ind.get(i);
+	}
+	/**Used to clear indicator cells after a path node has been selected when designing a map*/
+	public void clearIndicators(){
+		ind.clear();
+	}
+	
+	public boolean noIndicators(){
+		if(ind.isEmpty()){
+			return true;
+		}
+		else{return false;}
+	}
+	public int numIndicators(){
+		return ind.size();
 	}
 }
