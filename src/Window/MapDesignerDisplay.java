@@ -13,8 +13,11 @@ import javax.swing.*;
 
 import Utility.Constants;
 import Utility.SpringUtilities;
+import Map.Cell;
 import Map.Map;
+import Map.MapDesigner;
 import Map.MapLoader;
+
 /**
  * 
  * @author Jose
@@ -28,12 +31,17 @@ public class MapDesignerDisplay implements Runnable{
 	private Rectangle mainMenuButton, saveMapButton;
 	
 	private Map map;
+	private MapDesigner d;
 	
 	private String mapName;
 	private int customMapWidth;
 	private int customMapHeight;
 
 	private boolean jButtonPressed = false;
+	public MapDisplay display;
+	
+	private boolean ready=false;
+	private boolean click=false;
 	
 	
 	public MapDesignerDisplay(){
@@ -103,6 +111,11 @@ public class MapDesignerDisplay implements Runnable{
                 }
                 else{
                 	map = new Map(mapName, customMapWidth, customMapHeight);
+                	d= new MapDesigner(map);
+                	for(int i=0; i<customMapHeight; i++){
+            			map.addIndicator(new Cell(0, i));
+            		}
+                	ready=true;
                 }
                //Screen.setMapDesigning(true);
                 //TODO: pause game thread and start this thread then restart 
@@ -132,7 +145,7 @@ public class MapDesignerDisplay implements Runnable{
 		//display instruction string
 		g.setColor(new Color(255, 255, 255));
 		g.setFont(new Font("Courier New", Font.BOLD, 20));
-		g.drawString("Click cells you want to use as a path.", 15, 25);
+		g.drawString("Click the orange cells to create a path.", 15, 25);
 		
 		//Draw Button to return to the main menu
 		g.setColor(new Color(0, 0, 0));
@@ -143,7 +156,7 @@ public class MapDesignerDisplay implements Runnable{
 				mainMenuButton.y + Constants.STORE_BUTTON_SIZE/4 + 4);
 		
 		if(map!=null){
-			 MapDisplay display = new MapDisplay(map);
+			 display = new MapDisplay(map);
      		display.draw(g);
 		}
 		
@@ -177,13 +190,64 @@ public class MapDesignerDisplay implements Runnable{
 			Screen.displayMapSelectorPane = true;
 			
 			MapLoader mapLoader = MapLoader.getUniqueInstance();
-			mapLoader.saveMap(map, mapName);
+			
+			if(map.validPath()){
+				mapLoader.saveMap(map, mapName);
+			}
 		}
 	}
 
 	@Override
 	public void run() {
 		createUserDefinedMap();
+		while(!ready){
+			//System.out.println("phase 1");
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}		
+		}
+		/*try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}	
+		while(!click && ready){
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			if(Screen.clear==1){
+				System.out.println("phase 2");
+				Screen.clear=0;
+			}	
+			/*for(Rectangle r : display.indicator){
+				if(r.contains(Screen.mouseClicked)){
+					System.out.println("indicator clicked");
+				}	
+			}*/
+		//}
+		//MapDesigner d= new MapDesigner(map);
+		
+		//Set the start node
+		//Push all potential start nodes to arraylist
+		/*for(int i=1; i<customMapHeight; i++){
+			map.addIndicator(new Cell(0, i));
+			System.out.println("add thing");
+		}*/
+		//Wait for user selection
+		//create new path node, set as previous
+		//set start node
+		//clear indicators
+		
+		//while loop till path is done
+		//generate next indicators
+		//get next entry
+		//add next node, set previous next
+		//clear indicators
+		
 	}
 	
 /*	public static void main(String[] args) {

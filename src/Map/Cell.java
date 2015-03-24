@@ -24,10 +24,13 @@ public class Cell {
 	/**
 	 * General Cell constructor. Initialises cellType and coordinates to null
 	 */
+	public Cell(int x, int y){
+		this.xCoord = x;
+		this.yCoord = y;
+	}
+	
 	public Cell(){
-		this.scenery= true;
-		//this.xCoord = (Integer) null;
-		//this.yCoord = (Integer) null;
+		
 	}
 	
 	protected void setCoordinates(int x, int y){
