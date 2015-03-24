@@ -140,11 +140,18 @@ public class Screen extends JPanel implements Runnable{
 			}
 			
 			if(displayMap2){
+				MediumMap mediumMap = new MediumMap();
+				map = mediumMap.getMediumMap();
+				mapDisplay = new MapDisplay(map);
+				mapDisplay.draw(g);
 				
 			}
 			
 			if(displayMap3){
-				
+				HardMap hardMap = new HardMap();
+				map = hardMap.getHardMap();
+				mapDisplay = new MapDisplay(map);
+				mapDisplay.draw(g);
 			}
 			
 			if(displayCustomMap){
