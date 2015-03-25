@@ -6,7 +6,10 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import Map.Cell;
+import OtherModels.Player;
+import Utility.Constants;
 import Utility.Utils;
+import Window.Screen;
 
 /**
  * Generic base class Critter data model
@@ -47,13 +50,26 @@ public abstract class Critter extends Rectangle {
     
     /** whether critter is in the game or not */
     protected boolean inGame = false;
-
+    
+    /** whether critter has reached the exit point */
+    public boolean reachedExit = false;
+    
+    /** critter movement variables */
+    protected int up = 0, down = 1, right = 2, left = 3;
+    protected int direction = right;
+    protected int walkFrame = 0;
+	protected int screenDistanceMoved = 0;
+	protected boolean hasMovedUp = false, hasMovedDown = false,
+			hasMovedRight = false, hasMovedLeft = false;
+	
+    
     public Critter(int level) {
 
         this.level = level;
 //        this.xPos = xPos;
 //        this.yPos = yPos;
         this.isBeingHit = false;
+        
     }
 
     /**
@@ -81,8 +97,6 @@ public abstract class Critter extends Rectangle {
         screenYPos = (int) screenEntryPoint.getY();
         
         inGame = true;
-        
-        System.out.println("critter spawned");
     }
     
     /**
@@ -92,9 +106,86 @@ public abstract class Critter extends Rectangle {
      * @param nextYPos Y position of the next cell
      * @param speed Speed at which critter will move to the next cell
      */
-    public void move(double speed) {
+    public void moveAlongPath(double speed, Player player) {
         // physics of critter movement
-    	screenXPos++;
+//    	screenXPos++;
+    	
+    	if(walkFrame >= 11 - speed){
+    		if(direction == right){
+    			screenXPos++;
+    		}else if(direction == left){
+    			screenXPos--;
+    		}else if(direction == up){
+    			screenYPos--;
+    		}else if(direction == down){
+    			screenYPos++;
+    		}
+    		
+    		screenDistanceMoved++;
+    		
+    		if(screenDistanceMoved  == Constants.STORE_BUTTON_SIZE){
+    			if(direction == right){
+        			xPos++;
+        			hasMovedRight = true;
+        		}else if(direction == left){
+        			xPos--;
+        			hasMovedLeft = true;
+        		}else if(direction == up){
+        			yPos--;
+        			hasMovedUp = true;
+        		}else if(direction == down){
+        			yPos++;
+        			hasMovedDown = true;
+        		}
+    			
+    			if(!hasMovedLeft){
+	    			try{
+		    			if(!Screen.map.getCell(xPos + 1, yPos).isScenery()){
+		    				direction = right;
+		    			}
+	    			} catch(Exception e){}
+    			}
+    			
+    			if(!hasMovedRight){
+	    			try{
+		    			if(!Screen.map.getCell(xPos -1, yPos).isScenery()){
+		    				direction = left;
+		    			}
+	    			} catch(Exception e){}
+    			}
+    			
+    			if(!hasMovedDown){
+	    			try{
+		    			if(!Screen.map.getCell(xPos, yPos - 1).isScenery()){
+		    				direction = up;
+		    			}
+	    			} catch(Exception e){}
+    			}
+    			
+    			if(!hasMovedUp){
+	    			try{
+		    			if(!Screen.map.getCell(xPos, yPos + 1).isScenery()){
+		    				direction = down;
+		    			}
+	    			} catch(Exception e){}
+    			}
+    			try{
+	    			if(Screen.map.getCell(xPos, yPos).isExit()){
+	    				reachedExit = true;
+	    				removeCritter();
+	    				loseLife(player);
+	    			}
+    			} catch(Exception e) {}
+    			
+    			hasMovedUp = false; hasMovedDown = false; hasMovedRight = false; hasMovedLeft = false;
+    			screenDistanceMoved = 0;
+    		}
+    		
+    		walkFrame = 0;
+    	}else{
+    		walkFrame ++;
+    	}
+    	
     	
 /*    	Point nextScreenPoint = Utils.convertMapCoordToScreen(nextCell.getXCoordinate(), 
         		nextCell.getYCoordinate());
@@ -105,6 +196,15 @@ public abstract class Critter extends Rectangle {
         setScreenXPos((int) nextScreenPoint.getX());
         setScreenYPos((int) nextScreenPoint.getY());
  */   }
+    
+    public void removeCritter(){
+    	inGame = false;
+    }
+    
+    public void loseLife(Player player){
+    	player.setLifePoints(player.getLifePoints() - strength);
+    }
+    
     
     public void draw(Graphics g){
     	if(inGame){
@@ -265,6 +365,14 @@ public abstract class Critter extends Rectangle {
 
 	public void setInGame(boolean inGame) {
 		this.inGame = inGame;
+	}
+
+	public boolean hasReachedExit() {
+		return reachedExit;
+	}
+
+	public void setReachedExit(boolean reachedExit) {
+		this.reachedExit = reachedExit;
 	}
 
 	/*

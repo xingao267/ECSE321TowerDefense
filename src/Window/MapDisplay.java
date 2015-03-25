@@ -45,9 +45,8 @@ public class MapDisplay {
 			for(int j =0; j<mapHeight; j++){
 				
 				boolean foundInd=false;
-				Rectangle r = new Rectangle(initialMapXPos + (Constants.STORE_BUTTON_SIZE*i), 
-						initialMapYPos + Constants.STORE_BUTTON_SIZE*j,
-						Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE);
+				Rectangle r = new Rectangle(15+(Constants.STORE_BUTTON_SIZE*i), 100+Constants.STORE_BUTTON_SIZE*j,
+								Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE);
 				if(m.noIndicators()){
 					if (m.getCell(i, j).isScenery()){
 						scenery.add(r);

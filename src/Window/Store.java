@@ -3,6 +3,7 @@ package Window;
 import java.awt.*;
 import java.util.ArrayList;
 
+import OtherModels.Bank;
 import TowerModels.*;
 import Utility.Constants;
 
@@ -12,12 +13,11 @@ import Utility.Constants;
  *
  */
 public class Store {
-
-	public static int storeYPos = 25;
-		
+	
 	private Rectangle[] towers = new Rectangle[Constants.NUM_TOWERS];
 	private Rectangle mainMenuButton, sendNextWaveButton;
 	private ArrayList<Tower> towerType;
+	private Bank bank;
 	
 	public Store() {
 		init();
@@ -26,10 +26,12 @@ public class Store {
 	public void init() {
 		for(int i = 0; i < towers.length; i++) {
 			towers[i] = new Rectangle(Constants.STORE_OFFSET + (Constants.STORE_BUTTON_SIZE + Constants.STORE_SPACING)*i,
-					storeYPos, Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE);
+					Constants.STORE_YPOS, Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE);
 		}
 		
-		mainMenuButton = new Rectangle(Constants.MAIN_MENU_XPOS, 3*storeYPos/5, 2*Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE/2);
+		bank = Bank.getUniqueInstance();
+		
+		mainMenuButton = new Rectangle(Constants.MAIN_MENU_XPOS, Constants.MAIN_MENU_YPOS, 2*Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE/2);
 		
 		sendNextWaveButton = new Rectangle(Constants.MAIN_MENU_XPOS, Constants.SAVE_BUTTON_YPOS,
 				7*Constants.STORE_BUTTON_SIZE/3, Constants.STORE_BUTTON_SIZE/2);
@@ -47,31 +49,46 @@ public class Store {
 		//Draw Buttons for each purchaseable tower
 		for(int i = 0; i < towers.length; i++){
 			//change to drawImage when tileset of tower images has been created
-			g.setColor(new Color(0, 0, 0));
+			g.setColor(new Color(100, 100, 100));
 			g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
 			
 			//TODO: add stuff that happens when a tower is purchased on click
-			if(towers[i].contains(Screen.mouseLocation)){
-				//slightly light up the tower button
-				g.setColor(new Color(255, 255, 255, 150));
-				g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
-				
-				//Displays tower characteristics on right side of life and money icons
-				g.setFont(new Font("Courier New", Font.BOLD, 15));
-				g.drawString(towerType.get(i).getTowerType(), 400, 30);
-				g.setFont(new Font("Courier New", Font.BOLD, 14));
-				g.drawString("Cost: " + towerType.get(i).getInitialCost(), 575, 30);
-				g.drawString("Power: " + towerType.get(i).getPower(), 400, 55);
-				g.drawString("Range: " + towerType.get(i).getRange(), 500, 55);
-				g.drawString("Fire Rate: " + towerType.get(i).getRateOfFire(), 400, 80);
-				
-				if(towerType.get(i).isMultiTargets()){
-					g.drawString("MultiTarget: Yes", 525, 80);
+			if(towers[i].contains(Screen.mouseLocation)) {
+					
+				//display that player does not have enough money
+				if(towerType.get(i).getInitialCost() > bank.getBalance()){
+					g.setColor(new Color(255, 255, 255));
+					g.setFont(new Font("Courier New", Font.BOLD, 15));
+					g.drawString("You don't have enough money", 400, 30);
+					g.drawString("to purchase this tower.", 400, 55);
 				}
 				else{
-					g.drawString("MultiTarget: No", 525, 80);
+					//slightly light up the tower buttons that can be bought
+					g.setColor(new Color(255, 255, 255, 150));
+					g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
+					
+					//Displays tower characteristics on right side of life and money icons
+					g.setFont(new Font("Courier New", Font.BOLD, 15));
+					g.drawString(towerType.get(i).getTowerType(), 400, 30);
+					g.setFont(new Font("Courier New", Font.BOLD, 14));
+					g.drawString("Cost: " + towerType.get(i).getInitialCost(), 575, 30);
+					g.drawString("Power: " + towerType.get(i).getPower(), 400, 55);
+					g.drawString("Range: " + towerType.get(i).getRange(), 500, 55);
+					g.drawString("Fire Rate: " + towerType.get(i).getRateOfFire(), 400, 80);
+					
+					if(towerType.get(i).isMultiTargets()){
+						g.drawString("MultiTarget: Yes", 525, 80);
+					}
+					else{
+						g.drawString("MultiTarget: No", 525, 80);
+					}
 				}
-				
+			}
+			
+			//darkens towers when player doesn't have enough money
+			if(towerType.get(i).getInitialCost() > bank.getBalance()){
+				g.setColor(new Color(0, 0, 0, 75));
+				g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
 			}
 		}
 		

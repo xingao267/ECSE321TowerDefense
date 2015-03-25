@@ -51,11 +51,12 @@ public class Screen extends JPanel implements Runnable{
 	public static boolean displayMainMenu = true, displayMapSelectorPane = false, 
 			displayMapDesigner = false, inGameplay = false, displayMap1 = false,
 			displayMap2 = false, displayMap3 = false, displayCustomMap = false,
-			levelStarted = false;
+			levelStarted = false, crittersGenerated = false;
 	
 	public static int screenWidth, screenHeight;
 	
 	public GameController gameController;
+	public static Player player;
 	
 	public static Map map;
 	private static Map CustomMap;
@@ -63,9 +64,12 @@ public class Screen extends JPanel implements Runnable{
 	public static Store store;
 	
 	public static CritterDisplay critterDisplay;
+	public List<Critter> critters;
 	public static List<CritterDisplay> critterGroupDisplay;
 	public static CritterGroupGenerator group;
 	public static Critter critter;
+	
+	List<Cell> path = new ArrayList<Cell>();
 	
 	public static IconDisplay icons;
 	
@@ -82,14 +86,19 @@ public class Screen extends JPanel implements Runnable{
 		mapDesigner = new MapDesignerDisplay();
 		store = new Store();
 		icons = new IconDisplay();
+		player = Player.getUniqueInstance();
 		
-		//TODO: initialize all tilesets here
+		path.add(new Cell(0, 8));
+		path.add(new Cell(1, 8));
+		path.add(new Cell(1,7));
+		
+		//TODO: initialize all tilesets (images) here
 	}
 	
 	
 	public void paintComponent(Graphics g){
 		
-		if(isFirst) {
+		if(isFirst){
 			screenWidth = getWidth();
 			screenHeight = getHeight();
 			init();
@@ -123,19 +132,27 @@ public class Screen extends JPanel implements Runnable{
 				map = easyMap.getEasyMap();
 				mapDisplay = new MapDisplay(map);
 				mapDisplay.draw(g);
-//				group = new CritterGroupGenerator(gameLevel);
 //				critterGroupDisplay = new ArrayList<CritterDisplay>();
 				
 //				critter.move(40);
 				if(levelStarted){
-					critter = new NormalCritter(1);
-				
-				critter.spawn(map.getStart());
-				critterDisplay = new CritterDisplay(critter);
+					if(!crittersGenerated){
+						critter = new NormalCritter(gameLevel);
+						
+//						group = new CritterGroupGenerator(gameLevel);
+						crittersGenerated = true;
+					}
+
+//					critter.move(path.get(1), 40);
+//					critterDisplay = new CritterDisplay(critter);
 //					for(int i = 0; i < critterGroupDisplay.size(); i++){
 //						critterGroupDisplay.get(i).draw(g);
 //					}
-				critterDisplay.draw(g);
+					critterDisplay = new CritterDisplay(critter);
+					
+					if(critter.isInGame()){
+						critterDisplay.draw(g);
+					}
 				}
 			}
 			
@@ -161,6 +178,25 @@ public class Screen extends JPanel implements Runnable{
 		}
 	}
 	
+	public int spawnTime = 1000, spawnFrame = 0;
+	public void spawnCritterGroup() {
+    	List<Critter> critterGroup = group.getCritterGroup();
+    	
+    	if(spawnFrame >= spawnTime){
+	    	for(int i = 0; i < critterGroup.size(); i++){
+				if(!critterGroup.get(i).isInGame()){
+					critterGroup.get(i).spawn(map.getStart());
+					critterGroupDisplay.add(new CritterDisplay(critterGroup.get(i)));
+					break;
+				}
+			}
+	    	spawnFrame = 0;
+    	}
+    	else{
+    		spawnFrame++;
+    	}
+	}
+	
 	
 	/**
 	 * Game Loop
@@ -169,10 +205,18 @@ public class Screen extends JPanel implements Runnable{
 
 		//Game Loop
 		while(gameRunning){
-			if(!isFirst){
-				if(levelStarted){
-					critter.move(40);
-//					System.out.println("levelstarted");
+			if(levelStarted){
+				if(crittersGenerated){
+					if(!critter.isInGame() && !critter.hasReachedExit()){
+						System.out.println("critter spawned");
+						critter.spawn(map.getStart());
+//						critter.move(path.get(1), 40);
+					}
+					else{
+						critter.moveAlongPath(20, player);
+					}
+				}
+			}
 //					gameController.spawnCritterGroup(map.getStart(), group);
 	/*				for(int i = 0; i < group.getCritterGroup().size(); i++){
 						if(!group.getCritterGroup().get(i).isInGame()){
@@ -182,8 +226,7 @@ public class Screen extends JPanel implements Runnable{
 						}
 					}
 	*/				
-				}
-			}
+		
 			
 			repaint();
 			
@@ -192,7 +235,7 @@ public class Screen extends JPanel implements Runnable{
 			}
 			
 			try{
-				game.sleep(50);
+				game.sleep(10);
 			} catch(Exception e){}	
 			
 		}

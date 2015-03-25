@@ -9,6 +9,8 @@ public class Cell {
 	private boolean scenery;
 	private int xCoord;
 	private int yCoord;
+	private boolean isStart;
+	private boolean isExit;
 	private boolean hasTower;
 	
 	/**
@@ -72,6 +74,36 @@ public class Cell {
 	
 	public void setScenery(){
 		this.scenery=true;
+	}
+	
+	/**
+	 * Returns true if cell is entry node
+	 * @return
+	 */
+	public boolean isEntry(){
+		return this.isStart;		
+	}
+	
+	/**
+	 * Returns true id cell is exit node
+	 * @return
+	 */
+	public boolean isExit(){
+		return this.isExit;
+	}
+	
+	/**
+	 * Sets Path cell as start
+	 */
+	public void setStart(){
+		this.isStart = true;
+	}
+	
+	/**
+	 * Sets Path cell as exit
+	 */
+	public void setEnd(){
+		this.isExit = true;
 	}
 	
 	/**
