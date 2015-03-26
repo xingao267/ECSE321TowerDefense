@@ -213,9 +213,9 @@ public class Screen extends JPanel implements Runnable{
 			
 			repaint();
 			
-			if(displayMapDesigner){
+			/*if(displayMapDesigner){
 				gameRunning = false;
-			}
+			}*/
 			
 			try{
 				game.sleep(10);
