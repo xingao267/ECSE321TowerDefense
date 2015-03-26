@@ -40,11 +40,16 @@ public class GameController implements IGameController {
 
     private boolean isTowerSelectedOnMap;
 
+    private boolean isTowerCellHoveredOnMap;
+
+    private Tower hoveredTowerOnMap;
+
     private GameController() {
         bank = Bank.getUniqueInstance();
         towers = new ArrayList<Tower>();
         isTowerSeletedInStore = false;
         isTowerSelectedOnMap = false;
+        isTowerCellHoveredOnMap = false;
     }
 
     public static synchronized GameController getUniqueInstance() {
@@ -272,6 +277,34 @@ public class GameController implements IGameController {
      */
     public void setTowerSelectedOnMap(boolean isTowerSelectedOnMap) {
         this.isTowerSelectedOnMap = isTowerSelectedOnMap;
+    }
+
+    /**
+     * @return the isTowerCellHoveredOnMap
+     */
+    public boolean isTowerCellHoveredOnMap() {
+        return isTowerCellHoveredOnMap;
+    }
+
+    /**
+     * @param isTowerCellHoveredOnMap the isTowerCellHoveredOnMap to set
+     */
+    public void setTowerCellHoveredOnMap(boolean isTowerCellHoveredOnMap) {
+        this.isTowerCellHoveredOnMap = isTowerCellHoveredOnMap;
+    }
+
+    /**
+     * @return the hoveredTowerOnMap
+     */
+    public Tower getHoveredTowerOnMap() {
+        return hoveredTowerOnMap;
+    }
+
+    /**
+     * @param hoveredTowerOnMap the hoveredTowerOnMap to set
+     */
+    public void setHoveredTowerOnMap(Tower hoveredTowerOnMap) {
+        this.hoveredTowerOnMap = hoveredTowerOnMap;
     }
 
 }

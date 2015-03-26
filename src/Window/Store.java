@@ -23,14 +23,18 @@ import Utility.Constants;
  *
  */
 public class Store {
+    
+    private static final String UP_ARROW = "\u2192";
 
     private Rectangle[] towers = new Rectangle[Constants.NUM_TOWERS];
     private Rectangle mainMenuButton, sendNextWaveButton;
     private ArrayList<Tower> towerType;
     private Bank bank;
-    private boolean towerPlaced = false;
+
     private GameController gameController;
     private HashMap<Integer, String> towerStorePosToName;
+
+    private boolean[] towerClickable;
 
     public Store() {
 
@@ -42,6 +46,8 @@ public class Store {
         towerStorePosToName.put(2, Constants.SPEED_TOWER_TYPE);
         towerStorePosToName.put(3, Constants.DECELERATOR_TOWER_TYPE);
         towerStorePosToName.put(4, Constants.LONGRANGE_TOWER_TYPE);
+
+        towerClickable = new boolean[5];
 
         init();
     }
@@ -92,9 +98,10 @@ public class Store {
                     g.setFont(new Font("Courier New", Font.BOLD, 15));
                     g.drawString("You don't have enough money", 400, 30);
                     g.drawString("to buy this tower.", 400, 55);
-
                     g.setColor(new Color(0, 0, 0, 75));
                     g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
+
+                    towerClickable[i] = false;
                 } else {
                     // player has enough money
                     // slightly light up the tower buttons that can be bought
@@ -107,6 +114,7 @@ public class Store {
                     g.drawString(towerType.get(i).getTowerType(), 400, 30);
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
                     g.drawString("Cost: " + towerType.get(i).getInitialCost(), 575, 30);
+
                     g.drawString("Power: " + towerType.get(i).getPower(), 400, 55);
                     g.drawString("Range: " + towerType.get(i).getRange(), 500, 55);
                     g.drawString("Fire Rate: " + towerType.get(i).getRateOfFire(), 400, 80);
@@ -116,6 +124,9 @@ public class Store {
                     } else {
                         g.drawString("MultiTarget: No", 525, 80);
                     }
+
+
+                    towerClickable[i] = true;
                 }
             }
 
@@ -125,16 +136,16 @@ public class Store {
                 g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
             }
 
-            if (towers[i].contains(Screen.mouseClicked) && !towerPlaced) {
-                gameController.setTowerSeletedInStore(true);
-                String towerTypeName = towerStorePosToName.get(i);
-
-                gameController.setSelectedTowerTypeInStore(towerTypeName);
-
+            if (towers[i].contains(Screen.mouseClicked)) {
+                if (towerClickable[i]) {
+                    gameController.setTowerSeletedInStore(true);
+                    String towerTypeName = towerStorePosToName.get(i);
+                    gameController.setSelectedTowerTypeInStore(towerTypeName);
+                }
             }
         }
 
-        if (gameController.isTowerSeletedInStore() && !towerPlaced) {
+        if (gameController.isTowerSeletedInStore()) {
             g.setColor(new Color(255, 255, 255));
             g.setFont(new Font("Courier New", Font.BOLD, 14));
             g.drawString("Place tower on a scenery cell", 15, 85);
@@ -144,6 +155,49 @@ public class Store {
             g.setColor(new Color(255, 255, 255));
             g.setFont(new Font("Courier New", Font.BOLD, 14));
             g.drawString("Click tower button to buy tower.", 15, 85);
+        }
+
+        if (gameController.isTowerCellHoveredOnMap()) {
+
+            Tower tower = gameController.getHoveredTowerOnMap();
+
+            if (tower.getLevel() < Constants.MAX_TOWER_LEVEL) {
+                
+                // Displays tower characteristics on right side of life and money icons
+                g.setColor(new Color(255, 255, 255));
+                g.setFont(new Font("Courier New", Font.BOLD, 13));
+                g.drawString(
+                        tower.getTowerType() + "-" + tower.getLevel() + UP_ARROW
+                                + (tower.getLevel() + 1), 400, 30);
+
+                g.setFont(new Font("Courier New", Font.BOLD, 13));
+                g.drawString("Cost: " + tower.getUpgradeCost(), 575, 30);
+
+                g.drawString("Power: " + tower.getPower() + UP_ARROW, 400, 55);
+                g.drawString("Range: " + tower.getRange() + UP_ARROW, 500, 55);
+                g.drawString("Fire Rate: " + tower.getRateOfFire() + UP_ARROW, 400, 80);
+
+               
+            } else {
+                // Displays tower characteristics on right side of life and money icons
+                g.setColor(new Color(255, 255, 255));
+                g.setFont(new Font("Courier New", Font.BOLD, 15));
+                g.drawString(tower.getTowerType() + "-" + tower.getLevel(), 400, 30);
+
+                g.setFont(new Font("Courier New", Font.BOLD, 14));
+                g.drawString("Up: " + tower.getUpgradeCost(), 575, 30);
+
+                g.drawString("Power: " + tower.getPower(), 400, 55);
+                g.drawString("Range: " + tower.getRange(), 500, 55);
+                g.drawString("Fire Rate: " + tower.getRateOfFire(), 400, 80);
+
+            }
+            if (tower.isMultiTargets()) {
+                g.drawString("MultiTarget: Yes", 530, 80);
+            } else {
+                g.drawString("MultiTarget: No", 530, 80);
+            }
+
         }
 
         // Draw Button to return to the main menu
@@ -195,20 +249,4 @@ public class Store {
             }
         }
     }
-
-    /**
-     * @return the bank
-     */
-    public Bank getBank() {
-        return bank;
-    }
-
-    /**
-     * @param bank the bank to set
-     */
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
-
 }

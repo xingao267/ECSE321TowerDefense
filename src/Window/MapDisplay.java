@@ -1,12 +1,17 @@
 package Window;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import Controllers.GameController;
 import Exceptions.InvalidTowerTypeException;
 import Exceptions.NoEnoughMoneyException;
-import Map.*;
+import Map.Cell;
+import Map.Map;
+import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
 
@@ -100,6 +105,9 @@ public class MapDisplay {
         // Draw the scenery
         for (Rectangle r : scenery) {
 
+            Point mapPosition = Utils.convertScreenToMapCoord(r.getLocation());
+            Cell cell = m.getCell(mapPosition.x, mapPosition.y);
+
             g.setColor(new Color(148, 204, 142)); // Green
             g.fillRect(r.x, r.y, r.width, r.height);
 
@@ -107,15 +115,28 @@ public class MapDisplay {
                 // slightly darken the scenery
                 g.setColor(new Color(38, 59, 44, 150));
                 g.fillRect(r.x, r.y, r.width, r.height);
+
+                if (cell.hasTower()) {
+                    gameController.setTowerCellHoveredOnMap(true);
+                    gameController.setHoveredTowerOnMap(cell.getTower());
+                } else {
+                    gameController.setTowerCellHoveredOnMap(false);
+                }
             }
 
             if (r.contains(Screen.mouseClicked)) {
-                if (gameController.isTowerSeletedInStore()) {
+
+                if (cell.hasTower()) {
+                    gameController.setTowerSelectedOnMap(true);
+
+                } else if (gameController.isTowerSeletedInStore()) {
+
                     String towerType = gameController.getSelectedTowerTypeInStore();
-                    Point mapPosition = Utils.convertScreenToMapCoord(r.getLocation());
                     try {
-                        gameController.purchaseTower(towerType, mapPosition.x, mapPosition.y,
+                        Tower tower = gameController.purchaseTower(towerType, mapPosition.x, mapPosition.y,
                                 Constants.INITIAL_TOWER_LEVEL);
+                        cell.setTower(tower);
+                        cell.setHasTower(true);
                     } catch (NoEnoughMoneyException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -124,6 +145,7 @@ public class MapDisplay {
                         e.printStackTrace();
                     }
                     gameController.setTowerSeletedInStore(false);
+
                 }
             }
         }
@@ -138,6 +160,13 @@ public class MapDisplay {
                 // slightly darken the path
                 g.setColor(new Color(73, 16, 9, 150));
                 g.fillRect(r.x, r.y, r.width, r.height);
+                
+                gameController.setTowerCellHoveredOnMap(false);
+            }
+            if (r.contains(Screen.mouseClicked)) {
+                if (gameController.isTowerSeletedInStore()) {
+                    gameController.setTowerSeletedInStore(false);
+                }
             }
 
         }

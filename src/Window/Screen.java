@@ -81,6 +81,10 @@ public class Screen extends JPanel implements Runnable {
 
     public static HashMap<Tower, TowerDisplay> towerDisplays;
 
+    private EasyMap easyMap;
+    private MediumMap mediumMap;
+    private HardMap hardMap;
+
     public static IconDisplay icons;
 
     public Screen(Frame frame) {
@@ -102,6 +106,10 @@ public class Screen extends JPanel implements Runnable {
         store = new Store();
         icons = new IconDisplay();
         towerDisplays = new HashMap<Tower, TowerDisplay>();
+        critterGroupDisplays = new HashMap<Critter, CritterDisplay>();
+        easyMap = new EasyMap();
+        mediumMap = new MediumMap();
+        hardMap = new HardMap();
 
         // TODO: initialize all tilesets (images) here
     }
@@ -139,21 +147,18 @@ public class Screen extends JPanel implements Runnable {
             icons.draw(g);
 
             if (displayMap1) {
-                EasyMap easyMap = new EasyMap();
                 map = easyMap.getEasyMap();
                 mapDisplay = new MapDisplay(map);
                 mapDisplay.draw(g);
             }
 
             if (displayMap2) {
-                MediumMap mediumMap = new MediumMap();
                 map = mediumMap.getMediumMap();
                 mapDisplay = new MapDisplay(map);
                 mapDisplay.draw(g);
             }
 
             if (displayMap3) {
-                HardMap hardMap = new HardMap();
                 map = hardMap.getHardMap();
                 mapDisplay = new MapDisplay(map);
                 mapDisplay.draw(g);
@@ -172,42 +177,37 @@ public class Screen extends JPanel implements Runnable {
                 for (Entry<Tower, TowerDisplay> entry : towerDisplays.entrySet()) {
                     entry.getValue().draw(g);
                 }
-
             }
 
             if (levelStarted) {
-                critterGroupDisplays = new HashMap<Critter, CritterDisplay>();
                 if (!crittersGenerated) {
                     critters = new ArrayList<Critter>();
                     group = new CritterGroupGenerator(gameLevel);
                     critters = group.getCritterGroup();
                     crittersGenerated = true;
                 } else {
-//                    for (int i = 0; i < critters.size(); i++) {
-                        
-                        for (Critter c : critters) {
-                            if (c.isInGame()) {
-                                critterGroupDisplays.put(c, new CritterDisplay(c));
-                                System.out.println(critterGroupDisplays.size());
-                                critterGroupDisplays.get(c).draw(g);
-                            }
-                            if (c.hasReachedExit()) {
-                                critters.remove(c);
-                                critterGroupDisplays.remove(c);
-                            }
+                    for (Critter c : critters) {
+                        if (c.isInGame()) {
+                            critterGroupDisplays.put(c, new CritterDisplay(c));
+                            System.out.println(critterGroupDisplays.size());
+                            critterGroupDisplays.get(c).draw(g);
                         }
-                        
-//                    }
+                        if (c.hasReachedExit()) {
+                            critters.remove(c);
+                            critterGroupDisplays.remove(c);
+                        }
+                    }
                 }
-                for(Tower tower: gameController.getTowers()) {
-                    List<Critter> detectedCritters = gameController.towerDetectTargets(tower, critters);
-                    List<Critter> selectedCritters = gameController.towerSelectTargets(tower, detectedCritters);
+                for (Tower tower : gameController.getTowers()) {
+                    List<Critter> detectedCritters =
+                            gameController.towerDetectTargets(tower, critters);
+                    List<Critter> selectedCritters =
+                            gameController.towerSelectTargets(tower, detectedCritters);
                     try {
                         gameController.towerAttackTargets(tower, selectedCritters);
                     } catch (CritterDeadException e) {
                         critters.remove(e.getDeadCritter());
                         critterGroupDisplays.remove(e.getDeadCritter());
-                       
                     }
                 }
             }
