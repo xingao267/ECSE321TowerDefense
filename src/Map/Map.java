@@ -57,7 +57,7 @@ public class Map {
 	}
 	
 	/**Returns the map's path starting tile*/
-	public Cell getStart(){
+	public Path getStart(){
 		return this.start;
 	}
 	

@@ -160,7 +160,8 @@ public class Screen extends JPanel implements Runnable {
             }
 
             if (displayCustomMap) {
-                mapDisplay = new MapDisplay(CustomMap);
+                mapDisplay = new MapDisplay(map);
+                System.out.println("The start of the path is " + map.getStart());
                 mapDisplay.draw(g);
             }
 
@@ -283,7 +284,7 @@ public class Screen extends JPanel implements Runnable {
     }
 
     public static void setCustomMap(Map m) {
-        CustomMap = m;
+        map = m;
     }
 
     public static void mouseClickedReset() {
