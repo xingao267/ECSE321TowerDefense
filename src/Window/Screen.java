@@ -171,6 +171,9 @@ public class Screen extends JPanel implements Runnable{
 							critterGroupDisplay.add(new CritterDisplay(critters.get(i)));
 							System.out.println(critterGroupDisplay.size());
 							critterGroupDisplay.get(i).draw(g);
+						} if(critters.get(i).hasReachedExit()) {
+							critters.remove(i);
+							critterGroupDisplay.remove(i);
 						}
 					}
 //					if(critter.isInGame()){
