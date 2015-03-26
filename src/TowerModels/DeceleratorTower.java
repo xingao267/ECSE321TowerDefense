@@ -1,6 +1,7 @@
 package TowerModels;
 
 import CritterModels.Critter;
+import Exceptions.MaxLevelReachedException;
 import Utility.Constants;
 
 /**
@@ -42,6 +43,52 @@ public class DeceleratorTower extends MultiTargetsTower {
             critter.setSpeed(critter.getSpeed() * (0.9 - this.level * 0.1));
             critter.setSlowed(true);
         }
+    }
+
+    @Override
+    public double getNextLevelRange() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.DECELERATOR_RANGE[this.level + 1];
+    }
+
+    @Override
+    public double getNextLevelPower() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.DECELERATOR_POWER[this.level + 1];
+    }
+
+    @Override
+    public double getNextLevelRateOfFire() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.DECELERATOR_RATE[this.level + 1];
+    }
+
+    @Override
+    public double getNextLevelEffectRange() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.DECELERATOR_EFFECT_RANGE[this.level + 1];
+    }
+
+    @Override
+    public double getDamagePerHit() {
+        return Constants.DECELERATOR_DAMAGE_PER_HIT[this.level];
+    }
+
+
+    @Override
+    public double getNextLevelDamagePerHit() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.DECELERATOR_DAMAGE_PER_HIT[this.level + 1];
     }
 
     /*

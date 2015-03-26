@@ -49,7 +49,7 @@ public class TestGameController {
     @Before
     public void setup() {
 
-        controller = new GameController();
+        controller = GameController.getUniqueInstance();
 
         singleTargetTower = new RegularTower(5, 5, Constants.INITIAL_TOWER_LEVEL);
 
@@ -122,18 +122,18 @@ public class TestGameController {
         targets.add(critter1);
 
         singleTargetTower.setPower(10);
-        controller.towerAttackTargets(singleTargetTower, targets, bank);
+        controller.towerAttackTargets(singleTargetTower, targets);
         assertEquals(475, (long) critter1.getHealth());
 
         multiTargetsTower.setPower(5);
         assertEquals(false, critter1.isSlowed());
 
-        controller.towerAttackTargets(multiTargetsTower, targets, bank);
+        controller.towerAttackTargets(multiTargetsTower, targets);
         assertEquals(472, (long) critter1.getHealth());
         assertTrue(critter1.getSpeed() - 0.32 < 0.0000001);
         assertEquals(true, critter1.isSlowed());
 
-        controller.towerAttackTargets(multiTargetsTower, targets, bank);
+        controller.towerAttackTargets(multiTargetsTower, targets);
         assertEquals(470, (long) critter1.getHealth());
         assertTrue(critter1.getSpeed() - 0.32 < 0.0000001);
         assertEquals(true, critter1.isSlowed());
@@ -163,7 +163,7 @@ public class TestGameController {
         assertEquals((long) Constants.DECELERATOR_EFFECT_RANGE[1],
                 (long) multiTargetsTower.getEffectRange());
 
-        controller.upgradeTower(multiTargetsTower, bank);
+        controller.upgradeTower(multiTargetsTower);
 
         assertEquals(2, multiTargetsTower.getLevel());
         assertEquals(Constants.DECELERATOR_UPGRADE_COST[3], multiTargetsTower.getUpgradeCost());
@@ -174,7 +174,7 @@ public class TestGameController {
         assertEquals((long) Constants.DECELERATOR_EFFECT_RANGE[2],
                 (long) multiTargetsTower.getEffectRange());
 
-        controller.upgradeTower(multiTargetsTower, bank);
+        controller.upgradeTower(multiTargetsTower);
 
         assertEquals(3, multiTargetsTower.getLevel());
         assertEquals(Constants.DECELERATOR_UPGRADE_COST[4], multiTargetsTower.getUpgradeCost());
@@ -185,7 +185,7 @@ public class TestGameController {
         assertEquals((long) Constants.DECELERATOR_EFFECT_RANGE[3],
                 (long) multiTargetsTower.getEffectRange());
 
-        controller.upgradeTower(multiTargetsTower, bank);
+        controller.upgradeTower(multiTargetsTower);
 
         assertEquals(4, multiTargetsTower.getLevel());
         assertEquals(Constants.DECELERATOR_UPGRADE_COST[5], multiTargetsTower.getUpgradeCost());
@@ -196,7 +196,7 @@ public class TestGameController {
         assertEquals((long) Constants.DECELERATOR_EFFECT_RANGE[4],
                 (long) multiTargetsTower.getEffectRange());
 
-        controller.upgradeTower(multiTargetsTower, bank);
+        controller.upgradeTower(multiTargetsTower);
 
         assertEquals(5, multiTargetsTower.getLevel());
         assertEquals(Constants.DECELERATOR_UPGRADE_COST[6], multiTargetsTower.getUpgradeCost());
@@ -213,18 +213,18 @@ public class TestGameController {
     public void testUpgradeTowerButExceedingMaximumLevel() throws Exception {
 
         singleTargetTower.setLevel(Constants.MAX_TOWER_LEVEL);
-        controller.upgradeTower(singleTargetTower, bank);
+        controller.upgradeTower(singleTargetTower);
 
     }
 
-//    @Test
-//    public void testSpawnGroup() {
-//
-//        controller.spawnCritterGroup(entryCell, critterGroup);
-//        for (int i = 0; i < critterGroup.size(); i++) {
-//            assertEquals(2, (long) entryCell.getXCoordinate());
-//            assertEquals(0, (long) entryCell.getYCoordinate());
-//        }
-//    }
+    // @Test
+    // public void testSpawnGroup() {
+    //
+    // controller.spawnCritterGroup(entryCell, critterGroup);
+    // for (int i = 0; i < critterGroup.size(); i++) {
+    // assertEquals(2, (long) entryCell.getXCoordinate());
+    // assertEquals(0, (long) entryCell.getYCoordinate());
+    // }
+    // }
 
 }

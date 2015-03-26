@@ -1,5 +1,7 @@
 package TowerModels;
 
+import Exceptions.MaxLevelReachedException;
+
 /**
  *
  * @author Xin
@@ -31,5 +33,7 @@ public abstract class MultiTargetsTower extends Tower {
     public void setEffectRange(double effectRange) {
         this.effectRange = effectRange;
     }
+
+    public abstract double getNextLevelEffectRange() throws MaxLevelReachedException;
 
 }

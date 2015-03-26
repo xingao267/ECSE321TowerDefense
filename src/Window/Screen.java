@@ -14,8 +14,6 @@ import Controllers.GameController;
 import CritterModels.Critter;
 import CritterModels.CritterGroupGenerator;
 import Exceptions.CritterDeadException;
-import Exceptions.InvalidTowerTypeException;
-import Exceptions.NoEnoughMoneyException;
 import Map.Map;
 import MapPresets.EasyMap;
 import MapPresets.HardMap;
@@ -218,7 +216,7 @@ public class Screen extends JPanel implements Runnable {
      * Game Loop
      */
     public void run() {
-        int j = 1;
+
         // Game Loop
         while (gameRunning) {
             if (levelStarted) {
@@ -232,19 +230,14 @@ public class Screen extends JPanel implements Runnable {
                 }
             }
 
-            // bank.setBalance(30 + j);
             repaint();
-            j++;
-
-
 
             if (displayMapDesigner) {
                 gameRunning = false;
             }
 
-
             try {
-                game.sleep(10);
+                game.sleep(Constants.GAME_THREAD_SLEEP_TIME);
             } catch (Exception e) {
             }
 

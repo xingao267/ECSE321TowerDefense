@@ -1,5 +1,7 @@
 package Utility;
 
+import TowerModels.BomberTower;
+
 /**
  * Constants
  *
@@ -37,11 +39,33 @@ public class Constants {
     /** Save Button Constant */
     public static final int SAVE_BUTTON_YPOS = 50;
 
+    /** Send Next Wave Button Constant */
+    public static final int SEND_NEXT_WANVE_YPOS = 45;
+
     /** Initial Bank balance. */
     public static final int INITIAL_BANK_BALANCE = 30;
 
+    /** Game thread sleep time */
+    public static final int GAME_THREAD_SLEEP_TIME = 10;
+
     /*--------------------------------------------------------------------------------------------------------------------*/
-    
+
+    // TODO actual url to be changed later
+    public static final String REGULAR_TOWER_IMAGE = "source/image/regular_tower.png";
+
+    public static final String BOMBER_TOWER_IMAGE = "source/image/regular_tower.png";
+
+    public static final String SPEED_TOWER_IMAGE = "source/image/regular_tower.png";
+
+    public static final String DECELERATOR_TOWER_IMAGE = "source/image/regular_tower.png";
+
+    public static final String LONGRANGE_TOWER_IMAGE = "source/image/regular_tower.png";
+
+    public static final String[] TOWER_IMAGE_SET = {REGULAR_TOWER_IMAGE, REGULAR_TOWER_IMAGE,
+            SPEED_TOWER_IMAGE, DECELERATOR_TOWER_IMAGE, LONGRANGE_TOWER_IMAGE};
+
+    /*--------------------------------------------------------------------------------------------------------------------*/
+
     /** Initial Tower Level. */
     public static final int INITIAL_TOWER_LEVEL = 1;
 
@@ -64,8 +88,16 @@ public class Constants {
             REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
                     + REGULAR_UPGRADE_COST[4] + REGULAR_UPGRADE_COST[5]};
     public static final double[] REGULAR_RANGE = {0, 1, 2, 3, 4, 5};
-    public static final double[] REGULAR_POWER = {0, 2, 4, 6, 8, 10};
     public static final double[] REGULAR_RATE = {0, 2, 3, 4, 5, 6};
+
+    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 2, 4, 6, 8, 10};
+    public static final double[] REGULAR_POWER = {
+            REGULAR_DAMAGE_PER_HIT[0] * REGULAR_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
+            REGULAR_DAMAGE_PER_HIT[1] * REGULAR_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            REGULAR_DAMAGE_PER_HIT[2] * REGULAR_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            REGULAR_DAMAGE_PER_HIT[3] * REGULAR_RATE[3] * GAME_THREAD_SLEEP_TIME / 1000,
+            REGULAR_DAMAGE_PER_HIT[4] * REGULAR_RATE[4] * GAME_THREAD_SLEEP_TIME / 1000,
+            REGULAR_DAMAGE_PER_HIT[5] * REGULAR_RATE[5] * GAME_THREAD_SLEEP_TIME / 1000};
 
     /** Long Range Tower Constants. */
     public static final String LONGRANGE_TOWER_TYPE = "Long Range Tower";
@@ -83,8 +115,16 @@ public class Constants {
             LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]
                     + LONGRANGE_UPGRADE_COST[4] + LONGRANGE_UPGRADE_COST[5]};
     public static final double[] LONGRANGE_RANGE = {0, 3, 6, 9, 12, 15};
-    public static final double[] LONGRANGE_POWER = {0, 2, 4, 6, 8, 10};
     public static final double[] LONGRANGE_RATE = {0, 1, 2, 3, 4, 5};
+
+    public static final double[] LONGRANGE_DAMAGE_PER_HIT = {0, 2, 4, 6, 8, 10};
+    public static final double[] LONGRANGE_POWER = {
+            LONGRANGE_DAMAGE_PER_HIT[0] * LONGRANGE_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
+            LONGRANGE_DAMAGE_PER_HIT[1] * LONGRANGE_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            LONGRANGE_DAMAGE_PER_HIT[2] * LONGRANGE_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            LONGRANGE_DAMAGE_PER_HIT[3] * LONGRANGE_RATE[3] * GAME_THREAD_SLEEP_TIME / 1000,
+            LONGRANGE_DAMAGE_PER_HIT[4] * LONGRANGE_RATE[4] * GAME_THREAD_SLEEP_TIME / 1000,
+            LONGRANGE_DAMAGE_PER_HIT[5] * LONGRANGE_RATE[5] * GAME_THREAD_SLEEP_TIME / 1000};
 
     /** Speed Tower Constants. */
     public static final String SPEED_TOWER_TYPE = "Speed Tower";
@@ -102,8 +142,16 @@ public class Constants {
             SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
                     + SPEED_UPGRADE_COST[4] + SPEED_UPGRADE_COST[5]};
     public static final double[] SPEED_RANGE = {0, 1, 2, 3, 4, 5};
-    public static final double[] SPEED_POWER = {0, 1, 2, 3, 4, 5};
     public static final double[] SPEED_RATE = {0, 5, 7, 9, 11, 13};
+
+    public static final double[] SPEED_DAMAGE_PER_HIT = {0, 1, 2, 3, 4, 5};
+    public static final double[] SPEED_POWER = {
+            SPEED_DAMAGE_PER_HIT[0] * SPEED_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
+            SPEED_DAMAGE_PER_HIT[1] * SPEED_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            SPEED_DAMAGE_PER_HIT[2] * SPEED_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            SPEED_DAMAGE_PER_HIT[3] * SPEED_RATE[3] * GAME_THREAD_SLEEP_TIME / 1000,
+            SPEED_DAMAGE_PER_HIT[4] * SPEED_RATE[4] * GAME_THREAD_SLEEP_TIME / 1000,
+            SPEED_DAMAGE_PER_HIT[5] * SPEED_RATE[5] * GAME_THREAD_SLEEP_TIME / 1000};
 
     /** Bomber Tower Constants. */
     public static final String BOMBER_TOWER_TYPE = "Bomber Tower";
@@ -121,8 +169,16 @@ public class Constants {
             BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
                     + BOMBER_UPGRADE_COST[4] + BOMBER_UPGRADE_COST[5]};
     public static final double[] BOMBER_RANGE = {0, 1, 2, 3, 4, 5};
-    public static final double[] BOMBER_POWER = {0, 2, 4, 6, 8, 10};
     public static final double[] BOMBER_RATE = {0, 1, 2, 3, 4, 5};
+
+    public static final double[] BOMBER_DAMAGE_PER_HIT = {0, 2, 4, 6, 8, 10};
+    public static final double[] BOMBER_POWER = {
+            BOMBER_DAMAGE_PER_HIT[0] * BOMBER_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
+            BOMBER_DAMAGE_PER_HIT[1] * BOMBER_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            BOMBER_DAMAGE_PER_HIT[2] * BOMBER_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            BOMBER_DAMAGE_PER_HIT[3] * BOMBER_RATE[3] * GAME_THREAD_SLEEP_TIME / 1000,
+            BOMBER_DAMAGE_PER_HIT[4] * BOMBER_RATE[4] * GAME_THREAD_SLEEP_TIME / 1000,
+            BOMBER_DAMAGE_PER_HIT[5] * BOMBER_RATE[5] * GAME_THREAD_SLEEP_TIME / 1000};
 
     public static final double[] BOMBER_EFFECT_RANGE = {0, 1, 2, 3, 4, 5};
 
@@ -143,8 +199,16 @@ public class Constants {
             DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]
                     + DECELERATOR_UPGRADE_COST[4] + DECELERATOR_UPGRADE_COST[5]};
     public static final double[] DECELERATOR_RANGE = {0, 1, 2, 3, 4, 5};
-    public static final double[] DECELERATOR_POWER = {0, 0, 0, 0, 0, 0};
     public static final double[] DECELERATOR_RATE = {0, 1, 2, 3, 4, 5};
+
+    public static final double[] DECELERATOR_DAMAGE_PER_HIT = {0, 0, 0, 0, 0, 0};
+    public static final double[] DECELERATOR_POWER = {
+            DECELERATOR_DAMAGE_PER_HIT[0] * DECELERATOR_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
+            DECELERATOR_DAMAGE_PER_HIT[1] * DECELERATOR_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            DECELERATOR_DAMAGE_PER_HIT[2] * DECELERATOR_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
+            DECELERATOR_DAMAGE_PER_HIT[3] * DECELERATOR_RATE[3] * GAME_THREAD_SLEEP_TIME / 1000,
+            DECELERATOR_DAMAGE_PER_HIT[4] * DECELERATOR_RATE[4] * GAME_THREAD_SLEEP_TIME / 1000,
+            DECELERATOR_DAMAGE_PER_HIT[5] * DECELERATOR_RATE[5] * GAME_THREAD_SLEEP_TIME / 1000};
 
     public static final double[] DECELERATOR_EFFECT_RANGE = {0, 1, 2, 3, 4, 5};
 

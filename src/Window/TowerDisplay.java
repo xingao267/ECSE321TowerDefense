@@ -7,8 +7,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
+
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
+import Exceptions.InvalidTowerTypeException;
+import TowerModels.BomberTower;
+import TowerModels.DeceleratorTower;
 import TowerModels.ITowerObserver;
+import TowerModels.LongRangeTower;
+import TowerModels.RegularTower;
+import TowerModels.SpeedTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
@@ -37,10 +51,31 @@ public class TowerDisplay implements ITowerObserver {
 
     public void draw(Graphics g) {
         if (tower.isInGame()) {
-            g.setColor(new Color(0, 0, 0));
-            g.fillRect(towerDisplay.x, towerDisplay.y, towerDisplay.width, towerDisplay.height);
-            System.out.println("Tower placed at: " + "(" + towerDisplay.x + "," + towerDisplay.y
-                    + ")");
+
+            BufferedImage img;
+            try {
+
+                if (this.tower.getTowerType().equals(Constants.REGULAR_TOWER_TYPE)) {
+                    img = ImageIO.read(new File(Constants.REGULAR_TOWER_IMAGE));
+                } else if (this.tower.getTowerType().equals(Constants.BOMBER_TOWER_TYPE)) {
+                    img = ImageIO.read(new File(Constants.BOMBER_TOWER_IMAGE));
+                } else if (this.tower.getTowerType().equals(Constants.LONGRANGE_TOWER_TYPE)) {
+                    img = ImageIO.read(new File(Constants.LONGRANGE_TOWER_IMAGE));
+                } else if (this.tower.getTowerType().equals(Constants.SPEED_TOWER_TYPE)) {
+                    img = ImageIO.read(new File(Constants.SPEED_TOWER_IMAGE));
+                } else if (this.tower.getTowerType().equals(Constants.DECELERATOR_TOWER_TYPE)) {
+                    img = ImageIO.read(new File(Constants.DECELERATOR_TOWER_IMAGE));
+                } else {
+                    throw new InvalidTowerTypeException();
+                }
+
+                g.drawImage(img, towerDisplay.x, towerDisplay.y, towerDisplay.width,
+                        towerDisplay.height, null);
+
+            } catch (IOException | InvalidTowerTypeException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 

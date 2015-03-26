@@ -44,6 +44,8 @@ public class GameController implements IGameController {
 
     private Tower hoveredTowerOnMap;
 
+    private Tower selectedTowerOnMap;
+
     private GameController() {
         bank = Bank.getUniqueInstance();
         towers = new ArrayList<Tower>();
@@ -171,7 +173,9 @@ public class GameController implements IGameController {
         if (critters != null) {
             for (Critter critter : critters) {
                 tower.attack(critter);
-                bank.returnToBank(critter.getBounty());
+                if (critter.isDead()) {
+                    bank.returnToBank(critter.getBounty());
+                }
             }
         }
     }
@@ -305,6 +309,20 @@ public class GameController implements IGameController {
      */
     public void setHoveredTowerOnMap(Tower hoveredTowerOnMap) {
         this.hoveredTowerOnMap = hoveredTowerOnMap;
+    }
+
+    /**
+     * @return the selectedTowerOnMap
+     */
+    public Tower getSelectedTowerOnMap() {
+        return selectedTowerOnMap;
+    }
+
+    /**
+     * @param selectedTowerOnMap the selectedTowerOnMap to set
+     */
+    public void setSelectedTowerOnMap(Tower selectedTowerOnMap) {
+        this.selectedTowerOnMap = selectedTowerOnMap;
     }
 
 }

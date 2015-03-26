@@ -1,6 +1,7 @@
 package TowerModels;
 
 import CritterModels.Critter;
+import Exceptions.MaxLevelReachedException;
 import Utility.Constants;
 
 /**
@@ -37,6 +38,45 @@ public class LongRangeTower extends SingleTargetTower {
     @Override
     public void applySpecialEffects(Critter critter) {
         // No special effect
+    }
+
+    @Override
+    public double getNextLevelRange() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.LONGRANGE_RANGE[this.level + 1];
+    }
+
+
+    @Override
+    public double getNextLevelPower() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.LONGRANGE_POWER[this.level + 1];
+    }
+
+    @Override
+    public double getNextLevelRateOfFire() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.LONGRANGE_RATE[this.level + 1];
+    }
+
+    @Override
+    public double getDamagePerHit() {
+        return Constants.LONGRANGE_DAMAGE_PER_HIT[this.level];
+    }
+
+
+    @Override
+    public double getNextLevelDamagePerHit() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.LONGRANGE_DAMAGE_PER_HIT[this.level + 1];
     }
 
     /*

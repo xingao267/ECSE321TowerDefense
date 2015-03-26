@@ -128,13 +128,15 @@ public class MapDisplay {
 
                 if (cell.hasTower()) {
                     gameController.setTowerSelectedOnMap(true);
+                    gameController.setSelectedTowerOnMap(cell.getTower());
 
                 } else if (gameController.isTowerSeletedInStore()) {
 
                     String towerType = gameController.getSelectedTowerTypeInStore();
                     try {
-                        Tower tower = gameController.purchaseTower(towerType, mapPosition.x, mapPosition.y,
-                                Constants.INITIAL_TOWER_LEVEL);
+                        Tower tower =
+                                gameController.purchaseTower(towerType, mapPosition.x,
+                                        mapPosition.y, Constants.INITIAL_TOWER_LEVEL);
                         cell.setTower(tower);
                         cell.setHasTower(true);
                     } catch (NoEnoughMoneyException e) {
@@ -160,7 +162,7 @@ public class MapDisplay {
                 // slightly darken the path
                 g.setColor(new Color(73, 16, 9, 150));
                 g.fillRect(r.x, r.y, r.width, r.height);
-                
+
                 gameController.setTowerCellHoveredOnMap(false);
             }
             if (r.contains(Screen.mouseClicked)) {

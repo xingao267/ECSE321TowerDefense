@@ -4,14 +4,22 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.imageio.ImageIO;
+
 import Controllers.GameController;
+import Exceptions.InvalidTowerTypeException;
+import Exceptions.MaxLevelReachedException;
 import OtherModels.Bank;
 import TowerModels.BomberTower;
 import TowerModels.DeceleratorTower;
 import TowerModels.LongRangeTower;
+import TowerModels.MultiTargetsTower;
 import TowerModels.RegularTower;
 import TowerModels.SpeedTower;
 import TowerModels.Tower;
@@ -23,8 +31,8 @@ import Utility.Constants;
  *
  */
 public class Store {
-    
-    private static final String UP_ARROW = "\u2192";
+
+    private static final String UP_ARROW = "\u2191";
 
     private Rectangle[] towers = new Rectangle[Constants.NUM_TOWERS];
     private Rectangle mainMenuButton, sendNextWaveButton;
@@ -70,7 +78,7 @@ public class Store {
                         2 * Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE / 2);
 
         sendNextWaveButton =
-                new Rectangle(Constants.MAIN_MENU_XPOS, Constants.SAVE_BUTTON_YPOS,
+                new Rectangle(Constants.MAIN_MENU_XPOS, Constants.SEND_NEXT_WANVE_YPOS,
                         7 * Constants.STORE_BUTTON_SIZE / 3, Constants.STORE_BUTTON_SIZE / 2);
 
         towerType = new ArrayList<Tower>();
@@ -86,9 +94,17 @@ public class Store {
 
         // Draw Buttons for each purchaseable tower
         for (int i = 0; i < towers.length; i++) {
-            // change fillRect to drawImage when tileset of tower images has been created
-            g.setColor(new Color(100, 100, 100));
-            g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
+
+            BufferedImage img;
+            try {
+
+                img = ImageIO.read(new File(Constants.TOWER_IMAGE_SET[i]));
+                g.drawImage(img, towers[i].x, towers[i].y, towers[i].width, towers[i].height, null);
+
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
             // TODO: add stuff that happens when a tower is purchased on click
             if (towers[i].contains(Screen.mouseLocation)) {
@@ -98,6 +114,7 @@ public class Store {
                     g.setFont(new Font("Courier New", Font.BOLD, 15));
                     g.drawString("You don't have enough money", 400, 30);
                     g.drawString("to buy this tower.", 400, 55);
+
                     g.setColor(new Color(0, 0, 0, 75));
                     g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
 
@@ -115,7 +132,7 @@ public class Store {
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
                     g.drawString("Cost: " + towerType.get(i).getInitialCost(), 575, 30);
 
-                    g.drawString("Power: " + towerType.get(i).getPower(), 400, 55);
+                    g.drawString("Power: " + towerType.get(i).getDamagePerHit(), 400, 55);
                     g.drawString("Range: " + towerType.get(i).getRange(), 500, 55);
                     g.drawString("Fire Rate: " + towerType.get(i).getRateOfFire(), 400, 80);
 
@@ -124,7 +141,6 @@ public class Store {
                     } else {
                         g.drawString("MultiTarget: No", 525, 80);
                     }
-
 
                     towerClickable[i] = true;
                 }
@@ -161,43 +177,47 @@ public class Store {
 
             Tower tower = gameController.getHoveredTowerOnMap();
 
-            if (tower.getLevel() < Constants.MAX_TOWER_LEVEL) {
-                
-                // Displays tower characteristics on right side of life and money icons
+            try {
+
+                g.drawString(
+                        "Power: " + tower.getDamagePerHit() + UP_ARROW
+                                + tower.getNextLevelDamagePerHit(), 400, 55);
+                g.drawString("Range: " + tower.getRange() + UP_ARROW + tower.getNextLevelRange(),
+                        530, 55);
+
+                g.drawString(
+                        "Fire Rate: " + tower.getRateOfFire() + UP_ARROW
+                                + tower.getNextLevelRateOfFire(), 400, 82);
+
+                if (tower.isMultiTargets()) {
+                    MultiTargetsTower multiTargettower = (MultiTargetsTower) tower;
+                    g.drawString("Effect Range: " + multiTargettower.getEffectRange() + UP_ARROW
+                            + multiTargettower.getNextLevelEffectRange(), 550, 82);
+                }
+
                 g.setColor(new Color(255, 255, 255));
                 g.setFont(new Font("Courier New", Font.BOLD, 13));
                 g.drawString(
-                        tower.getTowerType() + "-" + tower.getLevel() + UP_ARROW
+                        tower.getTowerType() + " lv" + tower.getLevel() + UP_ARROW
                                 + (tower.getLevel() + 1), 400, 30);
 
                 g.setFont(new Font("Courier New", Font.BOLD, 13));
                 g.drawString("Cost: " + tower.getUpgradeCost(), 575, 30);
 
-                g.drawString("Power: " + tower.getPower() + UP_ARROW, 400, 55);
-                g.drawString("Range: " + tower.getRange() + UP_ARROW, 500, 55);
-                g.drawString("Fire Rate: " + tower.getRateOfFire() + UP_ARROW, 400, 80);
-
-               
-            } else {
-                // Displays tower characteristics on right side of life and money icons
+            } catch (MaxLevelReachedException e) {
                 g.setColor(new Color(255, 255, 255));
-                g.setFont(new Font("Courier New", Font.BOLD, 15));
-                g.drawString(tower.getTowerType() + "-" + tower.getLevel(), 400, 30);
+                g.setFont(new Font("Courier New", Font.BOLD, 13));
+                g.drawString(tower.getTowerType() + " lv" + tower.getLevel(), 400, 30);
 
-                g.setFont(new Font("Courier New", Font.BOLD, 14));
-                g.drawString("Up: " + tower.getUpgradeCost(), 575, 30);
-
-                g.drawString("Power: " + tower.getPower(), 400, 55);
+                g.drawString("Power: " + tower.getDamagePerHit(), 400, 55);
                 g.drawString("Range: " + tower.getRange(), 500, 55);
                 g.drawString("Fire Rate: " + tower.getRateOfFire(), 400, 80);
 
+                if (tower.isMultiTargets()) {
+                    MultiTargetsTower multiTargettower = (MultiTargetsTower) tower;
+                    g.drawString("Effect Range: " + multiTargettower.getEffectRange(), 530, 80);
+                }
             }
-            if (tower.isMultiTargets()) {
-                g.drawString("MultiTarget: Yes", 530, 80);
-            } else {
-                g.drawString("MultiTarget: No", 530, 80);
-            }
-
         }
 
         // Draw Button to return to the main menu

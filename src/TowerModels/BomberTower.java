@@ -1,6 +1,7 @@
 package TowerModels;
 
 import CritterModels.Critter;
+import Exceptions.MaxLevelReachedException;
 import Utility.Constants;
 
 
@@ -44,6 +45,39 @@ public class BomberTower extends MultiTargetsTower {
     }
 
 
+    @Override
+    public double getNextLevelRange() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.BOMBER_RANGE[this.level + 1];
+    }
+
+
+    @Override
+    public double getNextLevelPower() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.BOMBER_POWER[this.level + 1];
+    }
+
+    @Override
+    public double getNextLevelRateOfFire() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.BOMBER_RATE[this.level + 1];
+    }
+
+    @Override
+    public double getNextLevelEffectRange() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.BOMBER_EFFECT_RANGE[this.level + 1];
+    }
+
     /*
      * (non-Javadoc)
      * 
@@ -55,6 +89,21 @@ public class BomberTower extends MultiTargetsTower {
                 + ", initialCost=" + initialCost + ", level=" + level + ", upgradeCost="
                 + upgradeCost + ", refundValue=" + refundValue + ", range=" + range + ", power="
                 + power + ", rateOfFire=" + rateOfFire + ", multiTargets=" + multiTargets + "]";
+    }
+
+
+    @Override
+    public double getDamagePerHit() {
+        return Constants.BOMBER_DAMAGE_PER_HIT[this.level];
+    }
+
+
+    @Override
+    public double getNextLevelDamagePerHit() throws MaxLevelReachedException {
+        if (this.level == Constants.MAX_TOWER_LEVEL) {
+            throw new MaxLevelReachedException();
+        }
+        return Constants.BOMBER_DAMAGE_PER_HIT[this.level + 1];
     }
 
 }

@@ -7,6 +7,7 @@ import CritterModels.ArmoredCritter;
 import CritterModels.BulletProofCritter;
 import CritterModels.Critter;
 import Exceptions.CritterDeadException;
+import Exceptions.MaxLevelReachedException;
 
 /**
  * The class is the generic base class Tower data model
@@ -67,6 +68,16 @@ public abstract class Tower {
             o.update();
         }
     }
+
+    public abstract double getNextLevelRange() throws MaxLevelReachedException;
+
+    public abstract double getNextLevelPower() throws MaxLevelReachedException;
+
+    public abstract double getNextLevelRateOfFire() throws MaxLevelReachedException;
+
+    public abstract double getDamagePerHit();
+
+    public abstract double getNextLevelDamagePerHit() throws MaxLevelReachedException;
 
     /**
      * @param xPos
