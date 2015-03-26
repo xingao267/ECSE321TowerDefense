@@ -214,6 +214,7 @@ public class MapDesignerDisplay implements Runnable{
 //			System.out.println("were here");
 			if(map.validPath()){
 				System.out.println("valid path");
+				map.clearIndicators();
 				mapLoader.saveMap(map, mapName);
 				Screen.gameRunning = true;
 				System.out.println("map saved");

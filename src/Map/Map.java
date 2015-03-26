@@ -64,6 +64,9 @@ public class Map {
 	/**Sets the starting tile of the map's path to a specified tile*/
 	public void setStart(Path start){
 		this.start=start;
+		int pathX = start.getXCoordinate();
+		int pathY = start.getYCoordinate();
+		this.cells[pathX][pathY] = this.start;
 	}
 	
 	/**Sets the end tile of the map's path to a specified tile*/
