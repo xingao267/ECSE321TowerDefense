@@ -161,8 +161,8 @@ public class MapDesignerDisplay implements Runnable{
      		if(!display.indicator.isEmpty()){
     			for(Rectangle r : display.indicator){
     				if(r.contains(Screen.mouseClicked)){
-    					System.out.println("indicator clicked");
-    					d.addPathNodeFromClick(Screen.mouseClicked, false); //not yet implemented in map designer
+    					//System.out.println("indicator clicked");
+    					d.addPathNodeFromClick(Screen.mouseClicked, false); 
     					Screen.mouseClickedReset();
     				}		
     			}
@@ -200,8 +200,12 @@ public class MapDesignerDisplay implements Runnable{
 			
 			MapLoader mapLoader = MapLoader.getUniqueInstance();
 			
+			d.endMap();
+			System.out.println("were here");
 			if(map.validPath()){
+				System.out.println("valid path");
 				mapLoader.saveMap(map, mapName);
+				System.out.println("map saved");
 			}
 		}
 		
@@ -213,7 +217,7 @@ public class MapDesignerDisplay implements Runnable{
 		while(!ready){
 			//System.out.println("phase 1");
 			try {
-				Thread.sleep(100);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}		

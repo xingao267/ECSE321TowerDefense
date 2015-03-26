@@ -50,17 +50,16 @@ public class MapDesigner {
 			previous.setNext(custom.getPath(i));
 		}
 		
-		custom.setEnd(custom.getPath(xCoords.size()-1));
-		custom.getPath(xCoords.size()-1).setEnd();
+		endMap();
 	}
 	
 	public void addPathNodeFromClick(Point p, boolean last){
 		custom.clearIndicators();
 		Point mapPoint= Utils.convertScreenToMapCoord(p);
 		int ixCoord= (int) mapPoint.getX();
-		System.out.println(ixCoord);
+		//System.out.println(ixCoord);
 		int iyCoord= (int) mapPoint.getY();
-		System.out.println(iyCoord);
+		//System.out.println(iyCoord);
 		
 		if (custom.pathSize()==0){
 			modifyNodeToPath(ixCoord, iyCoord, null, null);
@@ -110,6 +109,11 @@ public class MapDesigner {
 			}
 		}
 		
+	}
+	
+	public void endMap(){
+		custom.setEnd(custom.getPath(custom.pathSize()-1));
+		custom.getPath(custom.pathSize()-1).setEnd();
 	}
 	
 	/**This is an interface with the user to create a path through a blank map*/
