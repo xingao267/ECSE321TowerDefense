@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import CritterModels.Critter;
-import CritterModels.CritterGroupGenerator;
 import Exceptions.CritterDeadException;
 import Exceptions.InvalidTowerTypeException;
 import Exceptions.MaxLevelReachedException;
 import Exceptions.NoEnoughMoneyException;
-import OtherModels.Bank;
-import OtherModels.Player;
 import Map.Cell;
+import OtherModels.Bank;
 import TowerModels.BomberTower;
 import TowerModels.DeceleratorTower;
 import TowerModels.LongRangeTower;
@@ -21,8 +19,6 @@ import TowerModels.SpeedTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
-import Window.CritterDisplay;
-import Window.Screen;
 
 /**
  * TowerController Class
@@ -32,11 +28,36 @@ import Window.Screen;
  */
 public class GameController implements IGameController {
 
+    private static GameController uniqueInstance = null;
+
+    private Bank bank;
+
+    private List<Tower> towers;
+
+    private String selectedTowerTypeInStore;
+
+    private boolean isTowerSeletedInStore;
+
+    private boolean isTowerSelectedOnMap;
+
+    private GameController() {
+        bank = Bank.getUniqueInstance();
+        towers = new ArrayList<Tower>();
+        isTowerSeletedInStore = false;
+        isTowerSelectedOnMap = false;
+    }
+
+    public static synchronized GameController getUniqueInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new GameController();
+        }
+        return uniqueInstance;
+    }
 
     private int spawnTime = 100, spawnFrame = 0;
 
     @Override
-    public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Bank bank)
+    public Tower purchaseTower(String towerType, int xPos, int yPos, int level)
             throws NoEnoughMoneyException, InvalidTowerTypeException {
 
         Tower towerToPurchase = null;
@@ -56,6 +77,8 @@ public class GameController implements IGameController {
         }
 
         bank.removeFromBank(towerToPurchase.getInitialCost());
+        towers.add(towerToPurchase);
+
         return towerToPurchase;
     }
 
@@ -67,8 +90,7 @@ public class GameController implements IGameController {
     }
 
     @Override
-    public void upgradeTower(Tower tower, Bank bank) throws MaxLevelReachedException,
-            NoEnoughMoneyException {
+    public void upgradeTower(Tower tower) throws MaxLevelReachedException, NoEnoughMoneyException {
 
         if (tower.getLevel() < Constants.MAX_TOWER_LEVEL) {
             tower.upgrade();
@@ -79,8 +101,10 @@ public class GameController implements IGameController {
     }
 
     @Override
-    public void sellTower(Tower tower, Bank bank) {
+    public void sellTower(Tower tower) {
 
+        tower.setInGame(false);
+        towers.remove(tower);
         bank.returnToBank(tower.getRefundValue());
 
     }
@@ -108,39 +132,43 @@ public class GameController implements IGameController {
 
         Critter closestCritter = detectClosestTarget(tower, critters);
 
-        List<Critter> crittersSelected = new ArrayList<Critter>();
+        if (closestCritter != null) {
+            List<Critter> crittersSelected = new ArrayList<Critter>();
 
-        if (tower.isMultiTargets()) {
+            if (tower.isMultiTargets()) {
 
-            MultiTargetsTower multiTargetsTower = (MultiTargetsTower) tower;
+                MultiTargetsTower multiTargetsTower = (MultiTargetsTower) tower;
 
-            for (Critter critter : critters) {
-                double distance =
-                        Utils.getDistance(closestCritter.getxPos(), closestCritter.getyPos(),
-                                critter.getxPos(), critter.getyPos());
+                for (Critter critter : critters) {
+                    double distance =
+                            Utils.getDistance(closestCritter.getxPos(), closestCritter.getyPos(),
+                                    critter.getxPos(), critter.getyPos());
 
-                // Add critters around the closest critter within the bomb
-                // effect range of the Tower
-                if (distance <= multiTargetsTower.getEffectRange()) {
-                    crittersSelected.add(critter);
+                    // Add critters around the closest critter within the bomb
+                    // effect range of the Tower
+                    if (distance <= multiTargetsTower.getEffectRange()) {
+                        crittersSelected.add(critter);
+                    }
                 }
-            }
 
+            } else {
+                crittersSelected.add(closestCritter);
+            }
+            return crittersSelected;
         } else {
-            crittersSelected.add(closestCritter);
+            return null;
         }
-        return crittersSelected;
     }
 
     @Override
-    public void towerAttackTargets(Tower tower, List<Critter> critters, Bank bank)
-            throws CritterDeadException {
+    public void towerAttackTargets(Tower tower, List<Critter> critters) throws CritterDeadException {
 
-        for (Critter critter : critters) {
-            tower.attack(critter);
-            bank.returnToBank(critter.getBounty());
+        if (critters != null) {
+            for (Critter critter : critters) {
+                tower.attack(critter);
+                bank.returnToBank(critter.getBounty());
+            }
         }
-
     }
 
     /**
@@ -152,39 +180,98 @@ public class GameController implements IGameController {
      */
     private Critter detectClosestTarget(Tower tower, List<Critter> critters) {
 
-        Critter closestTarget = critters.get(0);
-        double minDistance =
-                Utils.getDistance(tower.getxPos(), tower.getyPos(), closestTarget.getxPos(),
-                        closestTarget.getyPos());
+        if (!critters.isEmpty()) {
+            Critter closestTarget = critters.get(0);
+            double minDistance =
+                    Utils.getDistance(tower.getxPos(), tower.getyPos(), closestTarget.getxPos(),
+                            closestTarget.getyPos());
 
-        for (Critter critter : critters) {
-            double distance =
-                    Utils.getDistance(tower.getxPos(), tower.getyPos(), critter.getxPos(),
-                            critter.getyPos());
-            if (distance < minDistance) {
-                closestTarget = critter;
+            for (Critter critter : critters) {
+                double distance =
+                        Utils.getDistance(tower.getxPos(), tower.getyPos(), critter.getxPos(),
+                                critter.getyPos());
+                if (distance < minDistance) {
+                    closestTarget = critter;
+                }
             }
+            return closestTarget;
         }
-        return closestTarget;
+        return null;
     }
 
     @Override
     public void spawnCritterGroup(Cell entryPoint, List<Critter> critterGroup) {
-//        List<Critter> critterGroup = group.getCritterGroup();
+        // List<Critter> critterGroup = group.getCritterGroup();
 
         if (spawnFrame >= spawnTime) {
             for (int i = 0; i < critterGroup.size(); i++) {
-                if (!critterGroup.get(i).isInGame() && !critterGroup.get(i).hasReachedExit()){
+                if (!critterGroup.get(i).isInGame() && !critterGroup.get(i).hasReachedExit()) {
                     critterGroup.get(i).spawn(entryPoint);
-//                    System.out.println("critter spawned at: " + "("+critterGroup.get(i).getScreenXPos()+","+critterGroup.get(i).getScreenYPos());
+                    // System.out.println("critter spawned at: " +
+                    // "("+critterGroup.get(i).getScreenXPos()+","+critterGroup.get(i).getScreenYPos());
                     break;
                 }
             }
             spawnFrame = 0;
-        } 
-        else {
+        } else {
             spawnFrame++;
         }
+    }
+
+    /**
+     * @return the towers
+     */
+    public List<Tower> getTowers() {
+        return towers;
+    }
+
+    /**
+     * @param towers the towers to set
+     */
+    public void setTowers(List<Tower> towers) {
+        this.towers = towers;
+    }
+
+    /**
+     * @return the selectedTowerTypeInStore
+     */
+    public String getSelectedTowerTypeInStore() {
+        return selectedTowerTypeInStore;
+    }
+
+    /**
+     * @param selectedTowerTypeInStore the selectedTowerTypeInStore to set
+     */
+    public void setSelectedTowerTypeInStore(String selectedTowerTypeInStore) {
+        this.selectedTowerTypeInStore = selectedTowerTypeInStore;
+    }
+
+    /**
+     * @return the isTowerSeletedInStore
+     */
+    public boolean isTowerSeletedInStore() {
+        return isTowerSeletedInStore;
+    }
+
+    /**
+     * @param isTowerSeletedInStore the isTowerSeletedInStore to set
+     */
+    public void setTowerSeletedInStore(boolean isTowerSeletedInStore) {
+        this.isTowerSeletedInStore = isTowerSeletedInStore;
+    }
+
+    /**
+     * @return the isTowerSelectedOnMap
+     */
+    public boolean isTowerSelectedOnMap() {
+        return isTowerSelectedOnMap;
+    }
+
+    /**
+     * @param isTowerSelectedOnMap the isTowerSelectedOnMap to set
+     */
+    public void setTowerSelectedOnMap(boolean isTowerSelectedOnMap) {
+        this.isTowerSelectedOnMap = isTowerSelectedOnMap;
     }
 
 }

@@ -2,8 +2,6 @@ package Utility;
 
 import java.awt.Point;
 
-import Map.Cell;
-
 public class Utils {
 
     public static double getDistance(int xPosA, int yPosA, int xPosB, int yPosB) {

@@ -6,9 +6,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import CritterModels.Critter;
-import Map.Map;
 import Utility.Constants;
-import Utility.Utils;
 
 public class CritterDisplay {
 
@@ -32,7 +30,7 @@ public class CritterDisplay {
 		if(critter.isInGame()){
 			g.setColor(new Color(0, 0, 0));
 			g.fillRect(critterDisplay.x,critterDisplay.y, critterDisplay.width, critterDisplay.height);
-			System.out.println("Critter display at: " + "("+ critterDisplay.x + "," + critterDisplay.y);
+			System.out.println("Critter display at: " + "("+ critterDisplay.x + "," + critterDisplay.y + ")");
 		}
 	}
 }

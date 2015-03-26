@@ -1,9 +1,7 @@
 package CritterModels;
 
 
-import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Rectangle;
 
 import Map.Cell;
 import OtherModels.Player;

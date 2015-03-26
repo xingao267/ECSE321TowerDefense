@@ -1,5 +1,8 @@
 package TowerModels;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import CritterModels.ArmoredCritter;
 import CritterModels.BulletProofCritter;
 import CritterModels.Critter;
@@ -46,6 +49,25 @@ public abstract class Tower {
     /** Tower can inflict damage to multiple targets at once or not. */
     protected boolean multiTargets;
 
+    /** Tower is placed and in game or not. */
+    protected boolean inGame;
+
+    private List<ITowerObserver> towerObservers;
+
+    public void addObserver(ITowerObserver o) {
+        towerObservers.add(o);
+    }
+
+    public void removeObserver(ITowerObserver o) {
+        towerObservers.remove(o);
+    }
+
+    protected void notifyTowerObservers() {
+        for (ITowerObserver o : towerObservers) {
+            o.update();
+        }
+    }
+
     /**
      * @param xPos
      * @param yPos
@@ -70,6 +92,8 @@ public abstract class Tower {
         this.power = power;
         this.rateOfFire = rateOfFire;
         this.multiTargets = multiTargets;
+        this.inGame = true;
+        this.towerObservers = new ArrayList<ITowerObserver>();
     }
 
     /**
@@ -272,6 +296,20 @@ public abstract class Tower {
      */
     public void setMultiTargets(boolean multiTargets) {
         this.multiTargets = multiTargets;
+    }
+
+    /**
+     * @return the inGame
+     */
+    public boolean isInGame() {
+        return inGame;
+    }
+
+    /**
+     * @param inGame the inGame to set
+     */
+    public void setInGame(boolean inGame) {
+        this.inGame = inGame;
     }
 
     /*

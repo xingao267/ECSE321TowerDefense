@@ -3,14 +3,11 @@ package Controllers;
 import java.util.List;
 
 import CritterModels.Critter;
-import CritterModels.CritterGroupGenerator;
 import Exceptions.CritterDeadException;
 import Exceptions.InvalidTowerTypeException;
 import Exceptions.MaxLevelReachedException;
 import Exceptions.NoEnoughMoneyException;
 import Map.Cell;
-import OtherModels.Bank;
-import OtherModels.Player;
 import TowerModels.Tower;
 
 /**
@@ -21,20 +18,20 @@ import TowerModels.Tower;
  */
 public interface IGameController {
 
+
     /**
      * Purchase the Tower
      * 
      * @param towerType
      * @param xPos
      * @param yPos
-     * @param bank
      * @param level
      * 
      * @return the tower object
      * @throws NoEnoughMoneyException
      * @throws InvalidTowerTypeException
      */
-    public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Bank bank)
+    public Tower purchaseTower(String towerType, int xPos, int yPos, int level)
             throws NoEnoughMoneyException, InvalidTowerTypeException;
 
     /**
@@ -50,20 +47,17 @@ public interface IGameController {
      * Upgrade the tower to one level up
      *
      * @param tower
-     * @param bank
      * @throws MaxLevelReachedException
      * @throws NoEnoughMoneyException
      */
-    public void upgradeTower(Tower tower, Bank bank) throws MaxLevelReachedException,
-            NoEnoughMoneyException;
+    public void upgradeTower(Tower tower) throws MaxLevelReachedException, NoEnoughMoneyException;
 
     /**
      * Sell the Tower
      *
      * @param tower
-     * @param bank
      */
-    public void sellTower(Tower tower, Bank bank);
+    public void sellTower(Tower tower);
 
     /**
      * Detect targets in the fire range of the tower
@@ -88,11 +82,9 @@ public interface IGameController {
      * 
      * @param tower
      * @param critters
-     * @param bank
      * @throws CritterDeadException
      */
-    public void towerAttackTargets(Tower tower, List<Critter> critters, Bank bank)
-            throws CritterDeadException;
+    public void towerAttackTargets(Tower tower, List<Critter> critters) throws CritterDeadException;
 
     /**
      * Spawns critter group one by one every second at the entry point of the path
