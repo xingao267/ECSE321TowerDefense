@@ -175,6 +175,7 @@ public class MapDesignerDisplay implements Runnable{
 			g.fillRect(mainMenuButton.x, mainMenuButton.y, mainMenuButton.width, mainMenuButton.height);
 		}
 		if(mainMenuButton.contains(Screen.mouseClicked)){
+			System.out.println("Main Menu");
 			Screen.displayMapDesigner = false;
 			Screen.inGameplay = false;
 			Screen.displayMap1 = false;
@@ -185,6 +186,7 @@ public class MapDesignerDisplay implements Runnable{
 			Screen.crittersGenerated = false;
 			Screen.levelStarted = false;
 			Screen.displayMainMenu = true;
+			Screen.gameRunning = true;
 			
 			//TODO: stop/reset everything to do with designing a map.
 		}
@@ -213,6 +215,7 @@ public class MapDesignerDisplay implements Runnable{
 			if(map.validPath()){
 				System.out.println("valid path");
 				mapLoader.saveMap(map, mapName);
+				Screen.gameRunning = true;
 				System.out.println("map saved");
 			}
 		}

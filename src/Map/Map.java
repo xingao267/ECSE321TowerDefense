@@ -69,6 +69,9 @@ public class Map {
 	/**Sets the end tile of the map's path to a specified tile*/
 	public void setEnd(Path end){
 		this.end=end;
+		int pathX = end.getXCoordinate();
+		int pathY = end.getYCoordinate();
+		this.cells[pathX][pathY] = this.end;
 	}
 	
 	/**Returns true if the tile located at the specified coordinates is a path, false otherwise*/
@@ -129,20 +132,22 @@ public class Map {
 	}
 	
 	/**Returns true if the path contained by the map has a connected path from the starting tile to the end tile*/
-	public boolean validPath(){            //TODO:rewrite this method to do a better check
+	public boolean validPath(){            //TODO: Put in checks to see which path it's currently at
 		int max=this.width*this.height;
 		int count=0;
 		Path current= start;
-		while(count<max){
+		while(count<=max){
 			if(!validNeighbor(current)){
+				System.out.println("!validNeighbour");
 				return false;	
 			}
 			if(current.next().isExit()){
 				return true;
 			}
 			else current=current.next();
+			count++;
 		}
-		
+		System.out.println("False");
 		return false;
 	}
 	

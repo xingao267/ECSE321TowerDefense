@@ -38,7 +38,7 @@ public class Screen extends JPanel implements Runnable{
 	public MapDesignerDisplay mapDesigner;
 	
 	private boolean isFirst = true;
-	private boolean gameRunning = true;
+	public static boolean gameRunning = true;
 	private boolean suspended = false;
 	private boolean designingMap=false; //added for while loop for map designer
 	
@@ -213,9 +213,9 @@ public class Screen extends JPanel implements Runnable{
 			
 			repaint();
 			
-			/*if(displayMapDesigner){
+			if(displayMapDesigner){
 				gameRunning = false;
-			}*/
+			}
 			
 			try{
 				game.sleep(10);
