@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -64,12 +63,10 @@ public class Screen extends JPanel implements Runnable{
 	public static Store store;
 	
 	public static CritterDisplay critterDisplay;
-	public List<Critter> critters;
-	public static List<CritterDisplay> critterGroupDisplay;
+	public ArrayList<Critter> critters;
+	public static ArrayList<CritterDisplay> critterGroupDisplay;
 	public static CritterGroupGenerator group;
 	public static Critter critter;
-	
-	List<Cell> path = new ArrayList<Cell>();
 	
 	public static IconDisplay icons;
 	
@@ -87,10 +84,7 @@ public class Screen extends JPanel implements Runnable{
 		store = new Store();
 		icons = new IconDisplay();
 		player = Player.getUniqueInstance();
-		
-		path.add(new Cell(0, 8));
-		path.add(new Cell(1, 8));
-		path.add(new Cell(1,7));
+		gameController = new GameController();
 		
 		//TODO: initialize all tilesets (images) here
 	}
@@ -132,28 +126,6 @@ public class Screen extends JPanel implements Runnable{
 				map = easyMap.getEasyMap();
 				mapDisplay = new MapDisplay(map);
 				mapDisplay.draw(g);
-//				critterGroupDisplay = new ArrayList<CritterDisplay>();
-				
-//				critter.move(40);
-				if(levelStarted){
-					if(!crittersGenerated){
-						critter = new NormalCritter(gameLevel);
-						
-//						group = new CritterGroupGenerator(gameLevel);
-						crittersGenerated = true;
-					}
-
-//					critter.move(path.get(1), 40);
-//					critterDisplay = new CritterDisplay(critter);
-//					for(int i = 0; i < critterGroupDisplay.size(); i++){
-//						critterGroupDisplay.get(i).draw(g);
-//					}
-					critterDisplay = new CritterDisplay(critter);
-					
-					if(critter.isInGame()){
-						critterDisplay.draw(g);
-					}
-				}
 			}
 			
 			if(displayMap2){
@@ -161,7 +133,6 @@ public class Screen extends JPanel implements Runnable{
 				map = mediumMap.getMediumMap();
 				mapDisplay = new MapDisplay(map);
 				mapDisplay.draw(g);
-				
 			}
 			
 			if(displayMap3){
@@ -175,26 +146,39 @@ public class Screen extends JPanel implements Runnable{
 				mapDisplay = new MapDisplay(CustomMap);
 				mapDisplay.draw(g);
 			}
-		}
-	}
-	
-	public int spawnTime = 1000, spawnFrame = 0;
-	public void spawnCritterGroup() {
-    	List<Critter> critterGroup = group.getCritterGroup();
-    	
-    	if(spawnFrame >= spawnTime){
-	    	for(int i = 0; i < critterGroup.size(); i++){
-				if(!critterGroup.get(i).isInGame()){
-					critterGroup.get(i).spawn(map.getStart());
-					critterGroupDisplay.add(new CritterDisplay(critterGroup.get(i)));
-					break;
+			
+			if(levelStarted){
+				critterGroupDisplay = new ArrayList<CritterDisplay>();
+				if(!crittersGenerated){
+//					critter = new NormalCritter(gameLevel);	
+					critters = new ArrayList<Critter>();
+//					critters.add(new NormalCritter(gameLevel));
+//					critters.add(new NormalCritter(gameLevel));
+//					critters.add(new NormalCritter(gameLevel));
+					group = new CritterGroupGenerator(gameLevel);
+					critters = group.getCritterGroup();
+//					for(int i = 0; i < critters.size(); i++){
+//						critterGroupDisplay.add(new CritterDisplay(critters.get(i)));
+//					}
+					crittersGenerated = true;
+				}
+				else{
+					
+//					critterDisplay = new CritterDisplay(critter);
+					
+					for(int i = 0; i < critters.size(); i++){
+						if(critters.get(i).isInGame()){
+							critterGroupDisplay.add(new CritterDisplay(critters.get(i)));
+							System.out.println(critterGroupDisplay.size());
+							critterGroupDisplay.get(i).draw(g);
+						}
+					}
+//					if(critter.isInGame()){
+//						critterDisplay.draw(g);
+//					}
 				}
 			}
-	    	spawnFrame = 0;
-    	}
-    	else{
-    		spawnFrame++;
-    	}
+		}
 	}
 	
 	
@@ -207,25 +191,21 @@ public class Screen extends JPanel implements Runnable{
 		while(gameRunning){
 			if(levelStarted){
 				if(crittersGenerated){
-					if(!critter.isInGame() && !critter.hasReachedExit()){
+					gameController.spawnCritterGroup(map.getStart(), critters);
+					for(int i = 0; i < critters.size(); i++){
+						if(critters.get(i).isInGame() && !critters.get(i).hasReachedExit()){
+							critters.get(i).moveAlongPath(critters.get(i).getSpeed(), player);
+						}
+					}
+/*					if(!critter.isInGame() && !critter.hasReachedExit()){
 						System.out.println("critter spawned");
 						critter.spawn(map.getStart());
-//						critter.move(path.get(1), 40);
 					}
 					else{
 						critter.moveAlongPath(20, player);
 					}
-				}
-			}
-//					gameController.spawnCritterGroup(map.getStart(), group);
-	/*				for(int i = 0; i < group.getCritterGroup().size(); i++){
-						if(!group.getCritterGroup().get(i).isInGame()){
-							group.getCritterGroup().get(i).spawn(map.getStart());
-							critterGroupDisplay.add(new CritterDisplay(group.getCritterGroup().get(i)));
-							break;
-						}
-					}
-	*/				
+*/				}
+			}				
 		
 			
 			repaint();
@@ -237,10 +217,6 @@ public class Screen extends JPanel implements Runnable{
 			try{
 				game.sleep(10);
 			} catch(Exception e){}	
-			
-		}
-		
-		if(levelStarted){
 			
 		}
 		

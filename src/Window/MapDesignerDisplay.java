@@ -176,6 +176,14 @@ public class MapDesignerDisplay implements Runnable{
 		}
 		if(mainMenuButton.contains(Screen.mouseClicked)){
 			Screen.displayMapDesigner = false;
+			Screen.inGameplay = false;
+			Screen.displayMap1 = false;
+			Screen.displayMap2 = false;
+			Screen.displayMap3 = false;
+			Screen.displayCustomMap = false;
+			Screen.displayMapSelectorPane = false;
+			Screen.crittersGenerated = false;
+			Screen.levelStarted = false;
 			Screen.displayMainMenu = true;
 			
 			//TODO: stop/reset everything to do with designing a map.

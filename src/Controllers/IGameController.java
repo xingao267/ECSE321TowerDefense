@@ -10,6 +10,7 @@ import Exceptions.MaxLevelReachedException;
 import Exceptions.NoEnoughMoneyException;
 import Map.Cell;
 import OtherModels.Bank;
+import OtherModels.Player;
 import TowerModels.Tower;
 
 /**
@@ -99,6 +100,6 @@ public interface IGameController {
      * @param critterGroup Group of critters to be spawned
      * @param entryPoint First cell on path where critters will be spawned
      */
-    public void spawnCritterGroup(Cell entryPoint, CritterGroupGenerator group);
+    public void spawnCritterGroup(Cell entryPoint, List<Critter> critterGroup);
 
 }

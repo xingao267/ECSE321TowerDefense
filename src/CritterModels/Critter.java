@@ -17,7 +17,7 @@ import Window.Screen;
  * @author Jose
  *
  */
-public abstract class Critter extends Rectangle {
+public abstract class Critter {
 
     /** speed of critter. Range from 0 to 1 */
     protected double speed;
@@ -66,8 +66,6 @@ public abstract class Critter extends Rectangle {
     public Critter(int level) {
 
         this.level = level;
-//        this.xPos = xPos;
-//        this.yPos = yPos;
         this.isBeingHit = false;
         
     }
@@ -109,8 +107,8 @@ public abstract class Critter extends Rectangle {
     public void moveAlongPath(double speed, Player player) {
         // physics of critter movement
 //    	screenXPos++;
-    	
-    	if(walkFrame >= 11 - speed){
+    	System.out.println("critter moved");
+    	if(walkFrame >= 11-speed){
     		if(direction == right){
     			screenXPos++;
     		}else if(direction == left){
@@ -205,12 +203,6 @@ public abstract class Critter extends Rectangle {
     	player.setLifePoints(player.getLifePoints() - strength);
     }
     
-    
-    public void draw(Graphics g){
-    	if(inGame){
-    		g.fillRect(x, y, width, height);
-    	}
-    }
 
     public void setLocation(int x, int y) {
         this.xPos = x;

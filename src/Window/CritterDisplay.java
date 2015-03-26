@@ -32,6 +32,7 @@ public class CritterDisplay {
 		if(critter.isInGame()){
 			g.setColor(new Color(0, 0, 0));
 			g.fillRect(critterDisplay.x,critterDisplay.y, critterDisplay.width, critterDisplay.height);
+			System.out.println("Critter display at: " + "("+ critterDisplay.x + "," + critterDisplay.y);
 		}
 	}
 }

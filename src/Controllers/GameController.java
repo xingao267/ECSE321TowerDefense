@@ -10,6 +10,7 @@ import Exceptions.InvalidTowerTypeException;
 import Exceptions.MaxLevelReachedException;
 import Exceptions.NoEnoughMoneyException;
 import OtherModels.Bank;
+import OtherModels.Player;
 import Map.Cell;
 import TowerModels.BomberTower;
 import TowerModels.DeceleratorTower;
@@ -32,7 +33,7 @@ import Window.Screen;
 public class GameController implements IGameController {
 
 
-    private int spawnTime = 1000, spawnFrame = 0;
+    private int spawnTime = 100, spawnFrame = 0;
 
     @Override
     public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Bank bank)
@@ -168,27 +169,22 @@ public class GameController implements IGameController {
     }
 
     @Override
-    public void spawnCritterGroup(Cell entryPoint, CritterGroupGenerator group) {
-        List<Critter> critterGroup = group.getCritterGroup();
+    public void spawnCritterGroup(Cell entryPoint, List<Critter> critterGroup) {
+//        List<Critter> critterGroup = group.getCritterGroup();
 
         if (spawnFrame >= spawnTime) {
             for (int i = 0; i < critterGroup.size(); i++) {
-                if (!critterGroup.get(i).isInGame()) {
+                if (!critterGroup.get(i).isInGame() && !critterGroup.get(i).hasReachedExit()){
                     critterGroup.get(i).spawn(entryPoint);
-                    Screen.critterGroupDisplay.add(new CritterDisplay(critterGroup.get(i)));
+//                    System.out.println("critter spawned at: " + "("+critterGroup.get(i).getScreenXPos()+","+critterGroup.get(i).getScreenYPos());
                     break;
                 }
             }
             spawnFrame = 0;
-        } else {
+        } 
+        else {
             spawnFrame++;
         }
-
-        /*
-         * for (int i = 0; i < critterGroup.size(); i++) { long lastExecutionTime = 0; if
-         * (System.currentTimeMillis() - lastExecutionTime >= 1000) {
-         * critterGroup.get(i).spawn(entryPoint); lastExecutionTime = System.currentTimeMillis(); }
-         * }
-         */}
+    }
 
 }

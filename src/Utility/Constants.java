@@ -19,6 +19,7 @@ public class Constants {
     public static final int STORE_BUTTON_SIZE = 50;
     public static final int STORE_SPACING = 8;
     public static final int STORE_OFFSET = 15;
+    public static final int STORE_YPOS = 15;
     public static final int NUM_TOWERS = 5;
 
     /** Main Menu Button Contants */
@@ -151,7 +152,7 @@ public class Constants {
     public static final int MAX_CRITTER_LEVEL = 20;
 
     /** Armored Critter Constants. */
-    public static final double ARMORED_CRITTER_SPEED = 0.4;
+    public static final int ARMORED_CRITTER_SPEED = 4;
     public static final int ARMORED_CRITTER_BOUNTY = 2;
     public static final int ARMORED_CRITTER_STRENGTH = 1;
 
@@ -159,27 +160,27 @@ public class Constants {
     public static final int BOSS_CRITTER_STRENGTH = 5;
 
     /** Bullet Proof Critter Constants. */
-    public static final double BULLET_PROOF_CRITTER_SPEED = 0.5;
+    public static final int BULLET_PROOF_CRITTER_SPEED = 5;
     public static final int BULLET_PROOF_CRITTER_BOUNTY = 2;
     public static final int BULLET_PROOF_CRITTER_STRENGTH = 1;
 
     /** Ghost Critter Constants. */
-    public static final double GHOST_CRITTER_SPEED = 0.6;
+    public static final int GHOST_CRITTER_SPEED = 6;
     public static final int GHOST_CRITTER_BOUNTY = 2;
     public static final int GHOST_CRITTER_STRENGTH = 1;
 
     /** Normal Critter Constants. */
-    public static final double NORMAL_CRITTER_SPEED = 0.5;
+    public static final int NORMAL_CRITTER_SPEED = 10;
     public static final int NORMAL_CRITTER_BOUNTY = 2;
     public static final int NORMAL_CRITTER_STRENGTH = 1;
 
     /** Speed Critter Constants. */
-    public static final double SPEED_CRITTER_SPEED = 1.0;
+    public static final int SPEED_CRITTER_SPEED = 10;
     public static final int SPEED_CRITTER_BOUNTY = 2;
     public static final int SPEED_CRITTER_STRENGTH = 1;
 
     /** Regenerative Critter Constants. */
-    public static final double REGENERATIVE_CRITTER_SPEED = 0.5;
+    public static final int REGENERATIVE_CRITTER_SPEED = 5;
     public static final int REGENERATIVE_CRITTER_BOUNTY = 2;
     public static final int REGENERATIVE_CRITTER_STRENGTH = 1;
 

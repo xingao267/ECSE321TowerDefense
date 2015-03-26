@@ -1,8 +1,7 @@
 package CritterModels;
 
 import java.awt.Point;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 
 import Map.Cell;
 import OtherModels.Player;
@@ -16,7 +15,7 @@ import Utility.Utils;
  */
 public class CritterGroupGenerator {
 
-    private List<Critter> critterGroup;
+    private ArrayList<Critter> critterGroup;
 
     /**
      * Constructor of the CritterGroupGenerator class
@@ -34,7 +33,7 @@ public class CritterGroupGenerator {
      */
     public void generateGroup(int level) {
         int numCritters;
-        critterGroup = new LinkedList<Critter>();
+        critterGroup = new ArrayList<Critter>();
 
         switch (level) {
             case 1: {
@@ -237,7 +236,7 @@ public class CritterGroupGenerator {
      * 
      * @return A list of critters spawned at the start of a level
      */
-    public List<Critter> getCritterGroup() {
+    public ArrayList<Critter> getCritterGroup() {
         return critterGroup;
     }
 
@@ -246,7 +245,7 @@ public class CritterGroupGenerator {
      * 
      * @param critterGroup
      */
-    public void setCritterGroup(List<Critter> critterGroup) {
+    public void setCritterGroup(ArrayList<Critter> critterGroup) {
         this.critterGroup = critterGroup;
     }
 }
