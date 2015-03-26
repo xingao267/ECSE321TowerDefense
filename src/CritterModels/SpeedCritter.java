@@ -24,6 +24,7 @@ public class SpeedCritter extends Critter {
             this.bounty += (level / 5) * this.bounty;
         }
         this.health = 15 * level * level + 5 * level + 80;
+        this.maxHealth = health;
     }
 
 }

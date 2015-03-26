@@ -10,6 +10,17 @@ public class Utils {
 
     }
     
+    public static double convertCritterHealthToDisplayWidth(double currentHealth, double maxHealth){
+    	
+    	if(currentHealth >= maxHealth) return Constants.STORE_BUTTON_SIZE;
+    	else{
+    		double ratio = currentHealth/maxHealth;
+	    	double displayWidth = Constants.STORE_BUTTON_SIZE*ratio;
+	    	
+	    	return displayWidth;	
+    	}
+    }
+    
     public static Point convertMapCoordToScreen(int xCoord, int yCoord){
     	Point screenPoint = new Point(Constants.MAP_INITIAL_XPOS + Constants.MAP_CELL_SIZE*xCoord,
     			Constants.MAP_INITIAL_YPOS + Constants.MAP_CELL_SIZE*yCoord);

@@ -40,6 +40,8 @@ public class Constants {
     /** Initial Bank balance. */
     public static final int INITIAL_BANK_BALANCE = 30;
 
+    /*--------------------------------------------------------------------------------------------------------------------*/
+    
     /** Initial Tower Level. */
     public static final int INITIAL_TOWER_LEVEL = 1;
 
@@ -170,7 +172,7 @@ public class Constants {
     public static final int GHOST_CRITTER_STRENGTH = 1;
 
     /** Normal Critter Constants. */
-    public static final int NORMAL_CRITTER_SPEED = 10;
+    public static final int NORMAL_CRITTER_SPEED = 5;
     public static final int NORMAL_CRITTER_BOUNTY = 2;
     public static final int NORMAL_CRITTER_STRENGTH = 1;
 

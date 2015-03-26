@@ -20,8 +20,9 @@ public abstract class Critter {
     /** speed of critter. Range from 0 to 1 */
     protected double speed;
 
-    /** speed of critter. */
+    /** health of critter. */
     protected double health;
+    protected double maxHealth;
 
     /** bounty awarded of killing a critter. */
     protected int bounty;
@@ -64,8 +65,7 @@ public abstract class Critter {
     public Critter(int level) {
 
         this.level = level;
-        this.isBeingHit = false;
-        
+        this.isBeingHit = false; 
     }
 
     /**
@@ -102,10 +102,9 @@ public abstract class Critter {
      * @param nextYPos Y position of the next cell
      * @param speed Speed at which critter will move to the next cell
      */
-    public void moveAlongPath(double speed, Player player) {
+    public void moveAlongPath(double speed, Player player){
         // physics of critter movement
-//    	screenXPos++;
-    	System.out.println("critter moved");
+
     	if(walkFrame >= 11-speed){
     		if(direction == right){
     			screenXPos++;
@@ -181,17 +180,7 @@ public abstract class Critter {
     	}else{
     		walkFrame ++;
     	}
-    	
-    	
-/*    	Point nextScreenPoint = Utils.convertMapCoordToScreen(nextCell.getXCoordinate(), 
-        		nextCell.getYCoordinate());
-    	
-        setxPos(nextCell.getXCoordinate());
-        setyPos(nextCell.getYCoordinate());
-        
-        setScreenXPos((int) nextScreenPoint.getX());
-        setScreenYPos((int) nextScreenPoint.getY());
- */   }
+    }
     
     public void removeCritter(){
     	inGame = false;
@@ -234,7 +223,21 @@ public abstract class Critter {
     public void setHealth(double health) {
         this.health = health;
     }
-
+    
+    /**
+     * @return the max health
+     */
+	public double getMaxHealth() {
+		return maxHealth;
+	}
+	
+	/**
+     * @param health the max health to set
+     */
+	public void setMaxHealth(double maxHealth) {
+		this.maxHealth = maxHealth;
+	}
+		
     /**
      * @return the bounty
      */
@@ -364,6 +367,8 @@ public abstract class Critter {
 	public void setReachedExit(boolean reachedExit) {
 		this.reachedExit = reachedExit;
 	}
+
+	
 
 	/*
      * (non-Javadoc)

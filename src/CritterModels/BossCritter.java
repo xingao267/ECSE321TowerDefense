@@ -21,6 +21,7 @@ public class BossCritter extends Critter {
         this.speed = speed;
         this.bounty = bounty;
         this.health = health;
+        this.maxHealth = health;
     }
 
 }
