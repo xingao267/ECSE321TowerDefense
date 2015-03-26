@@ -161,7 +161,6 @@ public class Screen extends JPanel implements Runnable {
 
             if (displayCustomMap) {
                 mapDisplay = new MapDisplay(map);
-                System.out.println("The start of the path is " + map.getStart());
                 mapDisplay.draw(g);
             }
 

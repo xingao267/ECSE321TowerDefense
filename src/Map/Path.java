@@ -65,13 +65,6 @@ public class Path extends Cell {
 		this.isExit = true;
 	}
 	
-	/**
-	 * Returns previous cell in path
-	 * @return
-	 */
-	/*public Cell previous(){
-		return this.previous;
-	}*/
 	
 	/**
 	 * Returns true if cell is entry node
