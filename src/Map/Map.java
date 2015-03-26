@@ -136,18 +136,30 @@ public class Map {
 		int max=this.width*this.height;
 		int count=0;
 		Path current= start;
-		while(count<=max){
+//		int currentX= current.getXCoordinate();
+//		int currentY= current.getYCoordinate();
+//		boolean isExit = current.isExit();
+		
+		while(count<max){
+			
+//			System.out.println("Current X: " + currentX);
+//			System.out.println("Current Y: " + currentY);
+//			System.out.println("Exit Node? " + isExit);
+			
 			if(!validNeighbor(current)){
-				System.out.println("!validNeighbour");
+//				System.out.println("!validNeighbour");
 				return false;	
 			}
 			if(current.next().isExit()){
 				return true;
 			}
-			else current=current.next();
+			current=current.next();
+//			currentX= current.getXCoordinate();
+//			currentY= current.getYCoordinate();
+//			isExit = current.isExit();
 			count++;
 		}
-		System.out.println("False");
+//		System.out.println("False");
 		return false;
 	}
 	

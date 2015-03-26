@@ -70,14 +70,14 @@ public class MapDesigner {
 			int index=custom.pathSize();
 			Path previous= custom.getPath(index-1); //verify this
 			modifyNodeToPath(ixCoord, iyCoord, previous, null);
-			previous.setNext(custom.getPath(index-1)); //and this as well
-			custom.setEnd(custom.getPath(index-1));
+			previous.setNext(custom.getPath(index)); //and this as well
+			custom.setEnd(custom.getPath(index));
 		}
 		else{
 			int index=custom.pathSize();
 			Path previous= custom.getPath(index-1); //verify this
 			modifyNodeToPath(ixCoord, iyCoord, previous, null);
-			previous.setNext(custom.getPath(index-1));
+			previous.setNext(custom.getPath(index));
 			updateIndicators();
 		}
 		

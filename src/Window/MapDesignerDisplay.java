@@ -211,12 +211,13 @@ public class MapDesignerDisplay implements Runnable{
 			MapLoader mapLoader = MapLoader.getUniqueInstance();
 			
 			d.endMap();
-			System.out.println("were here");
+//			System.out.println("were here");
 			if(map.validPath()){
 				System.out.println("valid path");
 				mapLoader.saveMap(map, mapName);
 				Screen.gameRunning = true;
 				System.out.println("map saved");
+//				System.out.println("Last Path is exit: " + map.getPath(map.pathSize()-1).isExit());
 			}
 		}
 		
