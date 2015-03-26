@@ -168,7 +168,7 @@ public class MapSelectPane {
 		//TODO: Add number of buttons based on how many saved maps there are.
 		
 		
-			for(int i =0; i < customMaps.size(); i++){
+			for(int i =0; i < 8; i++){
 				g.setColor(new Color(0, 0, 0));
 				g.fillRect((3*(Screen.screenWidth - buttonWidth/2)/4 - buttonXOffset/2),
 						(Screen.screenHeight/2 - buttonHeight/4 + buttonYOffset3)+((i+1)*customMapOffset), 3*buttonWidth/4, buttonHeight/2);
