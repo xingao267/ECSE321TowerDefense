@@ -265,8 +265,15 @@ public class Store {
             }
             if (sendNextWaveButton.contains(Screen.mouseClicked)) {
                 Screen.levelStarted = true;
+                Screen.gameLevel++;
                 // TODO: start movement of critter group
             }
         }
+        if(Screen.gameLevel >=1){
+        	g.setFont(new Font("Courier New", Font.BOLD, 20));
+        	g.setColor(new Color(255, 255, 255));
+        	g.drawString("Level " + Screen.gameLevel, mainMenuButton.x, sendNextWaveButton.y + 47);
+        }
+        
     }
 }

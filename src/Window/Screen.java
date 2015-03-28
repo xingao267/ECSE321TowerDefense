@@ -53,7 +53,7 @@ public class Screen extends JPanel implements Runnable {
 
     public static int clear = 0;
 
-    public int gameLevel = 1;
+    public static int gameLevel = 0;
 
 
     public static boolean displayMainMenu = true, displayMapSelectorPane = false,
@@ -184,6 +184,7 @@ public class Screen extends JPanel implements Runnable {
                     critters = group.getCritterGroup();
                     crittersGenerated = true;
                 } else {
+                	//TODO: add multiple levels
                     for (Critter c : critters) {
                         if (c.isInGame()) {
                             critterGroupDisplays.put(c, new CritterDisplay(c));
@@ -193,6 +194,10 @@ public class Screen extends JPanel implements Runnable {
                             critters.remove(c);
                             critterGroupDisplays.remove(c);
                         }
+                    }
+                    if(critters.size() == 0){
+                    	levelStarted = false;
+                    	crittersGenerated = false;
                     }
                 }
                 for (Tower tower : gameController.getTowers()) {

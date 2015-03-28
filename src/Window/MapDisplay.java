@@ -64,9 +64,9 @@ public class MapDisplay {
 
                 boolean foundInd = false;
                 Rectangle r =
-                        new Rectangle(15 + (Constants.STORE_BUTTON_SIZE * i), 100
-                                + Constants.STORE_BUTTON_SIZE * j, Constants.STORE_BUTTON_SIZE,
-                                Constants.STORE_BUTTON_SIZE);
+                        new Rectangle(Constants.MAP_INITIAL_XPOS + (Constants.STORE_BUTTON_SIZE * i), 
+                        		Constants.MAP_INITIAL_YPOS + Constants.STORE_BUTTON_SIZE * j,
+                        		Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE);
                 if (m.noIndicators()) {
                     if (m.getCell(i, j).isScenery()) {
                         scenery.add(r);

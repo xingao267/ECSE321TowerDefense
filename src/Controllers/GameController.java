@@ -216,8 +216,6 @@ public class GameController implements IGameController {
             for (int i = 0; i < critterGroup.size(); i++) {
                 if (!critterGroup.get(i).isInGame() && !critterGroup.get(i).hasReachedExit()) {
                     critterGroup.get(i).spawn(entryPoint);
-                    // System.out.println("critter spawned at: " +
-                    // "("+critterGroup.get(i).getScreenXPos()+","+critterGroup.get(i).getScreenYPos());
                     break;
                 }
             }

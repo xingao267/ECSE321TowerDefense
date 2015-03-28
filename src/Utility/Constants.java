@@ -26,10 +26,10 @@ public class Constants {
 
     /** Main Menu Button Contants */
     public static final int MAIN_MENU_XPOS = 670;
-    public static final int MAIN_MENU_YPOS = 15;
+    public static final int MAIN_MENU_YPOS = 10;
 
     /** Map display constants */
-    public static final int MAP_INITIAL_XPOS = STORE_OFFSET;
+    public static final int MAP_INITIAL_XPOS = 20;
     public static final int MAP_INITIAL_YPOS = 100;
     public static final int MAP_CELL_SIZE = STORE_BUTTON_SIZE;
 
@@ -37,7 +37,7 @@ public class Constants {
     public static final int KEYHANDLER_OFFSET = 11;
 
     /** Save Button Constant */
-    public static final int SAVE_BUTTON_YPOS = 50;
+    public static final int SAVE_BUTTON_YPOS = 40;
 
     /** Send Next Wave Button Constant */
     public static final int SEND_NEXT_WANVE_YPOS = 45;
@@ -237,7 +237,7 @@ public class Constants {
 
     /** Normal Critter Constants. */
     public static final int NORMAL_CRITTER_SPEED = 5;
-    public static final int NORMAL_CRITTER_BOUNTY = 2;
+    public static final int NORMAL_CRITTER_BOUNTY = 3;
     public static final int NORMAL_CRITTER_STRENGTH = 1;
 
     /** Speed Critter Constants. */
