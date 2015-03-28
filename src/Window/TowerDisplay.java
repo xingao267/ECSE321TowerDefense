@@ -3,26 +3,17 @@
  */
 package Window;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import com.sun.corba.se.impl.orbutil.closure.Constant;
-
 import Exceptions.InvalidTowerTypeException;
-import TowerModels.BomberTower;
-import TowerModels.DeceleratorTower;
 import TowerModels.ITowerObserver;
-import TowerModels.LongRangeTower;
-import TowerModels.RegularTower;
-import TowerModels.SpeedTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;

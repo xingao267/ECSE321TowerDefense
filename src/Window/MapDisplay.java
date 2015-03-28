@@ -119,8 +119,12 @@ public class MapDisplay {
                 if (cell.hasTower()) {
                     gameController.setTowerCellHoveredOnMap(true);
                     gameController.setHoveredTowerOnMap(cell.getTower());
+                    gameController.setHoveredCellOnMap(cell);
                 } else {
                     gameController.setTowerCellHoveredOnMap(false);
+
+                    gameController.setMaxLevelReached(false);
+                    gameController.setNoMoneyCaught(false);
                 }
             }
 

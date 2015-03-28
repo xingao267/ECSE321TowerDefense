@@ -25,7 +25,7 @@ import Utility.Constants;
 
 /**
  * 
- * @author Jose,Justin
+ * @author Jose, Justin, Xin
  *
  */
 public class Screen extends JPanel implements Runnable {
@@ -45,6 +45,10 @@ public class Screen extends JPanel implements Runnable {
     public MapSelectPane mapSelectPane;
 
     public MapDesignerDisplay mapDesigner;
+
+    public KeyHandler keyHandle;
+    
+    public static TowerRightClickMenu towerRightClickMenu;
 
     private boolean isFirst = true;
     public static boolean gameRunning = true;
@@ -68,10 +72,8 @@ public class Screen extends JPanel implements Runnable {
     public static Bank bank;
 
     public static Map map;
-    private static Map CustomMap;
     private static MapDisplay mapDisplay;
     public static Store store;
-
 
     public ArrayList<Critter> critters;
     public static HashMap<Critter, CritterDisplay> critterGroupDisplays;
@@ -91,8 +93,9 @@ public class Screen extends JPanel implements Runnable {
         gameController = GameController.getUniqueInstance();
 
         this.frame = frame;
-        frame.addMouseListener(new KeyHandler());
-        frame.addMouseMotionListener(new KeyHandler());
+        keyHandle = new KeyHandler();
+        frame.addMouseListener(keyHandle);
+        frame.addMouseMotionListener(keyHandle);
         game.start();
     }
 

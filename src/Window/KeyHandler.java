@@ -1,11 +1,22 @@
 package Window;
 
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
+import Controllers.GameController;
 import Utility.Constants;
 
 public class KeyHandler implements MouseMotionListener, MouseListener {
+
+
+    private GameController gameController;
+
+    public KeyHandler() {
+        super();
+        gameController = GameController.getUniqueInstance();
+    }
 
     public void mouseClicked(MouseEvent m) {
         Screen.mouseClicked =
@@ -24,11 +35,15 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
     }
 
     public void mousePressed(MouseEvent m) {
-
+        if (m.isPopupTrigger() && gameController.isTowerCellHoveredOnMap()) {
+            Screen.towerRightClickMenu = doPop(m);
+        }
     }
 
     public void mouseReleased(MouseEvent m) {
-
+        if (m.isPopupTrigger() && gameController.isTowerCellHoveredOnMap()) {
+            Screen.towerRightClickMenu = doPop(m);
+        }
     }
 
     public void mouseDragged(MouseEvent m) {
@@ -45,6 +60,13 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
                         - (Frame.height - Screen.screenHeight) / 2 - Constants.KEYHANDLER_OFFSET);
         // System.out.println("Mouse moved (" + Screen.mouseLocation.getX() + ',' +
         // Screen.mouseLocation.getY() + ')');
+    }
+
+    private TowerRightClickMenu doPop(MouseEvent e) {
+
+        TowerRightClickMenu menu = new TowerRightClickMenu();
+        menu.show(e.getComponent(), e.getX(), e.getY());
+        return menu;
     }
 
 }

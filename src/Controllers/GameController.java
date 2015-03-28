@@ -44,7 +44,13 @@ public class GameController implements IGameController {
 
     private Tower hoveredTowerOnMap;
 
+    private Cell hoveredCellOnMap;
+
     private Tower selectedTowerOnMap;
+
+    private boolean isNoMoneyCaught;
+
+    private boolean isMaxLevelReached;
 
     private GameController() {
         bank = Bank.getUniqueInstance();
@@ -100,8 +106,8 @@ public class GameController implements IGameController {
     public void upgradeTower(Tower tower) throws MaxLevelReachedException, NoEnoughMoneyException {
 
         if (tower.getLevel() < Constants.MAX_TOWER_LEVEL) {
-            tower.upgrade();
             bank.removeFromBank(tower.getUpgradeCost());
+            tower.upgrade();
         } else {
             throw new MaxLevelReachedException("Tower maximum level reached, cannot be upgraded");
         }
@@ -110,10 +116,13 @@ public class GameController implements IGameController {
     @Override
     public void sellTower(Tower tower) {
 
-        tower.setInGame(false);
-        towers.remove(tower);
-        bank.returnToBank(tower.getRefundValue());
-
+        if (tower != null) {
+            tower.setInGame(false);
+            towers.remove(tower);
+            this.hoveredCellOnMap.setTower(null);
+            this.hoveredCellOnMap.setHasTower(false);
+            bank.returnToBank(tower.getRefundValue());
+        }
     }
 
     @Override
@@ -321,6 +330,48 @@ public class GameController implements IGameController {
      */
     public void setSelectedTowerOnMap(Tower selectedTowerOnMap) {
         this.selectedTowerOnMap = selectedTowerOnMap;
+    }
+
+    /**
+     * @return the isNoMoneyCaught
+     */
+    public boolean isNoMoneyCaught() {
+        return isNoMoneyCaught;
+    }
+
+    /**
+     * @param isNoMoneyCaught the isNoMoneyCaught to set
+     */
+    public void setNoMoneyCaught(boolean isNoMoneyCaught) {
+        this.isNoMoneyCaught = isNoMoneyCaught;
+    }
+
+    /**
+     * @return the isMaxLevelReached
+     */
+    public boolean isMaxLevelReached() {
+        return isMaxLevelReached;
+    }
+
+    /**
+     * @param isMaxLevelReached the isMaxLevelReached to set
+     */
+    public void setMaxLevelReached(boolean isMaxLevelReached) {
+        this.isMaxLevelReached = isMaxLevelReached;
+    }
+
+    /**
+     * @return the hoveredCellOnMap
+     */
+    public Cell getHoveredCellOnMap() {
+        return hoveredCellOnMap;
+    }
+
+    /**
+     * @param hoveredCellOnMap the hoveredCellOnMap to set
+     */
+    public void setHoveredCellOnMap(Cell hoveredCellOnMap) {
+        this.hoveredCellOnMap = hoveredCellOnMap;
     }
 
 }

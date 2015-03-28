@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+import javax.swing.JMenuItem;
 
 import Controllers.GameController;
-import Exceptions.InvalidTowerTypeException;
 import Exceptions.MaxLevelReachedException;
 import OtherModels.Bank;
 import TowerModels.BomberTower;
@@ -27,7 +27,7 @@ import Utility.Constants;
 
 /**
  * 
- * @author Jose
+ * @author Jose, Xin
  *
  */
 public class Store {
@@ -35,7 +35,9 @@ public class Store {
     private static final String UP_ARROW = "\u2191";
 
     private Rectangle[] towers = new Rectangle[Constants.NUM_TOWERS];
-    private Rectangle mainMenuButton, sendNextWaveButton;
+    private Rectangle mainMenuButton;
+    private Rectangle sendNextWaveButton;
+
     private ArrayList<Tower> towerType;
     private Bank bank;
 
@@ -144,6 +146,8 @@ public class Store {
 
                     towerClickable[i] = true;
                 }
+                gameController.setMaxLevelReached(false);
+                gameController.setNoMoneyCaught(false);
             }
 
             // darkens towers when player doesn't have enough money
@@ -161,17 +165,37 @@ public class Store {
             }
         }
 
-        if (gameController.isTowerSeletedInStore()) {
+
+        if (gameController.isMaxLevelReached()) {
             g.setColor(new Color(255, 255, 255));
             g.setFont(new Font("Courier New", Font.BOLD, 14));
-            g.drawString("Place tower on a scenery cell", 15, 85);
+            g.drawString("Maximum tower level reached.", 15, 85);
+
+        } else if (gameController.isNoMoneyCaught()) {
+            g.setColor(new Color(255, 255, 255));
+            g.setFont(new Font("Courier New", Font.BOLD, 14));
+            g.drawString("Don't have enough money in bank.", 15, 85);
+
+        } else {
+            if (gameController.isTowerCellHoveredOnMap()) {
+                g.setColor(new Color(255, 255, 255));
+                g.setFont(new Font("Courier New", Font.BOLD, 14));
+                g.drawString("Right click to upgrade or remove.", 15, 85);
+
+            } else {
+                if (gameController.isTowerSeletedInStore()) {
+                    g.setColor(new Color(255, 255, 255));
+                    g.setFont(new Font("Courier New", Font.BOLD, 14));
+                    g.drawString("Place tower on a scenery cell", 15, 85);
+                }
+                if (!gameController.isTowerSeletedInStore()) {
+                    g.setColor(new Color(255, 255, 255));
+                    g.setFont(new Font("Courier New", Font.BOLD, 14));
+                    g.drawString("Click tower button to buy tower.", 15, 85);
+                }
+            }
         }
 
-        if (!gameController.isTowerSeletedInStore()) {
-            g.setColor(new Color(255, 255, 255));
-            g.setFont(new Font("Courier New", Font.BOLD, 14));
-            g.drawString("Click tower button to buy tower.", 15, 85);
-        }
 
         if (gameController.isTowerCellHoveredOnMap()) {
 
