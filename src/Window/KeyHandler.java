@@ -10,12 +10,8 @@ import Utility.Constants;
 
 public class KeyHandler implements MouseMotionListener, MouseListener {
 
-
-    private GameController gameController;
-
     public KeyHandler() {
         super();
-        gameController = GameController.getUniqueInstance();
     }
 
     public void mouseClicked(MouseEvent m) {
@@ -35,13 +31,13 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
     }
 
     public void mousePressed(MouseEvent m) {
-        if (m.isPopupTrigger() && gameController.isTowerCellHoveredOnMap()) {
+        if (m.isPopupTrigger() && GameController.getUniqueInstance().isTowerCellHoveredOnMap()) {
             Screen.towerRightClickMenu = doPop(m);
         }
     }
 
     public void mouseReleased(MouseEvent m) {
-        if (m.isPopupTrigger() && gameController.isTowerCellHoveredOnMap()) {
+        if (m.isPopupTrigger() && GameController.getUniqueInstance().isTowerCellHoveredOnMap()) {
             Screen.towerRightClickMenu = doPop(m);
         }
     }

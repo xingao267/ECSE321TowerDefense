@@ -57,6 +57,7 @@ public class MainMenu {
         }
         // transition to mapSelector pane
         if (startGameButton.contains(Screen.mouseClicked)) {
+            Screen.mouseClickedReset();
             Screen.displayMainMenu = false;
             Screen.displayMapSelectorPane = true;
         }
@@ -77,6 +78,7 @@ public class MainMenu {
         }
         // transition to Map Editor window
         if (createCustomMapButton.contains(Screen.mouseClicked)) {
+            Screen.mouseClickedReset();
             Screen.displayMainMenu = false;
             Screen.displayMapDesigner = true;
         }

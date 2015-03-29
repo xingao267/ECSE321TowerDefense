@@ -95,9 +95,10 @@ public class MapSelectPane {
 		}
 		//transition to gameplay window playing Map 1
 		if(easyButton.contains(Screen.mouseClicked)){
+            Screen.mouseClickedReset();
 			Screen.displayMapSelectorPane = false;
 			Screen.inGameplay = true;
-			Screen.displayMap1 = true;
+			Screen.displayEasyMap = true;
 		}
 		
 		
@@ -117,9 +118,10 @@ public class MapSelectPane {
 		}
 		//transition to gameplay window playing Map 2
 		if(mediumButton.contains(Screen.mouseClicked)){
+            Screen.mouseClickedReset();
 			Screen.displayMapSelectorPane = false;
 			Screen.inGameplay = true;
-			Screen.displayMap2 = true;
+			Screen.displayMediumMap = true;
 		}
 		
 		
@@ -139,9 +141,10 @@ public class MapSelectPane {
 		}
 		//transition to gameplay window playing Map 3
 		if(hardButton.contains(Screen.mouseClicked)){
+            Screen.mouseClickedReset();
 			Screen.displayMapSelectorPane = false;
 			Screen.inGameplay = true;
-			Screen.displayMap3 = true;
+			Screen.displayHardMap = true;
 		}
 		
 		

@@ -20,6 +20,10 @@ public class Player {
         this.lifePoints = Constants.INITIAL_PLAYER_LIFE_POINTS;
     }
 
+    public static synchronized void resetUniqueInstance() {
+        uniqueInstance = new Player();
+    }
+
     public static synchronized Player getUniqueInstance() {
         if (uniqueInstance == null) {
             uniqueInstance = new Player();

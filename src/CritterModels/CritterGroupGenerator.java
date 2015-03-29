@@ -1,11 +1,6 @@
 package CritterModels;
 
-import java.awt.Point;
 import java.util.ArrayList;
-
-import Map.Cell;
-import OtherModels.Player;
-import Utility.Utils;
 
 /**
  * Class which generates a group of Critters for each game level

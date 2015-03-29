@@ -22,8 +22,6 @@ public class TowerRightClickMenu extends JPopupMenu {
     /** Default serial ID */
     private static final long serialVersionUID = 1L;
 
-    GameController gameController;
-
     JMenuItem upgradeButtom;
 
     JMenuItem removeButtom;
@@ -31,8 +29,6 @@ public class TowerRightClickMenu extends JPopupMenu {
     JMenuItem moveButtom;
 
     public TowerRightClickMenu() {
-
-        this.gameController = GameController.getUniqueInstance();
 
         upgradeButtom = new JMenuItem("Upgrade");
         removeButtom = new JMenuItem("Remove");
@@ -44,7 +40,7 @@ public class TowerRightClickMenu extends JPopupMenu {
             add(removeButtom);
             removeButtom.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    gameController.sellTower(gameController.getHoveredTowerOnMap());
+                    GameController.getUniqueInstance().sellTower(GameController.getUniqueInstance().getHoveredTowerOnMap());
 
                 }
             });
@@ -52,8 +48,8 @@ public class TowerRightClickMenu extends JPopupMenu {
             add(moveButtom);
             moveButtom.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    gameController.setSelectedTowerToMove(gameController.getHoveredTowerOnMap());
-                    gameController.setTowerMoveClicked(true);
+                    GameController.getUniqueInstance().setSelectedTowerToMove(GameController.getUniqueInstance().getHoveredTowerOnMap());
+                    GameController.getUniqueInstance().setTowerMoveClicked(true);
                 }
             });
         }
@@ -62,13 +58,13 @@ public class TowerRightClickMenu extends JPopupMenu {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    gameController.upgradeTower(gameController.getHoveredTowerOnMap());
-                    gameController.setMaxLevelReached(false);
-                    gameController.setNoMoneyCaught(false);
+                    GameController.getUniqueInstance().upgradeTower(GameController.getUniqueInstance().getHoveredTowerOnMap());
+                    GameController.getUniqueInstance().setMaxLevelReached(false);
+                    GameController.getUniqueInstance().setNoMoneyCaught(false);
                 } catch (MaxLevelReachedException e1) {
-                    gameController.setMaxLevelReached(true);
+                    GameController.getUniqueInstance().setMaxLevelReached(true);
                 } catch (NoEnoughMoneyException e1) {
-                    gameController.setNoMoneyCaught(true);
+                    GameController.getUniqueInstance().setNoMoneyCaught(true);
                 }
             }
         });

@@ -37,39 +37,37 @@ public class Screen extends JPanel implements Runnable {
     // private int fps = 10000000 , fpsFrame = 0;
 
     public Frame frame;
-
-    public static Point mouseLocation = new Point(0, 0), mouseClicked = new Point(0, 0);
-
     public MainMenu menu;
-
     public MapSelectPane mapSelectPane;
-
     public MapDesignerDisplay mapDesigner;
-
     public KeyHandler keyHandle;
 
     public static TowerRightClickMenu towerRightClickMenu;
+    public static IconDisplay icons;
 
-    private boolean isFirst = true;
-    public static boolean gameRunning = true;
     private boolean suspended = false;
     private boolean designingMap = false; // added for while loop for map designer
 
-    public static int clear = 0;
+    public static int gameLevel;
 
-    public static int gameLevel = 0;
+    private static boolean isFirst = true;
+    public static boolean displayMainMenu = true;
+    public static boolean displayMapSelectorPane = false;
+    public static boolean displayMapDesigner = false;
+    public static boolean inGameplay = false;
+    public static boolean displayEasyMap = false;
+    public static boolean displayMediumMap = false;
+    public static boolean displayHardMap = false;
+    public static boolean displayCustomMap = false;
+    public static boolean levelStarted = false;
+    public static boolean crittersGenerated = false;
+    public static boolean gameRunning = true;
 
+    public static Point mouseLocation = new Point(0, 0);
+    public static Point mouseClicked = new Point(0, 0);
 
-    public static boolean displayMainMenu = true, displayMapSelectorPane = false,
-            displayMapDesigner = false, inGameplay = false, displayMap1 = false,
-            displayMap2 = false, displayMap3 = false, displayCustomMap = false,
-            levelStarted = false, crittersGenerated = false;
-
-    public static int screenWidth, screenHeight;
-
-    public GameController gameController;
-    public static Player player;
-    public static Bank bank;
+    public static int screenWidth;
+    public static int screenHeight;
 
     public static Map map;
     private static MapDisplay mapDisplay;
@@ -85,12 +83,7 @@ public class Screen extends JPanel implements Runnable {
     private MediumMap mediumMap;
     private HardMap hardMap;
 
-    public static IconDisplay icons;
-
     public Screen(Frame frame) {
-        player = Player.getUniqueInstance();
-        bank = Bank.getUniqueInstance();
-        gameController = GameController.getUniqueInstance();
 
         this.frame = frame;
         keyHandle = new KeyHandler();
@@ -101,6 +94,11 @@ public class Screen extends JPanel implements Runnable {
 
     public void init() {
 
+        Bank.resetUniqueInstance();
+        GameController.resetUniqueInstance();
+        Player.resetUniqueInstance();
+
+        gameLevel = 0;
         menu = new MainMenu();
         mapSelectPane = new MapSelectPane();
         mapDesigner = new MapDesignerDisplay();
@@ -122,7 +120,6 @@ public class Screen extends JPanel implements Runnable {
             screenWidth = getWidth();
             screenHeight = getHeight();
             init();
-
             isFirst = false;
         }
 
@@ -130,49 +127,39 @@ public class Screen extends JPanel implements Runnable {
         g.fillRect(0, 0, getWidth(), getHeight());
 
         if (displayMainMenu) {
-            // display the main menu
+            init();
             menu.draw(g);
-        }
 
-        if (displayMapSelectorPane) {
-            // display map select pane
+        } else if (displayMapSelectorPane) {
             mapSelectPane.draw(g);
-        }
 
-        if (displayMapDesigner) {
+        } else if (displayMapDesigner) {
             mapDesigner.draw(g);
-        }
 
-        if (inGameplay) {
+        } else if (inGameplay) {
             store.draw(g);
             icons.draw(g);
 
-            if (displayMap1) {
+            if (displayEasyMap) {
                 map = easyMap.getEasyMap();
                 mapDisplay = new MapDisplay(map);
                 mapDisplay.draw(g);
-            }
-
-            if (displayMap2) {
+            } else if (displayMediumMap) {
                 map = mediumMap.getMediumMap();
                 mapDisplay = new MapDisplay(map);
                 mapDisplay.draw(g);
-            }
-
-            if (displayMap3) {
+            } else if (displayHardMap) {
                 map = hardMap.getHardMap();
                 mapDisplay = new MapDisplay(map);
                 mapDisplay.draw(g);
-            }
-
-            if (displayCustomMap) {
+            } else if (displayCustomMap) {
                 mapDisplay = new MapDisplay(map);
                 mapDisplay.draw(g);
             }
 
-            if (displayMap1 || displayMap2 || displayMap3 || displayCustomMap) {
+            if (displayEasyMap || displayMediumMap || displayHardMap || displayCustomMap) {
 
-                for (Tower tower : gameController.getTowers()) {
+                for (Tower tower : GameController.getUniqueInstance().getTowers()) {
                     towerDisplays.put(tower, new TowerDisplay(tower));
                 }
                 for (Entry<Tower, TowerDisplay> entry : towerDisplays.entrySet()) {
@@ -187,7 +174,6 @@ public class Screen extends JPanel implements Runnable {
                     critters = group.getCritterGroup();
                     crittersGenerated = true;
                 } else {
-                    // TODO: add multiple levels
                     for (Critter c : critters) {
                         if (c.isInGame()) {
                             critterGroupDisplays.put(c, new CritterDisplay(c));
@@ -204,81 +190,80 @@ public class Screen extends JPanel implements Runnable {
                     }
                 }
 
-                for (Tower tower : gameController.getTowers()) {
+                for (Tower tower : GameController.getUniqueInstance().getTowers()) {
                     List<Critter> detectedCritters =
-                            gameController.towerDetectTargets(tower, critters);
+                            GameController.getUniqueInstance().towerDetectTargets(tower, critters);
                     List<Critter> selectedCritters =
-                            gameController.towerSelectTargets(tower, detectedCritters);
+                            GameController.getUniqueInstance().towerSelectTargets(tower,
+                                    detectedCritters);
                     try {
-                        gameController.towerAttackTargets(tower, selectedCritters);
+                        GameController.getUniqueInstance().towerAttackTargets(tower,
+                                selectedCritters);
                     } catch (CritterDeadException e) {
                         critters.remove(e.getDeadCritter());
                         critterGroupDisplays.remove(e.getDeadCritter());
-                        bank.returnToBank(e.getDeadCritter().getBounty());
+                        Bank.getUniqueInstance().returnToBank(e.getDeadCritter().getBounty());
                     }
                 }
-
             }
         }
     }
 
 
-    /**
-     * Game Loop
-     */
+    /** Game Loop */
     public void run() {
 
-        // Game Loop
-        while (gameRunning) {
-            if (levelStarted) {
-                if (crittersGenerated) {
-                    gameController.spawnCritterGroup(map.getStart(), critters);
-                    for (int i = 0; i < critters.size(); i++) {
-                        if (critters.get(i).isInGame() && !critters.get(i).hasReachedExit()) {
-                            critters.get(i).moveAlongPath(critters.get(i).getSpeed(), player);
+        while (true) {
+
+            while (gameRunning) {
+                if (levelStarted) {
+                    if (crittersGenerated) {
+                        GameController.getUniqueInstance().spawnCritterGroup(map.getStart(),
+                                critters);
+                        for (int i = 0; i < critters.size(); i++) {
+                            if (critters.get(i).isInGame() && !critters.get(i).hasReachedExit()) {
+                                critters.get(i).moveAlongPath(critters.get(i).getSpeed(),
+                                        Player.getUniqueInstance());
+                            }
                         }
                     }
                 }
-            }
-
-            repaint();
-
-            if (displayMapDesigner) {
-                gameRunning = false;
-            }
-
-            try {
-                game.sleep(Constants.GAME_THREAD_SLEEP_TIME);
-            } catch (Exception e) {
-            }
-
-        }
-
-        if (displayMapDesigner) {
-            // userInput.start();
-            // mapDesigner.createUserDefinedMap();
-            mapDesigner.run();
-            while (displayMapDesigner) {
 
                 repaint();
 
+                if (displayMapDesigner) {
+                    gameRunning = false;
+                }
 
                 try {
-                    game.sleep(50);
+                    Thread.sleep(Constants.GAME_THREAD_SLEEP_TIME);
                 } catch (Exception e) {
+                }
+
+            }
+
+            if (displayMapDesigner) {
+                // userInput.start();
+                // mapDesigner.createUserDefinedMap();
+                mapDesigner.run();
+                while (displayMapDesigner) {
+                    repaint();
+
+                    try {
+                        Thread.sleep(50);
+                    } catch (Exception e) {
+                    }
                 }
             }
         }
     }
-
 
     public boolean isGameRunning() {
         return gameRunning;
     }
 
-
     public void setGameRunning(boolean gameRunning) {
-        this.gameRunning = gameRunning;
+        Screen.gameRunning = gameRunning;
     }
 
     public void setMapDesigning(boolean mapDesigning) { // you added this

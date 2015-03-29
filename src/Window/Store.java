@@ -38,16 +38,13 @@ public class Store {
     private Rectangle sendNextWaveButton;
 
     private ArrayList<Tower> towerType;
-    private Bank bank;
 
-    private GameController gameController;
     private HashMap<Integer, String> towerStorePosToName;
 
     private boolean[] towerClickable;
 
     public Store() {
 
-        gameController = GameController.getUniqueInstance();
         towerStorePosToName = new HashMap<Integer, String>();
 
         towerStorePosToName.put(0, Constants.REGULAR_TOWER_TYPE);
@@ -62,9 +59,6 @@ public class Store {
     }
 
     public void init() {
-
-        bank = Bank.getUniqueInstance();
-        gameController = GameController.getUniqueInstance();
 
         for (int i = 0; i < towers.length; i++) {
             towers[i] =
@@ -110,7 +104,7 @@ public class Store {
             // TODO: add stuff that happens when a tower is purchased on click
             if (towers[i].contains(Screen.mouseLocation)) {
                 // display that player does not have enough money
-                if (towerType.get(i).getInitialCost() > bank.getBalance()) {
+                if (towerType.get(i).getInitialCost() > Bank.getUniqueInstance().getBalance()) {
                     g.setColor(new Color(255, 255, 255));
                     g.setFont(new Font("Courier New", Font.BOLD, 15));
                     g.drawString("You don't have enough money", 400, 30);
@@ -145,49 +139,52 @@ public class Store {
 
                     towerClickable[i] = true;
                 }
-                gameController.setMaxLevelReached(false);
-                gameController.setNoMoneyCaught(false);
+                GameController.getUniqueInstance().setMaxLevelReached(false);
+                GameController.getUniqueInstance().setNoMoneyCaught(false);
             }
 
             // darkens towers when player doesn't have enough money
-            if (towerType.get(i).getInitialCost() > bank.getBalance()) {
+            if (towerType.get(i).getInitialCost() > Bank.getUniqueInstance().getBalance()) {
                 g.setColor(new Color(0, 0, 0, 75));
                 g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
             }
 
             if (towers[i].contains(Screen.mouseClicked)) {
                 if (towerClickable[i]) {
-                    gameController.setTowerSeletedInStore(true);
+                    GameController.getUniqueInstance().setTowerSeletedInStore(true);
                     String towerTypeName = towerStorePosToName.get(i);
-                    gameController.setSelectedTowerTypeInStore(towerTypeName);
+                    GameController.getUniqueInstance().setSelectedTowerTypeInStore(towerTypeName);
                 }
             }
         }
 
 
-        if (gameController.isMaxLevelReached()) {
+        if (GameController.getUniqueInstance().isMaxLevelReached()) {
             g.setColor(new Color(255, 255, 255));
             g.setFont(new Font("Courier New", Font.BOLD, 14));
             g.drawString("Maximum tower level reached.", 15, 85);
 
-        } else if (gameController.isNoMoneyCaught()) {
+        } else if (GameController.getUniqueInstance().isNoMoneyCaught()) {
             g.setColor(new Color(255, 255, 255));
             g.setFont(new Font("Courier New", Font.BOLD, 14));
             g.drawString("Don't have enough money in bank.", 15, 85);
 
         } else {
-            if (gameController.isTowerCellHoveredOnMap() && !gameController.isTowerMoveClicked()) {
+            if (GameController.getUniqueInstance().isTowerCellHoveredOnMap()
+                    && !GameController.getUniqueInstance().isTowerMoveClicked()) {
                 g.setColor(new Color(255, 255, 255));
                 g.setFont(new Font("Courier New", Font.BOLD, 14));
                 g.drawString("Right click to upgrade or remove.", 15, 85);
 
             } else {
-                if (gameController.isTowerSeletedInStore() || gameController.isTowerMoveClicked()) {
+                if (GameController.getUniqueInstance().isTowerSeletedInStore()
+                        || GameController.getUniqueInstance().isTowerMoveClicked()) {
                     g.setColor(new Color(255, 255, 255));
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
                     g.drawString("Place tower on a scenery cell", 15, 85);
                 }
-                if (!gameController.isTowerSeletedInStore() && !gameController.isTowerMoveClicked()) {
+                if (!GameController.getUniqueInstance().isTowerSeletedInStore()
+                        && !GameController.getUniqueInstance().isTowerMoveClicked()) {
                     g.setColor(new Color(255, 255, 255));
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
                     g.drawString("Click tower button to buy tower.", 15, 85);
@@ -196,9 +193,9 @@ public class Store {
         }
 
 
-        if (gameController.isTowerCellHoveredOnMap()) {
+        if (GameController.getUniqueInstance().isTowerCellHoveredOnMap()) {
 
-            Tower tower = gameController.getHoveredTowerOnMap();
+            Tower tower = GameController.getUniqueInstance().getHoveredTowerOnMap();
 
             try {
 
@@ -258,16 +255,15 @@ public class Store {
         }
         if (mainMenuButton.contains(Screen.mouseClicked)) {
             Screen.inGameplay = false;
-            Screen.displayMap1 = false;
-            Screen.displayMap2 = false;
-            Screen.displayMap3 = false;
+            Screen.displayEasyMap = false;
+            Screen.displayMediumMap = false;
+            Screen.displayHardMap = false;
             Screen.displayCustomMap = false;
             Screen.displayMapSelectorPane = false;
             Screen.crittersGenerated = false;
             Screen.levelStarted = false;
             Screen.displayMainMenu = true;
 
-            // stop everything to do with the game.
         }
 
         // Draw Button to send the next wave

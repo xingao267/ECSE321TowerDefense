@@ -34,8 +34,6 @@ public class MapDisplay {
     public static int initialMapXPos = Constants.MAP_INITIAL_XPOS,
             initialMapYPos = Constants.MAP_INITIAL_YPOS;
 
-    private GameController gameController;
-
     /**
      * Constructor
      * 
@@ -43,7 +41,6 @@ public class MapDisplay {
      */
     public MapDisplay(Map m) {
 
-        gameController = GameController.getUniqueInstance();
         this.m = m;
         mapWidth = m.getWidth();
         mapHeight = m.getHeight();
@@ -118,27 +115,29 @@ public class MapDisplay {
                 g.fillRect(r.x, r.y, r.width, r.height);
 
                 if (cell.hasTower()) {
-                    gameController.setTowerCellHoveredOnMap(true);
-                    gameController.setHoveredTowerOnMap(cell.getTower());
+                    GameController.getUniqueInstance().setTowerCellHoveredOnMap(true);
+                    GameController.getUniqueInstance().setHoveredTowerOnMap(cell.getTower());
                 } else {
-                    gameController.setTowerCellHoveredOnMap(false);
-                    gameController.setMaxLevelReached(false);
-                    gameController.setNoMoneyCaught(false);
+                    GameController.getUniqueInstance().setTowerCellHoveredOnMap(false);
+                    GameController.getUniqueInstance().setMaxLevelReached(false);
+                    GameController.getUniqueInstance().setNoMoneyCaught(false);
                 }
             }
 
             if (r.contains(Screen.mouseClicked)) {
 
                 if (cell.hasTower()) {
-                    gameController.setTowerSelectedOnMap(true);
+                    GameController.getUniqueInstance().setTowerSelectedOnMap(true);
 
-                } else if (gameController.isTowerSeletedInStore()) {
+                } else if (GameController.getUniqueInstance().isTowerSeletedInStore()) {
 
-                    String towerType = gameController.getSelectedTowerTypeInStore();
+                    String towerType =
+                            GameController.getUniqueInstance().getSelectedTowerTypeInStore();
                     try {
                         Tower tower =
-                                gameController.purchaseTower(towerType, mapPosition.x,
-                                        mapPosition.y, Constants.INITIAL_TOWER_LEVEL, cell);
+                                GameController.getUniqueInstance().purchaseTower(towerType,
+                                        mapPosition.x, mapPosition.y,
+                                        Constants.INITIAL_TOWER_LEVEL, cell);
                         cell.setTower(tower);
                         cell.setHasTower(true);
                     } catch (NoEnoughMoneyException e) {
@@ -148,20 +147,21 @@ public class MapDisplay {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-                    gameController.setTowerSeletedInStore(false);
+                    GameController.getUniqueInstance().setTowerSeletedInStore(false);
 
-                } else if (gameController.isTowerMoveClicked()) {
-                    Tower towerToMove = gameController.getSelectedTowerToMove();
+                } else if (GameController.getUniqueInstance().isTowerMoveClicked()) {
+                    Tower towerToMove = GameController.getUniqueInstance().getSelectedTowerToMove();
 
                     Cell oldCell = towerToMove.getCell();
                     oldCell.setTower(null);
                     oldCell.setHasTower(false);
 
-                    gameController.moveTower(towerToMove, mapPosition.x, mapPosition.y);
+                    GameController.getUniqueInstance().moveTower(towerToMove, mapPosition.x,
+                            mapPosition.y);
                     cell.setTower(towerToMove);
                     cell.setHasTower(true);
                     towerToMove.setCell(cell);
-                    gameController.setTowerMoveClicked(false);
+                    GameController.getUniqueInstance().setTowerMoveClicked(false);
                 }
             }
         }
@@ -177,11 +177,11 @@ public class MapDisplay {
                 g.setColor(new Color(73, 16, 9, 150));
                 g.fillRect(r.x, r.y, r.width, r.height);
 
-                gameController.setTowerCellHoveredOnMap(false);
+                GameController.getUniqueInstance().setTowerCellHoveredOnMap(false);
             }
             if (r.contains(Screen.mouseClicked)) {
-                if (gameController.isTowerSeletedInStore()) {
-                    gameController.setTowerSeletedInStore(false);
+                if (GameController.getUniqueInstance().isTowerSeletedInStore()) {
+                    GameController.getUniqueInstance().setTowerSeletedInStore(false);
                 }
             }
 

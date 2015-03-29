@@ -27,6 +27,10 @@ public class Bank {
         return uniqueInstance;
     }
 
+    public static void resetUniqueInstance() {
+        uniqueInstance = new Bank();
+    }
+
     /**
      * Return the balance to the bank
      * 

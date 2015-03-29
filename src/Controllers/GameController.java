@@ -30,8 +30,6 @@ public class GameController implements IGameController {
 
     private static GameController uniqueInstance = null;
 
-    private Bank bank;
-
     private List<Tower> towers;
 
     private String selectedTowerTypeInStore;
@@ -53,7 +51,6 @@ public class GameController implements IGameController {
     private boolean isTowerMoveClicked;
 
     private GameController() {
-        bank = Bank.getUniqueInstance();
         towers = new ArrayList<Tower>();
         isTowerSeletedInStore = false;
         isTowerSelectedOnMap = false;
@@ -68,6 +65,11 @@ public class GameController implements IGameController {
             uniqueInstance = new GameController();
         }
         return uniqueInstance;
+    }
+
+
+    public static synchronized void resetUniqueInstance() {
+        uniqueInstance = new GameController();
     }
 
     private int spawnTime = 100, spawnFrame = 0;
@@ -92,7 +94,7 @@ public class GameController implements IGameController {
             throw new InvalidTowerTypeException();
         }
 
-        bank.removeFromBank(towerToPurchase.getInitialCost());
+        Bank.getUniqueInstance().removeFromBank(towerToPurchase.getInitialCost());
         towers.add(towerToPurchase);
 
         return towerToPurchase;
@@ -109,7 +111,7 @@ public class GameController implements IGameController {
     public void upgradeTower(Tower tower) throws MaxLevelReachedException, NoEnoughMoneyException {
 
         if (tower.getLevel() < Constants.MAX_TOWER_LEVEL) {
-            bank.removeFromBank(tower.getUpgradeCost());
+            Bank.getUniqueInstance().removeFromBank(tower.getUpgradeCost());
             tower.upgrade();
         } else {
             throw new MaxLevelReachedException("Tower maximum level reached, cannot be upgraded");
@@ -124,7 +126,7 @@ public class GameController implements IGameController {
             towers.remove(tower);
             tower.getCell().setHasTower(false);
             tower.getCell().setTower(null);
-            bank.returnToBank(tower.getRefundValue());
+            Bank.getUniqueInstance().returnToBank(tower.getRefundValue());
         }
     }
 
@@ -185,7 +187,9 @@ public class GameController implements IGameController {
 
         if (critters != null) {
             for (Critter critter : critters) {
-                tower.attack(critter);
+                if (critter.isInGame()) {
+                    tower.attack(critter);
+                }
             }
         }
     }
