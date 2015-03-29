@@ -2,6 +2,7 @@ package TowerModels;
 
 import CritterModels.Critter;
 import Exceptions.MaxLevelReachedException;
+import Map.Cell;
 import Utility.Constants;
 
 /**
@@ -11,13 +12,13 @@ import Utility.Constants;
  */
 public class RegularTower extends SingleTargetTower {
 
-    public RegularTower(int xPos, int yPos, int level) {
+    public RegularTower(int xPos, int yPos, int level, Cell cell) {
         super(xPos, yPos, level, Constants.REGULAR_INITIAL_COST,
                 Constants.REGULAR_UPGRADE_COST[Constants.INITIAL_TOWER_LEVEL + 1],
                 Constants.REGULAR_REFUND_VALUE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.REGULAR_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.REGULAR_POWER[Constants.INITIAL_TOWER_LEVEL],
-                Constants.REGULAR_RATE[Constants.INITIAL_TOWER_LEVEL]);
+                Constants.REGULAR_RATE[Constants.INITIAL_TOWER_LEVEL], cell);
 
         towerType = Constants.REGULAR_TOWER_TYPE;
     }

@@ -2,6 +2,7 @@ package TowerModels;
 
 import CritterModels.Critter;
 import Exceptions.MaxLevelReachedException;
+import Map.Cell;
 import Utility.Constants;
 
 /**
@@ -10,14 +11,14 @@ import Utility.Constants;
  */
 public class DeceleratorTower extends MultiTargetsTower {
 
-    public DeceleratorTower(int xPos, int yPos, int level) {
+    public DeceleratorTower(int xPos, int yPos, int level, Cell cell) {
         super(xPos, yPos, level, Constants.DECELERATOR_INITIAL_COST,
                 Constants.DECELERATOR_UPGRADE_COST[Constants.INITIAL_TOWER_LEVEL + 1],
                 Constants.DECELERATOR_REFUND_VALUE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.DECELERATOR_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.DECELERATOR_POWER[Constants.INITIAL_TOWER_LEVEL],
                 Constants.DECELERATOR_RATE[Constants.INITIAL_TOWER_LEVEL],
-                Constants.DECELERATOR_EFFECT_RANGE[Constants.INITIAL_TOWER_LEVEL]);
+                Constants.DECELERATOR_EFFECT_RANGE[Constants.INITIAL_TOWER_LEVEL], cell);
 
         towerType = Constants.DECELERATOR_TOWER_TYPE;
     }

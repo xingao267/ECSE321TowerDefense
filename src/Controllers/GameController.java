@@ -44,13 +44,13 @@ public class GameController implements IGameController {
 
     private Tower hoveredTowerOnMap;
 
-    private Cell hoveredCellOnMap;
-
-    private Tower selectedTowerOnMap;
+    private Tower selectedTowerToMove;
 
     private boolean isNoMoneyCaught;
 
     private boolean isMaxLevelReached;
+
+    private boolean isTowerMoveClicked;
 
     private GameController() {
         bank = Bank.getUniqueInstance();
@@ -58,6 +58,9 @@ public class GameController implements IGameController {
         isTowerSeletedInStore = false;
         isTowerSelectedOnMap = false;
         isTowerCellHoveredOnMap = false;
+        isNoMoneyCaught = false;
+        isMaxLevelReached = false;
+        isTowerMoveClicked = false;
     }
 
     public static synchronized GameController getUniqueInstance() {
@@ -70,21 +73,21 @@ public class GameController implements IGameController {
     private int spawnTime = 100, spawnFrame = 0;
 
     @Override
-    public Tower purchaseTower(String towerType, int xPos, int yPos, int level)
+    public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Cell cell)
             throws NoEnoughMoneyException, InvalidTowerTypeException {
 
         Tower towerToPurchase = null;
 
         if (towerType.equals(Constants.REGULAR_TOWER_TYPE)) {
-            towerToPurchase = new RegularTower(xPos, yPos, level);
+            towerToPurchase = new RegularTower(xPos, yPos, level, cell);
         } else if (towerType.equals(Constants.BOMBER_TOWER_TYPE)) {
-            towerToPurchase = new BomberTower(xPos, yPos, level);
+            towerToPurchase = new BomberTower(xPos, yPos, level, cell);
         } else if (towerType.equals(Constants.LONGRANGE_TOWER_TYPE)) {
-            towerToPurchase = new LongRangeTower(xPos, yPos, level);
+            towerToPurchase = new LongRangeTower(xPos, yPos, level, cell);
         } else if (towerType.equals(Constants.SPEED_TOWER_TYPE)) {
-            towerToPurchase = new SpeedTower(xPos, yPos, level);
+            towerToPurchase = new SpeedTower(xPos, yPos, level, cell);
         } else if (towerType.equals(Constants.DECELERATOR_TOWER_TYPE)) {
-            towerToPurchase = new DeceleratorTower(xPos, yPos, level);
+            towerToPurchase = new DeceleratorTower(xPos, yPos, level, cell);
         } else {
             throw new InvalidTowerTypeException();
         }
@@ -119,8 +122,8 @@ public class GameController implements IGameController {
         if (tower != null) {
             tower.setInGame(false);
             towers.remove(tower);
-            this.hoveredCellOnMap.setTower(null);
-            this.hoveredCellOnMap.setHasTower(false);
+            tower.getCell().setHasTower(false);
+            tower.getCell().setTower(null);
             bank.returnToBank(tower.getRefundValue());
         }
     }
@@ -318,18 +321,19 @@ public class GameController implements IGameController {
         this.hoveredTowerOnMap = hoveredTowerOnMap;
     }
 
+
     /**
-     * @return the selectedTowerOnMap
+     * @return the selectedTowerToMove
      */
-    public Tower getSelectedTowerOnMap() {
-        return selectedTowerOnMap;
+    public Tower getSelectedTowerToMove() {
+        return selectedTowerToMove;
     }
 
     /**
-     * @param selectedTowerOnMap the selectedTowerOnMap to set
+     * @param selectedTowerToMove the selectedTowerToMove to set
      */
-    public void setSelectedTowerOnMap(Tower selectedTowerOnMap) {
-        this.selectedTowerOnMap = selectedTowerOnMap;
+    public void setSelectedTowerToMove(Tower selectedTowerToMove) {
+        this.selectedTowerToMove = selectedTowerToMove;
     }
 
     /**
@@ -361,17 +365,17 @@ public class GameController implements IGameController {
     }
 
     /**
-     * @return the hoveredCellOnMap
+     * @return the isTowerMoveClicked
      */
-    public Cell getHoveredCellOnMap() {
-        return hoveredCellOnMap;
+    public boolean isTowerMoveClicked() {
+        return isTowerMoveClicked;
     }
 
     /**
-     * @param hoveredCellOnMap the hoveredCellOnMap to set
+     * @param isTowerMoveClicked the isTowerMoveClicked to set
      */
-    public void setHoveredCellOnMap(Cell hoveredCellOnMap) {
-        this.hoveredCellOnMap = hoveredCellOnMap;
+    public void setTowerMoveClicked(boolean isTowerMoveClicked) {
+        this.isTowerMoveClicked = isTowerMoveClicked;
     }
 
 }

@@ -64,9 +64,10 @@ public class MapDisplay {
 
                 boolean foundInd = false;
                 Rectangle r =
-                        new Rectangle(Constants.MAP_INITIAL_XPOS + (Constants.STORE_BUTTON_SIZE * i), 
-                        		Constants.MAP_INITIAL_YPOS + Constants.STORE_BUTTON_SIZE * j,
-                        		Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE);
+                        new Rectangle(Constants.MAP_INITIAL_XPOS
+                                + (Constants.STORE_BUTTON_SIZE * i), Constants.MAP_INITIAL_YPOS
+                                + Constants.STORE_BUTTON_SIZE * j, Constants.STORE_BUTTON_SIZE,
+                                Constants.STORE_BUTTON_SIZE);
                 if (m.noIndicators()) {
                     if (m.getCell(i, j).isScenery()) {
                         scenery.add(r);
@@ -119,10 +120,8 @@ public class MapDisplay {
                 if (cell.hasTower()) {
                     gameController.setTowerCellHoveredOnMap(true);
                     gameController.setHoveredTowerOnMap(cell.getTower());
-                    gameController.setHoveredCellOnMap(cell);
                 } else {
                     gameController.setTowerCellHoveredOnMap(false);
-
                     gameController.setMaxLevelReached(false);
                     gameController.setNoMoneyCaught(false);
                 }
@@ -132,7 +131,6 @@ public class MapDisplay {
 
                 if (cell.hasTower()) {
                     gameController.setTowerSelectedOnMap(true);
-                    gameController.setSelectedTowerOnMap(cell.getTower());
 
                 } else if (gameController.isTowerSeletedInStore()) {
 
@@ -140,7 +138,7 @@ public class MapDisplay {
                     try {
                         Tower tower =
                                 gameController.purchaseTower(towerType, mapPosition.x,
-                                        mapPosition.y, Constants.INITIAL_TOWER_LEVEL);
+                                        mapPosition.y, Constants.INITIAL_TOWER_LEVEL, cell);
                         cell.setTower(tower);
                         cell.setHasTower(true);
                     } catch (NoEnoughMoneyException e) {
@@ -152,6 +150,18 @@ public class MapDisplay {
                     }
                     gameController.setTowerSeletedInStore(false);
 
+                } else if (gameController.isTowerMoveClicked()) {
+                    Tower towerToMove = gameController.getSelectedTowerToMove();
+
+                    Cell oldCell = towerToMove.getCell();
+                    oldCell.setTower(null);
+                    oldCell.setHasTower(false);
+
+                    gameController.moveTower(towerToMove, mapPosition.x, mapPosition.y);
+                    cell.setTower(towerToMove);
+                    cell.setHasTower(true);
+                    towerToMove.setCell(cell);
+                    gameController.setTowerMoveClicked(false);
                 }
             }
         }

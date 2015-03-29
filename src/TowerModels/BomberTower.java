@@ -2,6 +2,7 @@ package TowerModels;
 
 import CritterModels.Critter;
 import Exceptions.MaxLevelReachedException;
+import Map.Cell;
 import Utility.Constants;
 
 
@@ -12,14 +13,14 @@ import Utility.Constants;
  */
 public class BomberTower extends MultiTargetsTower {
 
-    public BomberTower(int xPos, int yPos, int level) {
+    public BomberTower(int xPos, int yPos, int level, Cell cell) {
         super(xPos, yPos, level, Constants.BOMBER_INITIAL_COST,
                 Constants.BOMBER_UPGRADE_COST[Constants.INITIAL_TOWER_LEVEL + 1],
                 Constants.BOMBER_REFUND_VALUE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.BOMBER_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.BOMBER_POWER[Constants.INITIAL_TOWER_LEVEL],
                 Constants.BOMBER_RATE[Constants.INITIAL_TOWER_LEVEL],
-                Constants.BOMBER_EFFECT_RANGE[Constants.INITIAL_TOWER_LEVEL]);
+                Constants.BOMBER_EFFECT_RANGE[Constants.INITIAL_TOWER_LEVEL], cell);
 
         towerType = Constants.BOMBER_TOWER_TYPE;
     }

@@ -2,6 +2,7 @@ package TowerModels;
 
 import CritterModels.Critter;
 import Exceptions.MaxLevelReachedException;
+import Map.Cell;
 import Utility.Constants;
 
 /**
@@ -11,13 +12,13 @@ import Utility.Constants;
  */
 public class LongRangeTower extends SingleTargetTower {
 
-    public LongRangeTower(int xPos, int yPos, int level) {
+    public LongRangeTower(int xPos, int yPos, int level, Cell cell) {
         super(xPos, yPos, level, Constants.LONGRANGE_INITIAL_COST,
                 Constants.LONGRANGE_UPGRADE_COST[Constants.INITIAL_TOWER_LEVEL + 1],
                 Constants.LONGRANGE_REFUND_VALUE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.LONGRANGE_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.LONGRANGE_POWER[Constants.INITIAL_TOWER_LEVEL],
-                Constants.LONGRANGE_RATE[Constants.INITIAL_TOWER_LEVEL]);
+                Constants.LONGRANGE_RATE[Constants.INITIAL_TOWER_LEVEL], cell);
 
         towerType = Constants.LONGRANGE_TOWER_TYPE;
     }

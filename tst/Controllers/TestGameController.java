@@ -51,9 +51,9 @@ public class TestGameController {
 
         controller = GameController.getUniqueInstance();
 
-        singleTargetTower = new RegularTower(5, 5, Constants.INITIAL_TOWER_LEVEL);
+        singleTargetTower = new RegularTower(5, 5, Constants.INITIAL_TOWER_LEVEL, null);
 
-        multiTargetsTower = new DeceleratorTower(5, 5, Constants.INITIAL_TOWER_LEVEL);
+        multiTargetsTower = new DeceleratorTower(5, 5, Constants.INITIAL_TOWER_LEVEL, null);
 
         critter1 = new ArmoredCritter(5);
         critter2 = new ArmoredCritter(5);

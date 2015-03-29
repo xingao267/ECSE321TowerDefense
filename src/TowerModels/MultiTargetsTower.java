@@ -1,6 +1,7 @@
 package TowerModels;
 
 import Exceptions.MaxLevelReachedException;
+import Map.Cell;
 
 /**
  *
@@ -13,10 +14,10 @@ public abstract class MultiTargetsTower extends Tower {
     protected double effectRange;
 
     public MultiTargetsTower(int xPos, int yPos, int level, int initialCost, int upgradeCost,
-            int refundValue, double range, double power, double rateOfFire, double effectRange) {
+            int refundValue, double range, double power, double rateOfFire, double effectRange, Cell cell) {
 
         super(xPos, yPos, level, initialCost, upgradeCost, refundValue, range, power, rateOfFire,
-                true);
+                true, cell);
         this.effectRange = effectRange;
     }
 

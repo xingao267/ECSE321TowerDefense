@@ -28,15 +28,19 @@ public class TowerRightClickMenu extends JPopupMenu {
 
     JMenuItem removeButtom;
 
+    JMenuItem moveButtom;
+
     public TowerRightClickMenu() {
 
         this.gameController = GameController.getUniqueInstance();
 
         upgradeButtom = new JMenuItem("Upgrade");
         removeButtom = new JMenuItem("Remove");
+        moveButtom = new JMenuItem("Move");
 
         add(upgradeButtom);
         add(removeButtom);
+        add(moveButtom);
 
         upgradeButtom.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -57,6 +61,13 @@ public class TowerRightClickMenu extends JPopupMenu {
             public void actionPerformed(ActionEvent e) {
                 gameController.sellTower(gameController.getHoveredTowerOnMap());
 
+            }
+        });
+
+        moveButtom.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                gameController.setSelectedTowerToMove(gameController.getHoveredTowerOnMap());
+                gameController.setTowerMoveClicked(true);
             }
         });
     }
@@ -87,6 +98,20 @@ public class TowerRightClickMenu extends JPopupMenu {
      */
     public void setRemoveButtom(JMenuItem removeButtom) {
         this.removeButtom = removeButtom;
+    }
+
+    /**
+     * @return the moveButtom
+     */
+    public JMenuItem getMoveButtom() {
+        return moveButtom;
+    }
+
+    /**
+     * @param moveButtom the moveButtom to set
+     */
+    public void setMoveButtom(JMenuItem moveButtom) {
+        this.moveButtom = moveButtom;
     }
 
 }

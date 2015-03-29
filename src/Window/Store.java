@@ -84,11 +84,11 @@ public class Store {
                         7 * Constants.STORE_BUTTON_SIZE / 3, Constants.STORE_BUTTON_SIZE / 2);
 
         towerType = new ArrayList<Tower>();
-        towerType.add(new RegularTower(-1, -1, Constants.INITIAL_TOWER_LEVEL));
-        towerType.add(new BomberTower(-1, -1, Constants.INITIAL_TOWER_LEVEL));
-        towerType.add(new SpeedTower(-1, -1, Constants.INITIAL_TOWER_LEVEL));
-        towerType.add(new DeceleratorTower(-1, -1, Constants.INITIAL_TOWER_LEVEL));
-        towerType.add(new LongRangeTower(-1, -1, Constants.INITIAL_TOWER_LEVEL));
+        towerType.add(new RegularTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
+        towerType.add(new BomberTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
+        towerType.add(new SpeedTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
+        towerType.add(new DeceleratorTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
+        towerType.add(new LongRangeTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
 
     }
 
@@ -177,18 +177,18 @@ public class Store {
             g.drawString("Don't have enough money in bank.", 15, 85);
 
         } else {
-            if (gameController.isTowerCellHoveredOnMap()) {
+            if (gameController.isTowerCellHoveredOnMap() && !gameController.isTowerMoveClicked()) {
                 g.setColor(new Color(255, 255, 255));
                 g.setFont(new Font("Courier New", Font.BOLD, 14));
                 g.drawString("Right click to upgrade or remove.", 15, 85);
 
             } else {
-                if (gameController.isTowerSeletedInStore()) {
+                if (gameController.isTowerSeletedInStore() || gameController.isTowerMoveClicked()) {
                     g.setColor(new Color(255, 255, 255));
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
                     g.drawString("Place tower on a scenery cell", 15, 85);
                 }
-                if (!gameController.isTowerSeletedInStore()) {
+                if (!gameController.isTowerSeletedInStore() && !gameController.isTowerMoveClicked()) {
                     g.setColor(new Color(255, 255, 255));
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
                     g.drawString("Click tower button to buy tower.", 15, 85);
@@ -293,11 +293,11 @@ public class Store {
                 // TODO: start movement of critter group
             }
         }
-        if(Screen.gameLevel >=1){
-        	g.setFont(new Font("Courier New", Font.BOLD, 20));
-        	g.setColor(new Color(255, 255, 255));
-        	g.drawString("Level " + Screen.gameLevel, mainMenuButton.x, sendNextWaveButton.y + 47);
+        if (Screen.gameLevel >= 1) {
+            g.setFont(new Font("Courier New", Font.BOLD, 20));
+            g.setColor(new Color(255, 255, 255));
+            g.drawString("Level " + Screen.gameLevel, mainMenuButton.x, sendNextWaveButton.y + 47);
         }
-        
+
     }
 }

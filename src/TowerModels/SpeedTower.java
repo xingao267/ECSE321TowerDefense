@@ -2,6 +2,7 @@ package TowerModels;
 
 import CritterModels.Critter;
 import Exceptions.MaxLevelReachedException;
+import Map.Cell;
 import Utility.Constants;
 
 /**
@@ -11,13 +12,13 @@ import Utility.Constants;
  */
 public class SpeedTower extends SingleTargetTower {
 
-    public SpeedTower(int xPos, int yPos, int level) {
+    public SpeedTower(int xPos, int yPos, int level, Cell cell) {
         super(xPos, yPos, level, Constants.SPEED_INITIAL_COST,
                 Constants.SPEED_UPGRADE_COST[Constants.INITIAL_TOWER_LEVEL + 1],
                 Constants.SPEED_REFUND_VALUE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.SPEED_RANGE[Constants.INITIAL_TOWER_LEVEL],
                 Constants.SPEED_POWER[Constants.INITIAL_TOWER_LEVEL],
-                Constants.SPEED_RATE[Constants.INITIAL_TOWER_LEVEL]);
+                Constants.SPEED_RATE[Constants.INITIAL_TOWER_LEVEL], cell);
 
         towerType = Constants.SPEED_TOWER_TYPE;
     }

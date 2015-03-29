@@ -31,7 +31,7 @@ public interface IGameController {
      * @throws NoEnoughMoneyException
      * @throws InvalidTowerTypeException
      */
-    public Tower purchaseTower(String towerType, int xPos, int yPos, int level)
+    public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Cell cell)
             throws NoEnoughMoneyException, InvalidTowerTypeException;
 
     /**

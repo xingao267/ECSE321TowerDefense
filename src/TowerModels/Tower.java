@@ -8,6 +8,7 @@ import CritterModels.BulletProofCritter;
 import CritterModels.Critter;
 import Exceptions.CritterDeadException;
 import Exceptions.MaxLevelReachedException;
+import Map.Cell;
 
 /**
  * The class is the generic base class Tower data model
@@ -53,6 +54,8 @@ public abstract class Tower {
     /** Tower is placed and in game or not. */
     protected boolean inGame;
 
+    protected Cell cell;
+
     private List<ITowerObserver> towerObservers;
 
     public void addObserver(ITowerObserver o) {
@@ -91,7 +94,7 @@ public abstract class Tower {
      * @param rateOfFire
      */
     public Tower(int xPos, int yPos, int level, int initialCost, int upgradeCost, int refundValue,
-            double range, double power, double rateOfFire, boolean multiTargets) {
+            double range, double power, double rateOfFire, boolean multiTargets, Cell cell) {
 
         this.xPos = xPos;
         this.yPos = yPos;
@@ -105,6 +108,7 @@ public abstract class Tower {
         this.multiTargets = multiTargets;
         this.inGame = true;
         this.towerObservers = new ArrayList<ITowerObserver>();
+        this.cell = cell;
     }
 
     /**
@@ -321,6 +325,20 @@ public abstract class Tower {
      */
     public void setInGame(boolean inGame) {
         this.inGame = inGame;
+    }
+
+    /**
+     * @return the cell
+     */
+    public Cell getCell() {
+        return cell;
+    }
+
+    /**
+     * @param cell the cell to set
+     */
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
     /*

@@ -67,9 +67,9 @@ public class TestCritterGroupGenerator {
         critterGroup = new CritterGroupGenerator(1);
         critters = critterGroup.getCritterGroup();
 
-        singleTargetTower = new RegularTower(5, 5, Constants.INITIAL_TOWER_LEVEL);
+        singleTargetTower = new RegularTower(5, 5, Constants.INITIAL_TOWER_LEVEL, null);
 
-        multiTargetsTower = new BomberTower(5, 5, Constants.INITIAL_TOWER_LEVEL);
+        multiTargetsTower = new BomberTower(5, 5, Constants.INITIAL_TOWER_LEVEL, null);
 
         bank = Bank.getUniqueInstance();
         user = Player.getUniqueInstance();
@@ -91,30 +91,30 @@ public class TestCritterGroupGenerator {
         }
     }
 
-//    @Test
-//    public void testMoveTo() {
-//
-//        Critter critter1 = critters.get(0);
-//
-//        critterGroup.moveTo(critter1, pathCell2, user);
-//        assertEquals(2, pathCell2.getXCoordinate());
-//        assertEquals(1, pathCell2.getYCoordinate());
-//
-//        critterGroup.moveTo(critter1, pathCell3, user);
-//        assertEquals(3, pathCell3.getXCoordinate());
-//        assertEquals(1, pathCell3.getYCoordinate());
-//
-//        critterGroup.moveTo(critter1, pathCell4, user);
-//        assertEquals(3, pathCell4.getXCoordinate());
-//        assertEquals(2, pathCell4.getYCoordinate());
-//
-//        critterGroup.moveTo(critter1, pathCell5, user);
-//        assertEquals(3, pathCell5.getXCoordinate());
-//        assertEquals(3, pathCell5.getYCoordinate());
-//
-//        critterGroup.moveTo(critter1, exitCell, user);
-//        assertEquals(3, exitCell.getXCoordinate());
-//        assertEquals(4, exitCell.getYCoordinate());
-//        assertEquals(99, (long) user.getLifePoints());
-//    }
+    // @Test
+    // public void testMoveTo() {
+    //
+    // Critter critter1 = critters.get(0);
+    //
+    // critterGroup.moveTo(critter1, pathCell2, user);
+    // assertEquals(2, pathCell2.getXCoordinate());
+    // assertEquals(1, pathCell2.getYCoordinate());
+    //
+    // critterGroup.moveTo(critter1, pathCell3, user);
+    // assertEquals(3, pathCell3.getXCoordinate());
+    // assertEquals(1, pathCell3.getYCoordinate());
+    //
+    // critterGroup.moveTo(critter1, pathCell4, user);
+    // assertEquals(3, pathCell4.getXCoordinate());
+    // assertEquals(2, pathCell4.getYCoordinate());
+    //
+    // critterGroup.moveTo(critter1, pathCell5, user);
+    // assertEquals(3, pathCell5.getXCoordinate());
+    // assertEquals(3, pathCell5.getYCoordinate());
+    //
+    // critterGroup.moveTo(critter1, exitCell, user);
+    // assertEquals(3, exitCell.getXCoordinate());
+    // assertEquals(4, exitCell.getYCoordinate());
+    // assertEquals(99, (long) user.getLifePoints());
+    // }
 }
