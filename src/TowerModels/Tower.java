@@ -117,7 +117,7 @@ public abstract class Tower {
      * @param critters
      * @throws CritterDeadException
      */
-    public void attack(Critter critter) throws CritterDeadException {
+    public synchronized void attack(Critter critter) throws CritterDeadException {
 
         double newHealth = 0;
 

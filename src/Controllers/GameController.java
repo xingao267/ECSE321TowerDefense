@@ -180,14 +180,12 @@ public class GameController implements IGameController {
     }
 
     @Override
-    public void towerAttackTargets(Tower tower, List<Critter> critters) throws CritterDeadException {
+    public synchronized void towerAttackTargets(Tower tower, List<Critter> critters)
+            throws CritterDeadException {
 
         if (critters != null) {
             for (Critter critter : critters) {
                 tower.attack(critter);
-                if (critter.isDead()) {
-                    bank.returnToBank(critter.getBounty());
-                }
             }
         }
     }

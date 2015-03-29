@@ -47,7 +47,7 @@ public class Screen extends JPanel implements Runnable {
     public MapDesignerDisplay mapDesigner;
 
     public KeyHandler keyHandle;
-    
+
     public static TowerRightClickMenu towerRightClickMenu;
 
     private boolean isFirst = true;
@@ -187,7 +187,7 @@ public class Screen extends JPanel implements Runnable {
                     critters = group.getCritterGroup();
                     crittersGenerated = true;
                 } else {
-                	//TODO: add multiple levels
+                    // TODO: add multiple levels
                     for (Critter c : critters) {
                         if (c.isInGame()) {
                             critterGroupDisplays.put(c, new CritterDisplay(c));
@@ -198,11 +198,12 @@ public class Screen extends JPanel implements Runnable {
                             critterGroupDisplays.remove(c);
                         }
                     }
-                    if(critters.size() == 0){
-                    	levelStarted = false;
-                    	crittersGenerated = false;
+                    if (critters.size() == 0) {
+                        levelStarted = false;
+                        crittersGenerated = false;
                     }
                 }
+
                 for (Tower tower : gameController.getTowers()) {
                     List<Critter> detectedCritters =
                             gameController.towerDetectTargets(tower, critters);
@@ -213,8 +214,10 @@ public class Screen extends JPanel implements Runnable {
                     } catch (CritterDeadException e) {
                         critters.remove(e.getDeadCritter());
                         critterGroupDisplays.remove(e.getDeadCritter());
+                        bank.returnToBank(e.getDeadCritter().getBounty());
                     }
                 }
+
             }
         }
     }

@@ -39,8 +39,24 @@ public class TowerRightClickMenu extends JPopupMenu {
         moveButtom = new JMenuItem("Move");
 
         add(upgradeButtom);
-        add(removeButtom);
-        add(moveButtom);
+
+        if (!Screen.levelStarted) {
+            add(removeButtom);
+            removeButtom.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    gameController.sellTower(gameController.getHoveredTowerOnMap());
+
+                }
+            });
+
+            add(moveButtom);
+            moveButtom.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    gameController.setSelectedTowerToMove(gameController.getHoveredTowerOnMap());
+                    gameController.setTowerMoveClicked(true);
+                }
+            });
+        }
 
         upgradeButtom.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -54,20 +70,6 @@ public class TowerRightClickMenu extends JPopupMenu {
                 } catch (NoEnoughMoneyException e1) {
                     gameController.setNoMoneyCaught(true);
                 }
-            }
-        });
-
-        removeButtom.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                gameController.sellTower(gameController.getHoveredTowerOnMap());
-
-            }
-        });
-
-        moveButtom.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                gameController.setSelectedTowerToMove(gameController.getHoveredTowerOnMap());
-                gameController.setTowerMoveClicked(true);
             }
         });
     }

@@ -1,6 +1,5 @@
 package Utility;
 
-import TowerModels.BomberTower;
 
 /**
  * Constants
@@ -88,9 +87,9 @@ public class Constants {
             REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
                     + REGULAR_UPGRADE_COST[4] + REGULAR_UPGRADE_COST[5]};
     public static final double[] REGULAR_RANGE = {0, 1, 2, 3, 4, 5};
-    public static final double[] REGULAR_RATE = {0, 2, 3, 4, 5, 6};
+    public static final double[] REGULAR_RATE = {0, 4, 5, 6, 7, 8};
 
-    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 2, 4, 6, 8, 10};
+    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 5, 10, 15, 30, 50};
     public static final double[] REGULAR_POWER = {
             REGULAR_DAMAGE_PER_HIT[0] * REGULAR_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             REGULAR_DAMAGE_PER_HIT[1] * REGULAR_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
