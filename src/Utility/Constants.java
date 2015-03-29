@@ -52,15 +52,15 @@ public class Constants {
     // TODO actual url to be changed later
     public static final String REGULAR_TOWER_IMAGE = "source/image/regular_tower.png";
 
-    public static final String BOMBER_TOWER_IMAGE = "source/image/regular_tower.png";
+    public static final String BOMBER_TOWER_IMAGE = "source/image/bomber_tower.png";
 
-    public static final String SPEED_TOWER_IMAGE = "source/image/regular_tower.png";
+    public static final String SPEED_TOWER_IMAGE = "source/image/speed_tower.png";
 
-    public static final String DECELERATOR_TOWER_IMAGE = "source/image/regular_tower.png";
+    public static final String DECELERATOR_TOWER_IMAGE = "source/image/decelerator_tower.png";
 
-    public static final String LONGRANGE_TOWER_IMAGE = "source/image/regular_tower.png";
+    public static final String LONGRANGE_TOWER_IMAGE = "source/image/longrange_tower.png";
 
-    public static final String[] TOWER_IMAGE_SET = {REGULAR_TOWER_IMAGE, REGULAR_TOWER_IMAGE,
+    public static final String[] TOWER_IMAGE_SET = {REGULAR_TOWER_IMAGE, BOMBER_TOWER_IMAGE,
             SPEED_TOWER_IMAGE, DECELERATOR_TOWER_IMAGE, LONGRANGE_TOWER_IMAGE};
 
     /*--------------------------------------------------------------------------------------------------------------------*/
@@ -218,7 +218,7 @@ public class Constants {
 
     /** Armored Critter Constants. */
     public static final int ARMORED_CRITTER_SPEED = 4;
-    public static final int ARMORED_CRITTER_BOUNTY = 2;
+    public static final int ARMORED_CRITTER_BOUNTY = 4;
     public static final int ARMORED_CRITTER_STRENGTH = 1;
 
     /** Boss Critter Constants. */
@@ -226,27 +226,22 @@ public class Constants {
 
     /** Bullet Proof Critter Constants. */
     public static final int BULLET_PROOF_CRITTER_SPEED = 5;
-    public static final int BULLET_PROOF_CRITTER_BOUNTY = 2;
+    public static final int BULLET_PROOF_CRITTER_BOUNTY = 4;
     public static final int BULLET_PROOF_CRITTER_STRENGTH = 1;
-
-    /** Ghost Critter Constants. */
-    public static final int GHOST_CRITTER_SPEED = 6;
-    public static final int GHOST_CRITTER_BOUNTY = 2;
-    public static final int GHOST_CRITTER_STRENGTH = 1;
 
     /** Normal Critter Constants. */
     public static final int NORMAL_CRITTER_SPEED = 5;
-    public static final int NORMAL_CRITTER_BOUNTY = 3;
+    public static final int NORMAL_CRITTER_BOUNTY = 4;
     public static final int NORMAL_CRITTER_STRENGTH = 1;
 
     /** Speed Critter Constants. */
     public static final int SPEED_CRITTER_SPEED = 10;
-    public static final int SPEED_CRITTER_BOUNTY = 2;
+    public static final int SPEED_CRITTER_BOUNTY = 4;
     public static final int SPEED_CRITTER_STRENGTH = 1;
 
     /** Regenerative Critter Constants. */
     public static final int REGENERATIVE_CRITTER_SPEED = 5;
-    public static final int REGENERATIVE_CRITTER_BOUNTY = 2;
+    public static final int REGENERATIVE_CRITTER_BOUNTY = 4;
     public static final int REGENERATIVE_CRITTER_STRENGTH = 1;
 
 }

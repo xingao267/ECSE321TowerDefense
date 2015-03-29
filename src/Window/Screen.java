@@ -180,8 +180,10 @@ public class Screen extends JPanel implements Runnable {
                             critterGroupDisplays.get(c).draw(g);
                         }
                         if (c.hasReachedExit()) {
-                            critters.remove(c);
+                            try{
+                        	critters.remove(c);
                             critterGroupDisplays.remove(c);
+                            } catch(Exception e){}
                         }
                     }
                     if (critters.size() == 0) {

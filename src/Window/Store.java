@@ -145,7 +145,7 @@ public class Store {
 
             // darkens towers when player doesn't have enough money
             if (towerType.get(i).getInitialCost() > Bank.getUniqueInstance().getBalance()) {
-                g.setColor(new Color(0, 0, 0, 75));
+                g.setColor(new Color(0, 0, 0, 150));
                 g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
             }
 
@@ -262,8 +262,7 @@ public class Store {
             Screen.displayMapSelectorPane = false;
             Screen.crittersGenerated = false;
             Screen.levelStarted = false;
-            Screen.displayMainMenu = true;
-
+            Screen.displayMainMenu = true;            
         }
 
         // Draw Button to send the next wave

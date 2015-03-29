@@ -72,7 +72,7 @@ public class GameController implements IGameController {
         uniqueInstance = new GameController();
     }
 
-    private int spawnTime = 100, spawnFrame = 0;
+    private int spawnTime = 400, spawnFrame = 0;
 
     @Override
     public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Cell cell)
