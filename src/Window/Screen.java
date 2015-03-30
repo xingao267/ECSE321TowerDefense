@@ -43,6 +43,7 @@ public class Screen extends JPanel implements Runnable {
     public KeyHandler keyHandle;
 
     public static TowerRightClickMenu towerRightClickMenu;
+    public static CustomMapRightClickMenu customMapRightClickMenu;
     public static IconDisplay icons;
 
     private boolean suspended = false;

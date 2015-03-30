@@ -15,11 +15,15 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
     }
 
     public void mouseClicked(MouseEvent m) {
-        Screen.mouseClicked =
-                new Point(m.getX() - (Frame.width - Screen.screenWidth) / 2, m.getY()
-                        - (Frame.height - Screen.screenHeight) / 2 - Constants.KEYHANDLER_OFFSET);
-        // System.out.println("Mouse clicked (" + Screen.mouseClicked.getX() + ',' +
-        // Screen.mouseClicked.getY() + ')');
+	      if(!(m.getButton() == m.BUTTON3)){ 
+    		Screen.mouseClicked =
+	                new Point(m.getX() - (Frame.width - Screen.screenWidth) / 2, m.getY()
+	                        - (Frame.height - Screen.screenHeight) / 2 - Constants.KEYHANDLER_OFFSET);
+	        
+	        // System.out.println("Mouse clicked (" + Screen.mouseClicked.getX() + ',' +
+	        // Screen.mouseClicked.getY() + ')');
+    		//Screen.rightClicked = false;
+	      }	
     }
 
     public void mouseEntered(MouseEvent m) {
@@ -32,13 +36,20 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
 
     public void mousePressed(MouseEvent m) {
         if (m.isPopupTrigger() && GameController.getUniqueInstance().isTowerCellHoveredOnMap()) {
-            Screen.towerRightClickMenu = doPop(m);
+        	
+        	Screen.towerRightClickMenu = doPop(m);
+        }
+        if (m.isPopupTrigger() && MapSelectPane.isCustomMapHovered()) {
+        	Screen.customMapRightClickMenu = doPop2(m);
         }
     }
 
     public void mouseReleased(MouseEvent m) {
         if (m.isPopupTrigger() && GameController.getUniqueInstance().isTowerCellHoveredOnMap()) {
             Screen.towerRightClickMenu = doPop(m);
+        }
+        if (m.isPopupTrigger() && MapSelectPane.isCustomMapHovered()) {
+        	Screen.customMapRightClickMenu = doPop2(m);
         }
     }
 
@@ -62,6 +73,12 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
 
         TowerRightClickMenu menu = new TowerRightClickMenu();
         menu.show(e.getComponent(), e.getX(), e.getY());
+        return menu;
+    }
+    
+    private CustomMapRightClickMenu doPop2(MouseEvent e){
+    	CustomMapRightClickMenu menu = new CustomMapRightClickMenu();
+    	menu.show(e.getComponent(), e.getX(), e.getY());
         return menu;
     }
 

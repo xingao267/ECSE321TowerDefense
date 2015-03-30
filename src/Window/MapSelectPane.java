@@ -19,6 +19,8 @@ public class MapSelectPane {
 	private ArrayList<Rectangle> customMaps;
 	private List<String> mapList;
 	private MapLoader mapLoader;
+	private static boolean isCustomMapHovered;
+	private static String hoveredMap;
 	
 	public static int buttonHeight = 60;
 	public static int buttonWidth = 275;
@@ -38,6 +40,7 @@ public class MapSelectPane {
 		mapLoader = MapLoader.getUniqueInstance();
 		mapList = mapLoader.getMapList();
 		customMaps = new ArrayList<Rectangle>();
+		isCustomMapHovered = false;
 		init();
 	}
 	
@@ -161,6 +164,7 @@ public class MapSelectPane {
 			g.setColor(new Color(255, 255, 255, 150));
 			g.fillRect(createCustomMap.x, createCustomMap.y, 
 					createCustomMap.width, createCustomMap.height);
+			
 		}
 		//transition to map editor window
 		if(createCustomMap.contains(Screen.mouseClicked)){
@@ -189,21 +193,33 @@ public class MapSelectPane {
 					g.setColor(new Color(255, 255, 255, 150));
 					g.fillRect((3*(Screen.screenWidth - buttonWidth/2)/4 - buttonXOffset/2),
 							(Screen.screenHeight/2 - buttonHeight/4 + buttonYOffset3)+((i+1)*customMapOffset), 3*buttonWidth/4, buttonHeight/2);
+					isCustomMapHovered = true;
+					hoveredMap = mapList.get(i);
 				}
-				if(customMaps.get(i).contains(Screen.mouseClicked)){
-					
-					Map m;
-					try {
-						m = mapLoader.loadMap(mapList.get(i));
-						Screen.displayMapSelectorPane = false;
-						Screen.setCustomMap(m);
-						Screen.inGameplay = true;
-						Screen.displayCustomMap = true;
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+				
+					if(customMaps.get(i).contains(Screen.mouseClicked)){
+						
+						Map m;
+						try {
+							m = mapLoader.loadMap(mapList.get(i));
+							Screen.displayMapSelectorPane = false;
+							Screen.setCustomMap(m);
+							Screen.inGameplay = true;
+							Screen.displayCustomMap = true;
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
-				}
+					
 			}
+	}
+	
+	public static boolean isCustomMapHovered(){
+		return isCustomMapHovered;
+	}
+	
+	public static String getHoveredMap(){
+		return hoveredMap;
 	}
 }

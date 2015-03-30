@@ -1,7 +1,9 @@
 package Map;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
+
 import com.thoughtworks.xstream.XStream;
 
 /**
@@ -86,6 +88,11 @@ public class MapLoader {
 		Map m = (Map) xstream.fromXML(xml);
 		return m;
 
+	}
+	
+	public void deleteMap(String map){
+		boolean deleted = new File(map).delete();
+		
 	}
 	
 	/**
