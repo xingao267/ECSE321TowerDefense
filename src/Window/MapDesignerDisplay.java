@@ -31,7 +31,7 @@ public class MapDesignerDisplay implements Runnable {
     private Rectangle mainMenuButton, saveMapButton;
 
     private Map map;
-    private MapDesigner d;
+    private MapDesigner mapDesigner;
 
     private String mapName;
     private int customMapWidth;
@@ -111,7 +111,7 @@ public class MapDesignerDisplay implements Runnable {
                     createUserDefinedMap();
                 } else {
                     map = new Map(mapName, customMapWidth, customMapHeight);
-                    d = new MapDesigner(map);
+                    mapDesigner = new MapDesigner(map);
                     for (int i = 0; i < customMapHeight; i++) {
                         map.addIndicator(new Cell(0, i));
                     }
@@ -162,7 +162,7 @@ public class MapDesignerDisplay implements Runnable {
                 for (Rectangle r : display.indicator) {
                     if (r.contains(Screen.mouseClicked)) {
                         // System.out.println("indicator clicked");
-                        d.addPathNodeFromClick(Screen.mouseClicked, false);
+                        mapDesigner.addPathNodeFromClick(Screen.mouseClicked, false);
                         Screen.mouseClickedReset();
                     }
                 }
@@ -211,7 +211,7 @@ public class MapDesignerDisplay implements Runnable {
 
             MapLoader mapLoader = MapLoader.getUniqueInstance();
 
-            d.endMap();
+            mapDesigner.endMap();
             // System.out.println("were here");
             if (map.validPath()) {
                 System.out.println("valid path");
@@ -230,12 +230,11 @@ public class MapDesignerDisplay implements Runnable {
                 Screen.displayMainMenu = true;
                 Screen.gameRunning = true;
                 
-                
                 System.out.println("map saved");
                 // System.out.println("Last Path is exit: " +
                 // map.getPath(map.pathSize()-1).isExit());
             }
-
+            Screen.mouseClickedReset();
             stop();
         }
 
