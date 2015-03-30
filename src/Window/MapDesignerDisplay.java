@@ -217,7 +217,20 @@ public class MapDesignerDisplay implements Runnable {
                 System.out.println("valid path");
                 map.clearIndicators();
                 mapLoader.saveMap(map, mapName);
+                
+                Screen.displayMapDesigner = false;
+                Screen.inGameplay = false;
+                Screen.displayEasyMap = false;
+                Screen.displayMediumMap = false;
+                Screen.displayHardMap = false;
+                Screen.displayCustomMap = false;
+                Screen.displayMapSelectorPane = false;
+                Screen.crittersGenerated = false;
+                Screen.levelStarted = false;
+                Screen.displayMainMenu = true;
                 Screen.gameRunning = true;
+                
+                
                 System.out.println("map saved");
                 // System.out.println("Last Path is exit: " +
                 // map.getPath(map.pathSize()-1).isExit());
