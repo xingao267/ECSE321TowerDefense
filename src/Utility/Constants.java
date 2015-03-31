@@ -29,7 +29,7 @@ public class Constants {
 
     /** Map display constants */
     public static final int MAP_INITIAL_XPOS = 20;
-    public static final int MAP_INITIAL_YPOS = 100;
+    public static final int MAP_INITIAL_YPOS = 110;
     public static final int MAP_CELL_SIZE = STORE_BUTTON_SIZE;
 
     /** KeyHandler constants */
@@ -49,7 +49,10 @@ public class Constants {
 
     /*--------------------------------------------------------------------------------------------------------------------*/
 
-    // TODO actual url to be changed later
+    public static final String MONEY_IMAGE = "source/image/money.png";
+    
+    public static final String LIFE_IMAGE = "source/image/life.png";
+
     public static final String REGULAR_TOWER_IMAGE = "source/image/regular_tower.png";
 
     public static final String BOMBER_TOWER_IMAGE = "source/image/bomber_tower.png";
@@ -61,7 +64,7 @@ public class Constants {
     public static final String LONGRANGE_TOWER_IMAGE = "source/image/longrange_tower.png";
 
     public static final String[] TOWER_IMAGE_SET = {REGULAR_TOWER_IMAGE, BOMBER_TOWER_IMAGE,
-            SPEED_TOWER_IMAGE, DECELERATOR_TOWER_IMAGE, LONGRANGE_TOWER_IMAGE};
+            DECELERATOR_TOWER_IMAGE, LONGRANGE_TOWER_IMAGE, SPEED_TOWER_IMAGE};
 
     /*--------------------------------------------------------------------------------------------------------------------*/
 
@@ -76,20 +79,20 @@ public class Constants {
 
     public static final int REGULAR_INITIAL_COST = 10;
 
-    public static final int[] REGULAR_UPGRADE_COST = {0, 0, 10, 15, 25, 45, Integer.MAX_VALUE};
-    public static final int[] REGULAR_REFUND_VALUE = {
+    public static final int[] REGULAR_UPGRADE_COST = {0, 0, 15, 25, 45, 70, Integer.MAX_VALUE};
+    public static final double[] REGULAR_REFUND_VALUE = {
             0,
-            REGULAR_INITIAL_COST,
-            REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2],
-            REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3],
-            REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
-                    + REGULAR_UPGRADE_COST[4],
-            REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
-                    + REGULAR_UPGRADE_COST[4] + REGULAR_UPGRADE_COST[5]};
+            0.8*REGULAR_INITIAL_COST,
+            0.8*(REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2]),
+            0.8*(REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]),
+            0.8*(REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
+                    + REGULAR_UPGRADE_COST[4]),
+            0.8*(REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
+                    + REGULAR_UPGRADE_COST[4] + REGULAR_UPGRADE_COST[5])};
     public static final double[] REGULAR_RANGE = {0, 1, 2, 3, 4, 5};
     public static final double[] REGULAR_RATE = {0, 4, 5, 6, 7, 8};
 
-    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 1, 2, 3, 4, 5};
+    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 5, 10, 15, 20, 25};
     public static final double[] REGULAR_POWER = {
             REGULAR_DAMAGE_PER_HIT[0] * REGULAR_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             REGULAR_DAMAGE_PER_HIT[1] * REGULAR_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
@@ -101,18 +104,18 @@ public class Constants {
     /** Long Range Tower Constants. */
     public static final String LONGRANGE_TOWER_TYPE = "Long Range Tower";
 
-    public static final int LONGRANGE_INITIAL_COST = 150;
+    public static final int LONGRANGE_INITIAL_COST = 100;
 
-    public static final int[] LONGRANGE_UPGRADE_COST = {0, 0, 75, 115, 175, 260, Integer.MAX_VALUE};
-    public static final int[] LONGRANGE_REFUND_VALUE = {
+    public static final int[] LONGRANGE_UPGRADE_COST = {0, 0, 115, 175, 260, 365, Integer.MAX_VALUE};
+    public static final double[] LONGRANGE_REFUND_VALUE = {
             0,
-            LONGRANGE_INITIAL_COST,
-            LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2],
-            LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3],
-            LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]
-                    + LONGRANGE_UPGRADE_COST[4],
-            LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]
-                    + LONGRANGE_UPGRADE_COST[4] + LONGRANGE_UPGRADE_COST[5]};
+            0.8*LONGRANGE_INITIAL_COST,
+            0.8*(LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2]),
+            0.8*(LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]),
+            0.8*(LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]
+                    + LONGRANGE_UPGRADE_COST[4]),
+            0.8*(LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]
+                    + LONGRANGE_UPGRADE_COST[4] + LONGRANGE_UPGRADE_COST[5])};
     public static final double[] LONGRANGE_RANGE = {0, 3, 6, 9, 12, 15};
     public static final double[] LONGRANGE_RATE = {0, 1, 2, 3, 4, 5};
 
@@ -128,18 +131,18 @@ public class Constants {
     /** Speed Tower Constants. */
     public static final String SPEED_TOWER_TYPE = "Speed Tower";
 
-    public static final int SPEED_INITIAL_COST = 50;
+    public static final int SPEED_INITIAL_COST = 200;
 
-    public static final int[] SPEED_UPGRADE_COST = {0, 0, 25, 50, 50, 100, Integer.MAX_VALUE};
-    public static final int[] SPEED_REFUND_VALUE = {
+    public static final int[] SPEED_UPGRADE_COST = {0, 0, 250, 350, 500, 750, Integer.MAX_VALUE};
+    public static final double[] SPEED_REFUND_VALUE = {
             0,
-            SPEED_INITIAL_COST,
-            SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2],
-            SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3],
-            SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
-                    + SPEED_UPGRADE_COST[4],
-            SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
-                    + SPEED_UPGRADE_COST[4] + SPEED_UPGRADE_COST[5]};
+            0.8*SPEED_INITIAL_COST,
+            0.8*(SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2]),
+            0.8*(SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]),
+            0.8*(SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
+                    + SPEED_UPGRADE_COST[4]),
+            0.8*(SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
+                    + SPEED_UPGRADE_COST[4] + SPEED_UPGRADE_COST[5])};
     public static final double[] SPEED_RANGE = {0, 1, 2, 3, 4, 5};
     public static final double[] SPEED_RATE = {0, 5, 7, 9, 11, 13};
 
@@ -158,15 +161,15 @@ public class Constants {
     public static final int BOMBER_INITIAL_COST = 20;
 
     public static final int[] BOMBER_UPGRADE_COST = {0, 0, 15, 25, 45, 80, Integer.MAX_VALUE};
-    public static final int[] BOMBER_REFUND_VALUE = {
+    public static final double[] BOMBER_REFUND_VALUE = {
             0,
-            BOMBER_INITIAL_COST,
-            BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2],
-            BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3],
-            BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
-                    + BOMBER_UPGRADE_COST[4],
-            BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
-                    + BOMBER_UPGRADE_COST[4] + BOMBER_UPGRADE_COST[5]};
+            0.8*BOMBER_INITIAL_COST,
+            0.8*(BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2]),
+            0.8*(BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]),
+            0.8*(BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
+                    + BOMBER_UPGRADE_COST[4]),
+            0.8*(BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
+                    + BOMBER_UPGRADE_COST[4] + BOMBER_UPGRADE_COST[5])};
     public static final double[] BOMBER_RANGE = {0, 1, 2, 3, 4, 5};
     public static final double[] BOMBER_RATE = {0, 1, 2, 3, 4, 5};
 
@@ -184,19 +187,19 @@ public class Constants {
     /** Decelerator Tower Constants. */
     public static final String DECELERATOR_TOWER_TYPE = "Decelerator Tower";
 
-    public static final int DECELERATOR_INITIAL_COST = 100;
+    public static final int DECELERATOR_INITIAL_COST = 50;
 
     public static final int[] DECELERATOR_UPGRADE_COST = {0, 0, 75, 120, 170, 230,
             Integer.MAX_VALUE};
-    public static final int[] DECELERATOR_REFUND_VALUE = {
+    public static final double[] DECELERATOR_REFUND_VALUE = {
             0,
-            DECELERATOR_INITIAL_COST,
-            DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2],
-            DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3],
-            DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]
-                    + DECELERATOR_UPGRADE_COST[4],
-            DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]
-                    + DECELERATOR_UPGRADE_COST[4] + DECELERATOR_UPGRADE_COST[5]};
+            0.8*DECELERATOR_INITIAL_COST,
+            0.8*(DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2]),
+            0.8*(DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]),
+            0.8*(DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]
+                    + DECELERATOR_UPGRADE_COST[4]),
+            0.8*(DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]
+                    + DECELERATOR_UPGRADE_COST[4] + DECELERATOR_UPGRADE_COST[5])};
     public static final double[] DECELERATOR_RANGE = {0, 1, 2, 3, 4, 5};
     public static final double[] DECELERATOR_RATE = {0, 1, 2, 3, 4, 5};
 
@@ -217,31 +220,41 @@ public class Constants {
     public static final int MAX_CRITTER_LEVEL = 20;
 
     /** Armored Critter Constants. */
+    public static final String ARMORED_CRITTER_TYPE = "Armored Critter";
     public static final int ARMORED_CRITTER_SPEED = 4;
     public static final int ARMORED_CRITTER_BOUNTY = 4;
     public static final int ARMORED_CRITTER_STRENGTH = 1;
+    public static final int ARMORED_CRITTER_SPAWN_RATE = 250;
 
     /** Boss Critter Constants. */
     public static final int BOSS_CRITTER_STRENGTH = 5;
 
     /** Bullet Proof Critter Constants. */
+    public static final String BULLET_PROOF_CRITTER_TYPE = "BulletProof Critter";
     public static final int BULLET_PROOF_CRITTER_SPEED = 5;
     public static final int BULLET_PROOF_CRITTER_BOUNTY = 4;
     public static final int BULLET_PROOF_CRITTER_STRENGTH = 1;
+    public static final int BULLET_PROOF_CRITTER_SPAWN_RATE = 300;
 
     /** Normal Critter Constants. */
+    public static final String NORMAL_CRITTER_TYPE = "Normal Critter";
     public static final int NORMAL_CRITTER_SPEED = 5;
     public static final int NORMAL_CRITTER_BOUNTY = 4;
     public static final int NORMAL_CRITTER_STRENGTH = 1;
+    public static final int NORMAL_CRITTER_SPAWN_RATE = 350;
 
     /** Speed Critter Constants. */
-    public static final int SPEED_CRITTER_SPEED = 10;
+    public static final String SPEED_CRITTER_TYPE = "Speed Critter";
+    public static final int SPEED_CRITTER_SPEED = 8;
     public static final int SPEED_CRITTER_BOUNTY = 4;
     public static final int SPEED_CRITTER_STRENGTH = 1;
+    public static final int SPEED_CRITTER_SPAWN_RATE = 100;
 
     /** Regenerative Critter Constants. */
+    public static final String REGENERATIVE_CRITTER_TYPE = "Regenerative Critter";
     public static final int REGENERATIVE_CRITTER_SPEED = 5;
     public static final int REGENERATIVE_CRITTER_BOUNTY = 4;
     public static final int REGENERATIVE_CRITTER_STRENGTH = 1;
+    public static final int REGENERATIVE_CRITTER_SPAWN_RATE = 300;
 
 }

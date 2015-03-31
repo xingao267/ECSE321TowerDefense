@@ -188,7 +188,7 @@ public class MapDesignerDisplay implements Runnable {
             Screen.levelStarted = false;
             Screen.displayMainMenu = true;
             Screen.gameRunning = true;
-
+            Screen.mouseClickedReset();
             // TODO: stop/reset everything to do with designing a map.
         }
 

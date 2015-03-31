@@ -17,6 +17,9 @@ import Window.Screen;
  */
 public abstract class Critter {
 
+	/** Critter type */
+	protected String critterType;
+	
     /** speed of critter. Range from 0 to 1 */
     protected double speed;
 
@@ -24,7 +27,7 @@ public abstract class Critter {
     protected double health;
     protected double maxHealth;
 
-    /** bounty awarded of killing a critter. */
+    /** bounty awarded for killing a critter. */
     protected int bounty;
 
     /** strength of critter. */
@@ -46,6 +49,9 @@ public abstract class Critter {
     /** y position of critter. */
     protected int yPos;
     protected int screenYPos;
+    
+    /** Spawn Rate of critter */
+    protected int spawnRate;
 
     /** whether critter is in the game or not */
     protected boolean inGame = false;
@@ -199,10 +205,14 @@ public abstract class Critter {
         player.setLifePoints(player.getLifePoints() - strength);
     }
 
-    public void setLocation(int x, int y) {
-        this.xPos = x;
-        this.yPos = y;
-    }
+    public String getCritterType() {
+		return critterType;
+	}
+
+	public void setCritterType(String critterType) {
+		this.critterType = critterType;
+	}
+
 
     /**
      * @return the speed
@@ -360,7 +370,15 @@ public abstract class Critter {
         this.screenYPos = screenYPos;
     }
 
-    public boolean isInGame() {
+    public int getSpawnRate() {
+		return spawnRate;
+	}
+
+	public void setSpawnRate(int spawnRate) {
+		this.spawnRate = spawnRate;
+	}
+
+	public boolean isInGame() {
         return inGame;
     }
 

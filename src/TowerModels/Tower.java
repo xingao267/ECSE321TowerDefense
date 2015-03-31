@@ -37,7 +37,7 @@ public abstract class Tower {
     protected int upgradeCost;
 
     /** The current refund value of the tower. */
-    protected int refundValue;
+    protected double refundValue;
 
     /** The current shooting range value of the tower. */
     protected double range;
@@ -93,7 +93,7 @@ public abstract class Tower {
      * @param power
      * @param rateOfFire
      */
-    public Tower(int xPos, int yPos, int level, int initialCost, int upgradeCost, int refundValue,
+    public Tower(int xPos, int yPos, int level, int initialCost, int upgradeCost, double refundValue,
             double range, double power, double rateOfFire, boolean multiTargets, Cell cell) {
 
         this.xPos = xPos;
@@ -246,14 +246,14 @@ public abstract class Tower {
     /**
      * @return the refundValue
      */
-    public int getRefundValue() {
+    public double getRefundValue() {
         return refundValue;
     }
 
     /**
      * @param refundValue the refundValue to set
      */
-    public void setRefundValue(int refundValue) {
+    public void setRefundValue(double refundValue) {
         this.refundValue = refundValue;
     }
 

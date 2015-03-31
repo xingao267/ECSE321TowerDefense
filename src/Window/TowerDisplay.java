@@ -26,9 +26,9 @@ import Utility.Utils;
  */
 public class TowerDisplay implements ITowerObserver {
 
-    public Rectangle towerDisplay;
+    private Rectangle towerDisplay;
 
-    public Tower tower;
+    private Tower tower;
 
     public TowerDisplay(Tower tower) {
 

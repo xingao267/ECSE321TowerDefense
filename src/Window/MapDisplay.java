@@ -163,6 +163,7 @@ public class MapDisplay {
                     towerToMove.setCell(cell);
                     GameController.getUniqueInstance().setTowerMoveClicked(false);
                 }
+                Screen.mouseClickedReset();
             }
         }
 
@@ -183,6 +184,7 @@ public class MapDisplay {
                 if (GameController.getUniqueInstance().isTowerSeletedInStore()) {
                     GameController.getUniqueInstance().setTowerSeletedInStore(false);
                 }
+                Screen.mouseClickedReset();
             }
 
         }

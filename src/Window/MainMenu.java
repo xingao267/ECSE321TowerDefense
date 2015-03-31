@@ -14,13 +14,13 @@ public class MainMenu {
 
     private Rectangle startGameButton, createCustomMapButton;
 
-    public static int buttonHeight = 75;
-    public static int buttonWidth = 400;
-    public static int buttonYOffset1 = 75;
-    public static int buttonYOffset2 = 175;
-    public static int wordXOffset1 = 200;
-    public static int wordXOffset2 = 325;
-    public static int wordYOffset = 10;
+    private static int buttonHeight = 75;
+    private static int buttonWidth = 400;
+    private static int buttonYOffset1 = 75;
+    private static int buttonYOffset2 = 175;
+    private static int wordXOffset1 = 200;
+    private static int wordXOffset2 = 325;
+    private static int wordYOffset = 10;
 
     public MainMenu() {
         init();

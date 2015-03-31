@@ -20,12 +20,15 @@ public class BulletProofCritter extends Critter {
         this.speed = Constants.BULLET_PROOF_CRITTER_SPEED;
         this.bounty = Constants.BULLET_PROOF_CRITTER_BOUNTY;
         this.strength = Constants.BULLET_PROOF_CRITTER_STRENGTH;
+        this.spawnRate = Constants.BULLET_PROOF_CRITTER_SPAWN_RATE;
 
         if (level > 5) {
             this.bounty += (level / 5) * this.bounty;
         }
         this.health = 15 * level * level + 5 * level + 80;
         this.maxHealth = health;
+        
+        this.critterType = Constants.BULLET_PROOF_CRITTER_TYPE;
     }
 
 }

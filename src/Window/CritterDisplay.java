@@ -11,11 +11,10 @@ import Utility.Utils;
 
 public class CritterDisplay {
 
-	public Rectangle critterDisplay, healthBar;
-	public Point spawnPoint;
-	public Critter critter;
-	public int healthBarSpacing = 3, healthBarHeight = Constants.STORE_BUTTON_SIZE/10;
-	public double maxCritterHealth;
+	private Rectangle critterDisplay, healthBar;
+	private Critter critter;
+	private int healthBarSpacing = 3, healthBarHeight = Constants.STORE_BUTTON_SIZE/10;
+	private double maxCritterHealth;
 	
 	public CritterDisplay(Critter critter){
 		

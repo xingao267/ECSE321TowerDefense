@@ -36,7 +36,7 @@ public class Bank {
      * 
      * @param refundValue
      */
-    public synchronized void returnToBank(int refundValue) {
+    public synchronized void returnToBank(double refundValue) {
         this.balance += refundValue;
     }
 

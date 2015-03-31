@@ -70,7 +70,7 @@ public class Store {
 
         mainMenuButton =
                 new Rectangle(Constants.MAIN_MENU_XPOS, Constants.MAIN_MENU_YPOS,
-                        2 * Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE / 2);
+                		7 * Constants.STORE_BUTTON_SIZE / 3, Constants.STORE_BUTTON_SIZE / 2);
 
         sendNextWaveButton =
                 new Rectangle(Constants.MAIN_MENU_XPOS, Constants.SEND_NEXT_WANVE_YPOS,
@@ -79,10 +79,10 @@ public class Store {
         towerType = new ArrayList<Tower>();
         towerType.add(new RegularTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
         towerType.add(new BomberTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
-        towerType.add(new SpeedTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
         towerType.add(new DeceleratorTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
         towerType.add(new LongRangeTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
-
+		towerType.add(new SpeedTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
+        
     }
 
     public void draw(Graphics g) {
@@ -125,17 +125,18 @@ public class Store {
                     g.setFont(new Font("Courier New", Font.BOLD, 15));
                     g.drawString(towerType.get(i).getTowerType(), 400, 30);
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
-                    g.drawString("Cost: " + towerType.get(i).getInitialCost(), 575, 30);
+                    g.drawString("Cost:" + towerType.get(i).getInitialCost(), 575, 30);
 
-                    g.drawString("Power: " + towerType.get(i).getDamagePerHit(), 400, 55);
-                    g.drawString("Range: " + towerType.get(i).getRange(), 500, 55);
-                    g.drawString("Fire Rate: " + towerType.get(i).getRateOfFire(), 400, 80);
-
+                    g.drawString("Power:" + towerType.get(i).getDamagePerHit(), 400, 55);
+                   
                     if (towerType.get(i).isMultiTargets()) {
-                        g.drawString("MultiTarget: Yes", 525, 80);
+                        g.drawString("MultiTarget:Yes", 525, 55);
                     } else {
-                        g.drawString("MultiTarget: No", 525, 80);
+                        g.drawString("MultiTarget:No", 525, 55);
                     }
+                    
+                    g.drawString("Range:" + towerType.get(i).getRange(), 540, 80);
+                    g.drawString("Fire Rate:" + towerType.get(i).getRateOfFire(), 400, 80);
 
                     towerClickable[i] = true;
                 }
@@ -155,6 +156,7 @@ public class Store {
                     String towerTypeName = towerStorePosToName.get(i);
                     GameController.getUniqueInstance().setSelectedTowerTypeInStore(towerTypeName);
                 }
+                Screen.mouseClickedReset();
             }
         }
 
@@ -200,42 +202,42 @@ public class Store {
             try {
 
                 g.drawString(
-                        "Power: " + tower.getDamagePerHit() + UP_ARROW
+                        "Power:" + tower.getDamagePerHit() + "->"
                                 + tower.getNextLevelDamagePerHit(), 400, 55);
-                g.drawString("Range: " + tower.getRange() + UP_ARROW + tower.getNextLevelRange(),
+                g.drawString("Range:" + tower.getRange() + "->" + tower.getNextLevelRange(),
                         530, 55);
 
                 g.drawString(
-                        "Fire Rate: " + tower.getRateOfFire() + UP_ARROW
+                        "Fire Rate:" + tower.getRateOfFire() + "->"
                                 + tower.getNextLevelRateOfFire(), 400, 82);
 
                 if (tower.isMultiTargets()) {
                     MultiTargetsTower multiTargettower = (MultiTargetsTower) tower;
-                    g.drawString("Effect Range: " + multiTargettower.getEffectRange() + UP_ARROW
+                    g.drawString("Effect Range:" + multiTargettower.getEffectRange() + "->"
                             + multiTargettower.getNextLevelEffectRange(), 550, 82);
                 }
 
                 g.setColor(new Color(255, 255, 255));
                 g.setFont(new Font("Courier New", Font.BOLD, 13));
                 g.drawString(
-                        tower.getTowerType() + " lv" + tower.getLevel() + UP_ARROW
+                        tower.getTowerType() + " lv" + tower.getLevel() + "->"
                                 + (tower.getLevel() + 1), 400, 30);
 
                 g.setFont(new Font("Courier New", Font.BOLD, 13));
-                g.drawString("Cost: " + tower.getUpgradeCost(), 575, 30);
+                g.drawString("Cost:" + tower.getUpgradeCost(), 575, 30);
 
             } catch (MaxLevelReachedException e) {
                 g.setColor(new Color(255, 255, 255));
                 g.setFont(new Font("Courier New", Font.BOLD, 13));
                 g.drawString(tower.getTowerType() + " lv" + tower.getLevel(), 400, 30);
 
-                g.drawString("Power: " + tower.getDamagePerHit(), 400, 55);
-                g.drawString("Range: " + tower.getRange(), 500, 55);
-                g.drawString("Fire Rate: " + tower.getRateOfFire(), 400, 80);
+                g.drawString("Power:" + tower.getDamagePerHit(), 400, 55);
+                g.drawString("Range:" + tower.getRange(), 500, 55);
+                g.drawString("Fire Rate:" + tower.getRateOfFire(), 400, 80);
 
                 if (tower.isMultiTargets()) {
                     MultiTargetsTower multiTargettower = (MultiTargetsTower) tower;
-                    g.drawString("Effect Range: " + multiTargettower.getEffectRange(), 530, 80);
+                    g.drawString("Effect Range:" + multiTargettower.getEffectRange(), 530, 80);
                 }
             }
         }
@@ -245,7 +247,7 @@ public class Store {
         g.fillRect(mainMenuButton.x, mainMenuButton.y, mainMenuButton.width, mainMenuButton.height);
         g.setFont(new Font("Courier New", Font.BOLD, 14));
         g.setColor(new Color(255, 255, 255));
-        g.drawString("Main Menu", mainMenuButton.x + Constants.STORE_BUTTON_SIZE / 4 + 2,
+        g.drawString("Main Menu", mainMenuButton.x + Constants.STORE_BUTTON_SIZE / 4 + 10,
                 mainMenuButton.y + Constants.STORE_BUTTON_SIZE / 4 + 4);
 
         if (mainMenuButton.contains(Screen.mouseLocation)) {
@@ -262,7 +264,8 @@ public class Store {
             Screen.displayMapSelectorPane = false;
             Screen.crittersGenerated = false;
             Screen.levelStarted = false;
-            Screen.displayMainMenu = true;            
+            Screen.displayMainMenu = true;
+            Screen.mouseClickedReset();
         }
 
         // Draw Button to send the next wave
@@ -284,13 +287,14 @@ public class Store {
             if (sendNextWaveButton.contains(Screen.mouseClicked)) {
                 Screen.levelStarted = true;
                 Screen.gameLevel++;
+                Screen.mouseClickedReset();
                 // TODO: start movement of critter group
             }
         }
         if (Screen.gameLevel >= 1) {
             g.setFont(new Font("Courier New", Font.BOLD, 20));
             g.setColor(new Color(255, 255, 255));
-            g.drawString("Level " + Screen.gameLevel, mainMenuButton.x, sendNextWaveButton.y + 47);
+            g.drawString("Level " + Screen.gameLevel, mainMenuButton.x, sendNextWaveButton.y + 50);
         }
 
     }

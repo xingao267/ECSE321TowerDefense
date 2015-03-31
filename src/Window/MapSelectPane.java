@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import Map.MapLoader;
 import Map.Map;
+import Utility.Constants;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -15,26 +16,26 @@ import java.util.ArrayList;
  */
 public class MapSelectPane {
 
-	private Rectangle easyButton, mediumButton, hardButton, createCustomMap;
+	private Rectangle easyButton, mediumButton, hardButton, createCustomMap, mainMenuButton;
 	private ArrayList<Rectangle> customMaps;
 	private List<String> mapList;
 	private MapLoader mapLoader;
 	private static boolean isCustomMapHovered;
 	private static String hoveredMap;
 	
-	public static int buttonHeight = 60;
-	public static int buttonWidth = 275;
-	public static int buttonYOffset1 = 40;
-	public static int buttonYOffset2 = 120;
-	public static int buttonYOffset3 = 200;
-	public static int buttonXOffset = 50;
-	public static int columnOffset1 = 400;
-	public static int wordXOffset1 = 150;
-	public static int wordXOffset2 = 75;
-	public static int wordXOffset3 = 150;
-	public static int wordYOffset = 10;
-	public static int stringOffset = 450;
-	public static int customMapOffset = -30;
+	private static int buttonHeight = 60;
+	private static int buttonWidth = 275;
+	private static int buttonYOffset1 = 40;
+	private static int buttonYOffset2 = 120;
+	private static int buttonYOffset3 = 200;
+	private static int buttonXOffset = 50;
+	private static int columnOffset1 = 400;
+	private static int wordXOffset1 = 150;
+	private static int wordXOffset2 = 75;
+	private static int wordXOffset3 = 150;
+	private static int wordYOffset = 10;
+	private static int stringOffset = 450;
+	private static int customMapOffset = -30;
 			
 	public MapSelectPane() {
 		mapLoader = MapLoader.getUniqueInstance();
@@ -45,6 +46,10 @@ public class MapSelectPane {
 	}
 	
 	public void init() {
+		
+		mainMenuButton = new Rectangle(Constants.MAIN_MENU_XPOS, Constants.MAIN_MENU_YPOS,
+				2*Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE/2);
+		
 		easyButton = new Rectangle((Screen.screenWidth - buttonWidth)/4 - buttonXOffset, 
 				(Screen.screenHeight - buttonHeight)/2 + buttonYOffset1, buttonWidth, buttonHeight);
 		
@@ -69,6 +74,33 @@ public class MapSelectPane {
 	
 	public void draw(Graphics g) {
 
+		// Draw Button to return to the main menu
+        g.setColor(new Color(0, 0, 0));
+        g.fillRect(mainMenuButton.x, mainMenuButton.y, mainMenuButton.width, mainMenuButton.height);
+        g.setFont(new Font("Courier New", Font.BOLD, 14));
+        g.setColor(new Color(255, 255, 255));
+        g.drawString("Main Menu", mainMenuButton.x + Constants.STORE_BUTTON_SIZE / 4 + 2,
+                mainMenuButton.y + Constants.STORE_BUTTON_SIZE / 4 + 4);
+
+        if (mainMenuButton.contains(Screen.mouseLocation)) {
+            g.setColor(new Color(255, 255, 255, 150));
+            g.fillRect(mainMenuButton.x, mainMenuButton.y, mainMenuButton.width,
+                    mainMenuButton.height);
+        }
+        if (mainMenuButton.contains(Screen.mouseClicked)) {
+            Screen.inGameplay = false;
+            Screen.displayEasyMap = false;
+            Screen.displayMediumMap = false;
+            Screen.displayHardMap = false;
+            Screen.displayCustomMap = false;
+            Screen.displayMapSelectorPane = false;
+            Screen.crittersGenerated = false;
+            Screen.levelStarted = false;
+            Screen.displayMainMenu = true;
+            Screen.mouseClickedReset();
+        }
+        
+        
 		g.setColor(new Color(255, 255, 255));
 		g.setFont(new Font("Courier New", Font.BOLD, 24));
 		g.drawString("Please select map you wish to play.", (Screen.screenWidth - stringOffset)/2, 
@@ -168,6 +200,7 @@ public class MapSelectPane {
 		}
 		//transition to map editor window
 		if(createCustomMap.contains(Screen.mouseClicked)){
+			Screen.mouseClickedReset();
 			Screen.displayMapSelectorPane = false;
 			Screen.displayMapDesigner = true;
 		}
@@ -210,6 +243,8 @@ public class MapSelectPane {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
+						Screen.mouseClickedReset();
 					}
 					
 			}

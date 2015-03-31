@@ -22,6 +22,7 @@ public class RegenerativeCritter extends Critter {
         this.speed = Constants.REGENERATIVE_CRITTER_SPEED;
         this.bounty = Constants.REGENERATIVE_CRITTER_BOUNTY;
         this.strength = Constants.REGENERATIVE_CRITTER_STRENGTH;
+        this.spawnRate = Constants.REGENERATIVE_CRITTER_SPAWN_RATE;
 
         if (level > 5) {
             this.bounty += (level / 5) * this.bounty;
@@ -32,6 +33,8 @@ public class RegenerativeCritter extends Critter {
         if (!isBeingHit) { // will need to be added into game loop
             regenerate(level);
         }
+        
+        this.critterType = Constants.REGENERATIVE_CRITTER_TYPE;
     }
 
     /**

@@ -72,7 +72,7 @@ public class GameController implements IGameController {
         uniqueInstance = new GameController();
     }
 
-    private int spawnTime = 400, spawnFrame = 0;
+    private int spawnFrame = 0, spawnRate;
 
     @Override
     public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Cell cell)
@@ -224,9 +224,12 @@ public class GameController implements IGameController {
 
     @Override
     public void spawnCritterGroup(Cell entryPoint, List<Critter> critterGroup) {
-        // List<Critter> critterGroup = group.getCritterGroup();
 
-        if (spawnFrame >= spawnTime) {
+    	if(critterGroup.size() != 0){
+    		spawnRate = critterGroup.get(0).getSpawnRate();
+    	}
+    	
+        if (spawnFrame >= spawnRate) {
             for (int i = 0; i < critterGroup.size(); i++) {
                 if (!critterGroup.get(i).isInGame() && !critterGroup.get(i).hasReachedExit()) {
                     critterGroup.get(i).spawn(entryPoint);
