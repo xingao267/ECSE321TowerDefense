@@ -89,6 +89,8 @@ public class Constants {
 
     /*--------------------------------------------------------------------------------------------------------------------*/
 
+    public static final double RT_2 = Math.sqrt(2);
+    
     /** Initial Tower Level. */
     public static final int INITIAL_TOWER_LEVEL = 1;
 

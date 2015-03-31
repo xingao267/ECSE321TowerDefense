@@ -9,15 +9,19 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 
-import Utility.Constants;
-import Utility.SpringUtilities;
-import Exceptions.InvalidMapConfigException;
 import Map.Cell;
 import Map.Map;
 import Map.MapDesigner;
 import Map.MapLoader;
+import Utility.Constants;
+import Utility.SpringUtilities;
 
 /**
  * 
@@ -38,11 +42,9 @@ public class MapDesignerDisplay implements Runnable {
     private int customMapWidth;
     private int customMapHeight;
 
-    private boolean jButtonPressed = false;
     public MapDisplay display;
 
     private boolean ready = false;
-    private boolean click = false;
 
 
     public MapDesignerDisplay() {
@@ -92,42 +94,42 @@ public class MapDesignerDisplay implements Runnable {
 
                 // Execute when button is pressed
                 try {
-					for (int i = 0; i < textFields.size(); i++) {
-					    String s = textFields.get(i).getText();
-					    switch (i) {
-					        case 0:
-					            mapName = s;
-					            break;
-					        case 1:
-					            customMapWidth = Integer.parseInt(s);
-					            break;
-					        case 2:
-					            customMapHeight = Integer.parseInt(s);
-					    }
-					}
-				
-
-                frame.setVisible(false);
-                frame.dispose();
-
-                if (customMapWidth > 15 || customMapHeight > 9) {
-                	InvalidMapParameterExceptionHandler();
-                } else {
-                    map = new Map(mapName, customMapWidth, customMapHeight);
-                    mapDesigner = new MapDesigner(map);
-                    for (int i = 0; i < customMapHeight; i++) {
-                        map.addIndicator(new Cell(0, i));
+                    for (int i = 0; i < textFields.size(); i++) {
+                        String s = textFields.get(i).getText();
+                        switch (i) {
+                            case 0:
+                                mapName = s;
+                                break;
+                            case 1:
+                                customMapWidth = Integer.parseInt(s);
+                                break;
+                            case 2:
+                                customMapHeight = Integer.parseInt(s);
+                        }
                     }
-                    ready = true;
-                    
-                }
-                
-                } catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
-                	frame.setVisible(false);
+
+
+                    frame.setVisible(false);
                     frame.dispose();
-					InvalidMapParameterExceptionHandler();
-				}
+
+                    if (customMapWidth > 15 || customMapHeight > 9) {
+                        invalidMapParameterExceptionHandler();
+                    } else {
+                        map = new Map(mapName, customMapWidth, customMapHeight);
+                        mapDesigner = new MapDesigner(map);
+                        for (int i = 0; i < customMapHeight; i++) {
+                            map.addIndicator(new Cell(0, i));
+                        }
+                        ready = true;
+
+                    }
+
+                } catch (NumberFormatException e1) {
+                    // TODO Auto-generated catch block
+                    frame.setVisible(false);
+                    frame.dispose();
+                    invalidMapParameterExceptionHandler();
+                }
                 // Screen.setMapDesigning(true);
                 // TODO: pause game thread and start this thread then restart
                 // game thread with updated map characteristics
@@ -217,57 +219,63 @@ public class MapDesignerDisplay implements Runnable {
             g.fillRect(saveMapButton.x, saveMapButton.y, saveMapButton.width, saveMapButton.height);
         }
         if (saveMapButton.contains(Screen.mouseClicked)) {
+
             try {
-				Screen.displayMapDesigner = false;
-				Screen.displayMainMenu = true;
+                Screen.displayMapDesigner = false;
+                Screen.displayMainMenu = true;
 
-				MapLoader mapLoader = MapLoader.getUniqueInstance();
+                MapLoader mapLoader = MapLoader.getUniqueInstance();
 
-				mapDesigner.endMap();
-				// System.out.println("were here");
-				if (map.validPath()) {
-				    System.out.println("valid path");
-				    map.clearIndicators();
-				    mapLoader.saveMap(map, mapName);
-				    
-				    Screen.displayMapDesigner = false;
-				    Screen.inGameplay = false;
-				    Screen.displayEasyMap = false;
-				    Screen.displayMediumMap = false;
-				    Screen.displayHardMap = false;
-				    Screen.displayCustomMap = false;
-				    Screen.displayMapSelectorPane = false;
-				    Screen.crittersGenerated = false;
-				    Screen.levelStarted = false;
-				    Screen.displayMainMenu = true;
-				    Screen.gameRunning = true;
-				    
-				    System.out.println("map saved");
-				    // System.out.println("Last Path is exit: " +
-				    // map.getPath(map.pathSize()-1).isExit());
-				}
+                mapDesigner.endMap();
+                // System.out.println("were here");
+                if (map.validPath()) {
+                    System.out.println("valid path");
+                    map.clearIndicators();
+                    mapLoader.saveMap(map, mapName);
 
-				Screen.mouseClickedReset();
-				stop(); 
-            
-            }        
-            
-            catch (ArrayIndexOutOfBoundsException e) {
-				//Create new map
-				InvalidMapConfigExceptionHandler();				
-			} 
-            
+                    Screen.displayMapDesigner = false;
+                    Screen.inGameplay = false;
+                    Screen.displayEasyMap = false;
+                    Screen.displayMediumMap = false;
+                    Screen.displayHardMap = false;
+                    Screen.displayCustomMap = false;
+                    Screen.displayMapSelectorPane = false;
+                    Screen.crittersGenerated = false;
+                    Screen.levelStarted = false;
+                    Screen.displayMainMenu = true;
+                    Screen.gameRunning = true;
+
+                    System.out.println("map saved");
+                    // System.out.println("Last Path is exit: " +
+                    // map.getPath(map.pathSize()-1).isExit());
+                }
+
+                Screen.mouseClickedReset();
+                stop();
+
+            } catch (Exception e) {
+                // Create new map
+                invalidMapConfigExceptionHandler();
+                Screen.displayMapDesigner = false;
+                Screen.inGameplay = false;
+                Screen.displayEasyMap = false;
+                Screen.displayMediumMap = false;
+                Screen.displayHardMap = false;
+                Screen.displayCustomMap = false;
+                Screen.displayMapSelectorPane = false;
+                Screen.crittersGenerated = false;
+                Screen.levelStarted = false;
+                Screen.displayMainMenu = true;
+                Screen.gameRunning = true;
+
+            }
         }
-        
-        
-        
     }
-    
-    private void InvalidMapConfigExceptionHandler(){
-    	final String message = "This is not a valid map. Please try again";
+
+    private void invalidMapConfigExceptionHandler() {
+        final String message = "This is not a valid map. Please try again";
         JPanel userPanel = new JPanel(new SpringLayout());
 
-        
         JLabel label = new JLabel(message, JLabel.TRAILING);
         userPanel.add(label);
         JButton button = new JButton("OK");
@@ -281,27 +289,8 @@ public class MapDesignerDisplay implements Runnable {
             public void actionPerformed(ActionEvent e) {
 
                 // Execute when button is pressed
-            	frame.setVisible(false);
+                frame.setVisible(false);
                 frame.dispose();
-                
-            	System.out.println("Main Menu");
-                Screen.displayMapDesigner = false;
-                Screen.inGameplay = false;
-                Screen.displayEasyMap = false;
-                Screen.displayMediumMap = false;
-                Screen.displayHardMap = false;
-                Screen.displayCustomMap = false;
-                Screen.displayMapSelectorPane = false;
-                Screen.crittersGenerated = false;
-                Screen.levelStarted = false;
-                Screen.displayMainMenu = true;
-                Screen.gameRunning = true;
-                Screen.mouseClickedReset();
-
-            	
-                //Screen.mouseClickedReset();
-				//stop();
-            	
             }
         });
 
@@ -319,12 +308,12 @@ public class MapDesignerDisplay implements Runnable {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
-    
-    private void InvalidMapParameterExceptionHandler(){
-    	final String message = "The values you entered are invalid. Please try again";
+
+    private void invalidMapParameterExceptionHandler() {
+        final String message = "The values you entered are invalid. Please try again";
         JPanel userPanel = new JPanel(new SpringLayout());
 
-        
+
         JLabel label = new JLabel(message, JLabel.TRAILING);
         userPanel.add(label);
         JButton button = new JButton("OK");
@@ -374,33 +363,6 @@ public class MapDesignerDisplay implements Runnable {
                 e.printStackTrace();
             }
         }
-
-        /*
-         * while(!click && ready){ try { Thread.sleep(1000); } catch (InterruptedException e) {
-         * e.printStackTrace(); } if(Screen.clear==1){ System.out.println("phase 2");
-         * Screen.clear=0; } /*for(Rectangle r : display.indicator){
-         * if(r.contains(Screen.mouseClicked)){ System.out.println("indicator clicked"); } }
-         */
-        // }
-        // MapDesigner d= new MapDesigner(map);
-
-        // Set the start node
-        // Push all potential start nodes to arraylist
-        /*
-         * for(int i=1; i<customMapHeight; i++){ map.addIndicator(new Cell(0, i));
-         * System.out.println("add thing"); }
-         */
-        // Wait for user selection
-        // create new path node, set as previous
-        // set start node
-        // clear indicators
-
-        // while loop till path is done
-        // generate next indicators
-        // get next entry
-        // add next node, set previous next
-        // clear indicators
-
     }
 
     public void stop() {

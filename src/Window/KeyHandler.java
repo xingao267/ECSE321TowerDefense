@@ -16,7 +16,7 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
     }
 
     public void mouseClicked(MouseEvent m) {
-        if (!(m.getButton() == m.BUTTON3)) {
+        if (!(m.getButton() == MouseEvent.BUTTON3)) {
             Screen.mouseClicked =
                     new Point(m.getX() - (Frame.width - Screen.screenWidth) / 2, m.getY()
                             - (Frame.height - Screen.screenHeight) / 2

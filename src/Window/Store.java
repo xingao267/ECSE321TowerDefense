@@ -31,7 +31,7 @@ import Utility.Constants;
  */
 public class Store {
 
-    private static final String UP_ARROW = "\u2191";
+    // private static final String UP_ARROW = "\u2191";
 
     private Rectangle[] towers = new Rectangle[Constants.NUM_TOWERS];
     private Rectangle mainMenuButton;

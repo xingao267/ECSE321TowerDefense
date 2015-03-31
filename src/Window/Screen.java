@@ -23,7 +23,6 @@ import OtherModels.Bank;
 import OtherModels.Player;
 import TowerModels.Tower;
 import Utility.Constants;
-import Utility.Utils;
 
 /**
  * 
@@ -47,9 +46,6 @@ public class Screen extends JPanel implements Runnable {
     public static TowerRightClickMenu towerRightClickMenu;
     public static CustomMapRightClickMenu customMapRightClickMenu;
     public static IconDisplay icons;
-
-    private boolean suspended = false;
-    private boolean designingMap = false; // added for while loop for map designer
 
     public static int gameLevel;
 
@@ -113,7 +109,6 @@ public class Screen extends JPanel implements Runnable {
         mediumMap = new MediumMap();
         hardMap = new HardMap();
 
-        // TODO: initialize all tilesets (images) here
     }
 
 
@@ -219,7 +214,7 @@ public class Screen extends JPanel implements Runnable {
     /** Game Loop */
     public void run() {
 
-//        Utils.playSound(Constants.GAME_START, Integer.MAX_VALUE);
+        // Utils.playSound(Constants.GAME_START, Integer.MAX_VALUE);
 
         while (true) {
             while (gameRunning) {
@@ -255,7 +250,6 @@ public class Screen extends JPanel implements Runnable {
                 mapDesigner.run();
                 while (displayMapDesigner) {
                     repaint();
-
                     try {
                         Thread.sleep(50);
                     } catch (Exception e) {
@@ -271,10 +265,6 @@ public class Screen extends JPanel implements Runnable {
 
     public void setGameRunning(boolean gameRunning) {
         Screen.gameRunning = gameRunning;
-    }
-
-    public void setMapDesigning(boolean mapDesigning) { // you added this
-        this.designingMap = mapDesigning;
     }
 
     public static void setCustomMap(Map m) {
