@@ -80,6 +80,8 @@ public class Constants {
     public static final String TANK_IMAGE = "source/image/critters/tank.png";
 
     /*--------------------------------------------------------------------------------------------------------------------*/
+    public static final String SCENERY_IMAGE = "source/image/scenery.png";
+    /*--------------------------------------------------------------------------------------------------------------------*/
 
     public static final String CLICK_ONE_SOUND = "source/sound/click_one.wav";
 
@@ -108,10 +110,10 @@ public class Constants {
                     0.8 * (REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3] + REGULAR_UPGRADE_COST[4]),
                     0.8 * (REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
                             + REGULAR_UPGRADE_COST[4] + REGULAR_UPGRADE_COST[5])};
-    public static final double[] REGULAR_RANGE = {0, 1, 2, 3, 4, 5};
+    public static final double[] REGULAR_RANGE = {0, 1, 1, 2, 2, 3};
     public static final double[] REGULAR_RATE = {0, 4, 5, 6, 7, 8};
 
-    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 5, 10, 15, 20, 25};
+    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 20, 35, 60, 100, 170};
     public static final double[] REGULAR_POWER = {
             REGULAR_DAMAGE_PER_HIT[0] * REGULAR_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             REGULAR_DAMAGE_PER_HIT[1] * REGULAR_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
@@ -140,7 +142,7 @@ public class Constants {
     public static final double[] LONGRANGE_RANGE = {0, 3, 6, 9, 12, 15};
     public static final double[] LONGRANGE_RATE = {0, 1, 2, 3, 4, 5};
 
-    public static final double[] LONGRANGE_DAMAGE_PER_HIT = {0, 3, 6, 9, 12, 15};
+    public static final double[] LONGRANGE_DAMAGE_PER_HIT = {0, 250, 300, 400, 600, 1000};
     public static final double[] LONGRANGE_POWER = {
             LONGRANGE_DAMAGE_PER_HIT[0] * LONGRANGE_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             LONGRANGE_DAMAGE_PER_HIT[1] * LONGRANGE_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
@@ -164,10 +166,10 @@ public class Constants {
                     0.8 * (SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3] + SPEED_UPGRADE_COST[4]),
                     0.8 * (SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
                             + SPEED_UPGRADE_COST[4] + SPEED_UPGRADE_COST[5])};
-    public static final double[] SPEED_RANGE = {0, 1, 2, 3, 4, 5};
+    public static final double[] SPEED_RANGE = {0, 1, 1, 2, 2, 3};
     public static final double[] SPEED_RATE = {0, 5, 7, 9, 11, 13};
 
-    public static final double[] SPEED_DAMAGE_PER_HIT = {0, 1, 2, 3, 4, 5};
+    public static final double[] SPEED_DAMAGE_PER_HIT = {0, 100, 150, 220, 300, 400};
     public static final double[] SPEED_POWER = {
             SPEED_DAMAGE_PER_HIT[0] * SPEED_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             SPEED_DAMAGE_PER_HIT[1] * SPEED_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
@@ -191,10 +193,10 @@ public class Constants {
                     0.8 * (BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3] + BOMBER_UPGRADE_COST[4]),
                     0.8 * (BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
                             + BOMBER_UPGRADE_COST[4] + BOMBER_UPGRADE_COST[5])};
-    public static final double[] BOMBER_RANGE = {0, 1, 2, 3, 4, 5};
-    public static final double[] BOMBER_RATE = {0, 1, 2, 3, 4, 5};
+    public static final double[] BOMBER_RANGE = {0, 1, 2, 2, 3, 4};
+    public static final double[] BOMBER_RATE = {0, 2, 3, 4, 5, 6};
 
-    public static final double[] BOMBER_DAMAGE_PER_HIT = {0, 2, 4, 6, 8, 10};
+    public static final double[] BOMBER_DAMAGE_PER_HIT = {0, 28, 39, 54, 75, 105};
     public static final double[] BOMBER_POWER = {
             BOMBER_DAMAGE_PER_HIT[0] * BOMBER_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             BOMBER_DAMAGE_PER_HIT[1] * BOMBER_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
@@ -233,7 +235,8 @@ public class Constants {
             DECELERATOR_DAMAGE_PER_HIT[3] * DECELERATOR_RATE[3] * GAME_THREAD_SLEEP_TIME / 1000,
             DECELERATOR_DAMAGE_PER_HIT[4] * DECELERATOR_RATE[4] * GAME_THREAD_SLEEP_TIME / 1000,
             DECELERATOR_DAMAGE_PER_HIT[5] * DECELERATOR_RATE[5] * GAME_THREAD_SLEEP_TIME / 1000};
-
+    
+    public static final double[] DECELERATOR_EFFECT = {0, .35, .4, 0.45, 0.5, 0.6};
     public static final double[] DECELERATOR_EFFECT_RANGE = {0, 1, 2, 3, 4, 5};
 
     /*--------------------------------------------------------------------------------------------------------------------*/
@@ -245,7 +248,7 @@ public class Constants {
     public static final String ARMORED_CRITTER_TYPE = "Armored Critter";
     public static final int ARMORED_CRITTER_SPEED = 4;
     public static final int ARMORED_CRITTER_BOUNTY = 4;
-    public static final int ARMORED_CRITTER_STRENGTH = 1;
+    public static final int ARMORED_CRITTER_STRENGTH = 2;
     public static final int ARMORED_CRITTER_SPAWN_RATE = 250;
 
     /** Boss Critter Constants. */
@@ -253,30 +256,30 @@ public class Constants {
 
     /** Bullet Proof Critter Constants. */
     public static final String BULLET_PROOF_CRITTER_TYPE = "BulletProof Critter";
-    public static final int BULLET_PROOF_CRITTER_SPEED = 5;
+    public static final int BULLET_PROOF_CRITTER_SPEED = 3;
     public static final int BULLET_PROOF_CRITTER_BOUNTY = 4;
-    public static final int BULLET_PROOF_CRITTER_STRENGTH = 1;
+    public static final int BULLET_PROOF_CRITTER_STRENGTH = 2;
     public static final int BULLET_PROOF_CRITTER_SPAWN_RATE = 300;
 
     /** Normal Critter Constants. */
     public static final String NORMAL_CRITTER_TYPE = "Normal Critter";
     public static final int NORMAL_CRITTER_SPEED = 5;
     public static final int NORMAL_CRITTER_BOUNTY = 4;
-    public static final int NORMAL_CRITTER_STRENGTH = 1;
-    public static final int NORMAL_CRITTER_SPAWN_RATE = 350;
+    public static final int NORMAL_CRITTER_STRENGTH = 2;
+    public static final int NORMAL_CRITTER_SPAWN_RATE = 300;
 
     /** Speed Critter Constants. */
     public static final String SPEED_CRITTER_TYPE = "Speed Critter";
-    public static final int SPEED_CRITTER_SPEED = 8;
+    public static final int SPEED_CRITTER_SPEED = 9;
     public static final int SPEED_CRITTER_BOUNTY = 4;
-    public static final int SPEED_CRITTER_STRENGTH = 1;
+    public static final int SPEED_CRITTER_STRENGTH = 2;
     public static final int SPEED_CRITTER_SPAWN_RATE = 100;
 
     /** Regenerative Critter Constants. */
     public static final String REGENERATIVE_CRITTER_TYPE = "Regenerative Critter";
-    public static final int REGENERATIVE_CRITTER_SPEED = 5;
+    public static final int REGENERATIVE_CRITTER_SPEED = 6;
     public static final int REGENERATIVE_CRITTER_BOUNTY = 4;
-    public static final int REGENERATIVE_CRITTER_STRENGTH = 1;
+    public static final int REGENERATIVE_CRITTER_STRENGTH = 2;
     public static final int REGENERATIVE_CRITTER_SPAWN_RATE = 300;
 
 }

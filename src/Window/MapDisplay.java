@@ -4,7 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import Controllers.GameController;
 import Exceptions.InvalidTowerTypeException;
@@ -33,6 +38,7 @@ public class MapDisplay {
     public static ArrayList<Integer> offsets;
     public static int initialMapXPos = Constants.MAP_INITIAL_XPOS,
             initialMapYPos = Constants.MAP_INITIAL_YPOS;
+    private BufferedImage sceneryCell;
 
     /**
      * Constructor
@@ -48,6 +54,11 @@ public class MapDisplay {
         path = new ArrayList<Rectangle>();
         indicator = new ArrayList<Rectangle>();
         cells = new ArrayList<Rectangle>();
+        try {
+			this.sceneryCell= ImageIO.read(new File(Constants.SCENERY_IMAGE));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         init();
     }
 
@@ -105,9 +116,10 @@ public class MapDisplay {
 
             Point mapPosition = Utils.convertScreenToMapCoord(r.getLocation());
             Cell cell = m.getCell(mapPosition.x, mapPosition.y);
-
-            g.setColor(new Color(148, 204, 142)); // Green
-            g.fillRect(r.x, r.y, r.width, r.height);
+            
+            g.drawImage(sceneryCell, r.x, r.y, r.width, r.height, null);
+            //g.setColor(new Color(148, 204, 142)); // Green
+            //g.fillRect(r.x, r.y, r.width, r.height);
 
             if (r.contains(Screen.mouseLocation)) {
                 // slightly darken the scenery

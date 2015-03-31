@@ -129,7 +129,7 @@ public abstract class Critter {
 
             screenDistanceMoved++;
 
-            if (screenDistanceMoved == Constants.STORE_BUTTON_SIZE) {
+            if (screenDistanceMoved == Constants.MAP_CELL_SIZE) {
                 if (direction == right) {
                     xPos++;
                     hasMovedRight = true;

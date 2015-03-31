@@ -39,9 +39,9 @@ public class DeceleratorTower extends MultiTargetsTower {
 
     @Override
     public void applySpecialEffects(Critter critter) {
-
+    	//{35%, 40%, 45%, 50%, 60%} 
         if (!critter.isSlowed()) {
-            critter.setSpeed(critter.getSpeed() * (0.9 - this.level * 0.1));
+            critter.setSpeed(critter.getSpeed() * (1.0 - Constants.DECELERATOR_EFFECT[this.level]));
             critter.setSlowed(true);
         }
     }
