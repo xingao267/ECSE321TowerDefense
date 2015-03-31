@@ -80,6 +80,8 @@ public class Constants {
     public static final String TANK_IMAGE = "source/image/critters/tank.png";
 
     /*--------------------------------------------------------------------------------------------------------------------*/
+    public static final String SCENERY_IMAGE = "source/image/scenery.png";
+    /*--------------------------------------------------------------------------------------------------------------------*/
 
     public static final String CLICK_ONE_SOUND = "source/sound/click_one.wav";
 
