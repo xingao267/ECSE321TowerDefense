@@ -23,6 +23,7 @@ import TowerModels.RegularTower;
 import TowerModels.SpeedTower;
 import TowerModels.Tower;
 import Utility.Constants;
+import Utility.Utils;
 
 /**
  * 
@@ -288,6 +289,7 @@ public class Store {
             if (sendNextWaveButton.contains(Screen.mouseClicked)) {
                 Screen.levelStarted = true;
                 Screen.gameLevel++;
+                Utils.playSound(Constants.NEXT_WAVE, 0);
                 Screen.mouseClickedReset();
                 // TODO: start movement of critter group
             }
