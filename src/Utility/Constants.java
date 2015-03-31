@@ -50,7 +50,7 @@ public class Constants {
     /*--------------------------------------------------------------------------------------------------------------------*/
 
     public static final String MONEY_IMAGE = "source/image/money.png";
-    
+
     public static final String LIFE_IMAGE = "source/image/life.png";
 
     public static final String REGULAR_TOWER_IMAGE = "source/image/regular_tower.png";
@@ -68,6 +68,10 @@ public class Constants {
 
     /*--------------------------------------------------------------------------------------------------------------------*/
 
+    public static final String CLICK_ONE_SOUND = "source/sound/click_one.wav";
+
+    /*--------------------------------------------------------------------------------------------------------------------*/
+
     /** Initial Tower Level. */
     public static final int INITIAL_TOWER_LEVEL = 1;
 
@@ -80,15 +84,15 @@ public class Constants {
     public static final int REGULAR_INITIAL_COST = 10;
 
     public static final int[] REGULAR_UPGRADE_COST = {0, 0, 15, 25, 45, 70, Integer.MAX_VALUE};
-    public static final double[] REGULAR_REFUND_VALUE = {
-            0,
-            0.8*REGULAR_INITIAL_COST,
-            0.8*(REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2]),
-            0.8*(REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]),
-            0.8*(REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
-                    + REGULAR_UPGRADE_COST[4]),
-            0.8*(REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
-                    + REGULAR_UPGRADE_COST[4] + REGULAR_UPGRADE_COST[5])};
+    public static final double[] REGULAR_REFUND_VALUE =
+            {
+                    0,
+                    0.8 * REGULAR_INITIAL_COST,
+                    0.8 * (REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2]),
+                    0.8 * (REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]),
+                    0.8 * (REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3] + REGULAR_UPGRADE_COST[4]),
+                    0.8 * (REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
+                            + REGULAR_UPGRADE_COST[4] + REGULAR_UPGRADE_COST[5])};
     public static final double[] REGULAR_RANGE = {0, 1, 2, 3, 4, 5};
     public static final double[] REGULAR_RATE = {0, 4, 5, 6, 7, 8};
 
@@ -106,16 +110,18 @@ public class Constants {
 
     public static final int LONGRANGE_INITIAL_COST = 100;
 
-    public static final int[] LONGRANGE_UPGRADE_COST = {0, 0, 115, 175, 260, 365, Integer.MAX_VALUE};
-    public static final double[] LONGRANGE_REFUND_VALUE = {
-            0,
-            0.8*LONGRANGE_INITIAL_COST,
-            0.8*(LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2]),
-            0.8*(LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]),
-            0.8*(LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]
-                    + LONGRANGE_UPGRADE_COST[4]),
-            0.8*(LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]
-                    + LONGRANGE_UPGRADE_COST[4] + LONGRANGE_UPGRADE_COST[5])};
+    public static final int[] LONGRANGE_UPGRADE_COST =
+            {0, 0, 115, 175, 260, 365, Integer.MAX_VALUE};
+    public static final double[] LONGRANGE_REFUND_VALUE =
+            {
+                    0,
+                    0.8 * LONGRANGE_INITIAL_COST,
+                    0.8 * (LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2]),
+                    0.8 * (LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2] + LONGRANGE_UPGRADE_COST[3]),
+                    0.8 * (LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2]
+                            + LONGRANGE_UPGRADE_COST[3] + LONGRANGE_UPGRADE_COST[4]),
+                    0.8 * (LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2]
+                            + LONGRANGE_UPGRADE_COST[3] + LONGRANGE_UPGRADE_COST[4] + LONGRANGE_UPGRADE_COST[5])};
     public static final double[] LONGRANGE_RANGE = {0, 3, 6, 9, 12, 15};
     public static final double[] LONGRANGE_RATE = {0, 1, 2, 3, 4, 5};
 
@@ -134,15 +140,15 @@ public class Constants {
     public static final int SPEED_INITIAL_COST = 200;
 
     public static final int[] SPEED_UPGRADE_COST = {0, 0, 250, 350, 500, 750, Integer.MAX_VALUE};
-    public static final double[] SPEED_REFUND_VALUE = {
-            0,
-            0.8*SPEED_INITIAL_COST,
-            0.8*(SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2]),
-            0.8*(SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]),
-            0.8*(SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
-                    + SPEED_UPGRADE_COST[4]),
-            0.8*(SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
-                    + SPEED_UPGRADE_COST[4] + SPEED_UPGRADE_COST[5])};
+    public static final double[] SPEED_REFUND_VALUE =
+            {
+                    0,
+                    0.8 * SPEED_INITIAL_COST,
+                    0.8 * (SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2]),
+                    0.8 * (SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]),
+                    0.8 * (SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3] + SPEED_UPGRADE_COST[4]),
+                    0.8 * (SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
+                            + SPEED_UPGRADE_COST[4] + SPEED_UPGRADE_COST[5])};
     public static final double[] SPEED_RANGE = {0, 1, 2, 3, 4, 5};
     public static final double[] SPEED_RATE = {0, 5, 7, 9, 11, 13};
 
@@ -161,15 +167,15 @@ public class Constants {
     public static final int BOMBER_INITIAL_COST = 20;
 
     public static final int[] BOMBER_UPGRADE_COST = {0, 0, 15, 25, 45, 80, Integer.MAX_VALUE};
-    public static final double[] BOMBER_REFUND_VALUE = {
-            0,
-            0.8*BOMBER_INITIAL_COST,
-            0.8*(BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2]),
-            0.8*(BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]),
-            0.8*(BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
-                    + BOMBER_UPGRADE_COST[4]),
-            0.8*(BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
-                    + BOMBER_UPGRADE_COST[4] + BOMBER_UPGRADE_COST[5])};
+    public static final double[] BOMBER_REFUND_VALUE =
+            {
+                    0,
+                    0.8 * BOMBER_INITIAL_COST,
+                    0.8 * (BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2]),
+                    0.8 * (BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]),
+                    0.8 * (BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3] + BOMBER_UPGRADE_COST[4]),
+                    0.8 * (BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
+                            + BOMBER_UPGRADE_COST[4] + BOMBER_UPGRADE_COST[5])};
     public static final double[] BOMBER_RANGE = {0, 1, 2, 3, 4, 5};
     public static final double[] BOMBER_RATE = {0, 1, 2, 3, 4, 5};
 
@@ -191,15 +197,16 @@ public class Constants {
 
     public static final int[] DECELERATOR_UPGRADE_COST = {0, 0, 75, 120, 170, 230,
             Integer.MAX_VALUE};
-    public static final double[] DECELERATOR_REFUND_VALUE = {
-            0,
-            0.8*DECELERATOR_INITIAL_COST,
-            0.8*(DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2]),
-            0.8*(DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]),
-            0.8*(DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]
-                    + DECELERATOR_UPGRADE_COST[4]),
-            0.8*(DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]
-                    + DECELERATOR_UPGRADE_COST[4] + DECELERATOR_UPGRADE_COST[5])};
+    public static final double[] DECELERATOR_REFUND_VALUE =
+            {
+                    0,
+                    0.8 * DECELERATOR_INITIAL_COST,
+                    0.8 * (DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2]),
+                    0.8 * (DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2] + DECELERATOR_UPGRADE_COST[3]),
+                    0.8 * (DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2]
+                            + DECELERATOR_UPGRADE_COST[3] + DECELERATOR_UPGRADE_COST[4]),
+                    0.8 * (DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2]
+                            + DECELERATOR_UPGRADE_COST[3] + DECELERATOR_UPGRADE_COST[4] + DECELERATOR_UPGRADE_COST[5])};
     public static final double[] DECELERATOR_RANGE = {0, 1, 2, 3, 4, 5};
     public static final double[] DECELERATOR_RATE = {0, 1, 2, 3, 4, 5};
 
