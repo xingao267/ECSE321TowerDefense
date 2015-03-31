@@ -26,7 +26,7 @@ import Utility.Utils;
  * @author Justin
  *
  */
-public class MapDisplay {
+public class MapView {
 
     private static ArrayList<Rectangle> scenery;
     private static ArrayList<Rectangle> path;
@@ -45,7 +45,7 @@ public class MapDisplay {
      * 
      * @param m
      */
-    public MapDisplay(Map m) {
+    public MapView(Map m) {
 
         this.m = m;
         mapWidth = m.getWidth();

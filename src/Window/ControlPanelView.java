@@ -30,7 +30,7 @@ import Utility.Utils;
  * @author Jose, Xin
  *
  */
-public class Store {
+public class ControlPanelView {
 
     // private static final String UP_ARROW = "\u2191";
 
@@ -44,7 +44,7 @@ public class Store {
 
     private boolean[] towerClickable;
 
-    public Store() {
+    public ControlPanelView() {
 
         towerStorePosToName = new HashMap<Integer, String>();
 
@@ -127,9 +127,9 @@ public class Store {
                     g.setFont(new Font("Courier New", Font.BOLD, 15));
                     g.drawString(towerType.get(i).getTowerType(), 400, 30);
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
-                    g.drawString("Cost:" + (int)towerType.get(i).getInitialCost(), 575, 30);
+                    g.drawString("Cost:" + (int) towerType.get(i).getInitialCost(), 575, 30);
 
-                    g.drawString("Power:" + (int)towerType.get(i).getDamagePerHit(), 400, 55);
+                    g.drawString("Power:" + (int) towerType.get(i).getDamagePerHit(), 400, 55);
 
                     if (towerType.get(i).isMultiTargets()) {
                         g.drawString("MultiTarget:Yes", 525, 55);
@@ -137,8 +137,8 @@ public class Store {
                         g.drawString("MultiTarget:No", 525, 55);
                     }
 
-                    g.drawString("Range:" + (int)towerType.get(i).getRange(), 540, 80);
-                    g.drawString("Fire Rate:" + (int)towerType.get(i).getRateOfFire(), 400, 80);
+                    g.drawString("Range:" + (int) towerType.get(i).getRange(), 540, 80);
+                    g.drawString("Fire Rate:" + (int) towerType.get(i).getRateOfFire(), 400, 80);
 
                     towerClickable[i] = true;
                 }
@@ -204,19 +204,20 @@ public class Store {
             try {
 
                 g.drawString(
-                        "Power: " + (int)tower.getDamagePerHit() + " -> "
-                                + (int)tower.getNextLevelDamagePerHit(), 400, 55);
-                g.drawString("Range: " + ((int)tower.getRange()) + " -> " + (int)tower.getNextLevelRange(), 550,
-                        55);
+                        "Power: " + (int) tower.getDamagePerHit() + " -> "
+                                + (int) tower.getNextLevelDamagePerHit(), 400, 55);
+                g.drawString(
+                        "Range: " + ((int) tower.getRange()) + " -> "
+                                + (int) tower.getNextLevelRange(), 550, 55);
 
                 g.drawString(
-                        "Fire Rate: " + (int)tower.getRateOfFire() + " -> "
-                                + (int)tower.getNextLevelRateOfFire(), 400, 75);
+                        "Fire Rate: " + (int) tower.getRateOfFire() + " -> "
+                                + (int) tower.getNextLevelRateOfFire(), 400, 75);
 
                 if (tower.isMultiTargets()) {
                     MultiTargetsTower multiTargettower = (MultiTargetsTower) tower;
-                    g.drawString("Effect Range: " + multiTargettower.getEffectRange() + " -> "
-                            + multiTargettower.getNextLevelEffectRange(), 400, 95);
+                    g.drawString("Effect Range: " + (int) multiTargettower.getEffectRange()
+                            + " -> " + (int) multiTargettower.getNextLevelEffectRange(), 400, 95);
                 }
 
                 g.setColor(new Color(255, 255, 255));
@@ -233,13 +234,13 @@ public class Store {
                 g.setFont(new Font("Courier New", Font.BOLD, 13));
                 g.drawString(tower.getTowerType() + " lv" + tower.getLevel(), 400, 30);
 
-                g.drawString("Power: " + (int)tower.getDamagePerHit(), 400, 55);
-                g.drawString("Range: " + (int)tower.getRange(), 550, 55);
-                g.drawString("Fire Rate: " + (int)tower.getRateOfFire(), 400, 75);
+                g.drawString("Power: " + (int) tower.getDamagePerHit(), 400, 55);
+                g.drawString("Range: " + (int) tower.getRange(), 550, 55);
+                g.drawString("Fire Rate: " + (int) tower.getRateOfFire(), 400, 75);
 
                 if (tower.isMultiTargets()) {
                     MultiTargetsTower multiTargettower = (MultiTargetsTower) tower;
-                    g.drawString("Effect Range:" + multiTargettower.getEffectRange(), 400, 95);
+                    g.drawString("Effect Range:" + (int) multiTargettower.getEffectRange(), 400, 95);
                 }
             }
         }

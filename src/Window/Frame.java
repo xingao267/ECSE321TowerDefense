@@ -32,7 +32,6 @@ public class Frame extends JFrame {
     }
 
     public void init() {
-        // this.setLayout(new GridLayout(1, 1, 0, 0));
 
         Screen screen = new Screen(this);
         this.add(screen);

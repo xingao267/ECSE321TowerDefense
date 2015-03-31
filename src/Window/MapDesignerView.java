@@ -28,7 +28,7 @@ import Utility.SpringUtilities;
  * @author Jose,Justin
  *
  */
-public class MapDesignerDisplay implements Runnable {
+public class MapDesignerView implements Runnable {
 
     private JFrame frame;
     public static Thread userInput = new Thread();
@@ -42,12 +42,12 @@ public class MapDesignerDisplay implements Runnable {
     private int customMapWidth;
     private int customMapHeight;
 
-    public MapDisplay display;
+    public MapView display;
 
     private boolean ready = false;
 
 
-    public MapDesignerDisplay() {
+    public MapDesignerView() {
         init();
 
     }
@@ -169,7 +169,7 @@ public class MapDesignerDisplay implements Runnable {
                 mainMenuButton.y + Constants.STORE_BUTTON_SIZE / 4 + 4);
 
         if (map != null) {
-            display = new MapDisplay(map);
+            display = new MapView(map);
             display.draw(g);
             if (!display.indicator.isEmpty()) {
                 for (Rectangle r : display.indicator) {

@@ -9,14 +9,14 @@ import CritterModels.Critter;
 import Utility.Constants;
 import Utility.Utils;
 
-public class CritterDisplay {
+public class CritterView {
 
 	private Rectangle critterDisplay, healthBar;
 	private Critter critter;
 	private int healthBarSpacing = 3, healthBarHeight = Constants.MAP_CELL_SIZE/10;
 	private double maxCritterHealth;
 	
-	public CritterDisplay(Critter critter){
+	public CritterView(Critter critter){
 		
 		this.critter = critter;
 		

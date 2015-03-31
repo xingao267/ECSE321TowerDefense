@@ -17,7 +17,7 @@ import Utility.Constants;
  * @author Jose,Justin
  *
  */
-public class MapSelectPane {
+public class MapSelectPaneView {
 
     private Rectangle easyButton, mediumButton, hardButton, createCustomMap, mainMenuButton;
     private ArrayList<Rectangle> customMaps;
@@ -40,7 +40,7 @@ public class MapSelectPane {
     private static int stringOffset = 450;
     private static int customMapOffset = -30;
 
-    public MapSelectPane() {
+    public MapSelectPaneView() {
         mapLoader = MapLoader.getUniqueInstance();
         mapList = mapLoader.getMapList();
         customMaps = new ArrayList<Rectangle>();

@@ -92,7 +92,7 @@ public class Constants {
     /*--------------------------------------------------------------------------------------------------------------------*/
 
     public static final double RT_2 = Math.sqrt(2);
-    
+
     /** Initial Tower Level. */
     public static final int INITIAL_TOWER_LEVEL = 1;
 
@@ -114,7 +114,8 @@ public class Constants {
                     0.8 * (REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3] + REGULAR_UPGRADE_COST[4]),
                     0.8 * (REGULAR_INITIAL_COST + REGULAR_UPGRADE_COST[2] + REGULAR_UPGRADE_COST[3]
                             + REGULAR_UPGRADE_COST[4] + REGULAR_UPGRADE_COST[5])};
-    public static final double[] REGULAR_RANGE = {0, 1, 1, 2, 2, 3};
+    public static final double[] REGULAR_RANGE = {0, 1 * RT_2, 1 * RT_2, 2 * RT_2, 2 * RT_2,
+            3 * RT_2};
     public static final double[] REGULAR_RATE = {0, 4, 5, 6, 7, 8};
 
     public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 20, 35, 60, 100, 170};
@@ -143,7 +144,8 @@ public class Constants {
                             + LONGRANGE_UPGRADE_COST[3] + LONGRANGE_UPGRADE_COST[4]),
                     0.8 * (LONGRANGE_INITIAL_COST + LONGRANGE_UPGRADE_COST[2]
                             + LONGRANGE_UPGRADE_COST[3] + LONGRANGE_UPGRADE_COST[4] + LONGRANGE_UPGRADE_COST[5])};
-    public static final double[] LONGRANGE_RANGE = {0, 3, 6, 9, 12, 15};
+    public static final double[] LONGRANGE_RANGE = {0, 3 * RT_2, 6 * RT_2, 9 * RT_2, 12 * RT_2,
+            15 * RT_2};
     public static final double[] LONGRANGE_RATE = {0, 1, 2, 3, 4, 5};
 
     public static final double[] LONGRANGE_DAMAGE_PER_HIT = {0, 250, 300, 400, 600, 1000};
@@ -170,7 +172,8 @@ public class Constants {
                     0.8 * (SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3] + SPEED_UPGRADE_COST[4]),
                     0.8 * (SPEED_INITIAL_COST + SPEED_UPGRADE_COST[2] + SPEED_UPGRADE_COST[3]
                             + SPEED_UPGRADE_COST[4] + SPEED_UPGRADE_COST[5])};
-    public static final double[] SPEED_RANGE = {0, 1, 1, 2, 2, 3};
+    public static final double[] SPEED_RANGE =
+            {0, 1 * RT_2, 1 * RT_2, 2 * RT_2, 2 * RT_2, 3 * RT_2};
     public static final double[] SPEED_RATE = {0, 5, 7, 9, 11, 13};
 
     public static final double[] SPEED_DAMAGE_PER_HIT = {0, 100, 150, 220, 300, 400};
@@ -197,7 +200,8 @@ public class Constants {
                     0.8 * (BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3] + BOMBER_UPGRADE_COST[4]),
                     0.8 * (BOMBER_INITIAL_COST + BOMBER_UPGRADE_COST[2] + BOMBER_UPGRADE_COST[3]
                             + BOMBER_UPGRADE_COST[4] + BOMBER_UPGRADE_COST[5])};
-    public static final double[] BOMBER_RANGE = {0, 1, 2, 2, 3, 4};
+    public static final double[] BOMBER_RANGE = {0, 1 * RT_2, 2 * RT_2, 2 * RT_2, 3 * RT_2,
+            4 * RT_2};
     public static final double[] BOMBER_RATE = {0, 2, 3, 4, 5, 6};
 
     public static final double[] BOMBER_DAMAGE_PER_HIT = {0, 28, 39, 54, 75, 105};
@@ -228,7 +232,8 @@ public class Constants {
                             + DECELERATOR_UPGRADE_COST[3] + DECELERATOR_UPGRADE_COST[4]),
                     0.8 * (DECELERATOR_INITIAL_COST + DECELERATOR_UPGRADE_COST[2]
                             + DECELERATOR_UPGRADE_COST[3] + DECELERATOR_UPGRADE_COST[4] + DECELERATOR_UPGRADE_COST[5])};
-    public static final double[] DECELERATOR_RANGE = {0, 1, 2, 3, 4, 5};
+    public static final double[] DECELERATOR_RANGE = {0, 1 * RT_2, 2 * RT_2, 3 * RT_2, 4 * RT_2,
+            5 * RT_2};
     public static final double[] DECELERATOR_RATE = {0, 1, 2, 3, 4, 5};
 
     public static final double[] DECELERATOR_DAMAGE_PER_HIT = {0, 0, 0, 0, 0, 0};
@@ -239,7 +244,7 @@ public class Constants {
             DECELERATOR_DAMAGE_PER_HIT[3] * DECELERATOR_RATE[3] * GAME_THREAD_SLEEP_TIME / 1000,
             DECELERATOR_DAMAGE_PER_HIT[4] * DECELERATOR_RATE[4] * GAME_THREAD_SLEEP_TIME / 1000,
             DECELERATOR_DAMAGE_PER_HIT[5] * DECELERATOR_RATE[5] * GAME_THREAD_SLEEP_TIME / 1000};
-    
+
     public static final double[] DECELERATOR_EFFECT = {0, .35, .4, 0.45, 0.5, 0.6};
     public static final double[] DECELERATOR_EFFECT_RANGE = {0, 1, 2, 3, 4, 5};
 

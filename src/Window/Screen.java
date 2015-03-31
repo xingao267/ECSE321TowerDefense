@@ -40,13 +40,13 @@ public class Screen extends JPanel implements Runnable {
 
     public Frame frame;
     public MainMenu menu;
-    public MapSelectPane mapSelectPane;
-    public MapDesignerDisplay mapDesigner;
+    public MapSelectPaneView mapSelectPane;
+    public MapDesignerView mapDesigner;
     public KeyHandler keyHandle;
 
     public static TowerRightClickMenu towerRightClickMenu;
     public static CustomMapRightClickMenu customMapRightClickMenu;
-    public static IconDisplay icons;
+    public static IconView icons;
 
     public static int gameLevel;
 
@@ -70,14 +70,14 @@ public class Screen extends JPanel implements Runnable {
     public static int screenHeight;
 
     public static Map map;
-    private static MapDisplay mapDisplay;
-    public static Store store;
+    private static MapView mapDisplay;
+    public static ControlPanelView store;
 
     public ArrayList<Critter> critters;
-    public static HashMap<Critter, CritterDisplay> critterGroupDisplays;
+    public static HashMap<Critter, CritterView> critterGroupDisplays;
     public static CritterGroupGenerator group;
 
-    public static HashMap<Tower, TowerDisplay> towerDisplays;
+    public static HashMap<Tower, TowerView> towerDisplays;
 
     private EasyMap easyMap;
     private MediumMap mediumMap;
@@ -100,12 +100,12 @@ public class Screen extends JPanel implements Runnable {
 
         gameLevel = 0;
         menu = new MainMenu();
-        mapSelectPane = new MapSelectPane();
-        mapDesigner = new MapDesignerDisplay();
-        store = new Store();
-        icons = new IconDisplay();
-        towerDisplays = new HashMap<Tower, TowerDisplay>();
-        critterGroupDisplays = new HashMap<Critter, CritterDisplay>();
+        mapSelectPane = new MapSelectPaneView();
+        mapDesigner = new MapDesignerView();
+        store = new ControlPanelView();
+        icons = new IconView();
+        towerDisplays = new HashMap<Tower, TowerView>();
+        critterGroupDisplays = new HashMap<Critter, CritterView>();
         easyMap = new EasyMap();
         mediumMap = new MediumMap();
         hardMap = new HardMap();
@@ -141,27 +141,27 @@ public class Screen extends JPanel implements Runnable {
 
             if (displayEasyMap) {
                 map = easyMap.getEasyMap();
-                mapDisplay = new MapDisplay(map);
+                mapDisplay = new MapView(map);
                 mapDisplay.draw(g);
             } else if (displayMediumMap) {
                 map = mediumMap.getMediumMap();
-                mapDisplay = new MapDisplay(map);
+                mapDisplay = new MapView(map);
                 mapDisplay.draw(g);
             } else if (displayHardMap) {
                 map = hardMap.getHardMap();
-                mapDisplay = new MapDisplay(map);
+                mapDisplay = new MapView(map);
                 mapDisplay.draw(g);
             } else if (displayCustomMap) {
-                mapDisplay = new MapDisplay(map);
+                mapDisplay = new MapView(map);
                 mapDisplay.draw(g);
             }
 
             if (displayEasyMap || displayMediumMap || displayHardMap || displayCustomMap) {
 
                 for (Tower tower : GameController.getUniqueInstance().getTowers()) {
-                    towerDisplays.put(tower, new TowerDisplay(tower));
+                    towerDisplays.put(tower, new TowerView(tower));
                 }
-                for (Entry<Tower, TowerDisplay> entry : towerDisplays.entrySet()) {
+                for (Entry<Tower, TowerView> entry : towerDisplays.entrySet()) {
                     entry.getValue().draw(g);
                 }
             }
@@ -179,7 +179,7 @@ public class Screen extends JPanel implements Runnable {
                     while (iterator.hasNext()) {
                         Critter critter = iterator.next();
                         if (critter.isInGame()) {
-                            critterGroupDisplays.put(critter, new CritterDisplay(critter));
+                            critterGroupDisplays.put(critter, new CritterView(critter));
                             critterGroupDisplays.get(critter).draw(g);
                         }
                         if (critter.hasReachedExit()) {

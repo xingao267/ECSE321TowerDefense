@@ -24,13 +24,13 @@ import Utility.Utils;
  * @author Xin
  *
  */
-public class TowerDisplay implements ITowerObserver {
+public class TowerView implements ITowerObserver {
 
     private Rectangle towerDisplay;
 
     private Tower tower;
 
-    public TowerDisplay(Tower tower) {
+    public TowerView(Tower tower) {
 
         this.tower = tower;
         Point towerScreenCoord = Utils.convertMapCoordToScreen(tower.getxPos(), tower.getyPos());

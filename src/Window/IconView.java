@@ -19,7 +19,7 @@ import Utility.Constants;
  * @author Jose
  *
  */
-public class IconDisplay {
+public class IconView {
 
     private Rectangle moneyIcon;
     private Rectangle lifeIcon;
@@ -30,7 +30,7 @@ public class IconDisplay {
     private BufferedImage moneyImage, lifeImage;
 
 
-    public IconDisplay() {
+    public IconView() {
 
     	try {
 			moneyImage = ImageIO.read(new File(Constants.MONEY_IMAGE));
