@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -176,17 +177,18 @@ public class Screen extends JPanel implements Runnable {
                     critters = group.getCritterGroup();
                     crittersGenerated = true;
                 } else {
-                    for (Critter c : critters) {
-                        if (c.isInGame()) {
-                            critterGroupDisplays.put(c, new CritterDisplay(c));
-                            critterGroupDisplays.get(c).draw(g);
+                    // Use iterator to avoid concurrent modification exception occurred when remove
+                    // element from ArrayList
+                    Iterator<Critter> iterator = critters.iterator();
+                    while (iterator.hasNext()) {
+                        Critter critter = iterator.next();
+                        if (critter.isInGame()) {
+                            critterGroupDisplays.put(critter, new CritterDisplay(critter));
+                            critterGroupDisplays.get(critter).draw(g);
                         }
-                        if (c.hasReachedExit()) {
-                            try {
-                                critters.remove(c);
-                                critterGroupDisplays.remove(c);
-                            } catch (Exception e) {
-                            }
+                        if (critter.hasReachedExit()) {
+                            critterGroupDisplays.remove(critter);
+                            iterator.remove(); // remove the current critter
                         }
                     }
                     if (critters.size() == 0) {
@@ -213,7 +215,6 @@ public class Screen extends JPanel implements Runnable {
             }
         }
     }
-
 
     /** Game Loop */
     public void run() {

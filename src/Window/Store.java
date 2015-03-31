@@ -47,11 +47,12 @@ public class Store {
 
         towerStorePosToName = new HashMap<Integer, String>();
 
+        // Mapping for store position to tower type
         towerStorePosToName.put(0, Constants.REGULAR_TOWER_TYPE);
         towerStorePosToName.put(1, Constants.BOMBER_TOWER_TYPE);
-        towerStorePosToName.put(2, Constants.SPEED_TOWER_TYPE);
-        towerStorePosToName.put(3, Constants.DECELERATOR_TOWER_TYPE);
-        towerStorePosToName.put(4, Constants.LONGRANGE_TOWER_TYPE);
+        towerStorePosToName.put(2, Constants.DECELERATOR_TOWER_TYPE);
+        towerStorePosToName.put(3, Constants.LONGRANGE_TOWER_TYPE);
+        towerStorePosToName.put(4, Constants.SPEED_TOWER_TYPE);
 
         towerClickable = new boolean[5];
 
@@ -70,7 +71,7 @@ public class Store {
 
         mainMenuButton =
                 new Rectangle(Constants.MAIN_MENU_XPOS, Constants.MAIN_MENU_YPOS,
-                		7 * Constants.STORE_BUTTON_SIZE / 3, Constants.STORE_BUTTON_SIZE / 2);
+                        7 * Constants.STORE_BUTTON_SIZE / 3, Constants.STORE_BUTTON_SIZE / 2);
 
         sendNextWaveButton =
                 new Rectangle(Constants.MAIN_MENU_XPOS, Constants.SEND_NEXT_WANVE_YPOS,
@@ -81,8 +82,8 @@ public class Store {
         towerType.add(new BomberTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
         towerType.add(new DeceleratorTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
         towerType.add(new LongRangeTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
-		towerType.add(new SpeedTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
-        
+        towerType.add(new SpeedTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
+
     }
 
     public void draw(Graphics g) {
@@ -128,13 +129,13 @@ public class Store {
                     g.drawString("Cost:" + towerType.get(i).getInitialCost(), 575, 30);
 
                     g.drawString("Power:" + towerType.get(i).getDamagePerHit(), 400, 55);
-                   
+
                     if (towerType.get(i).isMultiTargets()) {
                         g.drawString("MultiTarget:Yes", 525, 55);
                     } else {
                         g.drawString("MultiTarget:No", 525, 55);
                     }
-                    
+
                     g.drawString("Range:" + towerType.get(i).getRange(), 540, 80);
                     g.drawString("Fire Rate:" + towerType.get(i).getRateOfFire(), 400, 80);
 
@@ -204,8 +205,8 @@ public class Store {
                 g.drawString(
                         "Power:" + tower.getDamagePerHit() + "->"
                                 + tower.getNextLevelDamagePerHit(), 400, 55);
-                g.drawString("Range:" + tower.getRange() + "->" + tower.getNextLevelRange(),
-                        530, 55);
+                g.drawString("Range:" + tower.getRange() + "->" + tower.getNextLevelRange(), 530,
+                        55);
 
                 g.drawString(
                         "Fire Rate:" + tower.getRateOfFire() + "->"
