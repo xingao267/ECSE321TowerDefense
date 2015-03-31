@@ -345,10 +345,6 @@ public class MapDesignerDisplay implements Runnable {
                 frame.dispose();
                 createUserDefinedMap();
 
-            	
-                //Screen.mouseClickedReset();
-				//stop();
-            	
             }
         });
 
