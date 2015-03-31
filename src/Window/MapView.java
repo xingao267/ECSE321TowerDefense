@@ -55,10 +55,10 @@ public class MapView {
         indicator = new ArrayList<Rectangle>();
         cells = new ArrayList<Rectangle>();
         try {
-			this.sceneryCell= ImageIO.read(new File(Constants.SCENERY_IMAGE));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            this.sceneryCell = ImageIO.read(new File(Constants.SCENERY_IMAGE));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         init();
     }
 
@@ -116,10 +116,10 @@ public class MapView {
 
             Point mapPosition = Utils.convertScreenToMapCoord(r.getLocation());
             Cell cell = m.getCell(mapPosition.x, mapPosition.y);
-            
+
             g.drawImage(sceneryCell, r.x, r.y, r.width, r.height, null);
-            //g.setColor(new Color(148, 204, 142)); // Green
-            //g.fillRect(r.x, r.y, r.width, r.height);
+            // g.setColor(new Color(148, 204, 142)); // Green
+            // g.fillRect(r.x, r.y, r.width, r.height);
 
             if (r.contains(Screen.mouseLocation)) {
                 // slightly darken the scenery
@@ -152,6 +152,7 @@ public class MapView {
                                         Constants.INITIAL_TOWER_LEVEL, cell);
                         cell.setTower(tower);
                         cell.setHasTower(true);
+                        Utils.playSound(Constants.CONSTRUCTION, 0);
                     } catch (NoEnoughMoneyException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -174,6 +175,8 @@ public class MapView {
                     cell.setHasTower(true);
                     towerToMove.setCell(cell);
                     GameController.getUniqueInstance().setTowerMoveClicked(false);
+
+                    Utils.playSound(Constants.CONSTRUCTION, 0);
                 }
                 Screen.mouseClickedReset();
             }
