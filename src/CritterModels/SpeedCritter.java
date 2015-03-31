@@ -1,5 +1,10 @@
 package CritterModels;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import Utility.Constants;
 
 /**
@@ -26,6 +31,11 @@ public class SpeedCritter extends Critter {
         }
         this.health = 15 * level * level + 5 * level + 80;
         this.maxHealth = health;
+        try {
+			this.img= ImageIO.read(new File(Constants.FASTCAR_IMAGE));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
 }

@@ -1,5 +1,10 @@
 package CritterModels;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import Utility.Constants;
 
 
@@ -38,6 +43,11 @@ public class BossCritter extends Critter {
         this.bounty = bounty;
         this.health = health;
         this.maxHealth = health;
+        try {
+			this.img= ImageIO.read(new File(Constants.TANK_IMAGE));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
 }

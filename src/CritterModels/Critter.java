@@ -2,6 +2,7 @@ package CritterModels;
 
 
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 
 import Map.Cell;
 import OtherModels.Player;
@@ -66,6 +67,9 @@ public abstract class Critter {
     protected int screenDistanceMoved = 0;
     protected boolean hasMovedUp = false, hasMovedDown = false, hasMovedRight = false,
             hasMovedLeft = false;
+    
+    /**Contains the sprite sheet associated with the critter*/
+    protected BufferedImage img;
 
 
     public Critter(int level) {
@@ -394,7 +398,13 @@ public abstract class Critter {
         this.reachedExit = reachedExit;
     }
 
-
+    public BufferedImage getImage(){
+    	return this.img;
+    }
+    
+    public int getDirection(){
+    	return this.direction;
+    }
 
     /*
      * (non-Javadoc)

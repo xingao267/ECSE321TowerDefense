@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import CritterModels.Critter;
 import Utility.Constants;
@@ -33,7 +34,28 @@ public class CritterDisplay {
 		if(critter.isInGame()){
 			g.setColor(new Color(0, 0, 0));
 			//drawImage() using tileset of specific critter
-			g.fillRect(critterDisplay.x,critterDisplay.y, critterDisplay.width, critterDisplay.height);
+			BufferedImage img=critter.getImage();
+			BufferedImage clippedImg=null;
+			
+			//determine direction of travel
+			if(critter.getDirection()==2){
+				clippedImg= img.getSubimage(0,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+			}
+			if(critter.getDirection()==1){
+				clippedImg= img.getSubimage(50,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+			}
+			if(critter.getDirection()==3){
+				clippedImg= img.getSubimage(50,50,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+			}
+			if(critter.getDirection()==0){
+				clippedImg= img.getSubimage(0,50,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+			}
+			
+			
+			
+			g.drawImage(clippedImg, critterDisplay.x,critterDisplay.y, critterDisplay.width, critterDisplay.height, null);
+			
+			//g.fillRect(critterDisplay.x,critterDisplay.y, critterDisplay.width, critterDisplay.height);
 			
 			//draw health bar
 			g.setColor(new Color(180, 50, 50));

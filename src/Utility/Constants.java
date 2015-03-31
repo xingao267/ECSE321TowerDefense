@@ -67,6 +67,19 @@ public class Constants {
             DECELERATOR_TOWER_IMAGE, LONGRANGE_TOWER_IMAGE, SPEED_TOWER_IMAGE};
 
     /*--------------------------------------------------------------------------------------------------------------------*/
+    public static final String CAR_IMAGE = "source/image/critters/car.png";
+
+    public static final String FASTCAR_IMAGE = "source/image/critters/fastcar.png";
+
+    public static final String PICKUP_IMAGE = "source/image/critters/pickup.png";
+
+    public static final String VAN_IMAGE = "source/image/critters/van.png";
+
+    public static final String TRUCK_IMAGE = "source/image/critters/truck.png";
+
+    public static final String TANK_IMAGE = "source/image/critters/tank.png";
+
+    /*--------------------------------------------------------------------------------------------------------------------*/
 
     public static final String CLICK_ONE_SOUND = "source/sound/click_one.wav";
 

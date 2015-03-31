@@ -1,5 +1,10 @@
 package CritterModels;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import Utility.Constants;
 
 
@@ -35,6 +40,11 @@ public class RegenerativeCritter extends Critter {
         }
         
         this.critterType = Constants.REGENERATIVE_CRITTER_TYPE;
+        try {
+			this.img= ImageIO.read(new File(Constants.PICKUP_IMAGE));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     /**

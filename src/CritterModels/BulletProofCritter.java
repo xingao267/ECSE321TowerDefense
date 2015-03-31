@@ -1,5 +1,10 @@
 package CritterModels;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import Utility.Constants;
 
 
@@ -29,6 +34,11 @@ public class BulletProofCritter extends Critter {
         this.maxHealth = health;
         
         this.critterType = Constants.BULLET_PROOF_CRITTER_TYPE;
+        try {
+			this.img= ImageIO.read(new File(Constants.VAN_IMAGE));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
 }
