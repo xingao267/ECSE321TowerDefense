@@ -70,6 +70,8 @@ public class Constants {
 
     public static final String CLICK_ONE_SOUND = "source/sound/click_one.wav";
 
+    public static final String GAME_START = "source/sound/the_dawn.wav";
+
     /*--------------------------------------------------------------------------------------------------------------------*/
 
     /** Initial Tower Level. */

@@ -4,17 +4,10 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.io.File;
-import java.io.IOException;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import Controllers.GameController;
 import Utility.Constants;
+import Utility.Utils;
 
 public class KeyHandler implements MouseMotionListener, MouseListener {
 
@@ -33,22 +26,7 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
             // Screen.mouseClicked.getY() + ')');
             // Screen.rightClicked = false;
 
-            String soundName = Constants.CLICK_ONE_SOUND;
-            AudioInputStream audioInputStream = null;
-            try {
-                audioInputStream =
-                        AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-            } catch (UnsupportedAudioFileException | IOException e) {
-                // Shouldn't be hit
-            }
-            Clip clip = null;
-            try {
-                clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-            } catch (LineUnavailableException | IOException e) {
-            }
-
-            clip.start();
+            Utils.playSound(Constants.CLICK_ONE_SOUND, 0);
         }
     }
 

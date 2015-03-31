@@ -22,6 +22,7 @@ import OtherModels.Bank;
 import OtherModels.Player;
 import TowerModels.Tower;
 import Utility.Constants;
+import Utility.Utils;
 
 /**
  * 
@@ -181,10 +182,11 @@ public class Screen extends JPanel implements Runnable {
                             critterGroupDisplays.get(c).draw(g);
                         }
                         if (c.hasReachedExit()) {
-                            try{
-                        	critters.remove(c);
-                            critterGroupDisplays.remove(c);
-                            } catch(Exception e){}
+                            try {
+                                critters.remove(c);
+                                critterGroupDisplays.remove(c);
+                            } catch (Exception e) {
+                            }
                         }
                     }
                     if (critters.size() == 0) {
@@ -216,8 +218,9 @@ public class Screen extends JPanel implements Runnable {
     /** Game Loop */
     public void run() {
 
-        while (true) {
+        Utils.playSound(Constants.GAME_START, Integer.MAX_VALUE);
 
+        while (true) {
             while (gameRunning) {
                 if (levelStarted) {
                     if (crittersGenerated) {
