@@ -219,7 +219,7 @@ public class Screen extends JPanel implements Runnable {
     /** Game Loop */
     public void run() {
 
-        Utils.playSound(Constants.GAME_START, Integer.MAX_VALUE);
+//        Utils.playSound(Constants.GAME_START, Integer.MAX_VALUE);
 
         while (true) {
             while (gameRunning) {
