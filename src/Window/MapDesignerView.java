@@ -226,7 +226,7 @@ public class MapDesignerView implements Runnable {
                 mapDesigner.endMap();
                 // System.out.println("were here");
                 if (map.validPath()) {
-                    System.out.println("valid path");
+                    //System.out.println("valid path");
                     map.clearIndicators();
                     mapLoader.saveMap(map, mapName);
 
@@ -242,7 +242,7 @@ public class MapDesignerView implements Runnable {
                     Screen.displayMainMenu = true;
                     Screen.gameRunning = true;
 
-                    System.out.println("map saved");
+                    // System.out.println("map saved");
                     // System.out.println("Last Path is exit: " +
                     // map.getPath(map.pathSize()-1).isExit());
                 }
