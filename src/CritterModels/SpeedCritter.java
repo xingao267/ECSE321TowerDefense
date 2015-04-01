@@ -33,6 +33,7 @@ public class SpeedCritter extends Critter {
         this.maxHealth = health;
         try {
 			this.img= ImageIO.read(new File(Constants.FASTCAR_IMAGE));
+			this.slowImg = ImageIO.read(new File(Constants.SLOW_FASTCAR_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

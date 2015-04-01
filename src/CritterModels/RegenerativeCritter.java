@@ -42,6 +42,7 @@ public class RegenerativeCritter extends Critter {
         this.critterType = Constants.REGENERATIVE_CRITTER_TYPE;
         try {
 			this.img= ImageIO.read(new File(Constants.PICKUP_IMAGE));
+			this.slowImg= ImageIO.read(new File(Constants.SLOW_PICKUP_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

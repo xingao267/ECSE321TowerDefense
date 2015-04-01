@@ -36,6 +36,7 @@ public class NormalCritter extends Critter {
         this.critterType = Constants.NORMAL_CRITTER_TYPE;
         try {
 			this.img= ImageIO.read(new File(Constants.CAR_IMAGE));
+			this.slowImg= ImageIO.read(new File(Constants.SLOW_CAR_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

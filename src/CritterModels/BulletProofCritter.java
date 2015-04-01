@@ -36,6 +36,7 @@ public class BulletProofCritter extends Critter {
         this.critterType = Constants.BULLET_PROOF_CRITTER_TYPE;
         try {
 			this.img= ImageIO.read(new File(Constants.VAN_IMAGE));
+			this.slowImg = ImageIO.read(new File(Constants.SLOW_VAN_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

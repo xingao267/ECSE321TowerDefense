@@ -45,6 +45,7 @@ public class BossCritter extends Critter {
         this.maxHealth = health;
         try {
 			this.img= ImageIO.read(new File(Constants.TANK_IMAGE));
+			this.slowImg = ImageIO.read(new File(Constants.SLOW_TANK_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

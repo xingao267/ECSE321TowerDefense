@@ -70,6 +70,7 @@ public abstract class Critter {
     
     /**Contains the sprite sheet associated with the critter*/
     protected BufferedImage img;
+    protected BufferedImage slowImg;
 
 
     public Critter(int level) {
@@ -399,7 +400,11 @@ public abstract class Critter {
     }
 
     public BufferedImage getImage(){
-    	return this.img;
+    	if(isSlowed()){
+    		return this.slowImg;
+    	} else {
+    		return this.img;
+    	}
     }
     
     public int getDirection(){

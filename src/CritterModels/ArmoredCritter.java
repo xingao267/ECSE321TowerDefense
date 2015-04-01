@@ -36,6 +36,7 @@ public class ArmoredCritter extends Critter {
         this.critterType = Constants.ARMORED_CRITTER_TYPE;
         try {
 			this.img= ImageIO.read(new File(Constants.TRUCK_IMAGE));
+			this.slowImg= ImageIO.read(new File(Constants.SLOW_TRUCK_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

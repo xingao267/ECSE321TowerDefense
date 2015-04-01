@@ -68,16 +68,22 @@ public class Constants {
 
     /*--------------------------------------------------------------------------------------------------------------------*/
     public static final String CAR_IMAGE = "source/image/critters/car.png";
-
+    public static final String SLOW_CAR_IMAGE = "source/image/critters/car_slow.png";
+   
     public static final String FASTCAR_IMAGE = "source/image/critters/fastcar.png";
-
+    public static final String SLOW_FASTCAR_IMAGE = "source/image/critters/fastcar_slow.png";
+    
     public static final String PICKUP_IMAGE = "source/image/critters/pickup.png";
+    public static final String SLOW_PICKUP_IMAGE = "source/image/critters/pickup_slow.png";
 
     public static final String VAN_IMAGE = "source/image/critters/van.png";
+    public static final String SLOW_VAN_IMAGE = "source/image/critters/van_slow.png";
 
     public static final String TRUCK_IMAGE = "source/image/critters/truck.png";
+    public static final String SLOW_TRUCK_IMAGE = "source/image/critters/truck_slow.png";
 
     public static final String TANK_IMAGE = "source/image/critters/tank.png";
+    public static final String SLOW_TANK_IMAGE = "source/image/critters/tank_slow.png";
 
     /*--------------------------------------------------------------------------------------------------------------------*/
     public static final String SCENERY_IMAGE = "source/image/scenery.png";
@@ -220,7 +226,7 @@ public class Constants {
     public static final double[] BOMBER_EFFECT_RANGE = {0, 1, 2, 3, 4, 5};
 
     /** Decelerator Tower Constants. */
-    public static final String DECELERATOR_TOWER_TYPE = "Decelerator Tower";
+    public static final String DECELERATOR_TOWER_TYPE = "Frost Tower";
 
     public static final int DECELERATOR_INITIAL_COST = 50;
 
