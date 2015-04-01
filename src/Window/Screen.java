@@ -2,13 +2,18 @@ package Window;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Controllers.GameController;
@@ -122,21 +127,35 @@ public class Screen extends JPanel implements Runnable {
             isFirst = false;
         }
 
-        g.setColor(new Color(60, 60, 60));
-        g.fillRect(0, 0, getWidth(), getHeight());
-
+       // g.setColor(new Color(60, 60, 60));
+        //g.fillRect(0, 0, getWidth(), getHeight());
+        Image mainMenu = null;
+        try {
+			 mainMenu = (ImageIO.read(new File(Constants.MAIN_MENU_IMAGE)));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        g.drawImage(mainMenu,0,0,getWidth(),getHeight(),null );
+        
         if (displayMainMenu) {
             init();
             menu.draw(g);
 
         } else if (displayMapSelectorPane) {
+        	g.setColor(new Color(60, 60, 60));
+            g.fillRect(0, 0, getWidth(), getHeight());
             mapSelectPane.draw(g);
 
         } else if (displayMapDesigner) {
+        	g.setColor(new Color(60, 60, 60));
+            g.fillRect(0, 0, getWidth(), getHeight());
             mapDesigner.draw(g);
 
         } else if (inGameplay) {
-            store.draw(g);
+        	g.setColor(new Color(60, 60, 60));
+            g.fillRect(0, 0, getWidth(), getHeight());
+        	store.draw(g);
             icons.draw(g);
 
             if (displayEasyMap) {

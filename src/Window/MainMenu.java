@@ -14,10 +14,10 @@ public class MainMenu {
 
     private Rectangle startGameButton, createCustomMapButton;
 
-    private static int buttonHeight = 75;
+    private static int buttonHeight = 55;
     private static int buttonWidth = 400;
-    private static int buttonYOffset1 = 75;
-    private static int buttonYOffset2 = 175;
+    private static int buttonYOffset1 = 180;
+    private static int buttonYOffset2 = 240;
     private static int wordXOffset1 = 200;
     private static int wordXOffset2 = 325;
     private static int wordYOffset = 10;
@@ -41,7 +41,7 @@ public class MainMenu {
     public void draw(Graphics g) {
 
         // add mouse click to change to Level Select or MapEditor Views
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0, 0, 0, 160));
         g.fillRect(startGameButton.x, startGameButton.y, startGameButton.width,
                 startGameButton.height);
         g.setColor(new Color(255, 255, 255));
@@ -51,7 +51,7 @@ public class MainMenu {
                 / 2 + buttonYOffset1 + wordYOffset);
 
         if (startGameButton.contains(Screen.mouseLocation)) {
-            g.setColor(new Color(255, 255, 255, 150));
+            g.setColor(new Color(255, 255, 255, 100));
             g.fillRect(startGameButton.x, startGameButton.y, startGameButton.width,
                     startGameButton.height);
         }
@@ -62,7 +62,7 @@ public class MainMenu {
             Screen.displayMapSelectorPane = true;
         }
 
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0, 0, 0, 160));
         g.fillRect(createCustomMapButton.x, createCustomMapButton.y, createCustomMapButton.width,
                 createCustomMapButton.height);
         g.setColor(new Color(255, 255, 255));
@@ -72,7 +72,7 @@ public class MainMenu {
                         + buttonYOffset2 + wordYOffset);
 
         if (createCustomMapButton.contains(Screen.mouseLocation)) {
-            g.setColor(new Color(255, 255, 255, 150));
+            g.setColor(new Color(255, 255, 255, 100));
             g.fillRect(createCustomMapButton.x, createCustomMapButton.y,
                     createCustomMapButton.width, createCustomMapButton.height);
         }
