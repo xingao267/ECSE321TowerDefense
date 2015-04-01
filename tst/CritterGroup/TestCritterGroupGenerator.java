@@ -81,40 +81,13 @@ public class TestCritterGroupGenerator {
 
         for (int i = 0; i < critters.size(); i++) {
             Critter c = critters.get(i);
-            assertEquals(2, (long) c.getBounty());
+            assertEquals(4, (long) c.getBounty());
             assertEquals(100, (long) c.getHealth());
             assertEquals(1, (long) c.getLevel());
-            assertEquals((long) 0.5, (long) c.getSpeed());
-            assertEquals(1, (long) c.getStrength());
+            assertEquals((long) 5, (long) c.getSpeed());
+            assertEquals(2, (long) c.getStrength());
             assertEquals(0, (long) c.getxPos());
             assertEquals(0, (long) c.getyPos());
         }
     }
-
-    // @Test
-    // public void testMoveTo() {
-    //
-    // Critter critter1 = critters.get(0);
-    //
-    // critterGroup.moveTo(critter1, pathCell2, user);
-    // assertEquals(2, pathCell2.getXCoordinate());
-    // assertEquals(1, pathCell2.getYCoordinate());
-    //
-    // critterGroup.moveTo(critter1, pathCell3, user);
-    // assertEquals(3, pathCell3.getXCoordinate());
-    // assertEquals(1, pathCell3.getYCoordinate());
-    //
-    // critterGroup.moveTo(critter1, pathCell4, user);
-    // assertEquals(3, pathCell4.getXCoordinate());
-    // assertEquals(2, pathCell4.getYCoordinate());
-    //
-    // critterGroup.moveTo(critter1, pathCell5, user);
-    // assertEquals(3, pathCell5.getXCoordinate());
-    // assertEquals(3, pathCell5.getYCoordinate());
-    //
-    // critterGroup.moveTo(critter1, exitCell, user);
-    // assertEquals(3, exitCell.getXCoordinate());
-    // assertEquals(4, exitCell.getYCoordinate());
-    // assertEquals(99, (long) user.getLifePoints());
-    // }
 }

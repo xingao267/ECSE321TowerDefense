@@ -125,7 +125,6 @@ public class MapDesignerView implements Runnable {
                     }
 
                 } catch (NumberFormatException e1) {
-                    // TODO Auto-generated catch block
                     frame.setVisible(false);
                     frame.dispose();
                     invalidMapParameterExceptionHandler();
@@ -150,8 +149,6 @@ public class MapDesignerView implements Runnable {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
-
-
 
     public void draw(Graphics g) {
 
