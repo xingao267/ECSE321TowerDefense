@@ -130,7 +130,7 @@ public abstract class Tower {
             // damageType
             // 0 implies regular attacks (bullets, explosions)
             // 1 implies special attacks (fire, electricity)
-            newHealth = critter.getHealth() - this.power / 4;
+            newHealth = critter.getHealth() - this.power;
         } else {
             newHealth = critter.getHealth() - this.power;
         }

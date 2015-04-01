@@ -171,7 +171,6 @@ public class MapDesignerView implements Runnable {
             if (!display.indicator.isEmpty()) {
                 for (Rectangle r : display.indicator) {
                     if (r.contains(Screen.mouseClicked)) {
-                        // System.out.println("indicator clicked");
                         mapDesigner.addPathNodeFromClick(Screen.mouseClicked, false);
                         Screen.mouseClickedReset();
                     }
@@ -186,7 +185,6 @@ public class MapDesignerView implements Runnable {
                     mainMenuButton.height);
         }
         if (mainMenuButton.contains(Screen.mouseClicked)) {
-            System.out.println("Main Menu");
             Screen.displayMapDesigner = false;
             Screen.inGameplay = false;
             Screen.displayEasyMap = false;
@@ -224,9 +222,7 @@ public class MapDesignerView implements Runnable {
                 MapLoader mapLoader = MapLoader.getUniqueInstance();
 
                 mapDesigner.endMap();
-                // System.out.println("were here");
                 if (map.validPath()) {
-                    //System.out.println("valid path");
                     map.clearIndicators();
                     mapLoader.saveMap(map, mapName);
 
@@ -242,9 +238,6 @@ public class MapDesignerView implements Runnable {
                     Screen.displayMainMenu = true;
                     Screen.gameRunning = true;
 
-                    // System.out.println("map saved");
-                    // System.out.println("Last Path is exit: " +
-                    // map.getPath(map.pathSize()-1).isExit());
                 }
 
                 Screen.mouseClickedReset();
@@ -353,7 +346,6 @@ public class MapDesignerView implements Runnable {
     public void run() {
         createUserDefinedMap();
         while (!ready) {
-            // System.out.println("phase 1");
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {

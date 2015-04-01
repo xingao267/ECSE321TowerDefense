@@ -12,7 +12,7 @@ public class Frame extends JFrame {
     /** Default Serial ID */
     private static final long serialVersionUID = 1L;
 
-    public static String title = "ECSE 321 - Tower Defense";
+    public static String title = "Extreme Tower Defense 2";
     public static int width, height;
 
 

@@ -20,7 +20,7 @@ import TowerModels.DeceleratorTower;
 import TowerModels.LongRangeTower;
 import TowerModels.MultiTargetsTower;
 import TowerModels.RegularTower;
-import TowerModels.SpeedTower;
+import TowerModels.RapidFireTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
@@ -31,8 +31,6 @@ import Utility.Utils;
  *
  */
 public class ControlPanelView {
-
-    // private static final String UP_ARROW = "\u2191";
 
     private Rectangle[] towers = new Rectangle[Constants.NUM_TOWERS];
     private Rectangle mainMenuButton;
@@ -53,7 +51,7 @@ public class ControlPanelView {
         towerStorePosToName.put(1, Constants.BOMBER_TOWER_TYPE);
         towerStorePosToName.put(2, Constants.DECELERATOR_TOWER_TYPE);
         towerStorePosToName.put(3, Constants.LONGRANGE_TOWER_TYPE);
-        towerStorePosToName.put(4, Constants.SPEED_TOWER_TYPE);
+        towerStorePosToName.put(4, Constants.RAPID_FIRE_TOWER_TYPE);
 
         towerClickable = new boolean[5];
 
@@ -83,7 +81,7 @@ public class ControlPanelView {
         towerType.add(new BomberTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
         towerType.add(new DeceleratorTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
         towerType.add(new LongRangeTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
-        towerType.add(new SpeedTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
+        towerType.add(new RapidFireTower(-1, -1, Constants.INITIAL_TOWER_LEVEL, null));
 
     }
 
@@ -289,16 +287,22 @@ public class ControlPanelView {
             }
             if (sendNextWaveButton.contains(Screen.mouseClicked)) {
                 Screen.levelStarted = true;
+                Screen.levelEnded = false;
                 Screen.gameLevel++;
                 Utils.playSound(Constants.NEXT_WAVE, 0);
                 Screen.mouseClickedReset();
-                // TODO: start movement of critter group
             }
         }
-        if (Screen.gameLevel >= 1) {
+        
+        if (Screen.gameLevel >= 1 && Screen.levelStarted) {
             g.setFont(new Font("Courier New", Font.BOLD, 20));
             g.setColor(new Color(255, 255, 255));
-            g.drawString("Level " + Screen.gameLevel, mainMenuButton.x, sendNextWaveButton.y + 50);
+            g.drawString("Level " + Screen.gameLevel + "/" + Constants.MAX_GAME_LEVEL, mainMenuButton.x - 20, sendNextWaveButton.y + 50); 
+        }
+        if(Screen.gameLevel >=1 && Screen.levelEnded){
+        	g.setFont(new Font("Courier New", Font.BOLD, 16));
+            g.setColor(new Color(0, 255, 0));
+            g.drawString("Level " + Screen.gameLevel + " Completed", mainMenuButton.x - 60, sendNextWaveButton.y + 50);
         }
 
     }

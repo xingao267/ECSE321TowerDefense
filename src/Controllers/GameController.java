@@ -15,7 +15,7 @@ import TowerModels.DeceleratorTower;
 import TowerModels.LongRangeTower;
 import TowerModels.MultiTargetsTower;
 import TowerModels.RegularTower;
-import TowerModels.SpeedTower;
+import TowerModels.RapidFireTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
@@ -86,8 +86,8 @@ public class GameController implements IGameController {
             towerToPurchase = new BomberTower(xPos, yPos, level, cell);
         } else if (towerType.equals(Constants.LONGRANGE_TOWER_TYPE)) {
             towerToPurchase = new LongRangeTower(xPos, yPos, level, cell);
-        } else if (towerType.equals(Constants.SPEED_TOWER_TYPE)) {
-            towerToPurchase = new SpeedTower(xPos, yPos, level, cell);
+        } else if (towerType.equals(Constants.RAPID_FIRE_TOWER_TYPE)) {
+            towerToPurchase = new RapidFireTower(xPos, yPos, level, cell);
         } else if (towerType.equals(Constants.DECELERATOR_TOWER_TYPE)) {
             towerToPurchase = new DeceleratorTower(xPos, yPos, level, cell);
         } else {

@@ -1,6 +1,7 @@
 package Window;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -40,8 +41,6 @@ public class Screen extends JPanel implements Runnable {
 
     public Thread game = new Thread(this);
 
-    // private int fps = 10000000 , fpsFrame = 0;
-
     public Frame frame;
     public MainMenu menu;
     public MapSelectPaneView mapSelectPane;
@@ -64,9 +63,10 @@ public class Screen extends JPanel implements Runnable {
     public static boolean displayHardMap = false;
     public static boolean displayCustomMap = false;
     public static boolean levelStarted = false;
+    public static boolean levelEnded = false;
     public static boolean crittersGenerated = false;
     public static boolean gameRunning = true;
-
+    
     public static Point mouseLocation = new Point(0, 0);
     public static Point mouseClicked = new Point(0, 0);
 
@@ -86,6 +86,7 @@ public class Screen extends JPanel implements Runnable {
     private EasyMap easyMap;
     private MediumMap mediumMap;
     private HardMap hardMap;
+	
 
     public Screen(Frame frame) {
 
@@ -128,14 +129,12 @@ public class Screen extends JPanel implements Runnable {
 
         if (displayMainMenu) {
             init();
-            // g.setColor(new Color(60, 60, 60));
-            // g.fillRect(0, 0, getWidth(), getHeight());
             Image mainMenu = null;
             try {
                 mainMenu = (ImageIO.read(new File(Constants.MAIN_MENU_IMAGE)));
             } catch (IOException e1) {
             }
-            g.drawImage(mainMenu, 0, 0, getWidth(), getHeight(), null);
+            g.drawImage(mainMenu, -2, -2, getWidth(), getHeight(), null);
             menu.draw(g);
 
         } else if (displayMapSelectorPane) {
@@ -205,6 +204,7 @@ public class Screen extends JPanel implements Runnable {
                     if (critters.size() == 0) {
                         levelStarted = false;
                         crittersGenerated = false;
+                        levelEnded = true;
                     }
                 }
 

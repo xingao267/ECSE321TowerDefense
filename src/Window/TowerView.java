@@ -52,8 +52,8 @@ public class TowerView implements ITowerObserver {
                     img = ImageIO.read(new File(Constants.BOMBER_TOWER_IMAGE));
                 } else if (this.tower.getTowerType().equals(Constants.LONGRANGE_TOWER_TYPE)) {
                     img = ImageIO.read(new File(Constants.LONGRANGE_TOWER_IMAGE));
-                } else if (this.tower.getTowerType().equals(Constants.SPEED_TOWER_TYPE)) {
-                    img = ImageIO.read(new File(Constants.SPEED_TOWER_IMAGE));
+                } else if (this.tower.getTowerType().equals(Constants.RAPID_FIRE_TOWER_TYPE)) {
+                    img = ImageIO.read(new File(Constants.RAPID_FIRE_TOWER_IMAGE));
                 } else if (this.tower.getTowerType().equals(Constants.DECELERATOR_TOWER_TYPE)) {
                     img = ImageIO.read(new File(Constants.DECELERATOR_TOWER_IMAGE));
                 } else {
