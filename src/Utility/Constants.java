@@ -98,6 +98,8 @@ public class Constants {
     public static final String NEXT_WAVE = "source/sound/car_ignition.wav";
 
     public static final String CONSTRUCTION = "source/sound/construction.wav";
+    
+    public static final String COIN_DROP = "source/sound/coin_drop.wav";
 
     /*--------------------------------------------------------------------------------------------------------------------*/
 
