@@ -18,9 +18,9 @@ import Window.Screen;
  */
 public abstract class Critter {
 
-	/** Critter type */
-	protected String critterType;
-	
+    /** Critter type */
+    protected String critterType;
+
     /** speed of critter. Range from 0 to 1 */
     protected double speed;
 
@@ -50,7 +50,7 @@ public abstract class Critter {
     /** y position of critter. */
     protected int yPos;
     protected int screenYPos;
-    
+
     /** Spawn Rate of critter */
     protected int spawnRate;
 
@@ -67,8 +67,8 @@ public abstract class Critter {
     protected int screenDistanceMoved = 0;
     protected boolean hasMovedUp = false, hasMovedDown = false, hasMovedRight = false,
             hasMovedLeft = false;
-    
-    /**Contains the sprite sheet associated with the critter*/
+
+    /** Contains the sprite sheet associated with the critter */
     protected BufferedImage img;
     protected BufferedImage slowImg;
 
@@ -211,12 +211,12 @@ public abstract class Critter {
     }
 
     public String getCritterType() {
-		return critterType;
-	}
+        return critterType;
+    }
 
-	public void setCritterType(String critterType) {
-		this.critterType = critterType;
-	}
+    public void setCritterType(String critterType) {
+        this.critterType = critterType;
+    }
 
 
     /**
@@ -376,14 +376,14 @@ public abstract class Critter {
     }
 
     public int getSpawnRate() {
-		return spawnRate;
-	}
+        return spawnRate;
+    }
 
-	public void setSpawnRate(int spawnRate) {
-		this.spawnRate = spawnRate;
-	}
+    public void setSpawnRate(int spawnRate) {
+        this.spawnRate = spawnRate;
+    }
 
-	public boolean isInGame() {
+    public boolean isInGame() {
         return inGame;
     }
 
@@ -399,16 +399,16 @@ public abstract class Critter {
         this.reachedExit = reachedExit;
     }
 
-    public BufferedImage getImage(){
-    	if(isSlowed()){
-    		return this.slowImg;
-    	} else {
-    		return this.img;
-    	}
+    public BufferedImage getImage() {
+        if (isSlowed()) {
+            return this.slowImg;
+        } else {
+            return this.img;
+        }
     }
-    
-    public int getDirection(){
-    	return this.direction;
+
+    public int getDirection() {
+        return this.direction;
     }
 
     /*

@@ -154,11 +154,9 @@ public class MapView {
                         cell.setHasTower(true);
                         Utils.playSound(Constants.CONSTRUCTION, 0);
                     } catch (NoEnoughMoneyException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
+                        // shouldn't be hit
                     } catch (InvalidTowerTypeException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
+                        // shouldn't be hit
                     }
                     GameController.getUniqueInstance().setTowerSeletedInStore(false);
 

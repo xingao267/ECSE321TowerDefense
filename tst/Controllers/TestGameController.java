@@ -129,23 +129,23 @@ public class TestGameController {
         critter1.setInGame(true);
         targets.add(critter1);
 
-        assertEquals(480, (long) critter1.getHealth());
+        assertEquals(260, (long) critter1.getHealth());
 
         singleTargetTower.setPower(10);
         controller.towerAttackTargets(singleTargetTower, targets);
-        assertEquals(475, (long) critter1.getHealth());
+        assertEquals(255, (long) critter1.getHealth());
 
         multiTargetsTower.setPower(5);
         assertEquals(false, critter1.isSlowed());
 
         controller.towerAttackTargets(multiTargetsTower, targets);
-        assertEquals(472, (long) critter1.getHealth());
+        assertEquals(252, (long) critter1.getHealth());
 
         assertTrue(critter1.getSpeed() - 2.6 < 0.0000001);
         assertEquals(true, critter1.isSlowed());
 
         controller.towerAttackTargets(multiTargetsTower, targets);
-        assertEquals(470, (long) critter1.getHealth());
+        assertEquals(250, (long) critter1.getHealth());
         assertTrue(critter1.getSpeed() - 2.6 < 0.0000001);
         assertEquals(true, critter1.isSlowed());
 
@@ -158,7 +158,7 @@ public class TestGameController {
         critter1.setInGame(true);
         targets.add(critter1);
 
-        assertEquals(480, (long) critter1.getHealth());
+        assertEquals(260, (long) critter1.getHealth());
 
         singleTargetTower.setPower(1000);
         controller.towerAttackTargets(singleTargetTower, targets);
@@ -175,7 +175,7 @@ public class TestGameController {
     @Test
     public void testUpgradeTowerWithoutReachingMaximumLevel() throws Exception {
 
-        bank.setBalance(10000);
+        bank.setBalance(1000);
 
         assertEquals(1, multiTargetsTower.getLevel());
         assertEquals(Constants.DECELERATOR_UPGRADE_COST[2], multiTargetsTower.getUpgradeCost());
@@ -186,7 +186,8 @@ public class TestGameController {
         assertEquals((long) Constants.DECELERATOR_RATE[1], (long) multiTargetsTower.getRateOfFire());
         assertEquals((long) Constants.DECELERATOR_EFFECT_RANGE[1],
                 (long) multiTargetsTower.getEffectRange());
-
+        assertEquals(bank.getBalance(), 1000);
+        
         controller.upgradeTower(multiTargetsTower);
 
         assertEquals(2, multiTargetsTower.getLevel());
@@ -199,6 +200,8 @@ public class TestGameController {
         assertEquals((long) Constants.DECELERATOR_EFFECT_RANGE[2],
                 (long) multiTargetsTower.getEffectRange());
 
+        assertEquals(bank.getBalance(), 925);
+        
         controller.upgradeTower(multiTargetsTower);
 
         assertEquals(3, multiTargetsTower.getLevel());
@@ -210,6 +213,8 @@ public class TestGameController {
         assertEquals((long) Constants.DECELERATOR_RATE[3], (long) multiTargetsTower.getRateOfFire());
         assertEquals((long) Constants.DECELERATOR_EFFECT_RANGE[3],
                 (long) multiTargetsTower.getEffectRange());
+        
+        assertEquals(bank.getBalance(), 805);
 
         controller.upgradeTower(multiTargetsTower);
 
@@ -223,6 +228,8 @@ public class TestGameController {
         assertEquals((long) Constants.DECELERATOR_EFFECT_RANGE[4],
                 (long) multiTargetsTower.getEffectRange());
 
+        assertEquals(bank.getBalance(), 635);
+        
         controller.upgradeTower(multiTargetsTower);
 
         assertEquals(5, multiTargetsTower.getLevel());

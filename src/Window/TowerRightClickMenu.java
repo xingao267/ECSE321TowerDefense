@@ -40,7 +40,8 @@ public class TowerRightClickMenu extends JPopupMenu {
             add(sellButtom);
             sellButtom.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    GameController.getUniqueInstance().sellTower(GameController.getUniqueInstance().getHoveredTowerOnMap());
+                    GameController.getUniqueInstance().sellTower(
+                            GameController.getUniqueInstance().getHoveredTowerOnMap());
 
                 }
             });
@@ -48,7 +49,8 @@ public class TowerRightClickMenu extends JPopupMenu {
             add(moveButtom);
             moveButtom.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    GameController.getUniqueInstance().setSelectedTowerToMove(GameController.getUniqueInstance().getHoveredTowerOnMap());
+                    GameController.getUniqueInstance().setSelectedTowerToMove(
+                            GameController.getUniqueInstance().getHoveredTowerOnMap());
                     GameController.getUniqueInstance().setTowerMoveClicked(true);
                 }
             });
@@ -58,7 +60,8 @@ public class TowerRightClickMenu extends JPopupMenu {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    GameController.getUniqueInstance().upgradeTower(GameController.getUniqueInstance().getHoveredTowerOnMap());
+                    GameController.getUniqueInstance().upgradeTower(
+                            GameController.getUniqueInstance().getHoveredTowerOnMap());
                     GameController.getUniqueInstance().setMaxLevelReached(false);
                     GameController.getUniqueInstance().setNoMoneyCaught(false);
                 } catch (MaxLevelReachedException e1) {

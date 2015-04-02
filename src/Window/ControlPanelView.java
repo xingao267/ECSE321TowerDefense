@@ -97,11 +97,9 @@ public class ControlPanelView {
                 g.drawImage(img, towers[i].x, towers[i].y, towers[i].width, towers[i].height, null);
 
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
-            // TODO: add stuff that happens when a tower is purchased on click
             if (towers[i].contains(Screen.mouseLocation)) {
                 // display that player does not have enough money
                 if (towerType.get(i).getInitialCost() > Bank.getUniqueInstance().getBalance()) {
@@ -293,16 +291,18 @@ public class ControlPanelView {
                 Screen.mouseClickedReset();
             }
         }
-        
+
         if (Screen.gameLevel >= 1 && Screen.levelStarted) {
             g.setFont(new Font("Courier New", Font.BOLD, 20));
             g.setColor(new Color(255, 255, 255));
-            g.drawString("Level " + Screen.gameLevel + "/" + Constants.MAX_GAME_LEVEL, mainMenuButton.x - 20, sendNextWaveButton.y + 50); 
+            g.drawString("Level " + Screen.gameLevel + "/" + Constants.MAX_GAME_LEVEL,
+                    mainMenuButton.x - 20, sendNextWaveButton.y + 50);
         }
-        if(Screen.gameLevel >=1 && Screen.levelEnded){
-        	g.setFont(new Font("Courier New", Font.BOLD, 16));
+        if (Screen.gameLevel >= 1 && Screen.levelEnded) {
+            g.setFont(new Font("Courier New", Font.BOLD, 16));
             g.setColor(new Color(0, 255, 0));
-            g.drawString("Level " + Screen.gameLevel + " Completed", mainMenuButton.x - 60, sendNextWaveButton.y + 50);
+            g.drawString("Level " + Screen.gameLevel + " Completed", mainMenuButton.x - 60,
+                    sendNextWaveButton.y + 50);
         }
 
     }

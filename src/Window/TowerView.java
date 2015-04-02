@@ -18,8 +18,6 @@ import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
 
-
-
 /**
  * @author Xin
  *
@@ -64,8 +62,7 @@ public class TowerView implements ITowerObserver {
                         towerDisplay.height, null);
 
             } catch (IOException | InvalidTowerTypeException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                // shouldn't be hit
             }
         }
     }

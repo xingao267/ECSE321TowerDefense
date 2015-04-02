@@ -130,8 +130,6 @@ public class MapDesignerView implements Runnable {
                     invalidMapParameterExceptionHandler();
                 }
                 // Screen.setMapDesigning(true);
-                // TODO: pause game thread and start this thread then restart
-                // game thread with updated map characteristics
             }
         });
 
@@ -185,6 +183,7 @@ public class MapDesignerView implements Runnable {
                     mainMenuButton.height);
         }
         if (mainMenuButton.contains(Screen.mouseClicked)) {
+            // resume to main menu
             Screen.displayMapDesigner = false;
             Screen.inGameplay = false;
             Screen.displayEasyMap = false;
@@ -197,7 +196,7 @@ public class MapDesignerView implements Runnable {
             Screen.displayMainMenu = true;
             Screen.gameRunning = true;
             Screen.mouseClickedReset();
-            // TODO: stop/reset everything to do with designing a map.
+
         }
 
         // Draw button to save map

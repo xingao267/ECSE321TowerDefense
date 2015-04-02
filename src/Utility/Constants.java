@@ -9,8 +9,8 @@ package Utility;
  */
 public class Constants {
 
-	/** NUmber of levels that the game has */
-	public static final int MAX_GAME_LEVEL = 30;
+    /** NUmber of levels that the game has */
+    public static final int MAX_GAME_LEVEL = 30;
     /** Initial Player life points. */
     public static final int INITIAL_PLAYER_LIFE_POINTS = 100;
 
@@ -69,12 +69,15 @@ public class Constants {
             DECELERATOR_TOWER_IMAGE, LONGRANGE_TOWER_IMAGE, RAPID_FIRE_TOWER_IMAGE};
 
     /*--------------------------------------------------------------------------------------------------------------------*/
+
+    /** Image resources */
+
     public static final String CAR_IMAGE = "source/image/critters/car.png";
     public static final String SLOW_CAR_IMAGE = "source/image/critters/car_slow.png";
-   
+
     public static final String FASTCAR_IMAGE = "source/image/critters/fastcar.png";
     public static final String SLOW_FASTCAR_IMAGE = "source/image/critters/fastcar_slow.png";
-    
+
     public static final String PICKUP_IMAGE = "source/image/critters/pickup.png";
     public static final String SLOW_PICKUP_IMAGE = "source/image/critters/pickup_slow.png";
 
@@ -93,6 +96,8 @@ public class Constants {
     public static final String MAIN_MENU_IMAGE = "source/image/main_menu.png";
     /*--------------------------------------------------------------------------------------------------------------------*/
 
+    /** Sound resources */
+
     public static final String CLICK_ONE_SOUND = "source/sound/click_one.wav";
 
     public static final String GAME_START = "source/sound/the_dawn.wav";
@@ -100,11 +105,12 @@ public class Constants {
     public static final String NEXT_WAVE = "source/sound/car_ignition.wav";
 
     public static final String CONSTRUCTION = "source/sound/construction.wav";
-    
+
     public static final String COIN_DROP = "source/sound/coin_drop.wav";
 
     /*--------------------------------------------------------------------------------------------------------------------*/
 
+    /** Root of two. */
     public static final double RT_2 = Math.sqrt(2);
 
     /** Initial Tower Level. */
@@ -176,18 +182,20 @@ public class Constants {
 
     public static final int RAPID_FIRE_INITIAL_COST = 200;
 
-    public static final int[] RAPID_FIRE_UPGRADE_COST = {0, 0, 250, 350, 500, 750, Integer.MAX_VALUE};
+    public static final int[] RAPID_FIRE_UPGRADE_COST = {0, 0, 250, 350, 500, 750,
+            Integer.MAX_VALUE};
     public static final double[] RAPID_FIRE_REFUND_VALUE =
             {
                     0,
                     0.8 * RAPID_FIRE_INITIAL_COST,
                     0.8 * (RAPID_FIRE_INITIAL_COST + RAPID_FIRE_UPGRADE_COST[2]),
                     0.8 * (RAPID_FIRE_INITIAL_COST + RAPID_FIRE_UPGRADE_COST[2] + RAPID_FIRE_UPGRADE_COST[3]),
-                    0.8 * (RAPID_FIRE_INITIAL_COST + RAPID_FIRE_UPGRADE_COST[2] + RAPID_FIRE_UPGRADE_COST[3] + RAPID_FIRE_UPGRADE_COST[4]),
-                    0.8 * (RAPID_FIRE_INITIAL_COST + RAPID_FIRE_UPGRADE_COST[2] + RAPID_FIRE_UPGRADE_COST[3]
-                            + RAPID_FIRE_UPGRADE_COST[4] + RAPID_FIRE_UPGRADE_COST[5])};
-    public static final double[] RAPID_FIRE_RANGE =
-            {0, 1 * RT_2, 1 * RT_2, 2 * RT_2, 2 * RT_2, 3 * RT_2};
+                    0.8 * (RAPID_FIRE_INITIAL_COST + RAPID_FIRE_UPGRADE_COST[2]
+                            + RAPID_FIRE_UPGRADE_COST[3] + RAPID_FIRE_UPGRADE_COST[4]),
+                    0.8 * (RAPID_FIRE_INITIAL_COST + RAPID_FIRE_UPGRADE_COST[2]
+                            + RAPID_FIRE_UPGRADE_COST[3] + RAPID_FIRE_UPGRADE_COST[4] + RAPID_FIRE_UPGRADE_COST[5])};
+    public static final double[] RAPID_FIRE_RANGE = {0, 1 * RT_2, 1 * RT_2, 2 * RT_2, 2 * RT_2,
+            3 * RT_2};
     public static final double[] RAPID_FIRE_RATE = {0, 5, 7, 9, 11, 13};
 
     public static final double[] RAPID_FIRE_DAMAGE_PER_HIT = {0, 100, 150, 220, 300, 400};

@@ -221,7 +221,6 @@ public class MapSelectPaneView {
 
         // TODO: Add number of buttons based on how many saved maps there are.
 
-
         for (int i = 0; i < customMaps.size(); i++) {
 
             if (i > 5) {
@@ -260,7 +259,6 @@ public class MapSelectPaneView {
                     Screen.inGameplay = true;
                     Screen.displayCustomMap = true;
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
 

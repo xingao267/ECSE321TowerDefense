@@ -1,7 +1,6 @@
 package Window;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -66,7 +65,7 @@ public class Screen extends JPanel implements Runnable {
     public static boolean levelEnded = false;
     public static boolean crittersGenerated = false;
     public static boolean gameRunning = true;
-    
+
     public static Point mouseLocation = new Point(0, 0);
     public static Point mouseClicked = new Point(0, 0);
 
@@ -86,7 +85,7 @@ public class Screen extends JPanel implements Runnable {
     private EasyMap easyMap;
     private MediumMap mediumMap;
     private HardMap hardMap;
-	
+
 
     public Screen(Frame frame) {
 

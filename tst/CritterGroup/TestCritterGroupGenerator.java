@@ -82,9 +82,9 @@ public class TestCritterGroupGenerator {
         for (int i = 0; i < critters.size(); i++) {
             Critter c = critters.get(i);
             assertEquals(4, (long) c.getBounty());
-            assertEquals(100, (long) c.getHealth());
+            assertEquals(80, (long) c.getHealth());
             assertEquals(1, (long) c.getLevel());
-            assertEquals((long) 5, (long) c.getSpeed());
+            assertEquals((long) 4, (long) c.getSpeed());
             assertEquals(2, (long) c.getStrength());
             assertEquals(0, (long) c.getxPos());
             assertEquals(0, (long) c.getyPos());
