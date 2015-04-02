@@ -38,7 +38,7 @@ public class MapDesignerDisplay implements Runnable {
     private int customMapHeight;
 
     private boolean jButtonPressed = false;
-    public MapDisplay display;
+    public MapView display;
 
     private boolean ready = false;
     private boolean click = false;
@@ -156,7 +156,7 @@ public class MapDesignerDisplay implements Runnable {
                 mainMenuButton.y + Constants.STORE_BUTTON_SIZE / 4 + 4);
 
         if (map != null) {
-            display = new MapDisplay(map);
+            display = new MapView(map);
             display.draw(g);
             if (!display.indicator.isEmpty()) {
                 for (Rectangle r : display.indicator) {

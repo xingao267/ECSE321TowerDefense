@@ -26,7 +26,7 @@ import Utility.Utils;
  * @author Justin
  *
  */
-public class MapDisplay {
+public class MapView {
 
     private static ArrayList<Rectangle> scenery;
     private static ArrayList<Rectangle> path;
@@ -39,13 +39,19 @@ public class MapDisplay {
     public static int initialMapXPos = Constants.MAP_INITIAL_XPOS,
             initialMapYPos = Constants.MAP_INITIAL_YPOS;
     private BufferedImage sceneryCell;
+    private BufferedImage pathSheet;
+    
+    private int startX;
+    private int startY;
+    private int endX;
+    private int endY;
 
     /**
      * Constructor
      * 
      * @param m
      */
-    public MapDisplay(Map m) {
+    public MapView(Map m) {
 
         this.m = m;
         mapWidth = m.getWidth();
@@ -56,6 +62,11 @@ public class MapDisplay {
         cells = new ArrayList<Rectangle>();
         try {
 			this.sceneryCell= ImageIO.read(new File(Constants.SCENERY_IMAGE));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        try {
+			this.pathSheet= ImageIO.read(new File(Constants.PATH_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -80,7 +91,7 @@ public class MapDisplay {
                     if (m.getCell(i, j).isScenery()) {
                         scenery.add(r);
                     } else {
-                        path.add(r);
+                        //path.add(r);
                     }
                 } else {
                     for (int k = 0; k < m.numIndicators(); k++) {
@@ -102,6 +113,8 @@ public class MapDisplay {
                 cells.add(r);
             }
         }
+       
+        calculatePath();
     }
 
     /**
@@ -110,7 +123,7 @@ public class MapDisplay {
      * @param g
      */
     public void draw(Graphics g) {
-
+    	//calculatePath();
         // Draw the scenery
         for (Rectangle r : scenery) {
 
@@ -178,21 +191,105 @@ public class MapDisplay {
                 Screen.mouseClickedReset();
             }
         }
-
+    	int direction=1; //0=left,1=right,2=up,3=down
+    	BufferedImage pathSection;
         // Draw the path
-        for (Rectangle r : path) {
+    	
+    	pathSection= pathSheet.getSubimage(50,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+    	g.drawImage(pathSection, Constants.MAP_INITIAL_XPOS
+                + Constants.STORE_BUTTON_SIZE * startX, Constants.MAP_INITIAL_YPOS
+                + Constants.STORE_BUTTON_SIZE * startY, Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE, null);
+    	
+    	for (int i=1;i<path.size()-1;i++) {
+        	int currentX=path.get(i).x;
+        	int currentY=path.get(i).y;
+        	int previousX=path.get(i-1).x;
+    		int previousY=path.get(i-1).y;
+ 	
+        	int nextX=path.get(i+1).x;
+        	int nextY=path.get(i+1).y;
+        	
+        	if(previousX==currentX && currentX==nextX){
+        		//up or down
+        		//set to vertical path
+        		pathSection= pathSheet.getSubimage(0,50,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        	}
+        	else if(previousY==currentY && currentY==nextY){
+        		//left or right
+        		//set to horizontal path
+        		pathSection= pathSheet.getSubimage(50,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        	}
+        	else if(previousX==currentX && currentX<nextX){
+        		//if direction is down-> down to left
+        		if(direction==3){
+        			//print down to left
+        			pathSection= pathSheet.getSubimage(0,100,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        			direction=1;//right
+        		}
+        		//if direction is up->up to right	
+        		if(direction==2){
+        			//print up to right
+        			pathSection= pathSheet.getSubimage(0,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        			direction=1;//right
+        		}
+        	}
+        	else if(previousX==currentX && currentX>nextX){
+        		//if direction is down-> down to right
+        		if(direction==3){
+        			//print down to right
+        			pathSection= pathSheet.getSubimage(100,100,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        			direction=0;//left
+        		}       		
+        		//if direction is up->up to left
+        		if(direction==2){
+        			//print up to left
+        			pathSection= pathSheet.getSubimage(100,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        			direction=0;//left
+        		}
+        	}
+        	else if(previousY==currentY && currentY<nextY){
+        		//if direction is left, turn down from left
+        		if(direction==0){
+        			//print down from left
+        			pathSection= pathSheet.getSubimage(0,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        			direction=3;//down
+        		}
+        		//if direction is right, turn down from right
+        		if(direction==1){
+        			//print down from right
+        			pathSection= pathSheet.getSubimage(100,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        			direction=3;//down
+        		}
+        	}
+        	else if(previousY==currentY && currentY>nextY){
+        		//if direction is left, turn up from left
+        		if(direction==0){
+        			//print up from left
+        			pathSection= pathSheet.getSubimage(0,100,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        			direction=2;
+        		}
+        		//if direction is right, turn up from right
+        		if(direction==1){
+        			//print up from right
+        			pathSection= pathSheet.getSubimage(100,100,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+        			direction=2;
+        		}
+        	}
+        	
+        	
+        	g.drawImage(pathSection, path.get(i).x, path.get(i).y, path.get(i).width, path.get(i).height, null);
 
-            g.setColor(new Color(88, 38, 15)); // Brown
-            g.fillRect(r.x, r.y, r.width, r.height);
+            //g.setColor(new Color(88, 38, 15)); // Brown
+            //g.fillRect(path.get(i).x, path.get(i).y, path.get(i).width, path.get(i).height);
 
-            if (r.contains(Screen.mouseLocation)) {
+            if (path.get(i).contains(Screen.mouseLocation)) {
                 // slightly darken the path
                 g.setColor(new Color(73, 16, 9, 150));
-                g.fillRect(r.x, r.y, r.width, r.height);
+                g.fillRect(path.get(i).x, path.get(i).y, path.get(i).width, path.get(i).height);
 
                 GameController.getUniqueInstance().setTowerCellHoveredOnMap(false);
             }
-            if (r.contains(Screen.mouseClicked)) {
+            if (path.get(i).contains(Screen.mouseClicked)) {
                 if (GameController.getUniqueInstance().isTowerSeletedInStore()) {
                     GameController.getUniqueInstance().setTowerSeletedInStore(false);
                 }
@@ -200,6 +297,12 @@ public class MapDisplay {
             }
 
         }
+    	
+    	pathSection= pathSheet.getSubimage(50,50,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+    	g.drawImage(pathSection, Constants.MAP_INITIAL_XPOS
+                + Constants.STORE_BUTTON_SIZE * endX, Constants.MAP_INITIAL_YPOS
+                + Constants.STORE_BUTTON_SIZE * endY, Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE, null);
+    	
         // Draw Indicators
         for (Rectangle r : indicator) {
 
@@ -211,6 +314,26 @@ public class MapDisplay {
                 g.setColor(new Color(255, 128, 0, 150));
                 g.fillRect(r.x, r.y, r.width, r.height);
             }
+        }
+    }
+    private void calculatePath(){
+    	for(int i=0; i<m.pathSize(); i++){
+        	int pathX=m.getPath(i).getXCoordinate(); 
+        	int pathY=m.getPath(i).getYCoordinate();
+        	if(m.getPath(i).isEntry()){
+        		startX=m.getStart().getXCoordinate();
+        		startY=m.getStart().getYCoordinate();
+        	}
+        	if(m.getPath(i).isExit()){
+        		endX=pathX;
+        		endY=pathY;
+        	}
+        	Rectangle r =
+                     new Rectangle(Constants.MAP_INITIAL_XPOS
+                             + (Constants.STORE_BUTTON_SIZE * pathX), Constants.MAP_INITIAL_YPOS
+                             + Constants.STORE_BUTTON_SIZE * pathY, Constants.STORE_BUTTON_SIZE,
+                             Constants.STORE_BUTTON_SIZE);
+        	path.add(r);
         }
     }
 }

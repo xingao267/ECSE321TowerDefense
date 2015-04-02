@@ -73,7 +73,7 @@ public class Screen extends JPanel implements Runnable {
     public static int screenHeight;
 
     public static Map map;
-    private static MapDisplay mapDisplay;
+    private static MapView mapDisplay;
     public static Store store;
 
     public ArrayList<Critter> critters;
@@ -145,18 +145,18 @@ public class Screen extends JPanel implements Runnable {
 
             if (displayEasyMap) {
                 map = easyMap.getEasyMap();
-                mapDisplay = new MapDisplay(map);
+                mapDisplay = new MapView(map);
                 mapDisplay.draw(g);
             } else if (displayMediumMap) {
                 map = mediumMap.getMediumMap();
-                mapDisplay = new MapDisplay(map);
+                mapDisplay = new MapView(map);
                 mapDisplay.draw(g);
             } else if (displayHardMap) {
                 map = hardMap.getHardMap();
-                mapDisplay = new MapDisplay(map);
+                mapDisplay = new MapView(map);
                 mapDisplay.draw(g);
             } else if (displayCustomMap) {
-                mapDisplay = new MapDisplay(map);
+                mapDisplay = new MapView(map);
                 mapDisplay.draw(g);
             }
 
