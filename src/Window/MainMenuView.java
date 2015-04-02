@@ -10,7 +10,7 @@ import java.awt.Rectangle;
  * @author Jose
  *
  */
-public class MainMenu {
+public class MainMenuView {
 
     private Rectangle startGameButton, createCustomMapButton;
 
@@ -22,7 +22,7 @@ public class MainMenu {
     private static int wordXOffset2 = 325;
     private static int wordYOffset = 10;
 
-    public MainMenu() {
+    public MainMenuView() {
         init();
     }
 

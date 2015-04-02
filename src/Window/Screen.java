@@ -41,7 +41,7 @@ public class Screen extends JPanel implements Runnable {
     public Thread game = new Thread(this);
 
     public Frame frame;
-    public MainMenu menu;
+    public MainMenuView menu;
     public MapSelectPaneView mapSelectPane;
     public MapDesignerView mapDesigner;
     public KeyHandler keyHandle;
@@ -107,7 +107,7 @@ public class Screen extends JPanel implements Runnable {
         Player.resetUniqueInstance();
 
         gameLevel = 0;
-        menu = new MainMenu();
+        menu = new MainMenuView();
         mapSelectPane = new MapSelectPaneView();
         mapDesigner = new MapDesignerView();
         store = new ControlPanelView();

@@ -89,8 +89,9 @@ public abstract class Tower {
      * @param power
      * @param rateOfFire
      */
-    public Tower(int xPos, int yPos, int level, int initialCost, int upgradeCost, double refundValue,
-            double range, double power, double rateOfFire, boolean multiTargets, Cell cell) {
+    public Tower(int xPos, int yPos, int level, int initialCost, int upgradeCost,
+            double refundValue, double range, double power, double rateOfFire,
+            boolean multiTargets, Cell cell) {
 
         this.xPos = xPos;
         this.yPos = yPos;
