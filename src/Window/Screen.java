@@ -138,9 +138,13 @@ public class Screen extends JPanel implements Runnable {
             menu.draw(g);
 
         } else if (displayMapSelectorPane) {
-            g.setColor(new Color(60, 60, 60));
-            g.fillRect(0, 0, getWidth(), getHeight());
-            mapSelectPane.draw(g);
+        	 Image mainMenu = null;
+             try {
+                 mainMenu = (ImageIO.read(new File(Constants.MAIN_MENU_IMAGE)));
+             } catch (IOException e1) {
+             }
+             g.drawImage(mainMenu, -2, -2, getWidth(), getHeight(), null);
+             mapSelectPane.draw(g);
 
         } else if (displayMapDesigner) {
             g.setColor(new Color(60, 60, 60));

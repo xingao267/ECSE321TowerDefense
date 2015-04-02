@@ -271,7 +271,7 @@ public class MapDesignerView implements Runnable {
 
         JLabel label = new JLabel(message, JLabel.TRAILING);
         userPanel.add(label);
-        JButton button = new JButton("OK");
+        JButton button = new JButton("Retry");
         userPanel.add(new JLabel());
         userPanel.add(button);
 
@@ -303,17 +303,23 @@ public class MapDesignerView implements Runnable {
     }
 
     private void invalidMapParameterExceptionHandler() {
-        final String message = "The values you entered are invalid. Please try again";
+        final String message1 = "The values you entered are invalid.";
+        final String message2 = "Width must be less than 16 and height must be less than 10.";
+        final String message3 = "Please try again!";
         JPanel userPanel = new JPanel(new SpringLayout());
 
 
-        JLabel label = new JLabel(message, JLabel.TRAILING);
-        userPanel.add(label);
-        JButton button = new JButton("OK");
+        JLabel label1 = new JLabel(message1, JLabel.CENTER);
+        JLabel label2 = new JLabel(message2, JLabel.TRAILING);
+        JLabel label3 = new JLabel(message3, JLabel.CENTER);
+        userPanel.add(label1);
+        userPanel.add(label2);
+        userPanel.add(label3);
+        JButton button = new JButton("Retry");
         userPanel.add(new JLabel());
         userPanel.add(button);
 
-        SpringUtilities.makeCompactGrid(userPanel, 3, 1, 20, 40, 7, 7);
+        SpringUtilities.makeCompactGrid(userPanel, 5, 1, 20, 40, 7, 7);
 
         button.addActionListener(new ActionListener() {
 
@@ -340,7 +346,7 @@ public class MapDesignerView implements Runnable {
 
         // Display the window.
         frame.pack();
-        frame.setSize(350, 175);
+        frame.setSize(400, 200);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }

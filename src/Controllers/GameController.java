@@ -23,7 +23,7 @@ import Utility.Utils;
 /**
  * GameController Class
  *
- * @author Xin
+ * @author Xin, Jose
  *
  */
 public class GameController implements IGameController {

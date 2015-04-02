@@ -38,7 +38,7 @@ public class MapSelectPaneView {
     private static int wordXOffset3 = 150;
     private static int wordYOffset = 10;
     private static int stringOffset = 450;
-    private static int customMapOffset = -30;
+    private static int customMapOffset = -33;
 
     public MapSelectPaneView() {
         mapLoader = MapLoader.getUniqueInstance();
@@ -51,7 +51,7 @@ public class MapSelectPaneView {
     public void init() {
 
         mainMenuButton =
-                new Rectangle(Constants.MAIN_MENU_XPOS, Constants.MAIN_MENU_YPOS,
+                new Rectangle(Constants.MAIN_MENU_XPOS + 10, Constants.MAIN_MENU_YPOS,
                         2 * Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE / 2);
 
         easyButton =
@@ -89,7 +89,7 @@ public class MapSelectPaneView {
     public void draw(Graphics g) {
 
         // Draw Button to return to the main menu
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0, 0, 0, 160));
         g.fillRect(mainMenuButton.x, mainMenuButton.y, mainMenuButton.width, mainMenuButton.height);
         g.setFont(new Font("Courier New", Font.BOLD, 14));
         g.setColor(new Color(255, 255, 255));
@@ -131,7 +131,7 @@ public class MapSelectPaneView {
 
 
         // Easy Map Button
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0, 0, 0, 160));
         g.fillRect(easyButton.x, easyButton.y, easyButton.width, easyButton.height);
         g.setColor(new Color(255, 255, 255));
         g.setFont(new Font("Courier New", Font.BOLD, 28));
@@ -153,7 +153,7 @@ public class MapSelectPaneView {
 
 
         // Medium Map Button
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0, 0, 0, 160));
         g.fillRect(mediumButton.x, mediumButton.y, mediumButton.width, mediumButton.height);
         g.setColor(new Color(255, 255, 255));
         g.setFont(new Font("Courier New", Font.BOLD, 28));
@@ -175,7 +175,7 @@ public class MapSelectPaneView {
 
 
         // Hard Map Button
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0, 0, 0, 160));
         g.fillRect(hardButton.x, hardButton.y, hardButton.width, hardButton.height);
         g.setColor(new Color(255, 255, 255));
         g.setFont(new Font("Courier New", Font.BOLD, 28));
@@ -197,7 +197,7 @@ public class MapSelectPaneView {
 
 
         // Create Custom Map Button
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0, 0, 0, 160));
         g.fillRect(createCustomMap.x, createCustomMap.y, createCustomMap.width,
                 createCustomMap.height);
         g.setColor(new Color(255, 255, 255));
@@ -227,7 +227,7 @@ public class MapSelectPaneView {
                 break;
             }
 
-            g.setColor(new Color(0, 0, 0));
+            g.setColor(new Color(0, 0, 0, 160));
             g.fillRect((3 * (Screen.screenWidth - buttonWidth / 2) / 4 - buttonXOffset / 2),
                     (Screen.screenHeight / 2 - buttonHeight / 4 + buttonYOffset3)
                             + ((i + 1) * customMapOffset), 3 * buttonWidth / 4, buttonHeight / 2);
