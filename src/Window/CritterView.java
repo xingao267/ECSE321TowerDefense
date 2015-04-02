@@ -2,7 +2,6 @@ package Window;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
@@ -10,24 +9,24 @@ import CritterModels.Critter;
 import Utility.Constants;
 import Utility.Utils;
 
-public class CritterDisplay {
+public class CritterView {
 
 	private Rectangle critterDisplay, healthBar;
 	private Critter critter;
-	private int healthBarSpacing = 3, healthBarHeight = Constants.STORE_BUTTON_SIZE/10;
+	private int healthBarSpacing = 3, healthBarHeight = Constants.MAP_CELL_SIZE/10;
 	private double maxCritterHealth;
 	
-	public CritterDisplay(Critter critter){
+	public CritterView(Critter critter){
 		
 		this.critter = critter;
 		
 		maxCritterHealth = critter.getMaxHealth();
 		
 		critterDisplay = new Rectangle(critter.getScreenXPos(), critter.getScreenYPos(),
-				Constants.STORE_BUTTON_SIZE, Constants.STORE_BUTTON_SIZE);
+				Constants.MAP_CELL_SIZE, Constants.MAP_CELL_SIZE);
 
 		healthBar = new Rectangle(critter.getScreenXPos(), critter.getScreenYPos() - healthBarSpacing, 
-				Constants.STORE_BUTTON_SIZE, healthBarHeight);
+				Constants.MAP_CELL_SIZE, healthBarHeight);
 	}
 	
 	public void draw(Graphics g){
@@ -39,23 +38,19 @@ public class CritterDisplay {
 			
 			//determine direction of travel
 			if(critter.getDirection()==2){
-				clippedImg= img.getSubimage(0,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+				clippedImg= img.getSubimage(0,0,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
 			}
 			if(critter.getDirection()==1){
-				clippedImg= img.getSubimage(50,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+				clippedImg= img.getSubimage(50,0,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
 			}
 			if(critter.getDirection()==3){
-				clippedImg= img.getSubimage(50,50,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+				clippedImg= img.getSubimage(50,50,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
 			}
 			if(critter.getDirection()==0){
-				clippedImg= img.getSubimage(0,50,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+				clippedImg= img.getSubimage(0,50,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
 			}
 			
-			
-			
 			g.drawImage(clippedImg, critterDisplay.x,critterDisplay.y, critterDisplay.width, critterDisplay.height, null);
-			
-			//g.fillRect(critterDisplay.x,critterDisplay.y, critterDisplay.width, critterDisplay.height);
 			
 			//draw health bar
 			g.setColor(new Color(180, 50, 50));

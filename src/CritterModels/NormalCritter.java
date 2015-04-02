@@ -30,12 +30,13 @@ public class NormalCritter extends Critter {
         if (level > 5) {
             this.bounty += (level / 5) * this.bounty;
         }
-        this.health = 15 * level * level + 5 * level + 80;
+        this.health = 5 * level * level + 15*level + 60;
         this.maxHealth = health;
         
         this.critterType = Constants.NORMAL_CRITTER_TYPE;
         try {
 			this.img= ImageIO.read(new File(Constants.CAR_IMAGE));
+			this.slowImg= ImageIO.read(new File(Constants.SLOW_CAR_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

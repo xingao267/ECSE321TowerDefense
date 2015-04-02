@@ -2,13 +2,17 @@ package Window;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Controllers.GameController;
@@ -36,20 +40,15 @@ public class Screen extends JPanel implements Runnable {
 
     public Thread game = new Thread(this);
 
-    // private int fps = 10000000 , fpsFrame = 0;
-
     public Frame frame;
     public MainMenu menu;
-    public MapSelectPane mapSelectPane;
-    public MapDesignerDisplay mapDesigner;
+    public MapSelectPaneView mapSelectPane;
+    public MapDesignerView mapDesigner;
     public KeyHandler keyHandle;
 
     public static TowerRightClickMenu towerRightClickMenu;
     public static CustomMapRightClickMenu customMapRightClickMenu;
-    public static IconDisplay icons;
-
-    private boolean suspended = false;
-    private boolean designingMap = false; // added for while loop for map designer
+    public static IconView icons;
 
     public static int gameLevel;
 
@@ -63,6 +62,7 @@ public class Screen extends JPanel implements Runnable {
     public static boolean displayHardMap = false;
     public static boolean displayCustomMap = false;
     public static boolean levelStarted = false;
+    public static boolean levelEnded = false;
     public static boolean crittersGenerated = false;
     public static boolean gameRunning = true;
 
@@ -74,17 +74,19 @@ public class Screen extends JPanel implements Runnable {
 
     public static Map map;
     private static MapView mapDisplay;
-    public static Store store;
+    public static ControlPanelView store;
+
 
     public ArrayList<Critter> critters;
-    public static HashMap<Critter, CritterDisplay> critterGroupDisplays;
+    public static HashMap<Critter, CritterView> critterGroupDisplays;
     public static CritterGroupGenerator group;
 
-    public static HashMap<Tower, TowerDisplay> towerDisplays;
+    public static HashMap<Tower, TowerView> towerDisplays;
 
     private EasyMap easyMap;
     private MediumMap mediumMap;
     private HardMap hardMap;
+
 
     public Screen(Frame frame) {
 
@@ -103,17 +105,16 @@ public class Screen extends JPanel implements Runnable {
 
         gameLevel = 0;
         menu = new MainMenu();
-        mapSelectPane = new MapSelectPane();
-        mapDesigner = new MapDesignerDisplay();
-        store = new Store();
-        icons = new IconDisplay();
-        towerDisplays = new HashMap<Tower, TowerDisplay>();
-        critterGroupDisplays = new HashMap<Critter, CritterDisplay>();
+        mapSelectPane = new MapSelectPaneView();
+        mapDesigner = new MapDesignerView();
+        store = new ControlPanelView();
+        icons = new IconView();
+        towerDisplays = new HashMap<Tower, TowerView>();
+        critterGroupDisplays = new HashMap<Critter, CritterView>();
         easyMap = new EasyMap();
         mediumMap = new MediumMap();
         hardMap = new HardMap();
 
-        // TODO: initialize all tilesets (images) here
     }
 
 
@@ -126,20 +127,29 @@ public class Screen extends JPanel implements Runnable {
             isFirst = false;
         }
 
-        g.setColor(new Color(60, 60, 60));
-        g.fillRect(0, 0, getWidth(), getHeight());
-
         if (displayMainMenu) {
             init();
+            Image mainMenu = null;
+            try {
+                mainMenu = (ImageIO.read(new File(Constants.MAIN_MENU_IMAGE)));
+            } catch (IOException e1) {
+            }
+            g.drawImage(mainMenu, -2, -2, getWidth(), getHeight(), null);
             menu.draw(g);
 
         } else if (displayMapSelectorPane) {
+            g.setColor(new Color(60, 60, 60));
+            g.fillRect(0, 0, getWidth(), getHeight());
             mapSelectPane.draw(g);
 
         } else if (displayMapDesigner) {
+            g.setColor(new Color(60, 60, 60));
+            g.fillRect(0, 0, getWidth(), getHeight());
             mapDesigner.draw(g);
 
         } else if (inGameplay) {
+            g.setColor(new Color(60, 60, 60));
+            g.fillRect(0, 0, getWidth(), getHeight());
             store.draw(g);
             icons.draw(g);
 
@@ -163,9 +173,9 @@ public class Screen extends JPanel implements Runnable {
             if (displayEasyMap || displayMediumMap || displayHardMap || displayCustomMap) {
 
                 for (Tower tower : GameController.getUniqueInstance().getTowers()) {
-                    towerDisplays.put(tower, new TowerDisplay(tower));
+                    towerDisplays.put(tower, new TowerView(tower));
                 }
-                for (Entry<Tower, TowerDisplay> entry : towerDisplays.entrySet()) {
+                for (Entry<Tower, TowerView> entry : towerDisplays.entrySet()) {
                     entry.getValue().draw(g);
                 }
             }
@@ -183,7 +193,7 @@ public class Screen extends JPanel implements Runnable {
                     while (iterator.hasNext()) {
                         Critter critter = iterator.next();
                         if (critter.isInGame()) {
-                            critterGroupDisplays.put(critter, new CritterDisplay(critter));
+                            critterGroupDisplays.put(critter, new CritterView(critter));
                             critterGroupDisplays.get(critter).draw(g);
                         }
                         if (critter.hasReachedExit()) {
@@ -194,6 +204,7 @@ public class Screen extends JPanel implements Runnable {
                     if (critters.size() == 0) {
                         levelStarted = false;
                         crittersGenerated = false;
+                        levelEnded = true;
                     }
                 }
 
@@ -255,7 +266,6 @@ public class Screen extends JPanel implements Runnable {
                 mapDesigner.run();
                 while (displayMapDesigner) {
                     repaint();
-
                     try {
                         Thread.sleep(50);
                     } catch (Exception e) {
@@ -271,10 +281,6 @@ public class Screen extends JPanel implements Runnable {
 
     public void setGameRunning(boolean gameRunning) {
         Screen.gameRunning = gameRunning;
-    }
-
-    public void setMapDesigning(boolean mapDesigning) { // you added this
-        this.designingMap = mapDesigning;
     }
 
     public static void setCustomMap(Map m) {

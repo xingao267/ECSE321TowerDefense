@@ -15,41 +15,53 @@ import TowerModels.DeceleratorTower;
 import TowerModels.LongRangeTower;
 import TowerModels.MultiTargetsTower;
 import TowerModels.RegularTower;
-import TowerModels.SpeedTower;
+import TowerModels.RapidFireTower;
 import TowerModels.Tower;
 import Utility.Constants;
 import Utility.Utils;
 
 /**
- * TowerController Class
+ * GameController Class
  *
  * @author Xin
  *
  */
 public class GameController implements IGameController {
 
+    /** The singleton GameController unique instance. */
     private static GameController uniqueInstance = null;
 
+    /** The active tower list on the map. */
     private List<Tower> towers;
 
+    /** The selected tower type String in the store. */
     private String selectedTowerTypeInStore;
 
+    /** Is a tower is selected in store. */
     private boolean isTowerSeletedInStore;
 
+    /** Is a tower is selected on map. */
     private boolean isTowerSelectedOnMap;
 
+    /** Is a tower is hovered on map. */
     private boolean isTowerCellHoveredOnMap;
 
+    /** The hovered tower on map. */
     private Tower hoveredTowerOnMap;
 
+    /** The selected tower to move on map. */
     private Tower selectedTowerToMove;
 
+    /** Is NoMoneyException caught. */
     private boolean isNoMoneyCaught;
 
+    /** Is MaxLevelException caught. */
     private boolean isMaxLevelReached;
 
+    /** Is move tower in the right click menu clicked. */
     private boolean isTowerMoveClicked;
 
+    /** Constructor. */
     private GameController() {
         towers = new ArrayList<Tower>();
         isTowerSeletedInStore = false;
@@ -86,8 +98,8 @@ public class GameController implements IGameController {
             towerToPurchase = new BomberTower(xPos, yPos, level, cell);
         } else if (towerType.equals(Constants.LONGRANGE_TOWER_TYPE)) {
             towerToPurchase = new LongRangeTower(xPos, yPos, level, cell);
-        } else if (towerType.equals(Constants.SPEED_TOWER_TYPE)) {
-            towerToPurchase = new SpeedTower(xPos, yPos, level, cell);
+        } else if (towerType.equals(Constants.RAPID_FIRE_TOWER_TYPE)) {
+            towerToPurchase = new RapidFireTower(xPos, yPos, level, cell);
         } else if (towerType.equals(Constants.DECELERATOR_TOWER_TYPE)) {
             towerToPurchase = new DeceleratorTower(xPos, yPos, level, cell);
         } else {
@@ -225,10 +237,10 @@ public class GameController implements IGameController {
     @Override
     public void spawnCritterGroup(Cell entryPoint, List<Critter> critterGroup) {
 
-    	if(critterGroup.size() != 0){
-    		spawnRate = critterGroup.get(0).getSpawnRate();
-    	}
-    	
+        if (critterGroup.size() != 0) {
+            spawnRate = critterGroup.get(0).getSpawnRate();
+        }
+
         if (spawnFrame >= spawnRate) {
             for (int i = 0; i < critterGroup.size(); i++) {
                 if (!critterGroup.get(i).isInGame() && !critterGroup.get(i).hasReachedExit()) {

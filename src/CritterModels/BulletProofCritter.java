@@ -30,12 +30,13 @@ public class BulletProofCritter extends Critter {
         if (level > 5) {
             this.bounty += (level / 5) * this.bounty;
         }
-        this.health = 15 * level * level + 5 * level + 80;
+        this.health = 5 * level * level + 15*level + 60;
         this.maxHealth = health;
         
         this.critterType = Constants.BULLET_PROOF_CRITTER_TYPE;
         try {
 			this.img= ImageIO.read(new File(Constants.VAN_IMAGE));
+			this.slowImg = ImageIO.read(new File(Constants.SLOW_VAN_IMAGE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

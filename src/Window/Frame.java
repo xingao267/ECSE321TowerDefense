@@ -12,7 +12,7 @@ public class Frame extends JFrame {
     /** Default Serial ID */
     private static final long serialVersionUID = 1L;
 
-    public static String title = "ECSE 321 - Tower Defense";
+    public static String title = "Extreme Tower Defense 2";
     public static int width, height;
 
 
@@ -32,7 +32,6 @@ public class Frame extends JFrame {
     }
 
     public void init() {
-        // this.setLayout(new GridLayout(1, 1, 0, 0));
 
         Screen screen = new Screen(this);
         this.add(screen);

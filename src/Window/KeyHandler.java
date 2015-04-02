@@ -16,7 +16,7 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
     }
 
     public void mouseClicked(MouseEvent m) {
-        if (!(m.getButton() == m.BUTTON3)) {
+        if (!(m.getButton() == MouseEvent.BUTTON3)) {
             Screen.mouseClicked =
                     new Point(m.getX() - (Frame.width - Screen.screenWidth) / 2, m.getY()
                             - (Frame.height - Screen.screenHeight) / 2
@@ -43,7 +43,7 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
 
             Screen.towerRightClickMenu = doPop(m);
         }
-        if (m.isPopupTrigger() && MapSelectPane.isCustomMapHovered()
+        if (m.isPopupTrigger() && MapSelectPaneView.isCustomMapHovered()
                 && Screen.displayMapSelectorPane) {
             Screen.customMapRightClickMenu = doPop2(m);
         }
@@ -53,7 +53,7 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
         if (m.isPopupTrigger() && GameController.getUniqueInstance().isTowerCellHoveredOnMap()) {
             Screen.towerRightClickMenu = doPop(m);
         }
-        if (m.isPopupTrigger() && MapSelectPane.isCustomMapHovered()
+        if (m.isPopupTrigger() && MapSelectPaneView.isCustomMapHovered()
                 && Screen.displayMapSelectorPane) {
             Screen.customMapRightClickMenu = doPop2(m);
         }

@@ -25,7 +25,7 @@ public class CustomMapRightClickMenu extends JPopupMenu{
             removeButtom.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                    
-                	String hovered = MapSelectPane.getHoveredMap();
+                	String hovered = MapSelectPaneView.getHoveredMap();
                 	MapLoader loader = MapLoader.getUniqueInstance();
                 	loader.deleteMap(hovered);
                 	

@@ -9,6 +9,8 @@ import CritterModels.Critter;
 import Exceptions.CritterDeadException;
 import Exceptions.MaxLevelReachedException;
 import Map.Cell;
+import Utility.Constants;
+import Utility.Utils;
 
 /**
  * The class is the generic base class Tower data model
@@ -128,7 +130,7 @@ public abstract class Tower {
             // damageType
             // 0 implies regular attacks (bullets, explosions)
             // 1 implies special attacks (fire, electricity)
-            newHealth = critter.getHealth() - this.power / 4;
+            newHealth = critter.getHealth() - this.power;
         } else {
             newHealth = critter.getHealth() - this.power;
         }
@@ -138,6 +140,7 @@ public abstract class Tower {
         if (!critter.isDead()) {
             applySpecialEffects(critter);
         } else {
+        	Utils.playSound(Constants.COIN_DROP, 0);
             throw new CritterDeadException(critter);
         }
 
