@@ -357,7 +357,7 @@ public abstract class Tower {
     
     public boolean isAttacking(){
     	return this.isAttacking;
-    }
+    } 
     
     public Critter getAttackedCritter(){
     	return this.attackedCritter;
