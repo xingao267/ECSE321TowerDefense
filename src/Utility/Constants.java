@@ -57,6 +57,7 @@ public class Constants {
     public static final String LIFE_IMAGE = "source/image/life.png";
 
     public static final String REGULAR_TOWER_IMAGE = "source/image/regular_tower.png";
+    public static final String REGULAR_TOWER_SHEET = "source/image/regular_tower_sheet.png";
 
     public static final String BOMBER_TOWER_IMAGE = "source/image/bomber_tower.png";
 

@@ -57,6 +57,10 @@ public abstract class Tower {
     protected boolean inGame;
 
     protected Cell cell;
+    
+    private boolean isAttacking;
+    
+    private Critter attackedCritter;
 
     private List<ITowerObserver> towerObservers;
 
@@ -101,6 +105,8 @@ public abstract class Tower {
         this.inGame = true;
         this.towerObservers = new ArrayList<ITowerObserver>();
         this.cell = cell;
+        this.isAttacking = false;
+        this.attackedCritter = null;
     }
 
     /**
@@ -110,7 +116,9 @@ public abstract class Tower {
      * @throws CritterDeadException
      */
     public synchronized void attack(Critter critter) throws CritterDeadException {
-
+    	
+    	this.isAttacking = true;
+    	this.attackedCritter = critter;
         double newHealth = 0;
 
         if (critter instanceof ArmoredCritter) {
@@ -126,13 +134,16 @@ public abstract class Tower {
         }
 
         critter.setHealth(newHealth);
-
+        
+        
         if (!critter.isDead()) {
             applySpecialEffects(critter);
         } else {
+        	this.isAttacking = false;
         	Utils.playSound(Constants.COIN_DROP, 0);
             throw new CritterDeadException(critter);
         }
+        
 
     }
 
@@ -343,7 +354,15 @@ public abstract class Tower {
     public void setCell(Cell cell) {
         this.cell = cell;
     }
-
+    
+    public boolean isAttacking(){
+    	return this.isAttacking;
+    }
+    
+    public Critter getAttackedCritter(){
+    	return this.attackedCritter;
+    }
+    
     /*
      * (non-Javadoc)
      * 

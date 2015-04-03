@@ -17,6 +17,26 @@ public class Utils {
         return Math.sqrt(Math.pow((xPosA - xPosB), 2) + Math.pow((yPosA - yPosB), 2));
 
     }
+    
+    public static double getAngle(int xPosA, int yPosA, int xPosB, int yPosB) {
+    	
+    	Point tower = Utils.convertMapCoordToScreen(xPosA,
+                yPosA);
+    	double rads;
+    	double angle = 0;
+
+		rads = Math.atan2((double) (tower.getX()-xPosB),(double) tower.getY()-yPosB);
+		angle = Math.toDegrees(rads);
+
+	    if(angle<0){
+	    		angle = Math.abs(angle);
+	    }
+	    else{
+	    	angle = 360 - angle;
+	    }
+
+		return angle;
+    }
 
     public static double convertCritterHealthToDisplayWidth(double currentHealth, double maxHealth) {
 
@@ -37,7 +57,8 @@ public class Utils {
 
         return screenPoint;
     }
-
+    
+    
     // (15, 100) corresponds to (0,0)
     // (15, 150) corresponds to (0,1)
     // (65, 150) corresponds to (1,1)
