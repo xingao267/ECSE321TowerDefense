@@ -57,9 +57,9 @@ public abstract class Tower {
     protected boolean inGame;
 
     protected Cell cell;
-    
+
     private boolean isAttacking;
-    
+
     private Critter attackedCritter;
 
     private List<ITowerObserver> towerObservers;
@@ -76,7 +76,7 @@ public abstract class Tower {
         for (ITowerObserver o : towerObservers) {
             o.update();
         }
-    }  
+    }
 
     /**
      * @param xPos
@@ -117,9 +117,9 @@ public abstract class Tower {
      * @throws CritterDeadException
      */
     public synchronized void attack(Critter critter) throws CritterDeadException {
-    	
-    	this.isAttacking = true;
-    	this.attackedCritter = critter;
+
+        this.isAttacking = true;
+        this.attackedCritter = critter;
         double newHealth = 0;
 
         if (critter instanceof ArmoredCritter) {
@@ -135,16 +135,16 @@ public abstract class Tower {
         }
 
         critter.setHealth(newHealth);
-        
-        
+
+
         if (!critter.isDead()) {
             applySpecialEffects(critter);
         } else {
-        	this.isAttacking = false;
-        	Utils.playSound(Constants.COIN_DROP, 0);
+            this.isAttacking = false;
+            Utils.playSound(Constants.COIN_DROP, 0);
             throw new CritterDeadException(critter);
         }
-        
+
 
     }
 
@@ -163,7 +163,7 @@ public abstract class Tower {
 
         this.level++;
     }
-    
+
     public abstract double getNextLevelRange() throws MaxLevelReachedException;
 
     public abstract double getNextLevelPower() throws MaxLevelReachedException;
@@ -173,7 +173,7 @@ public abstract class Tower {
     public abstract double getDamagePerHit();
 
     public abstract double getNextLevelDamagePerHit() throws MaxLevelReachedException;
-    
+
     /**
      * @return the type of Tower
      */
@@ -355,15 +355,15 @@ public abstract class Tower {
     public void setCell(Cell cell) {
         this.cell = cell;
     }
-    
-    public boolean isAttacking(){
-    	return this.isAttacking;
-    } 
-    
-    public Critter getAttackedCritter(){
-    	return this.attackedCritter;
+
+    public boolean isAttacking() {
+        return this.isAttacking;
     }
-    
+
+    public Critter getAttackedCritter() {
+        return this.attackedCritter;
+    }
+
     /*
      * (non-Javadoc)
      * 

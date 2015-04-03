@@ -3,7 +3,7 @@
   generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="Controllers.GameController" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Controllers/GameController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="281" y="81"/>    
+    <position height="-1" width="-1" x="281" y="49"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="CritterModels.Critter" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/CritterModels/Critter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="96" y="308"/>    
+    <position height="-1" width="-1" x="-47" y="308"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="CritterModels.ArmoredCritter" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/CritterModels/ArmoredCritter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-19" y="416"/>    
+    <position height="-1" width="-1" x="-162" y="374"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="CritterModels.BossCritter" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/CritterModels/BossCritter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-7" y="556"/>    
+    <position height="-1" width="-1" x="-150" y="514"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="CritterModels.BulletProofCritter" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/CritterModels/BulletProofCritter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="0" y="697"/>    
+    <position height="-1" width="-1" x="-143" y="655"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="CritterModels.NormalCritter" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/CritterModels/NormalCritter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-14" y="488"/>    
+    <position height="-1" width="-1" x="-157" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="CritterModels.RegenerativeCritter" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/CritterModels/RegenerativeCritter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-8" y="629"/>    
+    <position height="-1" width="-1" x="-151" y="587"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="CritterModels.SpeedCritter" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/CritterModels/SpeedCritter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-4" y="766"/>    
+    <position height="-1" width="-1" x="-147" y="724"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="CritterModels.CritterGroupGenerator" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/CritterModels/CritterGroupGenerator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-164" y="309"/>    
+    <position height="-1" width="-1" x="-312" y="309"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="TowerModels.Tower" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/Tower.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="658" y="330"/>    
+    <position height="-1" width="-1" x="658" y="308"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -93,7 +93,7 @@
   </class>  
   <interface id="11" language="java" name="Controllers.IGameController" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Controllers/IGameController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="434" y="24"/>    
+    <position height="-1" width="-1" x="477" y="-11"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -102,7 +102,7 @@
   </interface>  
   <class id="12" language="java" name="TowerModels.SingleTargetTower" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/SingleTargetTower.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="759" y="659"/>    
+    <position height="-1" width="-1" x="566" y="424"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="TowerModels.MultiTargetsTower" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/MultiTargetsTower.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="757" y="465"/>    
+    <position height="-1" width="-1" x="757" y="424"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="TowerModels.BomberTower" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/BomberTower.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="838" y="538"/>    
+    <position height="-1" width="-1" x="838" y="497"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="TowerModels.DeceleratorTower" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/DeceleratorTower.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="848" y="602"/>    
+    <position height="-1" width="-1" x="848" y="561"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="TowerModels.RegularTower" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/RegularTower.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="842" y="819"/>    
+    <position height="-1" width="-1" x="649" y="585"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -147,7 +147,7 @@
   </class>  
   <class id="17" language="java" name="TowerModels.RapidFireTower" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/RapidFireTower.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="848" y="748"/>    
+    <position height="-1" width="-1" x="655" y="514"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -156,7 +156,7 @@
   </class>  
   <class id="18" language="java" name="TowerModels.LongRangeTower" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/LongRangeTower.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="853" y="891"/>    
+    <position height="-1" width="-1" x="467" y="504"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -165,7 +165,7 @@
   </class>  
   <class id="19" language="java" name="OtherModels.Bank" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/OtherModels/Bank.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="62" y="101"/>    
+    <position height="-1" width="-1" x="132" y="100"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -174,7 +174,7 @@
   </class>  
   <class id="20" language="java" name="OtherModels.Player" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/OtherModels/Player.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-81" y="92"/>    
+    <position height="-1" width="-1" x="12" y="102"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -183,7 +183,7 @@
   </class>  
   <interface id="21" language="java" name="TowerModels.ITowerObserver" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/TowerModels/ITowerObserver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="791" y="85"/>    
+    <position height="-1" width="-1" x="791" y="119"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -192,7 +192,7 @@
   </interface>  
   <class id="22" language="java" name="Map.MapDesigner" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Map/MapDesigner.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="508" y="383"/>    
+    <position height="-1" width="-1" x="1415" y="191"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -201,7 +201,7 @@
   </class>  
   <class id="23" language="java" name="Window.MainMenuView" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/MainMenuView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-184" y="-143"/>    
+    <position height="-1" width="-1" x="-199" y="-68"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -210,7 +210,7 @@
   </class>  
   <class id="24" language="java" name="Map.Map" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Map/Map.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="319" y="384"/>    
+    <position height="-1" width="-1" x="1123" y="190"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -219,41 +219,32 @@
   </class>  
   <class id="25" language="java" name="Map.Cell" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Map/Cell.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="442" y="636"/>    
+    <position height="-1" width="-1" x="1005" y="433"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="Map.Path" project="ECSE321TowerDefense" 
-    file="/ECSE321TowerDefense/src/Map/Path.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="200" y="542"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="false" private="false" static="false"/>    
-    </display>  
-  </class>  
-  <class id="27" language="java" name="Window.ControlPanelView" project="ECSE321TowerDefense" 
+  <class id="26" language="java" name="Window.ControlPanelView" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/ControlPanelView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="515" y="-101"/>    
+    <position height="-1" width="-1" x="358" y="-105"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="Window.CritterView" project="ECSE321TowerDefense" 
+  <class id="27" language="java" name="Window.CritterView" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/CritterView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="200" y="-68"/>    
+    <position height="-1" width="-1" x="-47" y="-68"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="Window.TowerView" project="ECSE321TowerDefense" 
+  <class id="28" language="java" name="Window.TowerView" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/TowerView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="656" y="-60"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -262,573 +253,833 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="Window.IconView" project="ECSE321TowerDefense" 
+  <class id="29" language="java" name="Window.IconView" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/IconView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-29" y="-74"/>    
+    <position height="-1" width="-1" x="79" y="-74"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="31" language="java" name="Window.KeyHandler" project="ECSE321TowerDefense" 
+  <class id="30" language="java" name="Window.KeyHandler" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/KeyHandler.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="932" y="-260"/>    
+    <position height="-1" width="-1" x="568" y="-240"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="32" language="java" name="Window.Screen" project="ECSE321TowerDefense" 
+  <class id="31" language="java" name="Window.Screen" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/Screen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="526" y="-319"/>    
+    <position height="-1" width="-1" x="225" y="-310"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="33" language="java" name="Window.CustomMapRightClickMenu" project="ECSE321TowerDefense" 
+  <class id="32" language="java" name="Window.CustomMapRightClickMenu" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/CustomMapRightClickMenu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="839" y="-144"/>    
+    <position height="-1" width="-1" x="1274" y="-139"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <generalization id="34">    
-    <bendpoint x="659" y="659"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <association id="35">    
-    <bendpoint x="277" y="260"/>    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="36" name="critters"/>      
-      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="19" navigable="false" variant="ASSOCIATION">      
-      <attribute id="39" name="uniqueInstance">        
-        <position height="0" width="0" x="-451" y="23"/>      
-      </attribute>      
-      <multiplicity id="40" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-451" y="23"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="41">    
-    <bendpoint x="97" y="182"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
+  <class id="33" language="java" name="Map.Path" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Map/Path.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1299" y="434"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="Window.Frame" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Window/Frame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="437" y="-182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="Window.TowerRightClickMenu" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Window/TowerRightClickMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="796" y="-151"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="Window.MapView" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Window/MapView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1124" y="-65"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="Window.MapDesignerView" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Window/MapDesignerView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1413" y="-66"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="Window.MapSelectPaneView" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Window/MapSelectPaneView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1003" y="-138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="Map.MapLoader" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Map/MapLoader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1497" y="97"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="com.thoughtworks.xstream.XStream" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/Xstream/xstream-1.4.8.jar" binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="762" y="827"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="java.io.Writer" project="ECSE321TowerDefense" 
+    file="C:/Program Files/Java/jre1.8.0_31/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="594" y="827"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <dependency id="42">    
+    <bendpoint x="584" y="50"/>    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="1"/>  
   </dependency>  
-  <association id="42">    
-    <bendpoint x="896" y="-101"/>    
-    <bendpoint x="898" y="331"/>    
-    <end type="SOURCE" refId="27" navigable="false" variant="ASSOCIATION">      
-      <attribute id="43" name="towerType">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="44" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="45">    
-    <bendpoint x="507" y="513"/>    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="25"/>  
-  </dependency>  
-  <dependency id="46">    
-    <bendpoint x="-163" y="629"/>    
+  <dependency id="43">    
+    <bendpoint x="-311" y="515"/>    
     <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="TARGET" refId="4"/>  
   </dependency>  
-  <association id="47">    
-    <bendpoint x="882" y="-318"/>    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="48" name="keyHandle"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="31" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="10" navigable="false" variant="ASSOCIATION">      
-      <attribute id="51" name="towerObservers">        
-        <position height="18" width="89" x="777" y="112"/>      
+  <association id="44">    
+    <bendpoint x="81" y="-309"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="45" name="icons">        
+        <position height="0" width="0" x="108" y="0"/>      
       </attribute>      
-      <multiplicity id="52" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="46" minimum="0" maximum="1">        
+        <position height="0" width="0" x="108" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="29" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="53">    
-    <bendpoint x="305" y="494"/>    
-    <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
-      <attribute id="54" name="start">        
-        <position height="18" width="30" x="223" y="484"/>      
-      </attribute>      
-      <multiplicity id="55" minimum="0" maximum="1">        
-        <position height="16" width="23" x="248" y="480"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="56">    
-    <bendpoint x="-163" y="766"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
+  <dependency id="47">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="24"/>  
   </dependency>  
-  <association id="57">    
+  <association id="48">    
     <end type="SOURCE" refId="20" navigable="false" variant="ASSOCIATION">      
-      <attribute id="58" name="uniqueInstance">        
-        <position height="18" width="81" x="-34" y="134"/>      
+      <attribute id="49" name="uniqueInstance">        
+        <position height="18" width="81" x="59" y="144"/>      
       </attribute>      
-      <multiplicity id="59" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-121" y="-32"/>      
+      <multiplicity id="50" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-28" y="-22"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="20" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="60">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="20"/>  
-  </dependency>  
-  <dependency id="61">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="20"/>  
-  </dependency>  
-  <generalization id="62">    
-    <bendpoint x="759" y="749"/>    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <dependency id="63">    
-    <bendpoint x="142" y="637"/>    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="25"/>  
-  </dependency>  
-  <dependency id="64">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <dependency id="65">    
-    <bendpoint x="280" y="-103"/>    
-    <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <realization id="66">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="21"/>  
-  </realization>  
-  <dependency id="67">    
-    <bendpoint x="125" y="-104"/>    
-    <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <generalization id="68">    
-    <bendpoint x="759" y="819"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="69">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="70" name="hoveredTowerOnMap">        
-        <position height="18" width="113" x="524" y="274"/>      
-      </attribute>      
-      <multiplicity id="71" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="72">    
-    <end type="SOURCE" refId="26" navigable="false" variant="ASSOCIATION">      
-      <attribute id="73" name="previous">        
-        <position height="0" width="0" x="19" y="-37"/>      
-      </attribute>      
-      <multiplicity id="74" minimum="0" maximum="1">        
-        <position height="0" width="0" x="19" y="-37"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="75">    
-    <bendpoint x="96" y="630"/>    
-    <end type="SOURCE" refId="7"/>    
+  <generalization id="51">    
+    <bendpoint x="-47" y="447"/>    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <association id="76">    
-    <bendpoint x="-183" y="-318"/>    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="77" name="menu"/>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="79">    
-    <end type="SOURCE" refId="28" navigable="false" variant="ASSOCIATION">      
-      <attribute id="80" name="critter">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="81" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="82">    
-    <bendpoint x="757" y="539"/>    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <association id="83">    
-    <bendpoint x="181" y="480"/>    
-    <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
-      <attribute id="84" name="path">        
-        <position height="0" width="0" x="19" y="-37"/>      
-      </attribute>      
-      <multiplicity id="85" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="171" y="474"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="86">    
-    <bendpoint x="-28" y="-318"/>    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="87" name="icons"/>      
-      <multiplicity id="88" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="30" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="89">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <association id="90">    
-    <bendpoint x="656" y="-318"/>    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="91" name="towerDisplays"/>      
-      <multiplicity id="92" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="29" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="93">    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="94" name="map"/>      
-      <multiplicity id="95" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="96">    
-    <bendpoint x="96" y="556"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <dependency id="97">    
-    <bendpoint x="277" y="-240"/>    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="1"/>  
+  <dependency id="52">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="10"/>  
   </dependency>  
-  <association id="98">    
-    <bendpoint x="361" y="457"/>    
+  <association id="53">    
+    <bendpoint x="1078" y="353"/>    
     <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
-      <attribute id="99" name="cells">        
-        <position height="18" width="30" x="372" y="578"/>      
+      <attribute id="54" name="cells">        
+        <position height="18" width="30" x="1030" y="374"/>      
       </attribute>      
-      <multiplicity id="100" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="390" y="589"/>      
+      <multiplicity id="55" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="1028" y="388"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="25" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="101">    
-    <bendpoint x="96" y="697"/>    
-    <bendpoint x="96" y="476"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <generalization id="102">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="25"/>  
-  </generalization>  
-  <dependency id="103">    
-    <bendpoint x="335" y="533"/>    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="26"/>  
-  </dependency>  
-  <dependency id="104">    
-    <bendpoint x="-163" y="698"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <association id="105">    
-    <bendpoint x="446" y="256"/>    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="106" name="selectedTowerToMove">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="107" minimum="0" maximum="1">        
-        <position height="16" width="23" x="598" y="264"/>      
-      </multiplicity>    
+  <association id="56">    
+    <end type="SOURCE" refId="37" navigable="false" variant="ASSOCIATION">      
+      <attribute id="57" name="display"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="36" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="108">    
-    <end type="SOURCE" refId="9" navigable="false" variant="ASSOCIATION">      
-      <attribute id="109" name="critterGroup">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="110" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="111">    
-    <bendpoint x="-163" y="417"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <generalization id="112">    
-    <bendpoint x="759" y="891"/>    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <dependency id="113">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <generalization id="114">    
-    <bendpoint x="659" y="465"/>    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <association id="115">    
-    <bendpoint x="223" y="489"/>    
-    <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
-      <attribute id="116" name="end">        
-        <position height="18" width="26" x="208" y="477"/>      
-      </attribute>      
-      <multiplicity id="117" minimum="0" maximum="1">        
-        <position height="16" width="23" x="220" y="497"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="118">    
-    <bendpoint x="200" y="-318"/>    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="119" name="critterGroupDisplays"/>      
-      <multiplicity id="120" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="121">    
-    <bendpoint x="580" y="200"/>    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="122" name="towers">        
-        <position height="18" width="43" x="618" y="261"/>      
-      </attribute>      
-      <multiplicity id="123" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="124">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="125">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="33"/>  
-  </dependency>  
-  <generalization id="126">    
-    <bendpoint x="96" y="766"/>    
+  <generalization id="59">    
+    <bendpoint x="-47" y="725"/>    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <association id="127">    
-    <end type="SOURCE" refId="29" navigable="false" variant="ASSOCIATION">      
-      <attribute id="128" name="tower">        
-        <position height="18" width="37" x="647" y="256"/>      
+  <generalization id="60">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <association id="61">    
+    <bendpoint x="796" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="62" name="towerRightClickMenu"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="64">    
+    <bendpoint x="13" y="204"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <realization id="65">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="66">    
+    <end type="SOURCE" refId="10" navigable="false" variant="ASSOCIATION">      
+      <attribute id="67" name="cell">        
+        <position height="0" width="0" x="630" y="-145"/>      
       </attribute>      
-      <multiplicity id="129" minimum="0" maximum="1">        
-        <position height="16" width="23" x="660" y="272"/>      
+      <multiplicity id="68" minimum="0" maximum="1">        
+        <position height="0" width="0" x="630" y="-145"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="69">    
+    <bendpoint x="-47" y="587"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="70">    
+    <end type="SOURCE" refId="39" navigable="false" variant="ASSOCIATION">      
+      <attribute id="71" name="uniqueInstance"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="73">    
+    <bendpoint x="282" y="-185"/>    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="74">    
+    <bendpoint x="-312" y="-309"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="75" name="group">        
+        <position height="0" width="0" x="-148" y="0"/>      
+      </attribute>      
+      <multiplicity id="76" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-148" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="77">    
+    <bendpoint x="566" y="505"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <dependency id="78">    
+    <bendpoint x="953" y="-239"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="38"/>  
+  </dependency>  
+  <generalization id="79">    
+    <bendpoint x="757" y="560"/>    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="80">    
+    <bendpoint x="566" y="515"/>    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <dependency id="81">    
+    <bendpoint x="-311" y="655"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="82">    
+    <end type="SOURCE" refId="19" navigable="false" variant="ASSOCIATION">      
+      <attribute id="83" name="uniqueInstance">        
+        <position height="0" width="0" x="-381" y="22"/>      
+      </attribute>      
+      <multiplicity id="84" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-381" y="22"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="85">    
+    <bendpoint x="1033" y="332"/>    
+    <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
+      <attribute id="86" name="ind">        
+        <position height="18" width="22" x="1018" y="368"/>      
+      </attribute>      
+      <multiplicity id="87" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="1011" y="382"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="88">    
+    <end type="SOURCE" refId="25" navigable="false" variant="ASSOCIATION">      
+      <attribute id="89" name="tower">        
+        <position height="0" width="0" x="0" y="-22"/>      
+      </attribute>      
+      <multiplicity id="90" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="-22"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="130">    
-    <bendpoint x="745" y="-318"/>    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="131" name="customMapRightClickMenu"/>      
-      <multiplicity id="132" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="33" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="133">    
-    <end type="SOURCE" refId="22" navigable="false" variant="ASSOCIATION">      
-      <attribute id="134" name="custom">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <association id="91">    
+    <end type="SOURCE" refId="37" navigable="false" variant="ASSOCIATION">      
+      <attribute id="92" name="map">        
+        <position height="18" width="28" x="1144" y="134"/>      
       </attribute>      
-      <multiplicity id="135" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+      <multiplicity id="93" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="24" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="136">    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="137" name="store"/>      
-      <multiplicity id="138" minimum="0" maximum="1"/>    
+  <generalization id="94">    
+    <bendpoint x="659" y="424"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="95">    
+    <bendpoint x="438" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="96" name="frame"/>      
+      <multiplicity id="97" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="98">    
+    <bendpoint x="1415" y="395"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <association id="99">    
+    <end type="SOURCE" refId="36" navigable="false" variant="ASSOCIATION">      
+      <attribute id="100" name="m"/>      
+      <multiplicity id="101" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="102">    
+    <bendpoint x="-48" y="-309"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="103" name="critterGroupDisplays">        
+        <position height="0" width="0" x="-247" y="0"/>      
+      </attribute>      
+      <multiplicity id="104" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-247" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="27" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="139">    
-    <end type="SOURCE" refId="26" navigable="false" variant="ASSOCIATION">      
-      <attribute id="140" name="next">        
-        <position height="0" width="0" x="19" y="-37"/>      
-      </attribute>      
-      <multiplicity id="141" minimum="0" maximum="1">        
-        <position height="0" width="0" x="19" y="-37"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="142">    
-    <bendpoint x="-163" y="557"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
+  <dependency id="105">    
+    <bendpoint x="1497" y="-138"/>    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="39"/>  
   </dependency>  
-  <generalization id="143">    
-    <bendpoint x="757" y="601"/>    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <association id="144">    
-    <bendpoint x="359" y="528"/>    
-    <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
-      <attribute id="145" name="ind">        
-        <position height="18" width="22" x="407" y="574"/>      
+  <association id="106">    
+    <bendpoint x="580" y="200"/>    
+    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+      <attribute id="107" name="towers">        
+        <position height="18" width="43" x="618" y="239"/>      
       </attribute>      
-      <multiplicity id="146" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="412" y="586"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="147">    
-    <bendpoint x="-163" y="489"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="148">    
-    <bendpoint x="557" y="565"/>    
-    <end type="SOURCE" refId="25" navigable="false" variant="ASSOCIATION">      
-      <attribute id="149" name="tower">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="150" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="108" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="-22"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="151">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <dependency id="152">    
-    <bendpoint x="375" y="332"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="25"/>  
-  </dependency>  
-  <generalization id="153">    
-    <bendpoint x="96" y="489"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="154">    
-    <bendpoint x="588" y="582"/>    
-    <end type="SOURCE" refId="10" navigable="false" variant="ASSOCIATION">      
-      <attribute id="155" name="cell">        
-        <position height="0" width="0" x="67" y="58"/>      
-      </attribute>      
-      <multiplicity id="156" minimum="0" maximum="1">        
-        <position height="0" width="0" x="67" y="58"/>      
-      </multiplicity>    
+  <association id="109">    
+    <bendpoint x="1087" y="97"/>    
+    <end type="SOURCE" refId="38" navigable="false" variant="ASSOCIATION">      
+      <attribute id="110" name="mapLoader"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="25" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="39" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="157">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="158" name="uniqueInstance">        
-        <position height="18" width="81" x="354" y="84"/>      
+  <association id="112">    
+    <bendpoint x="1003" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="113" name="mapSelectPane"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="115">    
+    <bendpoint x="1003" y="191"/>    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <association id="116">    
+    <bendpoint x="568" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="117" name="keyHandle">        
+        <position height="0" width="0" x="-364" y="20"/>      
       </attribute>      
-      <multiplicity id="159" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="118" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-364" y="20"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="119">    
+    <bendpoint x="142" y="637"/>    
+    <bendpoint x="1005" y="637"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <generalization id="120">    
+    <bendpoint x="659" y="425"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="121">    
+    <end type="SOURCE" refId="33" navigable="false" variant="ASSOCIATION">      
+      <attribute id="122" name="next"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+      <attribute id="125" name="uniqueInstance">        
+        <position height="18" width="81" x="354" y="52"/>      
+      </attribute>      
+      <multiplicity id="126" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="-32"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="160">    
-    <bendpoint x="96" y="416"/>    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="161">    
-    <bendpoint x="-100" y="-318"/>    
-    <end type="SOURCE" refId="32" navigable="false" variant="ASSOCIATION">      
-      <attribute id="162" name="group"/>      
-      <multiplicity id="163" minimum="0" maximum="1"/>    
+  <dependency id="127">    
+    <bendpoint x="282" y="-239"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="128">    
+    <bendpoint x="1497" y="659"/>    
+    <bendpoint x="595" y="659"/>    
+    <end type="SOURCE" refId="39" navigable="false" variant="ASSOCIATION">      
+      <attribute id="129" name="writer"/>      
+      <multiplicity id="130" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="41" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="164">    
+  <realization id="131">    
+    <bendpoint x="791" y="-59"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <association id="132">    
+    <end type="SOURCE" refId="22" navigable="false" variant="ASSOCIATION">      
+      <attribute id="133" name="custom">        
+        <position height="0" width="0" x="804" y="-194"/>      
+      </attribute>      
+      <multiplicity id="134" minimum="0" maximum="1">        
+        <position height="0" width="0" x="804" y="-194"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="135">    
+    <bendpoint x="142" y="637"/>    
+    <bendpoint x="1124" y="637"/>    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="24"/>  
   </dependency>  
+  <dependency id="136">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <generalization id="137">    
+    <bendpoint x="757" y="498"/>    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <association id="138">    
+    <bendpoint x="656" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="139" name="towerDisplays">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="140" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="141">    
+    <bendpoint x="-47" y="515"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <dependency id="142">    
+    <bendpoint x="1415" y="636"/>    
+    <bendpoint x="1005" y="637"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <dependency id="143">    
+    <bendpoint x="-311" y="446"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="144">    
+    <bendpoint x="471" y="-239"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="34"/>  
+  </dependency>  
+  <dependency id="145">    
+    <bendpoint x="-311" y="588"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="146">    
+    <end type="SOURCE" refId="10" navigable="false" variant="ASSOCIATION">      
+      <attribute id="147" name="towerObservers">        
+        <position height="18" width="89" x="777" y="146"/>      
+      </attribute>      
+      <multiplicity id="148" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="34"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="149">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="150">    
+    <bendpoint x="1199" y="-239"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="151">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="152">    
+    <end type="SOURCE" refId="27" navigable="false" variant="ASSOCIATION">      
+      <attribute id="153" name="critter">        
+        <position height="0" width="0" x="-143" y="0"/>      
+      </attribute>      
+      <multiplicity id="154" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-143" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="155">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="38"/>  
+  </dependency>  
+  <dependency id="156">    
+    <bendpoint x="281" y="619"/>    
+    <bendpoint x="941" y="619"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <association id="157">    
+    <end type="SOURCE" refId="33" navigable="false" variant="ASSOCIATION">      
+      <attribute id="158" name="previous"/>      
+      <multiplicity id="159" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="160">    
+    <bendpoint x="1497" y="659"/>    
+    <bendpoint x="763" y="659"/>    
+    <end type="SOURCE" refId="39" navigable="false" variant="ASSOCIATION">      
+      <attribute id="161" name="xstream"/>      
+      <multiplicity id="162" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="163">    
+    <bendpoint x="-47" y="375"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <dependency id="164">    
+    <bendpoint x="133" y="5"/>    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="165">    
+    <bendpoint x="1497" y="-66"/>    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <association id="166">    
+    <bendpoint x="446" y="256"/>    
+    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+      <attribute id="167" name="selectedTowerToMove">        
+        <position height="0" width="0" x="0" y="-22"/>      
+      </attribute>      
+      <multiplicity id="168" minimum="0" maximum="1">        
+        <position height="16" width="23" x="598" y="242"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="169">    
+    <bendpoint x="-311" y="375"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="170">    
+    <bendpoint x="133" y="2"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <association id="171">    
+    <bendpoint x="1125" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="172" name="mapDisplay"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="174">    
+    <bendpoint x="282" y="-151"/>    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="175">    
+    <bendpoint x="897" y="-106"/>    
+    <bendpoint x="897" y="308"/>    
+    <end type="SOURCE" refId="26" navigable="false" variant="ASSOCIATION">      
+      <attribute id="176" name="towerType">        
+        <position height="0" width="0" x="0" y="-22"/>      
+      </attribute>      
+      <multiplicity id="177" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="-22"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="178">    
+    <end type="SOURCE" refId="37" navigable="false" variant="ASSOCIATION">      
+      <attribute id="179" name="mapDesigner"/>      
+      <multiplicity id="180" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="181">    
+    <bendpoint x="183" y="308"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="182">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="183">    
+    <bendpoint x="-199" y="-309"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="184" name="menu">        
+        <position height="0" width="0" x="-15" y="75"/>      
+      </attribute>      
+      <multiplicity id="185" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-15" y="75"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="186">    
+    <bendpoint x="12" y="8"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <association id="187">    
+    <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
+      <attribute id="188" name="start"/>      
+      <multiplicity id="189" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="190">    
+    <bendpoint x="1226" y="385"/>    
+    <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
+      <attribute id="191" name="path"/>      
+      <multiplicity id="192" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="1224" y="397"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="193">    
+    <bendpoint x="-311" y="724"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="194">    
+    <bendpoint x="1192" y="421"/>    
+    <end type="SOURCE" refId="24" navigable="false" variant="ASSOCIATION">      
+      <attribute id="195" name="end"/>      
+      <multiplicity id="196" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1204" y="417"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="197">    
+    <bendpoint x="359" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="198" name="store">        
+        <position height="0" width="0" x="-157" y="-4"/>      
+      </attribute>      
+      <multiplicity id="199" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-157" y="-4"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="200">    
+    <bendpoint x="748" y="-239"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="35"/>  
+  </dependency>  
+  <association id="201">    
+    <bendpoint x="1413" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="202" name="mapDesigner"/>      
+      <multiplicity id="203" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="204">    
+    <bendpoint x="-47" y="655"/>    
+    <bendpoint x="-47" y="476"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="205">    
+    <end type="SOURCE" refId="9" navigable="false" variant="ASSOCIATION">      
+      <attribute id="206" name="critterGroup">        
+        <position height="0" width="0" x="-143" y="0"/>      
+      </attribute>      
+      <multiplicity id="207" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-143" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="208">    
+    <bendpoint x="566" y="585"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="209">    
+    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+      <attribute id="210" name="hoveredTowerOnMap">        
+        <position height="18" width="113" x="524" y="252"/>      
+      </attribute>      
+      <multiplicity id="211" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="-22"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="212">    
+    <bendpoint x="1274" y="-310"/>    
+    <end type="SOURCE" refId="31" navigable="false" variant="ASSOCIATION">      
+      <attribute id="213" name="customMapRightClickMenu">        
+        <position height="0" width="0" x="435" y="5"/>      
+      </attribute>      
+      <multiplicity id="214" minimum="0" maximum="1">        
+        <position height="0" width="0" x="435" y="5"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="215">    
+    <end type="SOURCE" refId="28" navigable="false" variant="ASSOCIATION">      
+      <attribute id="216" name="tower">        
+        <position height="18" width="37" x="647" y="234"/>      
+      </attribute>      
+      <multiplicity id="217" minimum="0" maximum="1">        
+        <position height="16" width="23" x="660" y="250"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    
