@@ -42,10 +42,6 @@ public class MapDesignerView implements Runnable {
     private int customMapWidth;
     private int customMapHeight;
 
-
-   
-
-
     public MapView display;
 
     private boolean ready = false;

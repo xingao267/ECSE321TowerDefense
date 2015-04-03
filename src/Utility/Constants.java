@@ -9,8 +9,9 @@ package Utility;
  */
 public class Constants {
 
-    /** NUmber of levels that the game has */
+    /** Number of levels that the game has */
     public static final int MAX_GAME_LEVEL = 30;
+
     /** Initial Player life points. */
     public static final int INITIAL_PLAYER_LIFE_POINTS = 100;
 

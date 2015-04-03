@@ -72,17 +72,7 @@ public abstract class Tower {
         for (ITowerObserver o : towerObservers) {
             o.update();
         }
-    }
-
-    public abstract double getNextLevelRange() throws MaxLevelReachedException;
-
-    public abstract double getNextLevelPower() throws MaxLevelReachedException;
-
-    public abstract double getNextLevelRateOfFire() throws MaxLevelReachedException;
-
-    public abstract double getDamagePerHit();
-
-    public abstract double getNextLevelDamagePerHit() throws MaxLevelReachedException;
+    }  
 
     /**
      * @param xPos
@@ -161,7 +151,17 @@ public abstract class Tower {
 
         this.level++;
     }
+    
+    public abstract double getNextLevelRange() throws MaxLevelReachedException;
 
+    public abstract double getNextLevelPower() throws MaxLevelReachedException;
+
+    public abstract double getNextLevelRateOfFire() throws MaxLevelReachedException;
+
+    public abstract double getDamagePerHit();
+
+    public abstract double getNextLevelDamagePerHit() throws MaxLevelReachedException;
+    
     /**
      * @return the type of Tower
      */

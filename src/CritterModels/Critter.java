@@ -207,7 +207,12 @@ public abstract class Critter {
     }
 
     public void loseLife(Player player) {
-        player.setLifePoints(player.getLifePoints() - strength);
+        if(player.getLifePoints() - strength < 0){
+        	player.setLifePoints(0);	
+        }
+        else{
+        	player.setLifePoints(player.getLifePoints() - strength);
+        }
     }
 
     public String getCritterType() {

@@ -65,12 +65,15 @@ public class Screen extends JPanel implements Runnable {
     public static boolean levelEnded = false;
     public static boolean crittersGenerated = false;
     public static boolean gameRunning = true;
+    public static boolean gameOver = false;
+    public static boolean gameWon = false;
 
     public static Point mouseLocation = new Point(0, 0);
     public static Point mouseClicked = new Point(0, 0);
 
     public static int screenWidth;
     public static int screenHeight;
+    public static long count = 0;
 
     public static Map map;
     private static MapView mapDisplay;
@@ -209,6 +212,14 @@ public class Screen extends JPanel implements Runnable {
                         levelStarted = false;
                         crittersGenerated = false;
                         levelEnded = true;
+                        if(gameLevel >= Constants.MAX_GAME_LEVEL){
+                        	gameWon = true;
+                        	gameRunning = false;
+                        }
+                    }
+                    if(Player.getUniqueInstance().getLifePoints() <= 0){
+                    	gameOver = true;
+                    	gameRunning = false;
                     }
                 }
 
@@ -253,7 +264,7 @@ public class Screen extends JPanel implements Runnable {
 
                 repaint();
 
-                if (displayMapDesigner) {
+                if (displayMapDesigner || gameOver || gameWon) {
                     gameRunning = false;
                 }
 
@@ -276,23 +287,22 @@ public class Screen extends JPanel implements Runnable {
                     }
                 }
             }
+            
+            if(gameOver && count == 0){
+            	GameController.getUniqueInstance().gameOver();
+            }
+            if(gameWon && count == 0){
+            	GameController.getUniqueInstance().gameWon();
+            }
+            count++;
         }
-    }
-
-    public boolean isGameRunning() {
-        return gameRunning;
-    }
-
-    public void setGameRunning(boolean gameRunning) {
-        Screen.gameRunning = gameRunning;
-    }
-
-    public static void setCustomMap(Map m) {
-        map = m;
     }
 
     public static void mouseClickedReset() {
         mouseClicked = new Point(0, 0);
     }
-
+    
+    public static void setCustomMap(Map m) {
+        map = m;
+    }
 }

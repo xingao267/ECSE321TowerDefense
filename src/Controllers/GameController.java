@@ -1,7 +1,15 @@
 package Controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SpringLayout;
 
 import CritterModels.Critter;
 import Exceptions.CritterDeadException;
@@ -18,7 +26,9 @@ import TowerModels.RegularTower;
 import TowerModels.RapidFireTower;
 import TowerModels.Tower;
 import Utility.Constants;
+import Utility.SpringUtilities;
 import Utility.Utils;
+import Window.Screen;
 
 /**
  * GameController Class
@@ -30,6 +40,8 @@ public class GameController implements IGameController {
 
     /** The singleton GameController unique instance. */
     private static GameController uniqueInstance = null;
+    
+    private JFrame frame;
 
     /** The active tower list on the map. */
     private List<Tower> towers;
@@ -252,6 +264,112 @@ public class GameController implements IGameController {
         } else {
             spawnFrame++;
         }
+    }
+    
+    public void gameOver(){
+    	final String message = "GAME OVER!!!";
+        JPanel userPanel = new JPanel(new SpringLayout());
+
+        JLabel label = new JLabel(message, JLabel.CENTER);
+        userPanel.add(label);
+        JButton button = new JButton("Return to Main Menu");
+        userPanel.add(new JLabel());
+        userPanel.add(button);
+
+        SpringUtilities.makeCompactGrid(userPanel, 3, 1, 100, 40, 7, 7);
+
+        button.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+
+                // Execute when button is pressed
+                frame.setVisible(false);
+                frame.dispose();
+                Screen.displayCustomMap = false;
+                Screen.displayEasyMap = false;
+                Screen.displayHardMap = false;
+                Screen.displayMapDesigner = false;
+                Screen.displayMapSelectorPane = false;
+                Screen.displayMediumMap = false;
+                Screen.crittersGenerated = false;
+                Screen.inGameplay = false;
+                Screen.levelEnded = false;
+                Screen.levelStarted = false;
+                Screen.gameLevel = 0;
+                Screen.count = 0;
+                Screen.gameOver = false;
+                Screen.gameRunning = true;
+                Screen.displayMainMenu = true;
+                Screen.mouseClickedReset();
+            }
+        });
+
+        // Create and set up the window.
+        frame = new JFrame("Game Over");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Set up the content pane.
+        userPanel.setOpaque(true); // content panes must be opaque
+        frame.setContentPane(userPanel);
+
+        // Display the window.
+        frame.pack();
+        frame.setSize(350, 175);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+    }
+    
+    public void gameWon(){
+    	final String message = "Congratulations. You have won the game!!!";
+        JPanel userPanel = new JPanel(new SpringLayout());
+
+        JLabel label = new JLabel(message, JLabel.CENTER);
+        userPanel.add(label);
+        JButton button = new JButton("Return to Main Menu");
+        userPanel.add(new JLabel());
+        userPanel.add(button);
+
+        SpringUtilities.makeCompactGrid(userPanel, 3, 1, 50, 40, 7, 7);
+
+        button.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+
+                // Execute when button is pressed
+                frame.setVisible(false);
+                frame.dispose();
+                Screen.displayCustomMap = false;
+                Screen.displayEasyMap = false;
+                Screen.displayHardMap = false;
+                Screen.displayMapDesigner = false;
+                Screen.displayMapSelectorPane = false;
+                Screen.displayMediumMap = false;
+                Screen.crittersGenerated = false;
+                Screen.inGameplay = false;
+                Screen.levelEnded = false;
+                Screen.levelStarted = false;
+                Screen.gameLevel = 0;
+                Screen.count = 0;
+                Screen.gameWon = false;
+                Screen.gameRunning = true;
+                Screen.displayMainMenu = true;
+                Screen.mouseClickedReset();
+            }
+        });
+
+        // Create and set up the window.
+        frame = new JFrame("Game Over");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Set up the content pane.
+        userPanel.setOpaque(true); // content panes must be opaque
+        frame.setContentPane(userPanel);
+
+        // Display the window.
+        frame.pack();
+        frame.setSize(350, 175);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     /**
