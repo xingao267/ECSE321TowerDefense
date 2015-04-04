@@ -103,13 +103,19 @@ public class ControlPanelView {
             if (towers[i].contains(Screen.mouseLocation)) {
                 // display that player does not have enough money
                 if (towerType.get(i).getInitialCost() > Bank.getUniqueInstance().getBalance()) {
-                    g.setColor(new Color(255, 255, 255));
+                    g.setColor(new Color(232, 0, 0));
                     g.setFont(new Font("Courier New", Font.BOLD, 15));
-                    g.drawString("You don't have enough money", 400, 30);
-                    g.drawString("to buy this tower.", 400, 55);
+                    g.drawString("You don't have enough money", 400, 55);
+                    g.drawString("to buy this tower.", 400, 70);
 
                     g.setColor(new Color(0, 0, 0, 75));
                     g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
+                    
+                    g.setColor(new Color(100, 100, 100));
+                    g.setFont(new Font("Courier New", Font.BOLD, 15));
+                    g.drawString(towerType.get(i).getTowerType(), 400, 30);
+                    g.setFont(new Font("Courier New", Font.BOLD, 14));
+                    g.drawString("Cost:" + (int) towerType.get(i).getInitialCost(), 575, 30);
 
                     towerClickable[i] = false;
                 } else {
