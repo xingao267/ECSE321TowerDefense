@@ -38,7 +38,7 @@ public class TowerView implements ITowerObserver {
         towerDisplay =
                 new Rectangle(towerScreenCoord.x, towerScreenCoord.y, Constants.STORE_BUTTON_SIZE,
                         Constants.STORE_BUTTON_SIZE);
-        this.img = null;
+        this.img = null; 
         this.sheetImg = null;
     }
 
