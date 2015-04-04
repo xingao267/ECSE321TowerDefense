@@ -60,16 +60,12 @@ public class Constants {
     public static final String REGULAR_TOWER_SHEET = "source/image/regular_tower_sheet.png";
 
     public static final String BOMBER_TOWER_IMAGE = "source/image/bomber_tower.png";
-    public static final String BOMBER_TOWER_SHEET = "source/image/bomber_tower_sheet.png";
 
     public static final String RAPID_FIRE_TOWER_IMAGE = "source/image/rapidfire_tower.png";
-    public static final String RAPID_FIRE_TOWER_SHEET = "source/image/rapidfire_tower_sheet.png";
 
     public static final String DECELERATOR_TOWER_IMAGE = "source/image/decelerator_tower.png";
-    public static final String DECELERATOR_TOWER_SHEET = "source/image/decelerator_tower_sheet.png";
 
     public static final String LONGRANGE_TOWER_IMAGE = "source/image/longrange_tower.png";
-    public static final String LONGRANGE_TOWER_SHEET = "source/image/longrange_tower_sheet.png";
 
     public static final String[] TOWER_IMAGE_SET = {REGULAR_TOWER_IMAGE, BOMBER_TOWER_IMAGE,
             DECELERATOR_TOWER_IMAGE, LONGRANGE_TOWER_IMAGE, RAPID_FIRE_TOWER_IMAGE};

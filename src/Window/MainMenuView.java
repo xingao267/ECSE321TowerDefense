@@ -24,7 +24,7 @@ public class MainMenuView {
 
     public MainMenuView() {
         init();
-    } 
+    }
 
     public void init() {
         startGameButton =
