@@ -49,7 +49,7 @@ public class TowerView implements ITowerObserver {
             try {
 
                 if (this.tower.getTowerType().equals(Constants.REGULAR_TOWER_TYPE)) {
-                    getImage(Constants.REGULAR_TOWER_SHEET, this.tower);
+                	getImage(Constants.REGULAR_TOWER_SHEET, this.tower);
                 } else if (this.tower.getTowerType().equals(Constants.BOMBER_TOWER_TYPE)) {
                 	getImage(Constants.BOMBER_TOWER_SHEET, this.tower);
                 } else if (this.tower.getTowerType().equals(Constants.LONGRANGE_TOWER_TYPE)) {
