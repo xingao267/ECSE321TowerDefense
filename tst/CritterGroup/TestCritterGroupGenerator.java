@@ -84,7 +84,7 @@ public class TestCritterGroupGenerator {
             assertEquals(4, (long) c.getBounty());
             assertEquals(80, (long) c.getHealth());
             assertEquals(1, (long) c.getLevel());
-            assertEquals((long) 4, (long) c.getSpeed());
+            assertEquals((long) 6, (long) c.getSpeed());
             assertEquals(2, (long) c.getStrength());
             assertEquals(0, (long) c.getxPos());
             assertEquals(0, (long) c.getyPos());

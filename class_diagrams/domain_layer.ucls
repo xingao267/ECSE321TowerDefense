@@ -273,7 +273,7 @@
   </class>  
   <class id="31" language="java" name="MapPresets.HardMap" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/MapPresets/HardMap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="891" y="710"/>    
+    <position height="-1" width="-1" x="887" y="709"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -348,7 +348,7 @@
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="47" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="16" width="23" x="615" y="424"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="26" navigable="true" variant="ASSOCIATION"/>    

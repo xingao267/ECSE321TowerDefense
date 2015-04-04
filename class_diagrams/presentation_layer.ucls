@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="Window.TowerView" project="ECSE321TowerDefense" 
     file="/ECSE321TowerDefense/src/Window/TowerView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-261" y="-408"/>    
+    <position height="-1" width="-1" x="-261" y="-444"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -272,13 +272,13 @@
     <end type="TARGET" refId="2"/>  
   </dependency>  
   <association id="49">    
-    <bendpoint x="-55" y="-407"/>    
+    <bendpoint x="-54" y="-444"/>    
     <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
       <attribute id="50" name="towerDisplays">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="0" y="-36"/>      
       </attribute>      
       <multiplicity id="51" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="0" y="-36"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
