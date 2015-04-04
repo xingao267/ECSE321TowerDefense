@@ -23,7 +23,7 @@ import Utility.Utils;
 /**
  * This class displays the maps
  * 
- * @author Justin
+ * @author Justin, Eric
  *
  */
 public class MapView {
@@ -45,6 +45,8 @@ public class MapView {
     private int startY;
     private int endX;
     private int endY;
+    private boolean end;
+    private boolean start;
 
     /**
      * Constructor
@@ -106,7 +108,7 @@ public class MapView {
                         if (m.getCell(i, j).isScenery()) {
                             scenery.add(r);
                         } else {
-                            path.add(r);
+                            //path.add(r);
                         }
                     }
                 }
@@ -195,12 +197,13 @@ public class MapView {
     	int direction=1; //0=left,1=right,2=up,3=down
     	BufferedImage pathSection;
         // Draw the path
-    	
+    	pathSection= pathSheet.getSubimage(50,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
+    	if(start){
     	pathSection= pathSheet.getSubimage(50,0,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
     	g.drawImage(pathSection, Constants.MAP_INITIAL_XPOS
                 + Constants.STORE_BUTTON_SIZE * startX, Constants.MAP_INITIAL_YPOS
                 + Constants.STORE_BUTTON_SIZE * startY, Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE, null);
-    	
+    	}
     	for (int i=1;i<path.size()-1;i++) {
         	int currentX=path.get(i).x;
         	int currentY=path.get(i).y;
@@ -298,12 +301,12 @@ public class MapView {
             }
 
         }
-    	
+    	if(end){
     	pathSection= pathSheet.getSubimage(50,50,Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE);
     	g.drawImage(pathSection, Constants.MAP_INITIAL_XPOS
                 + Constants.STORE_BUTTON_SIZE * endX, Constants.MAP_INITIAL_YPOS
                 + Constants.STORE_BUTTON_SIZE * endY, Constants.STORE_BUTTON_SIZE,Constants.STORE_BUTTON_SIZE, null);
-    	
+    	}
         // Draw Indicators
         for (Rectangle r : indicator) {
 
@@ -324,10 +327,12 @@ public class MapView {
         	if(m.getPath(i).isEntry()){
         		startX=m.getStart().getXCoordinate();
         		startY=m.getStart().getYCoordinate();
+        		start=true;
         	}
         	if(m.getPath(i).isExit()){
         		endX=pathX;
         		endY=pathY;
+        		end=true;
         	}
         	Rectangle r =
                      new Rectangle(Constants.MAP_INITIAL_XPOS

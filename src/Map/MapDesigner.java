@@ -26,12 +26,6 @@ public class MapDesigner {
 		//custom.getCell(x, y).setPath();
 	}
 	
-	/**This method modifies the node at the specified coordinates to a path by creating a new path tile *without linking to others* and overwriting the scenery tile*/
-	public void modifyNodeToPath(int x, int y){
-		custom.setCell(new Path(x, y), x, y);
-	}
-	
-	
 	/**This method generates a default map from an arraylist of x and y coordinates*/
 	public void createDefaultPath(ArrayList<Integer> xCoords, ArrayList<Integer> yCoords){
 		modifyNodeToPath(xCoords.get(0), yCoords.get(0), null, null);
@@ -49,7 +43,7 @@ public class MapDesigner {
 		endMap();
 	}
 	
-	public void addPathNodeFromClick(Point p, boolean last){
+	public void addPathNodeFromClick(Point p){
 		custom.clearIndicators();
 		Point mapPoint= Utils.convertScreenToMapCoord(p);
 		int ixCoord= (int) mapPoint.getX();
@@ -57,17 +51,11 @@ public class MapDesigner {
 		int iyCoord= (int) mapPoint.getY();
 		//System.out.println(iyCoord);
 		
-		if (custom.pathSize()==0){
+		if (custom.pathEmpty()){
 			modifyNodeToPath(ixCoord, iyCoord, null, null);
 			custom.setStart(custom.getPath(0));
+			custom.getPath(0).setStart();
 			updateIndicators();
-		}
-		else if(last){
-			int index=custom.pathSize();
-			Path previous= custom.getPath(index-1); //verify this
-			modifyNodeToPath(ixCoord, iyCoord, previous, null);
-			previous.setNext(custom.getPath(index)); //and this as well
-			custom.setEnd(custom.getPath(index));
 		}
 		else{
 			int index=custom.pathSize();

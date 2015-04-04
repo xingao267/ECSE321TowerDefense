@@ -25,7 +25,7 @@ import Utility.SpringUtilities;
 
 /**
  * 
- * @author Jose,Justin
+ * @author Jose, Justin, Eric
  *
  */
 public class MapDesignerView implements Runnable {
@@ -72,6 +72,7 @@ public class MapDesignerView implements Runnable {
         int labelsLength = labels.length;
         final List<JTextField> textFields = new ArrayList<JTextField>();
         JPanel userPanel = new JPanel(new SpringLayout());
+        
 
         for (int i = 0; i < labelsLength; i++) {
             JLabel label = new JLabel(labels[i], JLabel.TRAILING);
@@ -169,7 +170,7 @@ public class MapDesignerView implements Runnable {
             if (!display.indicator.isEmpty()) {
                 for (Rectangle r : display.indicator) {
                     if (r.contains(Screen.mouseClicked)) {
-                        mapDesigner.addPathNodeFromClick(Screen.mouseClicked, false);
+                        mapDesigner.addPathNodeFromClick(Screen.mouseClicked);
                         Screen.mouseClickedReset();
                     }
                 }
@@ -347,7 +348,7 @@ public class MapDesignerView implements Runnable {
         frame.setLocationRelativeTo(null);
     }
 
-    @Override
+   @Override
     public void run() {
         createUserDefinedMap();
         while (!ready) {

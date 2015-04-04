@@ -2,7 +2,7 @@ package Map;
 
 /**
  * This class represents the Path object
- * @author Justin,Eric
+ * @author Justin, Eric
  *
  */
 public class Path extends Cell {

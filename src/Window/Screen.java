@@ -31,7 +31,7 @@ import Utility.Utils;
 
 /**
  * 
- * @author Jose, Justin, Xin
+ * @author Jose, Justin, Xin, Eric
  *
  */
 public class Screen extends JPanel implements Runnable {

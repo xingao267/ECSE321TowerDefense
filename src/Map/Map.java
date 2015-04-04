@@ -208,5 +208,12 @@ public class Map {
     public int numIndicators() {
         return ind.size();
     }
+    
+    public boolean pathEmpty(){
+    	if(this.path.isEmpty()){
+    		return true;
+    	}
+    	else{return false;}
+    }
 
 }
