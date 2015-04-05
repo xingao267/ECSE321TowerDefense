@@ -38,9 +38,11 @@ import Window.Screen;
  */
 public class GameController implements IGameController {
 
+    private int spawnFrame = 0, spawnRate;
+
     /** The singleton GameController unique instance. */
     private static GameController uniqueInstance = null;
-    
+
     private JFrame frame;
 
     /** The active tower list on the map. */
@@ -73,6 +75,9 @@ public class GameController implements IGameController {
     /** Is move tower in the right click menu clicked. */
     private boolean isTowerMoveClicked;
 
+    /** Tower targeting strategy. */
+    private ITowerTargetingStrategy towerTargetingStrategy;
+
     /** Constructor. */
     private GameController() {
         towers = new ArrayList<Tower>();
@@ -82,6 +87,8 @@ public class GameController implements IGameController {
         isNoMoneyCaught = false;
         isMaxLevelReached = false;
         isTowerMoveClicked = false;
+
+        setTowerTargetingStrategy(new NearestCritterToTowerStrategy());
     }
 
     public static synchronized GameController getUniqueInstance() {
@@ -91,12 +98,13 @@ public class GameController implements IGameController {
         return uniqueInstance;
     }
 
-
     public static synchronized void resetUniqueInstance() {
         uniqueInstance = new GameController();
     }
 
-    private int spawnFrame = 0, spawnRate;
+    public void setTowerTargetingStrategy(ITowerTargetingStrategy strategy) {
+        this.towerTargetingStrategy = strategy;
+    }
 
     @Override
     public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Cell cell)
@@ -175,9 +183,9 @@ public class GameController implements IGameController {
     @Override
     public List<Critter> towerSelectTargets(Tower tower, List<Critter> critters) {
 
-        Critter closestCritter = detectClosestTarget(tower, critters);
+        Critter targetCritter = towerTargetingStrategy.getTarget(tower, critters);
 
-        if (closestCritter != null) {
+        if (targetCritter != null) {
             List<Critter> crittersSelected = new ArrayList<Critter>();
 
             if (tower.isMultiTargets()) {
@@ -186,7 +194,7 @@ public class GameController implements IGameController {
 
                 for (Critter critter : critters) {
                     double distance =
-                            Utils.getDistance(closestCritter.getxPos(), closestCritter.getyPos(),
+                            Utils.getDistance(targetCritter.getxPos(), targetCritter.getyPos(),
                                     critter.getxPos(), critter.getyPos());
 
                     // Add critters around the closest critter within the bomb
@@ -197,7 +205,7 @@ public class GameController implements IGameController {
                 }
 
             } else {
-                crittersSelected.add(closestCritter);
+                crittersSelected.add(targetCritter);
             }
             return crittersSelected;
         } else {
@@ -216,34 +224,6 @@ public class GameController implements IGameController {
                 }
             }
         }
-    }
-
-    /**
-     * Detect the Critter closest to the Tower
-     *
-     * @param tower
-     * @param critters
-     * @return
-     */
-    private Critter detectClosestTarget(Tower tower, List<Critter> critters) {
-
-        if (!critters.isEmpty()) {
-            Critter closestTarget = critters.get(0);
-            double minDistance =
-                    Utils.getDistance(tower.getxPos(), tower.getyPos(), closestTarget.getxPos(),
-                            closestTarget.getyPos());
-
-            for (Critter critter : critters) {
-                double distance =
-                        Utils.getDistance(tower.getxPos(), tower.getyPos(), critter.getxPos(),
-                                critter.getyPos());
-                if (distance < minDistance) {
-                    closestTarget = critter;
-                }
-            }
-            return closestTarget;
-        }
-        return null;
     }
 
     @Override
@@ -265,9 +245,9 @@ public class GameController implements IGameController {
             spawnFrame++;
         }
     }
-    
-    public void gameOver(){
-    	final String message = "GAME OVER!!!";
+
+    public void gameOver() {
+        final String message = "GAME OVER!!!";
         JPanel userPanel = new JPanel(new SpringLayout());
 
         JLabel label = new JLabel(message, JLabel.CENTER);
@@ -318,9 +298,9 @@ public class GameController implements IGameController {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
-    
-    public void gameWon(){
-    	final String message = "Congratulations. You have won the game!!!";
+
+    public void gameWon() {
+        final String message = "Congratulations. You have won the game!!!";
         JPanel userPanel = new JPanel(new SpringLayout());
 
         JLabel label = new JLabel(message, JLabel.CENTER);
