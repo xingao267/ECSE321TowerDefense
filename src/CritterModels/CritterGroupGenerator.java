@@ -153,7 +153,7 @@ public class CritterGroupGenerator {
             case 18: {
                 numCritters = 10;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new BulletProofCritter(level));
+                    critterGroup.add(new RegenerativeCritter(level));
                 }
                 break;
             }
@@ -167,7 +167,7 @@ public class CritterGroupGenerator {
             case 20: {
                 numCritters = 1;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new BossCritter("BulletProof Critter", 5, 320, 20000));
+                    critterGroup.add(new BossCritter("BulletProof Critter", 5, 320, 10000));
                 }
                 break;
             }
@@ -181,28 +181,28 @@ public class CritterGroupGenerator {
             case 22: {
                 numCritters = 10;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new NormalCritter(level));
+                    critterGroup.add(new SpeedCritter(level));
                 }
                 break;
             }
             case 23: {
                 numCritters = 10;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new NormalCritter(level));
+                    critterGroup.add(new BulletProofCritter(level));
                 }
                 break;
             }
             case 24: {
                 numCritters = 10;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new NormalCritter(level));
+                    critterGroup.add(new ArmoredCritter(level));
                 }
                 break;
             }
             case 25: {
                 numCritters = 1;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new BossCritter("Regenerative Critter", 5, 750, 50000));
+                    critterGroup.add(new BossCritter("Regenerative Critter", 5, 750, 20000));
                 }
                 break;
             }
@@ -216,28 +216,28 @@ public class CritterGroupGenerator {
             case 27: {
                 numCritters = 10;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new NormalCritter(level));
+                    critterGroup.add(new SpeedCritter(level));
                 }
                 break;
             }
             case 28: {
                 numCritters = 10;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new NormalCritter(level));
+                    critterGroup.add(new BulletProofCritter(level));
                 }
                 break;
             }
             case 29: {
                 numCritters = 10;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new NormalCritter(level));
+                    critterGroup.add(new RegenerativeCritter(level));
                 }
                 break;
             }
             case 30: {
                 numCritters = 3;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new BossCritter("Armored Critter", 5, 500, 100000));
+                    critterGroup.add(new BossCritter("Armored Critter", 5, 500, 50000));
                 }
                 break;
             }

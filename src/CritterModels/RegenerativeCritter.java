@@ -33,7 +33,7 @@ public class RegenerativeCritter extends Critter {
         if (level > 5) {
             this.bounty += (level / 5) * this.bounty;
         }
-        this.health = 5 * level * level + 10*level + 35;
+        this.health = 5 * level * level + 10*level + 55;
         this.maxHealth = health;
 
 //        if (!isBeingHit) { // will need to be added into game loop
