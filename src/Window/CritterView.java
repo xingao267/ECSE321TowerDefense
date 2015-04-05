@@ -33,21 +33,21 @@ public class CritterView {
 		if(critter.isInGame()){
 			g.setColor(new Color(0, 0, 0));
 			//drawImage() using tileset of specific critter
-			BufferedImage img=critter.getImage();
-			BufferedImage clippedImg=null;
+			BufferedImage img = critter.getImage();
+			BufferedImage clippedImg = null;
 			
 			//determine direction of travel
-			if(critter.getDirection()==2){
-				clippedImg= img.getSubimage(0,0,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
+			if(critter.getDirection() == 2){
+				clippedImg = img.getSubimage(0,0,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
 			}
-			if(critter.getDirection()==1){
-				clippedImg= img.getSubimage(50,0,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
+			if(critter.getDirection() == 1){
+				clippedImg = img.getSubimage(50,0,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
 			}
-			if(critter.getDirection()==3){
-				clippedImg= img.getSubimage(50,50,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
+			if(critter.getDirection() == 3){
+				clippedImg = img.getSubimage(50,50,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
 			}
-			if(critter.getDirection()==0){
-				clippedImg= img.getSubimage(0,50,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
+			if(critter.getDirection() == 0){
+				clippedImg = img.getSubimage(0,50,Constants.MAP_CELL_SIZE,Constants.MAP_CELL_SIZE);
 			}
 			
 			g.drawImage(clippedImg, critterDisplay.x,critterDisplay.y, critterDisplay.width, critterDisplay.height, null);

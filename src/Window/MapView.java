@@ -32,7 +32,7 @@ public class MapView {
     private static ArrayList<Rectangle> path;
     public ArrayList<Rectangle> indicator;
     private ArrayList<Rectangle> cells;
-    private Map m;
+    private Map map;
     private int mapWidth;
     private int mapHeight;
     public static ArrayList<Integer> offsets;
@@ -53,11 +53,11 @@ public class MapView {
      * 
      * @param m
      */
-    public MapView(Map m) {
+    public MapView(Map map) {
 
-        this.m = m;
-        mapWidth = m.getWidth();
-        mapHeight = m.getHeight();
+        this.map = map;
+        mapWidth = map.getWidth();
+        mapHeight = map.getHeight();
         scenery = new ArrayList<Rectangle>();
         path = new ArrayList<Rectangle>();
         indicator = new ArrayList<Rectangle>();
@@ -89,23 +89,23 @@ public class MapView {
                                 + (Constants.STORE_BUTTON_SIZE * i), Constants.MAP_INITIAL_YPOS
                                 + Constants.STORE_BUTTON_SIZE * j, Constants.STORE_BUTTON_SIZE,
                                 Constants.STORE_BUTTON_SIZE);
-                if (m.noIndicators()) {
-                    if (m.getCell(i, j).isScenery()) {
+                if (map.noIndicators()) {
+                    if (map.getCell(i, j).isScenery()) {
                         scenery.add(r);
                     } else {
                         //path.add(r);
                     }
                 } else {
-                    for (int k = 0; k < m.numIndicators(); k++) {
-                        if (m.getIndicator(k).getXCoordinate() == i
-                                && m.getIndicator(k).getYCoordinate() == j) {
+                    for (int k = 0; k < map.numIndicators(); k++) {
+                        if (map.getIndicator(k).getXCoordinate() == i
+                                && map.getIndicator(k).getYCoordinate() == j) {
                             indicator.add(r);
                             foundInd = true;
                             break;
                         }
                     }
                     if (!foundInd) {
-                        if (m.getCell(i, j).isScenery()) {
+                        if (map.getCell(i, j).isScenery()) {
                             scenery.add(r);
                         } else {
                             //path.add(r);
@@ -130,7 +130,7 @@ public class MapView {
         for (Rectangle r : scenery) {
 
             Point mapPosition = Utils.convertScreenToMapCoord(r.getLocation());
-            Cell cell = m.getCell(mapPosition.x, mapPosition.y);
+            Cell cell = map.getCell(mapPosition.x, mapPosition.y);
 
             g.drawImage(sceneryCell, r.x, r.y, r.width, r.height, null);
             // g.setColor(new Color(148, 204, 142)); // Green
@@ -321,18 +321,18 @@ public class MapView {
         }
     }
     private void calculatePath(){
-    	for(int i=0; i<m.pathSize(); i++){
-        	int pathX=m.getPath(i).getXCoordinate(); 
-        	int pathY=m.getPath(i).getYCoordinate();
-        	if(m.getPath(i).isEntry()){
-        		startX=m.getStart().getXCoordinate();
-        		startY=m.getStart().getYCoordinate();
-        		start=true;
+    	for(int i = 0; i < map.pathSize(); i++){
+        	int pathX = map.getPath(i).getXCoordinate(); 
+        	int pathY = map.getPath(i).getYCoordinate();
+        	if(map.getPath(i).isEntry()){
+        		startX = map.getStart().getXCoordinate();
+        		startY = map.getStart().getYCoordinate();
+        		start = true;
         	}
-        	if(m.getPath(i).isExit()){
-        		endX=pathX;
-        		endY=pathY;
-        		end=true;
+        	if(map.getPath(i).isExit()){
+        		endX = pathX;
+        		endY = pathY;
+        		end = true;
         	}
         	Rectangle r =
                      new Rectangle(Constants.MAP_INITIAL_XPOS

@@ -40,6 +40,7 @@ public class BossCritter extends Critter {
         
         this.strength = Constants.BOSS_CRITTER_STRENGTH;
         this.speed = speed;
+        this.initialSpeed = speed;
         this.bounty = bounty;
         this.health = health;
         this.maxHealth = health;

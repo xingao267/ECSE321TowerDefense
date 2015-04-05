@@ -23,6 +23,7 @@ public class NormalCritter extends Critter {
         super(level);
 
         this.speed = Constants.NORMAL_CRITTER_SPEED;
+        this.initialSpeed = speed;
         this.bounty = Constants.NORMAL_CRITTER_BOUNTY;
         this.strength = Constants.NORMAL_CRITTER_STRENGTH;
         this.spawnRate = Constants.NORMAL_CRITTER_SPAWN_RATE;

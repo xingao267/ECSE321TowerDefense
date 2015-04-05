@@ -23,6 +23,7 @@ public class ArmoredCritter extends Critter {
         super(level);
 
         this.speed = Constants.ARMORED_CRITTER_SPEED;
+        this.initialSpeed = speed;
         this.bounty = Constants.ARMORED_CRITTER_BOUNTY;
         this.strength = Constants.ARMORED_CRITTER_STRENGTH;
         this.spawnRate = Constants.ARMORED_CRITTER_SPAWN_RATE;
@@ -30,7 +31,7 @@ public class ArmoredCritter extends Critter {
         if (level > 5) {
             this.bounty += (level / 5) * this.bounty;
         }
-        this.health = 5 * level * level + 15*level + 60;
+        this.health = 5 * level * level + 10*level + 35;
         this.maxHealth = health;
         
         this.critterType = Constants.ARMORED_CRITTER_TYPE;

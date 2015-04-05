@@ -15,6 +15,9 @@ public class Constants {
     /** Initial Player life points. */
     public static final int INITIAL_PLAYER_LIFE_POINTS = 100;
 
+    public static final int[] LEVEL_REWARD = 	{10, 10, 10, 10, 30, 20, 20, 20, 20, 50,
+    											30, 30, 30, 30, 75, 40, 40, 40, 40, 100,
+    											50, 50, 50, 50, 150, 50, 50, 50, 50, 0};
     /** Life points display constants. */
     public static final int DISPLAY_SIZE = 30;
     public static final int SPACING = 5;
@@ -145,7 +148,7 @@ public class Constants {
             3 * RT_2};
     public static final double[] REGULAR_RATE = {0, 4, 5, 6, 7, 8};
 
-    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 25, 35, 60, 100, 170};
+    public static final double[] REGULAR_DAMAGE_PER_HIT = {0, 35, 45, 70, 110, 180};
     public static final double[] REGULAR_POWER = {
             REGULAR_DAMAGE_PER_HIT[0] * REGULAR_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             REGULAR_DAMAGE_PER_HIT[1] * REGULAR_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
@@ -233,7 +236,7 @@ public class Constants {
             4 * RT_2};
     public static final double[] BOMBER_RATE = {0, 2, 3, 4, 5, 6};
 
-    public static final double[] BOMBER_DAMAGE_PER_HIT = {0, 28, 39, 54, 75, 105};
+    public static final double[] BOMBER_DAMAGE_PER_HIT = {0, 38, 49, 64, 85, 115};
     public static final double[] BOMBER_POWER = {
             BOMBER_DAMAGE_PER_HIT[0] * BOMBER_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             BOMBER_DAMAGE_PER_HIT[1] * BOMBER_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,
@@ -274,7 +277,7 @@ public class Constants {
             DECELERATOR_DAMAGE_PER_HIT[4] * DECELERATOR_RATE[4] * GAME_THREAD_SLEEP_TIME / 1000,
             DECELERATOR_DAMAGE_PER_HIT[5] * DECELERATOR_RATE[5] * GAME_THREAD_SLEEP_TIME / 1000};
 
-    public static final double[] DECELERATOR_EFFECT = {0, .25, .3, 0.4, 0.5, 0.6};
+    public static final double[] DECELERATOR_EFFECT = {0, .15, .2, 0.3, 0.4, 0.5};
     public static final double[] DECELERATOR_EFFECT_RANGE = {0, 1, 2, 3, 4, 5};
 
     /*--------------------------------------------------------------------------------------------------------------------*/
@@ -308,10 +311,10 @@ public class Constants {
 
     /** Speed Critter Constants. */
     public static final String SPEED_CRITTER_TYPE = "Speed Critter";
-    public static final int SPEED_CRITTER_SPEED = 9;
+    public static final int SPEED_CRITTER_SPEED = 8;
     public static final int SPEED_CRITTER_BOUNTY = 4;
     public static final int SPEED_CRITTER_STRENGTH = 2;
-    public static final int SPEED_CRITTER_SPAWN_RATE = 100;
+    public static final int SPEED_CRITTER_SPAWN_RATE = 150;
 
     /** Regenerative Critter Constants. */
     public static final String REGENERATIVE_CRITTER_TYPE = "Regenerative Critter";

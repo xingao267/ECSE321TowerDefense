@@ -22,6 +22,7 @@ public class SpeedCritter extends Critter {
         super(level);
 
         this.speed = Constants.SPEED_CRITTER_SPEED;
+        this.initialSpeed = speed;
         this.bounty = Constants.SPEED_CRITTER_BOUNTY;
         this.strength = Constants.SPEED_CRITTER_STRENGTH;
         this.spawnRate = Constants.SPEED_CRITTER_SPAWN_RATE;
@@ -29,7 +30,7 @@ public class SpeedCritter extends Critter {
         if (level > 5) {
             this.bounty += (level / 5) * this.bounty;
         }
-        this.health = 5 * level * level + 15*level + 60;
+        this.health = 5 * level * level + 10*level + 35;
         this.maxHealth = health;
         
         try {

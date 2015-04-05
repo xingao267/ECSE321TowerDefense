@@ -115,13 +115,13 @@ public class MapSelectPaneView {
         }
 
 
-        g.setColor(new Color(255, 255, 255));
-        g.setFont(new Font("Courier New", Font.BOLD, 24));
+        g.setColor(new Color(0, 0, 0));
+        g.setFont(new Font("Arial Bold", Font.BOLD, 24));
         g.drawString("Please select map you wish to play.",
                 (Screen.screenWidth - stringOffset) / 2, (Screen.screenHeight - buttonHeight) / 2
                         - 4 * buttonYOffset1 / 3);
 
-        g.setFont(new Font("Courier New", Font.BOLD, 20));
+        g.setFont(new Font("Arial Bold", Font.BOLD, 20));
         g.drawString("Pre-Made Levels",
                 (Screen.screenWidth - buttonWidth) / 4 + 50 - buttonXOffset,
                 (Screen.screenHeight - buttonHeight) / 2 - buttonYOffset1 / 4 + 25);
@@ -247,6 +247,9 @@ public class MapSelectPaneView {
                         buttonHeight / 2);
                 isCustomMapHovered = true;
                 hoveredMap = mapList.get(i);
+                
+                g.setColor(new Color(0, 0, 0));
+                g.drawString("Right-Click to delete map", createCustomMap.x, createCustomMap.y + 50);
             }
 
             if (customMaps.get(i).contains(Screen.mouseClicked)) {

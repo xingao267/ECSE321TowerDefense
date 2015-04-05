@@ -212,6 +212,8 @@ public class Screen extends JPanel implements Runnable {
                         levelStarted = false;
                         crittersGenerated = false;
                         levelEnded = true;
+                        Bank.getUniqueInstance().setBalance(
+                        		Bank.getUniqueInstance().getBalance() + Constants.LEVEL_REWARD[gameLevel]);
                         if(gameLevel >= Constants.MAX_GAME_LEVEL){
                         	gameWon = true;
                         	gameRunning = false;

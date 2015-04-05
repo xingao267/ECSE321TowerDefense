@@ -22,6 +22,7 @@ public abstract class Critter {
     protected String critterType;
 
     /** speed of critter. Range from 0 to 1 */
+    protected double initialSpeed;
     protected double speed;
 
     /** health of critter. */
@@ -65,6 +66,7 @@ public abstract class Critter {
     protected int direction = right;
     protected int walkFrame = 0;
     protected int screenDistanceMoved = 0;
+    protected int distanceMovedWhileSlowed = 0;
     protected boolean hasMovedUp = false, hasMovedDown = false, hasMovedRight = false,
             hasMovedLeft = false;
 
@@ -77,6 +79,7 @@ public abstract class Critter {
 
         this.level = level;
         this.isBeingHit = false;
+        this.isSlowed = false;
     }
 
     /**
@@ -118,82 +121,171 @@ public abstract class Critter {
         // physics of critter movement
 
         if (walkFrame >= 11 - speed) {
-            if (direction == right) {
-                screenXPos++;
-            } else if (direction == left) {
-                screenXPos--;
-            } else if (direction == up) {
-                screenYPos--;
-            } else if (direction == down) {
-                screenYPos++;
+            if(isSlowed){
+	        	if (direction == right) {
+	                screenXPos++;
+	            } else if (direction == left) {
+	                screenXPos--;
+	            } else if (direction == up) {
+	                screenYPos--;
+	            } else if (direction == down) {
+	                screenYPos++;
+	            }
+	
+	            screenDistanceMoved++;
+	            distanceMovedWhileSlowed++;
+	            
+	            if (screenDistanceMoved == Constants.MAP_CELL_SIZE) {
+	                if (direction == right) {
+	                    xPos++;
+	                    hasMovedRight = true;
+	                } else if (direction == left) {
+	                    xPos--;
+	                    hasMovedLeft = true;
+	                } else if (direction == up) {
+	                    yPos--;
+	                    hasMovedUp = true;
+	                } else if (direction == down) {
+	                    yPos++;
+	                    hasMovedDown = true;
+	                }
+	
+	                if (!hasMovedLeft) {
+	                    try {
+	                        if (!Screen.map.getCell(xPos + 1, yPos).isScenery()) {
+	                            direction = right;
+	                        }
+	                    } catch (Exception e) {
+	                    }
+	                }
+	
+	                if (!hasMovedRight) {
+	                    try {
+	                        if (!Screen.map.getCell(xPos - 1, yPos).isScenery()) {
+	                            direction = left;
+	                        }
+	                    } catch (Exception e) {
+	                    }
+	                }
+	
+	                if (!hasMovedDown) {
+	                    try {
+	                        if (!Screen.map.getCell(xPos, yPos - 1).isScenery()) {
+	                            direction = up;
+	                        }
+	                    } catch (Exception e) {
+	                    }
+	                }
+	
+	                if (!hasMovedUp) {
+	                    try {
+	                        if (!Screen.map.getCell(xPos, yPos + 1).isScenery()) {
+	                            direction = down;
+	                        }
+	                    } catch (Exception e) {
+	                    }
+	                }
+	                try {
+	                    if (Screen.map.getCell(xPos, yPos).isExit()) {
+	                        reachedExit = true;
+	                        removeCritter();
+	                        loseLife(player);
+	                    }
+	                } catch (Exception e) {
+	                }
+	
+	                hasMovedUp = false;
+	                hasMovedDown = false;
+	                hasMovedRight = false;
+	                hasMovedLeft = false;
+	                screenDistanceMoved = 0;
+	                
+	            }
+	            
+	            if(distanceMovedWhileSlowed == 2*Constants.MAP_CELL_SIZE){
+	            	setSlowed(false);
+	            	setSpeed(initialSpeed);
+	            	distanceMovedWhileSlowed = 0;
+	            }
             }
-
-            screenDistanceMoved++;
-
-            if (screenDistanceMoved == Constants.MAP_CELL_SIZE) {
-                if (direction == right) {
-                    xPos++;
-                    hasMovedRight = true;
-                } else if (direction == left) {
-                    xPos--;
-                    hasMovedLeft = true;
-                } else if (direction == up) {
-                    yPos--;
-                    hasMovedUp = true;
-                } else if (direction == down) {
-                    yPos++;
-                    hasMovedDown = true;
-                }
-
-                if (!hasMovedLeft) {
-                    try {
-                        if (!Screen.map.getCell(xPos + 1, yPos).isScenery()) {
-                            direction = right;
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-
-                if (!hasMovedRight) {
-                    try {
-                        if (!Screen.map.getCell(xPos - 1, yPos).isScenery()) {
-                            direction = left;
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-
-                if (!hasMovedDown) {
-                    try {
-                        if (!Screen.map.getCell(xPos, yPos - 1).isScenery()) {
-                            direction = up;
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-
-                if (!hasMovedUp) {
-                    try {
-                        if (!Screen.map.getCell(xPos, yPos + 1).isScenery()) {
-                            direction = down;
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-                try {
-                    if (Screen.map.getCell(xPos, yPos).isExit()) {
-                        reachedExit = true;
-                        removeCritter();
-                        loseLife(player);
-                    }
-                } catch (Exception e) {
-                }
-
-                hasMovedUp = false;
-                hasMovedDown = false;
-                hasMovedRight = false;
-                hasMovedLeft = false;
-                screenDistanceMoved = 0;
+            else{
+            	if (direction == right) {
+	                screenXPos++;
+	            } else if (direction == left) {
+	                screenXPos--;
+	            } else if (direction == up) {
+	                screenYPos--;
+	            } else if (direction == down) {
+	                screenYPos++;
+	            }
+	
+	            screenDistanceMoved++;
+	            
+	            if (screenDistanceMoved == Constants.MAP_CELL_SIZE) {
+	                if (direction == right) {
+	                    xPos++;
+	                    hasMovedRight = true;
+	                } else if (direction == left) {
+	                    xPos--;
+	                    hasMovedLeft = true;
+	                } else if (direction == up) {
+	                    yPos--;
+	                    hasMovedUp = true;
+	                } else if (direction == down) {
+	                    yPos++;
+	                    hasMovedDown = true;
+	                }
+	
+	                if (!hasMovedLeft) {
+	                    try {
+	                        if (!Screen.map.getCell(xPos + 1, yPos).isScenery()) {
+	                            direction = right;
+	                        }
+	                    } catch (Exception e) {
+	                    }
+	                }
+	
+	                if (!hasMovedRight) {
+	                    try {
+	                        if (!Screen.map.getCell(xPos - 1, yPos).isScenery()) {
+	                            direction = left;
+	                        }
+	                    } catch (Exception e) {
+	                    }
+	                }
+	
+	                if (!hasMovedDown) {
+	                    try {
+	                        if (!Screen.map.getCell(xPos, yPos - 1).isScenery()) {
+	                            direction = up;
+	                        }
+	                    } catch (Exception e) {
+	                    }
+	                }
+	
+	                if (!hasMovedUp) {
+	                    try {
+	                        if (!Screen.map.getCell(xPos, yPos + 1).isScenery()) {
+	                            direction = down;
+	                        }
+	                    } catch (Exception e) {
+	                    }
+	                }
+	                try {
+	                    if (Screen.map.getCell(xPos, yPos).isExit()) {
+	                        reachedExit = true;
+	                        removeCritter();
+	                        loseLife(player);
+	                    }
+	                } catch (Exception e) {
+	                }
+	
+	                hasMovedUp = false;
+	                hasMovedDown = false;
+	                hasMovedRight = false;
+	                hasMovedLeft = false;
+	                screenDistanceMoved = 0;
+	            }
             }
 
             walkFrame = 0;

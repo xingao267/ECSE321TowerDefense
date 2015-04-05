@@ -54,7 +54,6 @@ public class MapDesignerView implements Runnable {
 
     public void init() {
 
-        // map = new Map(mapName, customMapWidth, customMapHeight);
         map = null;
 
         mainMenuButton =
@@ -155,6 +154,9 @@ public class MapDesignerView implements Runnable {
         g.setColor(new Color(255, 255, 255));
         g.setFont(new Font("Courier New", Font.BOLD, 20));
         g.drawString("Click the orange cells to create a path.", 15, 25);
+        g.setFont(new Font("Courier New", Font.BOLD, 14));
+        g.drawString("Last cell you click will be your exit point.", 18, 50);
+        g.drawString("Click Save Map to save your custom map.", 18, 75);
 
         // Draw Button to return to the main menu
         g.setColor(new Color(0, 0, 0));

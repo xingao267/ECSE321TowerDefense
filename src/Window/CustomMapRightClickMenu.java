@@ -13,16 +13,16 @@ public class CustomMapRightClickMenu extends JPopupMenu{
 	 /** Default serial ID */
     private static final long serialVersionUID = 1L;
 
-    JMenuItem removeButtom;
+    JMenuItem deleteButton;
 
     public CustomMapRightClickMenu() {
 
         
-        removeButtom = new JMenuItem("Remove");
+        deleteButton = new JMenuItem("Delete");
         
         if (!Screen.levelStarted) {
-            add(removeButtom);
-            removeButtom.addActionListener(new ActionListener() {
+            add(deleteButton);
+            deleteButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                    
                 	String hovered = MapSelectPaneView.getHoveredMap();
@@ -40,7 +40,6 @@ public class CustomMapRightClickMenu extends JPopupMenu{
                     Screen.levelStarted = false;
                     Screen.displayMainMenu = true;
                     Screen.gameRunning = true;
-                	
                 }
             });
             
@@ -48,17 +47,17 @@ public class CustomMapRightClickMenu extends JPopupMenu{
     }  
 
     /**
-     * @return the removeButtom
+     * @return the deleteButton
      */
-    public JMenuItem getRemoveButtom() {
-        return removeButtom;
+    public JMenuItem getdeleteButton() {
+        return deleteButton;
     }
 
     /**
-     * @param removeButtom the removeButtom to set
+     * @param deleteButton the deleteButton to set
      */
-    public void setRemoveButtom(JMenuItem removeButtom) {
-        this.removeButtom = removeButtom;
+    public void setdeleteButton(JMenuItem deleteButton) {
+        this.deleteButton = deleteButton;
     }
 
     
