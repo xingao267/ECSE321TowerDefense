@@ -34,9 +34,24 @@ public class TowerRightClickMenu extends JPopupMenu {
         sellButtom = new JMenuItem("Sell");
         moveButtom = new JMenuItem("Move");
 
-        add(upgradeButtom);
-
         if (!Screen.levelStarted) {
+            add(upgradeButtom);
+            upgradeButtom.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                    try {
+                        GameController.getUniqueInstance().upgradeTower(
+                                GameController.getUniqueInstance().getHoveredTowerOnMap());
+                        GameController.getUniqueInstance().setMaxLevelReached(false);
+                        GameController.getUniqueInstance().setNoMoneyCaught(false);
+                    } catch (MaxLevelReachedException e1) {
+                        GameController.getUniqueInstance().setMaxLevelReached(true);
+                    } catch (NoEnoughMoneyException e1) {
+                        GameController.getUniqueInstance().setNoMoneyCaught(true);
+                    }
+                }
+            });
+
             add(sellButtom);
             sellButtom.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -55,22 +70,6 @@ public class TowerRightClickMenu extends JPopupMenu {
                 }
             });
         }
-
-        upgradeButtom.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                try {
-                    GameController.getUniqueInstance().upgradeTower(
-                            GameController.getUniqueInstance().getHoveredTowerOnMap());
-                    GameController.getUniqueInstance().setMaxLevelReached(false);
-                    GameController.getUniqueInstance().setNoMoneyCaught(false);
-                } catch (MaxLevelReachedException e1) {
-                    GameController.getUniqueInstance().setMaxLevelReached(true);
-                } catch (NoEnoughMoneyException e1) {
-                    GameController.getUniqueInstance().setNoMoneyCaught(true);
-                }
-            }
-        });
     }
 
     /**
