@@ -102,11 +102,13 @@ public class ControlPanelView {
 
             if (towers[i].contains(Screen.mouseLocation)) {
 
+                GameController.getUniqueInstance().setTowerHoveredInStore(true);
+
                 if (Screen.levelStarted) {
                     g.setColor(new Color(232, 0, 0));
                     g.setFont(new Font("Courier New", Font.BOLD, 15));
                     g.drawString("Level has already started.", 400, 55);
-                    g.drawString("Cannot purchase tower", 400, 75);
+                    g.drawString("Cannot purchase tower.", 400, 75);
                     g.setColor(new Color(0, 0, 0, 75));
                     g.fillRect(towers[i].x, towers[i].y, towers[i].width, towers[i].height);
 
@@ -195,8 +197,10 @@ public class ControlPanelView {
             g.drawString("Don't have enough money in bank.", 15, 85);
 
         } else {
-            if (GameController.getUniqueInstance().isTowerCellHoveredOnMap()
-                    && !GameController.getUniqueInstance().isTowerMoveClicked()) {
+            if (!GameController.getUniqueInstance().isTowerHoveredInStore()
+                    && GameController.getUniqueInstance().isTowerCellHoveredOnMap()
+                    && !GameController.getUniqueInstance().isTowerMoveClicked()
+                    && !Screen.levelStarted) {
                 g.setColor(new Color(255, 255, 255));
                 g.setFont(new Font("Courier New", Font.BOLD, 14));
                 g.drawString("Right click to upgrade or remove.", 15, 85);
@@ -209,7 +213,8 @@ public class ControlPanelView {
                     g.drawString("Place tower on a scenery cell", 15, 85);
                 }
                 if (!GameController.getUniqueInstance().isTowerSeletedInStore()
-                        && !GameController.getUniqueInstance().isTowerMoveClicked()) {
+                        && !GameController.getUniqueInstance().isTowerMoveClicked()
+                        && !Screen.levelStarted) {
                     g.setColor(new Color(255, 255, 255));
                     g.setFont(new Font("Courier New", Font.BOLD, 14));
                     g.drawString("Click tower button to buy tower.", 15, 85);
@@ -217,12 +222,14 @@ public class ControlPanelView {
             }
         }
 
-
-        if (GameController.getUniqueInstance().isTowerCellHoveredOnMap()) {
+        if (!GameController.getUniqueInstance().isTowerHoveredInStore()
+                && GameController.getUniqueInstance().isTowerCellHoveredOnMap()) {
 
             Tower tower = GameController.getUniqueInstance().getHoveredTowerOnMap();
 
             try {
+                g.setColor(new Color(255, 255, 255));
+                g.setFont(new Font("Courier New", Font.BOLD, 13));
 
                 g.drawString(
                         "Power: " + (int) tower.getDamagePerHit() + " -> "
@@ -241,13 +248,9 @@ public class ControlPanelView {
                             + " -> " + (int) multiTargettower.getNextLevelEffectRange(), 400, 95);
                 }
 
-                g.setColor(new Color(255, 255, 255));
-                g.setFont(new Font("Courier New", Font.BOLD, 13));
                 g.drawString(
                         tower.getTowerType() + " lv" + tower.getLevel() + "->"
                                 + (tower.getLevel() + 1), 400, 30);
-
-                g.setFont(new Font("Courier New", Font.BOLD, 13));
                 g.drawString("Cost:" + tower.getUpgradeCost(), 600, 30);
 
             } catch (MaxLevelReachedException e) {

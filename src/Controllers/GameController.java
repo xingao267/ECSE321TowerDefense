@@ -51,13 +51,16 @@ public class GameController implements IGameController {
     /** The selected tower type String in the store. */
     private String selectedTowerTypeInStore;
 
-    /** Is a tower is selected in store. */
+    /** Is a tower selected in store. */
     private boolean isTowerSeletedInStore;
 
-    /** Is a tower is selected on map. */
+    /** Is a tower hovered in store. */
+    private boolean isTowerHoveredInStore;
+
+    /** Is a tower selected on map. */
     private boolean isTowerSelectedOnMap;
 
-    /** Is a tower is hovered on map. */
+    /** Is a tower hovered on map. */
     private boolean isTowerCellHoveredOnMap;
 
     /** The hovered tower on map. */
@@ -491,6 +494,20 @@ public class GameController implements IGameController {
      */
     public void setTowerMoveClicked(boolean isTowerMoveClicked) {
         this.isTowerMoveClicked = isTowerMoveClicked;
+    }
+
+    /**
+     * @return the isTowerHoveredInStore
+     */
+    public boolean isTowerHoveredInStore() {
+        return isTowerHoveredInStore;
+    }
+
+    /**
+     * @param isTowerHoveredInStore the isTowerHoveredInStore to set
+     */
+    public void setTowerHoveredInStore(boolean isTowerHoveredInStore) {
+        this.isTowerHoveredInStore = isTowerHoveredInStore;
     }
 
 }
