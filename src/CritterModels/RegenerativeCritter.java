@@ -31,7 +31,7 @@ public class RegenerativeCritter extends Critter {
         this.spawnRate = Constants.REGENERATIVE_CRITTER_SPAWN_RATE;
 
         if (level > 5) {
-            this.bounty += (level / 5) * this.bounty;
+            this.bounty += (level / 5) * 2*this.bounty;
         }
         this.health = 5 * level * level + 10*level + 55;
         this.maxHealth = health;

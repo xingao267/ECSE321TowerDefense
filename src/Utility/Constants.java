@@ -236,7 +236,7 @@ public class Constants {
             4 * RT_2};
     public static final double[] BOMBER_RATE = {0, 2, 3, 4, 5, 6};
 
-    public static final double[] BOMBER_DAMAGE_PER_HIT = {0, 38, 49, 64, 85, 115};
+    public static final double[] BOMBER_DAMAGE_PER_HIT = {0, 40, 60, 100, 150, 250};
     public static final double[] BOMBER_POWER = {
             BOMBER_DAMAGE_PER_HIT[0] * BOMBER_RATE[0] * GAME_THREAD_SLEEP_TIME / 1000,
             BOMBER_DAMAGE_PER_HIT[1] * BOMBER_RATE[1] * GAME_THREAD_SLEEP_TIME / 1000,

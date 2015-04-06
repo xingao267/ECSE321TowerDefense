@@ -132,7 +132,7 @@ public class CritterGroupGenerator {
             case 15: {
                 numCritters = 1;
                 for (int i = 0; i < numCritters; i++) {
-                    critterGroup.add(new BossCritter("Speed Critter", 8, 200, 7500));
+                    critterGroup.add(new BossCritter("Speed Critter", 7, 200, 6000));
                 }
                 break;
             }

@@ -249,6 +249,7 @@ public class MapSelectPaneView {
                 hoveredMap = mapList.get(i);
                 
                 g.setColor(new Color(0, 0, 0));
+                g.setFont(new Font("Arial Bold", Font.BOLD, 16));
                 g.drawString("Right-Click to delete map", createCustomMap.x, createCustomMap.y + 50);
             }
 

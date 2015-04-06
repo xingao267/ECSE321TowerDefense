@@ -29,7 +29,7 @@ public class BulletProofCritter extends Critter {
         this.spawnRate = Constants.BULLET_PROOF_CRITTER_SPAWN_RATE;
 
         if (level > 5) {
-            this.bounty += (level / 5) * this.bounty;
+            this.bounty += (level / 5) * 2*this.bounty;
         }
         this.health = 5 * level * level + 10*level + 35;
         this.maxHealth = health;
