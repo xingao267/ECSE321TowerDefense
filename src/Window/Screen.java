@@ -106,6 +106,7 @@ public class Screen extends JPanel implements Runnable {
         GameController.resetUniqueInstance();
         Player.resetUniqueInstance();
 
+        count = 0;
         gameLevel = 0;
         menu = new MainMenuView();
         mapSelectPane = new MapSelectPaneView();
