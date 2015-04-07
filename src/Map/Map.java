@@ -125,21 +125,13 @@ public class Map {
 
         if (currentX == previousX) {
             if (currentY == previousY + 1 || currentY == previousY - 1) {
-                if (isPath(currentX, currentY) || isPath(currentX, currentY)) {
-                    return false;
-                } else {
-                    return true;
-                }
+                return true;
             } else {
                 return false;
             }
         } else if (currentY == previousY) {
             if (currentX == previousX + 1 || currentX == previousX - 1) {
-                if (isPath(currentX, currentY) || isPath(currentX, currentY)) {
-                    return false;
-                } else {
-                    return true;
-                }
+                return true;
             } else {
                 return false;
             }
@@ -162,7 +154,7 @@ public class Map {
             if (!validNeighbor(current)) {
                 return false;
             }
-            if (current.next() != null && current.next().isExit()) {
+            if (current.next() == null && current.isExit()) {
                 return true;
             }
             current = current.next();

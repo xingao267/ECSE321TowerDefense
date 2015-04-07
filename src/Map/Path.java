@@ -24,7 +24,7 @@ public class Path extends Cell {
 		super.setCoordinates(x,y);
 		this.isStart = false;
 		this.isExit = false;
-		//this.previous = previous;	
+		this.previous = previous;	
 	}
 	
 	/**
