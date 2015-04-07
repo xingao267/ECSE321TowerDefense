@@ -123,7 +123,7 @@ public abstract class Tower {
         double newHealth = 0;
 
         if (critter instanceof ArmoredCritter) {
-            newHealth = critter.getHealth() - this.power / 3;
+            newHealth = critter.getHealth() - this.power / 2;
         } else if (critter instanceof BulletProofCritter) {
             newHealth = critter.getHealth() - this.power/2;
         } else {

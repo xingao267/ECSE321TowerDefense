@@ -129,23 +129,23 @@ public class TestGameController {
         critter1.setInGame(true);
         targets.add(critter1);
 
-        assertEquals(210, (long) critter1.getHealth());
+        assertEquals(235, (long) critter1.getHealth());
 
         singleTargetTower.setPower(10);
         controller.towerAttackTargets(singleTargetTower, targets);
-        assertEquals(205, (long) critter1.getHealth());
+        assertEquals(230, (long) critter1.getHealth());
 
         multiTargetsTower.setPower(6);
         assertEquals(false, critter1.isSlowed());
 
         controller.towerAttackTargets(multiTargetsTower, targets);
-        assertEquals(202, (long) critter1.getHealth());
+        assertEquals(227, (long) critter1.getHealth());
 
         assertTrue(critter1.getSpeed() - 2.6 < 0.0000001);
         assertEquals(true, critter1.isSlowed());
 
         controller.towerAttackTargets(multiTargetsTower, targets);
-        assertEquals(199, (long) critter1.getHealth());
+        assertEquals(224, (long) critter1.getHealth());
         assertTrue(critter1.getSpeed() - 2.6 < 0.0000001);
         assertEquals(true, critter1.isSlowed());
 
@@ -158,7 +158,7 @@ public class TestGameController {
         critter1.setInGame(true);
         targets.add(critter1);
 
-        assertEquals(210, (long) critter1.getHealth());
+        assertEquals(235, (long) critter1.getHealth());
 
         singleTargetTower.setPower(1000);
         controller.towerAttackTargets(singleTargetTower, targets);

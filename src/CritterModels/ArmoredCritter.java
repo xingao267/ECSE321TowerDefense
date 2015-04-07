@@ -31,7 +31,7 @@ public class ArmoredCritter extends Critter {
         if (level > 5) {
             this.bounty += (level / 5) * 2*this.bounty;
         }
-        this.health = 5 * level * level + 10*level + 35;
+        this.health = 5 * level * level + 15*level + 35;
         this.maxHealth = health;
         
         this.critterType = Constants.ARMORED_CRITTER_TYPE;
