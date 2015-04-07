@@ -46,9 +46,9 @@ public class MapLoader {
      * 
      * @param m
      */
-    public void saveMap(Map m, String name) {
+    public void saveMap(Map map, String name) {
 
-        String map1 = xstream.toXML(m);
+        String map1 = xstream.toXML(map);
 
         try {
             writer =
@@ -73,12 +73,11 @@ public class MapLoader {
      * @return Map created from XML file
      * @throws IOException
      */
-    public Map loadMap(String map) throws IOException {
+    public Map loadMap(String mapName) throws IOException {
 
-        // map += ".txt";
         String xml;
 
-        BufferedReader br = new BufferedReader(new FileReader(map));
+        BufferedReader br = new BufferedReader(new FileReader(mapName));
         try {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
@@ -93,8 +92,8 @@ public class MapLoader {
             br.close();
         }
 
-        Map m = (Map) xstream.fromXML(xml);
-        return m;
+        Map map = (Map) xstream.fromXML(xml);
+        return map;
 
     }
 

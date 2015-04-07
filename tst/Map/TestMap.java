@@ -113,8 +113,6 @@ public class TestMap {
 		try {
 			assertTrue(map.getPath(2).next().equals(null));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			
 		}
 		assertTrue(map.getPath(2).equals(map.getPath(map.pathSize()-1)));
 		assertTrue(map.getPath(map.pathSize() -1).isExit());

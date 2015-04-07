@@ -13,17 +13,16 @@ import Utility.Utils;
 public class MapDesigner {
 	private Map custom; /**Contains the map which will be modified by the designer*/
 	
-	/**Initialises the designer by setting the map to be worked on*/
+	/**Initializes the designer by setting the map to be worked on*/
 	public MapDesigner(Map custom) {
-		this.custom=custom;
+		this.custom = custom;
 	}
 	
 	/**This method modifies the node at the specified coordinates to a path by creating a new path tile and overwriting the scenery tile*/
 	public void modifyNodeToPath(int x, int y, Path previous, Path next){
-		Path newP=new Path(x, y, previous, next);
+		Path newP = new Path(x, y, previous, next);
 		custom.setCell(newP, x, y);
 		custom.addPathNode(newP);
-		//custom.getCell(x, y).setPath();
 	}
 	
 	/**This method generates a default map from an arraylist of x and y coordinates*/
@@ -34,8 +33,8 @@ public class MapDesigner {
 		
 		Path previous;
 		
-		for(int i=1;i<xCoords.size(); i++){
-			previous= custom.getPath(i-1);
+		for(int i = 1;i < xCoords.size(); i++){
+			previous = custom.getPath(i-1);
 			modifyNodeToPath(xCoords.get(i), yCoords.get(i), previous, null);
 			previous.setNext(custom.getPath(i));
 		}
@@ -45,11 +44,9 @@ public class MapDesigner {
 	
 	public void addPathNodeFromClick(Point p){
 		custom.clearIndicators();
-		Point mapPoint= Utils.convertScreenToMapCoord(p);
-		int ixCoord= (int) mapPoint.getX();
-		//System.out.println(ixCoord);
-		int iyCoord= (int) mapPoint.getY();
-		//System.out.println(iyCoord);
+		Point mapPoint = Utils.convertScreenToMapCoord(p);
+		int ixCoord = (int) mapPoint.getX();
+		int iyCoord = (int) mapPoint.getY();
 		
 		if (custom.pathEmpty()){
 			modifyNodeToPath(ixCoord, iyCoord, null, null);
@@ -58,8 +55,8 @@ public class MapDesigner {
 			updateIndicators();
 		}
 		else{
-			int index=custom.pathSize();
-			Path previous= custom.getPath(index-1); //verify this
+			int index = custom.pathSize();
+			Path previous = custom.getPath(index-1); //verify this
 			modifyNodeToPath(ixCoord, iyCoord, previous, null);
 			previous.setNext(custom.getPath(index));
 			updateIndicators();
@@ -68,36 +65,36 @@ public class MapDesigner {
 	}
 	
 	public void updateIndicators(){
-		Path last= custom.getPath(custom.pathSize()-1);
-		int lastxCoord=last.getXCoordinate();
-		int lastyCoord=last.getYCoordinate();
+		Path last = custom.getPath(custom.pathSize()-1);
+		int lastxCoord = last.getXCoordinate();
+		int lastyCoord = last.getYCoordinate();
 		
-		if(lastxCoord+1<custom.getWidth()){
-			if(!custom.isPath(lastxCoord+1, lastyCoord)){
-				custom.addIndicator(new Cell(lastxCoord+1, lastyCoord));
+		if(lastxCoord + 1 < custom.getWidth()){
+			if(!custom.isPath(lastxCoord + 1, lastyCoord)){
+				custom.addIndicator(new Cell(lastxCoord + 1, lastyCoord));
 			}	
 		}
-		if(lastxCoord-1>=0){
-			if(!custom.isPath(lastxCoord-1, lastyCoord)){
-				custom.addIndicator(new Cell(lastxCoord-1, lastyCoord));
+		if(lastxCoord - 1 >= 0){
+			if(!custom.isPath(lastxCoord - 1, lastyCoord)){
+				custom.addIndicator(new Cell(lastxCoord - 1, lastyCoord));
 			}
 		}
-		if(lastyCoord+1<custom.getHeight()){
-			if(!custom.isPath(lastxCoord, lastyCoord+1)){
-				custom.addIndicator(new Cell(lastxCoord, lastyCoord+1));
+		if(lastyCoord + 1 < custom.getHeight()){
+			if(!custom.isPath(lastxCoord, lastyCoord + 1)){
+				custom.addIndicator(new Cell(lastxCoord, lastyCoord + 1));
 			}
 		}
-		if(lastyCoord-1>=0){
-			if(!custom.isPath(lastxCoord, lastyCoord-1)){
-				custom.addIndicator(new Cell(lastxCoord, lastyCoord-1));
+		if(lastyCoord - 1 >= 0){
+			if(!custom.isPath(lastxCoord, lastyCoord - 1)){
+				custom.addIndicator(new Cell(lastxCoord, lastyCoord - 1));
 			}
 		}
 		
 	}
 	
 	public void endMap(){
-		custom.setEnd(custom.getPath(custom.pathSize()-1));
-		custom.getPath(custom.pathSize()-1).setEnd();
+		custom.setEnd(custom.getPath(custom.pathSize() - 1));
+		custom.getPath(custom.pathSize() - 1).setEnd();
 	}
 
 }

@@ -21,10 +21,10 @@ import Controllers.NearestCritterToTowerStrategy;
 import Controllers.StrongestCritterStrategy;
 import Controllers.WeakestCritterStrategy;
 import Exceptions.MaxLevelReachedException;
-import Exceptions.NoEnoughMoneyException;
+import Exceptions.NotEnoughMoneyException;
 
 /**
- * @author Xin
+ * @author Xin, Justin
  *
  */
 public class TowerRightClickMenu extends JPopupMenu {
@@ -60,7 +60,7 @@ public class TowerRightClickMenu extends JPopupMenu {
                         GameController.getUniqueInstance().setNoMoneyCaught(false);
                     } catch (MaxLevelReachedException e1) {
                         GameController.getUniqueInstance().setMaxLevelReached(true);
-                    } catch (NoEnoughMoneyException e1) {
+                    } catch (NotEnoughMoneyException e1) {
                         GameController.getUniqueInstance().setNoMoneyCaught(true);
                     }
                 }

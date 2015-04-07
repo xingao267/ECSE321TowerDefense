@@ -7,7 +7,6 @@ import java.util.List;
 
 import CritterModels.Critter;
 import TowerModels.Tower;
-import Utility.Utils;
 
 /**
  * Detect the weakest critter in range

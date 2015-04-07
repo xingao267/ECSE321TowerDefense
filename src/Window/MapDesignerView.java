@@ -129,7 +129,6 @@ public class MapDesignerView implements Runnable {
                     frame.dispose();
                     invalidMapParameterExceptionHandler();
                 }
-                // Screen.setMapDesigning(true);
             }
         });
 

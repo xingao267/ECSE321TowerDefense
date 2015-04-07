@@ -123,13 +123,9 @@ public abstract class Tower {
         double newHealth = 0;
 
         if (critter instanceof ArmoredCritter) {
-            newHealth = critter.getHealth() - this.power / 2;
+            newHealth = critter.getHealth() - this.power / 3;
         } else if (critter instanceof BulletProofCritter) {
-            // Removed damage type for now
-            // damageType
-            // 0 implies regular attacks (bullets, explosions)
-            // 1 implies special attacks (fire, electricity)
-            newHealth = critter.getHealth() - this.power;
+            newHealth = critter.getHealth() - this.power/2;
         } else {
             newHealth = critter.getHealth() - this.power;
         }

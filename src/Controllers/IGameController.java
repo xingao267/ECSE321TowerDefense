@@ -6,7 +6,7 @@ import CritterModels.Critter;
 import Exceptions.CritterDeadException;
 import Exceptions.InvalidTowerTypeException;
 import Exceptions.MaxLevelReachedException;
-import Exceptions.NoEnoughMoneyException;
+import Exceptions.NotEnoughMoneyException;
 import Map.Cell;
 import TowerModels.Tower;
 
@@ -28,11 +28,11 @@ public interface IGameController {
      * @param level
      * 
      * @return the tower object
-     * @throws NoEnoughMoneyException
+     * @throws NotEnoughMoneyException
      * @throws InvalidTowerTypeException
      */
     public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Cell cell)
-            throws NoEnoughMoneyException, InvalidTowerTypeException;
+            throws NotEnoughMoneyException, InvalidTowerTypeException;
 
     /**
      * Move the tower to new position
@@ -48,9 +48,9 @@ public interface IGameController {
      *
      * @param tower
      * @throws MaxLevelReachedException
-     * @throws NoEnoughMoneyException
+     * @throws NotEnoughMoneyException
      */
-    public void upgradeTower(Tower tower) throws MaxLevelReachedException, NoEnoughMoneyException;
+    public void upgradeTower(Tower tower) throws MaxLevelReachedException, NotEnoughMoneyException;
 
     /**
      * Sell the Tower

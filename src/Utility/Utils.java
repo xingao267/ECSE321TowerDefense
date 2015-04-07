@@ -10,6 +10,11 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * 
+ * @author Jose, Xin, Justin
+ *
+ */
 public class Utils {
 
     public static double getDistance(int xPosA, int yPosA, int xPosB, int yPosB) {

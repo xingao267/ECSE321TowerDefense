@@ -9,6 +9,11 @@ import Controllers.GameController;
 import Utility.Constants;
 import Utility.Utils;
 
+/**
+ * 
+ * @author Jose
+ *
+ */
 public class KeyHandler implements MouseMotionListener, MouseListener {
 
     public KeyHandler() {
@@ -21,10 +26,6 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
                     new Point(m.getX() - (Frame.width - Screen.screenWidth) / 2, m.getY()
                             - (Frame.height - Screen.screenHeight) / 2
                             - Constants.KEYHANDLER_OFFSET);
-
-            // System.out.println("Mouse clicked (" + Screen.mouseClicked.getX() + ',' +
-            // Screen.mouseClicked.getY() + ')');
-            // Screen.rightClicked = false;
 
             Utils.playSound(Constants.CLICK_ONE_SOUND, 0);
         }
@@ -63,16 +64,12 @@ public class KeyHandler implements MouseMotionListener, MouseListener {
         Screen.mouseLocation =
                 new Point(m.getX() - (Frame.width - Screen.screenWidth) / 2, m.getY()
                         - (Frame.height - Screen.screenHeight) / 2 - Constants.KEYHANDLER_OFFSET);
-        // System.out.println("Mouse moved (" + Screen.mouseLocation.getX() + ',' +
-        // Screen.mouseLocation.getY() + ')');
     }
 
     public void mouseMoved(MouseEvent m) {
         Screen.mouseLocation =
                 new Point(m.getX() - (Frame.width - Screen.screenWidth) / 2, m.getY()
                         - (Frame.height - Screen.screenHeight) / 2 - Constants.KEYHANDLER_OFFSET);
-        // System.out.println("Mouse moved (" + Screen.mouseLocation.getX() + ',' +
-        // Screen.mouseLocation.getY() + ')');
     }
 
     private TowerRightClickMenu doPop(MouseEvent e) {

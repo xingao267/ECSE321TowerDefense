@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 import Controllers.GameController;
 import Exceptions.InvalidTowerTypeException;
-import Exceptions.NoEnoughMoneyException;
+import Exceptions.NotEnoughMoneyException;
 import Map.Cell;
 import Map.Map;
 import TowerModels.Tower;
@@ -76,7 +76,7 @@ public class MapView {
     }
 
     /**
-     * Initialise the necessary rectangles
+     * Initialize the necessary rectangles
      */
     public void init() {
 
@@ -92,8 +92,6 @@ public class MapView {
                 if (map.noIndicators()) {
                     if (map.getCell(i, j).isScenery()) {
                         scenery.add(r);
-                    } else {
-                        // path.add(r);
                     }
                 } else {
                     for (int k = 0; k < map.numIndicators(); k++) {
@@ -107,8 +105,6 @@ public class MapView {
                     if (!foundInd) {
                         if (map.getCell(i, j).isScenery()) {
                             scenery.add(r);
-                        } else {
-                            // path.add(r);
                         }
                     }
                 }
@@ -125,7 +121,6 @@ public class MapView {
      * @param g
      */
     public void draw(Graphics g) {
-        // calculatePath();
         // Draw the scenery
         for (Rectangle r : scenery) {
 
@@ -133,8 +128,6 @@ public class MapView {
             Cell cell = map.getCell(mapPosition.x, mapPosition.y);
 
             g.drawImage(sceneryCell, r.x, r.y, r.width, r.height, null);
-            // g.setColor(new Color(148, 204, 142)); // Green
-            // g.fillRect(r.x, r.y, r.width, r.height);
 
             if (r.contains(Screen.mouseLocation)) {
                 // slightly darken the scenery
@@ -170,7 +163,7 @@ public class MapView {
                         cell.setTower(tower);
                         cell.setHasTower(true);
                         Utils.playSound(Constants.CONSTRUCTION, 0);
-                    } catch (NoEnoughMoneyException e) {
+                    } catch (NotEnoughMoneyException e) {
                         // shouldn't be hit
                     } catch (InvalidTowerTypeException e) {
                         // shouldn't be hit
@@ -196,7 +189,9 @@ public class MapView {
                 Screen.mouseClickedReset();
             }
         }
-        int direction = 1; // 0=left,1=right,2=up,3=down
+        
+        //0 = left, 1 = right, 2 = up, 3 = down
+        int direction = 1; 
         BufferedImage pathSection;
         // Draw the path
         pathSection =
@@ -304,9 +299,6 @@ public class MapView {
 
             g.drawImage(pathSection, path.get(i).x, path.get(i).y, path.get(i).width,
                     path.get(i).height, null);
-
-            // g.setColor(new Color(88, 38, 15)); // Brown
-            // g.fillRect(path.get(i).x, path.get(i).y, path.get(i).width, path.get(i).height);
 
             if (path.get(i).contains(Screen.mouseLocation)) {
                 // slightly darken the path

@@ -32,7 +32,6 @@ public class MapSelectPaneView {
     private static int buttonYOffset2 = 120;
     private static int buttonYOffset3 = 200;
     private static int buttonXOffset = 50;
-    private static int columnOffset1 = 400;
     private static int wordXOffset1 = 150;
     private static int wordXOffset2 = 75;
     private static int wordXOffset3 = 150;
@@ -219,8 +218,8 @@ public class MapSelectPaneView {
             Screen.displayMapDesigner = true;
         }
 
-        // TODO: Add number of buttons based on how many saved maps there are.
 
+        //Add number of buttons based on how many saved maps there are.
         for (int i = 0; i < customMaps.size(); i++) {
 
             if (i > 5) {

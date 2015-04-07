@@ -9,6 +9,11 @@ import CritterModels.Critter;
 import Utility.Constants;
 import Utility.Utils;
 
+/**
+ * 
+ * @author Jose, Eric
+ *
+ */
 public class CritterView {
 
 	private Rectangle critterDisplay, healthBar;
@@ -32,6 +37,7 @@ public class CritterView {
 	public void draw(Graphics g){
 		if(critter.isInGame()){
 			g.setColor(new Color(0, 0, 0));
+			
 			//drawImage() using tileset of specific critter
 			BufferedImage img = critter.getImage();
 			BufferedImage clippedImg = null;

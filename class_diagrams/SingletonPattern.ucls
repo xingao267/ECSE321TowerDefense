@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="OtherModels.Bank" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/OtherModels/Bank.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="134" width="156" x="44" y="-112"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="OtherModels.Player" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/OtherModels/Player.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="133" width="156" x="348" y="-107"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="Controllers.GameController" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Controllers/GameController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="98" width="210" x="326" y="74"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="false" protected="false" private="false" static="false"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="Map.MapLoader" project="ECSE321TowerDefense" 
+    file="/ECSE321TowerDefense/src/Map/MapLoader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="180" x="33" y="55"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="5">    
+    <bendpoint x="201" y="4"/>    
+    <bendpoint x="252" y="4"/>    
+    <bendpoint x="252" y="-46"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="6" name="uniqueInstance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="7" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="8">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="9">    
+    <bendpoint x="215" y="166"/>    
+    <bendpoint x="278" y="166"/>    
+    <bendpoint x="278" y="123"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="10" name="uniqueInstance">        
+        <position height="0" width="0" x="-131" y="-91"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-131" y="-91"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="12">    
+    <bendpoint x="504" y="10"/>    
+    <bendpoint x="559" y="10"/>    
+    <bendpoint x="559" y="-40"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="13" name="uniqueInstance">        
+        <position height="0" width="0" x="39" y="-18"/>      
+      </attribute>      
+      <multiplicity id="14" minimum="0" maximum="1">        
+        <position height="0" width="0" x="39" y="-18"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="15">    
+    <bendpoint x="536" y="162"/>    
+    <bendpoint x="594" y="162"/>    
+    <bendpoint x="594" y="124"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="16" name="uniqueInstance">        
+        <position height="0" width="0" x="-242" y="258"/>      
+      </attribute>      
+      <multiplicity id="17" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-242" y="258"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

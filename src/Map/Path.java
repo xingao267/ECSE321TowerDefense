@@ -11,6 +11,7 @@ public class Path extends Cell {
 	private Path previous; 
 	private boolean isStart;
 	private boolean isExit;
+	
 	/**
 	 * Path Constructor
 	 * @param x x-coordinate

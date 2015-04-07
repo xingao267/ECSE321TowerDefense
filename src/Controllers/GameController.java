@@ -15,7 +15,7 @@ import CritterModels.Critter;
 import Exceptions.CritterDeadException;
 import Exceptions.InvalidTowerTypeException;
 import Exceptions.MaxLevelReachedException;
-import Exceptions.NoEnoughMoneyException;
+import Exceptions.NotEnoughMoneyException;
 import Map.Cell;
 import OtherModels.Bank;
 import TowerModels.BomberTower;
@@ -111,7 +111,7 @@ public class GameController implements IGameController {
 
     @Override
     public Tower purchaseTower(String towerType, int xPos, int yPos, int level, Cell cell)
-            throws NoEnoughMoneyException, InvalidTowerTypeException {
+            throws NotEnoughMoneyException, InvalidTowerTypeException {
 
         Tower towerToPurchase = null;
 
@@ -143,7 +143,7 @@ public class GameController implements IGameController {
     }
 
     @Override
-    public void upgradeTower(Tower tower) throws MaxLevelReachedException, NoEnoughMoneyException {
+    public void upgradeTower(Tower tower) throws MaxLevelReachedException, NotEnoughMoneyException {
 
         if (tower.getLevel() < Constants.MAX_TOWER_LEVEL) {
             Bank.getUniqueInstance().removeFromBank(tower.getUpgradeCost());

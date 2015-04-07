@@ -87,7 +87,7 @@ public class ControlPanelView {
 
     public void draw(Graphics g) {
 
-        // Draw Buttons for each purchaseable tower
+        // Draw Buttons for each purcheasable tower
         for (int i = 0; i < towers.length; i++) {
 
             BufferedImage img;

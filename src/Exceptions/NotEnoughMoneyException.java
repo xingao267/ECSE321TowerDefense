@@ -9,20 +9,20 @@ package Exceptions;
  * @author Xin
  *
  */
-public class NoEnoughMoneyException extends Exception {
+public class NotEnoughMoneyException extends Exception {
 
     /** default serial ID */
     private static final long serialVersionUID = 1L;
 
-    public NoEnoughMoneyException() {
+    public NotEnoughMoneyException() {
         super();
     }
 
-    public NoEnoughMoneyException(String message) {
+    public NotEnoughMoneyException(String message) {
         super(message);
     }
 
-    public NoEnoughMoneyException(String message, Throwable cause) {
+    public NotEnoughMoneyException(String message, Throwable cause) {
         super(message, cause);
     }
 }

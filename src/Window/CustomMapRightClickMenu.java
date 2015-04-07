@@ -8,7 +8,11 @@ import javax.swing.JPopupMenu;
 
 import Map.MapLoader;
 
-
+/**
+ * 
+ * @author Justin
+ *
+ */
 public class CustomMapRightClickMenu extends JPopupMenu{
 	 /** Default serial ID */
     private static final long serialVersionUID = 1L;

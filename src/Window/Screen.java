@@ -214,7 +214,7 @@ public class Screen extends JPanel implements Runnable {
                         crittersGenerated = false;
                         levelEnded = true;
                         Bank.getUniqueInstance().setBalance(
-                        		Bank.getUniqueInstance().getBalance() + Constants.LEVEL_REWARD[gameLevel]);
+                        		Bank.getUniqueInstance().getBalance() + Constants.LEVEL_REWARD[gameLevel-1]);
                         if(gameLevel >= Constants.MAX_GAME_LEVEL){
                         	gameWon = true;
                         	gameRunning = false;
@@ -279,8 +279,6 @@ public class Screen extends JPanel implements Runnable {
             }
 
             if (displayMapDesigner) {
-                // userInput.start();
-                // mapDesigner.createUserDefinedMap();
                 mapDesigner.run();
                 while (displayMapDesigner) {
                     repaint();

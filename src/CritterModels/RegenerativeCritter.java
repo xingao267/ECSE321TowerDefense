@@ -55,10 +55,9 @@ public class RegenerativeCritter extends Critter {
      * 
      * @param level Level at which the game is currently at.
      */
-    public void regenerate(int level) { // regenerates a certain amount of
-                                        // health every certain interval of time
-        long lastExecutionTime = 0; // only begins regenerating after critter
-                                    // has been spawned
+    public void regenerate(int level) {
+ 
+        long lastExecutionTime = 0;
         int regenerativeAmount = 40 + 8 * level + 2 * level * level;
         if (System.currentTimeMillis() - lastExecutionTime >= 0) {
             if (health + regenerativeAmount > maxHealthPoints)

@@ -1,6 +1,6 @@
 package OtherModels;
 
-import Exceptions.NoEnoughMoneyException;
+import Exceptions.NotEnoughMoneyException;
 import Utility.Constants;
 
 /**
@@ -44,11 +44,11 @@ public class Bank {
      * Remove the balance from the bank
      * 
      * @param cost
-     * @throws NoEnoughMoneyException
+     * @throws NotEnoughMoneyException
      */
-    public synchronized void removeFromBank(int cost) throws NoEnoughMoneyException {
+    public synchronized void removeFromBank(int cost) throws NotEnoughMoneyException {
         if (this.balance < cost) {
-            throw new NoEnoughMoneyException();
+            throw new NotEnoughMoneyException();
         }
         this.balance -= cost;
     }

@@ -36,7 +36,7 @@ public class Map {
 
     }
 
-    /** Initialises a blank map comprised of only scenery cells */
+    /** Initializes a blank map comprised of only scenery cells */
     public void initializeBlankMap() {
         this.cells = new Cell[width][height];
         for (int i = 0; i < width; i++) {
@@ -144,7 +144,7 @@ public class Map {
      * Returns true if the path contained by the map has a connected path from the starting tile to
      * the end tile
      */
-    public boolean validPath() { // TODO: Put in checks to see which path it's currently at
+    public boolean validPath() {
         int max = this.width * this.height;
         int count = 0;
         Path current = start;
